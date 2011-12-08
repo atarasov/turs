@@ -2544,3 +2544,11 @@ text-align: right;}
     height: 1%; }
   *:first-child + html .digg_pagination {
     overflow: hidden; }
+
+.stend tbody td .peak {
+    background: url("/images/right_peak.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 18px;
+    width: 25px;
+}}

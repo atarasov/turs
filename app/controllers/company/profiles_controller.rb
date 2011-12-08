@@ -9,7 +9,7 @@ class Company::ProfilesController < Company::BaseController
 
   def show
     @profile = User.find(params[:id])
-
+    @stends = @profile.stends
       @profile.review += 1
       @profile.save!
     respond_to do |format|

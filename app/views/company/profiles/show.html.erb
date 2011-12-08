@@ -118,11 +118,11 @@
           </tr>
           </thead>
           <tbody>
-          <% for i in 1..5 do %>
+          <% @stends.each do |stend|%>
           <tr>
-            <td><span>Египет</td>
-            <td><span>7 дней</td>
-            <td><span>от <em>800$</em></td>
+            <td><span><%= image_tag stend.country.flag.url(:mini) %> <%= stend.country.title %></span><span class="peak"></span></td>
+            <td><span><%= stend.days %> дней</span><span class="peak"></span></td>
+            <td><span>от <em><%= stend.price %>$</em></span><span class="peak"></span></td>
           </tr>
           <% end %>
           </tbody>

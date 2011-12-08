@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :site_id
 
   has_many :turs
+  has_many :stends
   has_many :directions
   has_many :posts, :order => "#{Post.table_name}.created_at desc"
   has_many :topics, :order => "#{Topic.table_name}.created_at desc"
