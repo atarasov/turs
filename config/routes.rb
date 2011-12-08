@@ -1,6 +1,16 @@
 TursPro::Application.routes.draw do
 
 
+  namespace :paid_service  do
+    get "pro"
+    get "vip"
+    get "site_link"
+    get "recommended"
+    get "selection"
+    get "advertising_in_journal"
+    get "advertising_in_site"
+  end
+
   #get "stend/edit"
 
   get "main/company_license"

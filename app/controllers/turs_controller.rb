@@ -3,7 +3,12 @@ class TursController < ApplicationController
   #before_filter
 
   def index
-    @turs = Tur.all
+    if params[:user_id]
+      @turs = Tur.where(:user_id => params[:user_id])
+    else
+      @turs = Tur.all
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb
