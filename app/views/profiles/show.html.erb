@@ -1,0 +1,28 @@
+<p>
+  <b><%= t(:company_info) %>:</b>
+  <%=h @profile.info %>
+</p>
+
+<p>
+  <b><%= t(:addr) %>:</b>
+  <%=h @profile.address %>
+</p>
+
+<p>
+  <b><%= t(:phone) %>:</b>
+  <%=h @profile.phone %>
+</p>
+
+<p>
+  <b><%= t(:company_slogan) %>:</b>
+  <%=h @profile.slogan %>
+</p>
+
+<p>
+  <b><%= t(:company_about) %>:</b>
+  <%=h @profile.about %>
+</p>
+
+
+<%= link_to t(:edit), edit_profile_path(@profile) %> |
+<%= link_to t(:back), profiles_path %>

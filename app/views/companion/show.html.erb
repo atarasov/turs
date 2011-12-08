@@ -1,0 +1,66 @@
+	<table>
+	  <tr>
+		<td>
+		  Заголовок
+		</td>
+		<td>
+		  <%= @adv.title %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Добавил
+		</td>
+		<td>
+		  <%= link_to @adv.user.display_name, user_url(@adv.user_id) %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Количество дней
+		</td>
+		<td>
+		  <%= @adv.days %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Откуда
+		</td>
+		<td>
+		  <%= @adv.city.name if @adv.city %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Куда
+		</td>
+		<td>
+		  <%= @adv.where %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Комментарии
+		</td>
+		<td>
+		  <%= @adv.description %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Кто едет
+		</td>
+		<td>
+		  <%= ["М", "Ж", "Группа М", "Группа Ж", "Смешанная группа"][@adv.author_type - 1] %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Кого ищет
+		</td>
+		<td>
+		  <%= ["М", "Ж", "Группа М", "Группа Ж", "Смешанная группа"][@adv.request_type - 1] %>
+		</td>
+	  </tr>
+	</table>

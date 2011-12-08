@@ -1,0 +1,19 @@
+<div class="journal-favorites">
+<span style="text-align: left;">
+<% @videos.each do |video| %>
+  <span style="display: block; \ ">
+    <p><strong><%= video.title %></strong>
+
+    <p><%= raw video.code %></p>
+    <p><%= video.description %></p>
+    <!--<td><%= link_to 'Show', video %></td>-->
+    <!--<td><%= link_to 'Edit', edit_video_path(video) %></td>-->
+    <!--<td><%= link_to 'Destroy', video, :confirm => 'Are you sure?', :method => :delete %></td>-->
+  </span>
+<% end %>
+</span>
+<br />
+
+<%= link_to 'New Video', new_company_video_path %>
+
+    </div>

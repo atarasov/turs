@@ -1,0 +1,28 @@
+<% if params[:id].to_i.eql?(current_user.id.to_i)%>
+    <ul class="edit">
+      <li><%= link_to t(:edit_photos), ordering_company_photos_url(current_user)%></li>
+      <li>|</li>
+      <li><%= link_to t(:new_photo), new_company_photo_path %></li>
+
+    </ul>
+    <% end %>
+<div class="apartment-left">
+<% @photos.each do |photo| %>
+    <span class="photo_f">
+    <strong> <h3> <%= photo.title %></strong></h3><br/>
+    <%= image_tag photo.image.url(:small), :class => 'slide-img', :alt => photo.title %><br/>
+    <%= hidden_field_tag 'slide-img-big', photo.image.url(:large), :class => 'slide-img-big'  %>
+    “<%= photo.description %>”
+    <!--<td><%= photo.user_id %></td>-->
+    <!--<td><%= photo.title %></td>-->
+    <!--<td><%= photo.description %></td>-->
+    <!--<td><%= link_to 'Show', photo %></td>-->
+    <!--<td><%= link_to 'Edit', edit_photo_path(photo) %></td>-->
+    <!--<td><%= link_to 'Destroy', photo, :confirm => 'Are you sure?', :method => :delete %></td>-->
+        </span>
+<% end %>
+</div>
+<br />
+<br />
+
+

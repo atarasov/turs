@@ -1,0 +1,61 @@
+<h1><%= t(:edit_photo) %></h1>
+
+<%#= render 'form' %>
+<style>
+	#sortable { list-style-type: none; margin: 0; padding: 0; width: 95%; }
+	#sortable li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; height: 60px; }
+	html>body #sortable li { height: 60px; line-height: 1.2em; }
+	.ui-state-highlight { height: 60px; line-height: 1.2em; background: #1D9ED6; border-color: #000055;  }
+	</style>
+	<script>
+//      var ids = [];
+//      $(this).find('tr').each(function() {
+//        var id = $(this).attr('id').split('_')[1];
+//        ids.push(id);
+//      });
+//      $.post(url, {departments: ids.join(',')});
+	$(function() {
+		$( "#sortable" ).sortable({
+			placeholder: "ui-state-highlight",
+            opacity: 0.6,
+            stop: function(event, ui) {
+
+                    var ids = [];
+                    $(this).children().each(function() {
+                        var id = $(this).attr('id').split('_')[1];
+                        ids.push(id);
+                    });
+
+                    $.post("<%= change_order_company_photos_url %>", {order_list: ids.join(',')});
+
+                }
+		});
+		$( "#sortable" ).disableSelection();
+	});
+
+          $("input").click(
+ function()
+      {
+        $(this).focus()
+      }
+ );
+	</script>
+<% form_tag :controller => "company/photos", :action => "update" do  %>
+<ul id="sortable">
+  <% @photos.each do |photo| %>
+	<li id="name_<%= photo.id %>" name="<%= photo.id %>" class="ui-state-default">
+      <ul class='img_edit_block'>
+        <li style="width: 10%"><%= image_tag photo.image.url(:thumbnail), :class => 'ui-state-default' %></li>
+        <li style="width: 30%"><%= text_area_tag "photos[#{photo.id}][title]", photo.title, :onclick=>" $(this).focus()" %></li>
+        <li style="width: 30%"><%= text_area_tag "photos[#{photo.id}][description]", photo.description, :onclick=>" $(this).focus()" %></li>
+        <li style="width: 10%"></li>
+      </ul>
+
+	</li>
+<% end %>
+</ul>
+    <%= submit_tag t(:save) %>  | <%= link_to 'Back', company_photos_url(current_user) %>
+<% end %>
+
+
+

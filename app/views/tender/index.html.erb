@@ -1,0 +1,18 @@
+<span class="box-kurs"><strong>Заявки на услуги</strong></span>
+
+
+<p><%= link_to "Создать заявку", new_tender_url %></p>
+
+<div>
+  <table>
+  <tr>
+  <th>Название</th>
+  <th>Описание</th>
+  <th>Бюджет</th>
+  <th>Контакты</th>
+  </tr>
+  <%= render :partial => 'tender', :collection => @tenders %>
+
+
+</table>
+</div>

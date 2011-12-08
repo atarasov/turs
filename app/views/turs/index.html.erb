@@ -1,0 +1,82 @@
+<!--<h1>Listing turs</h1>-->
+
+<table class="turs">
+
+
+  <% @turs.each do |tur| %>
+      <tr>
+        <td style="border-right:1px solid #447fa2;">
+          <table>
+            <!--<tr><td colspan="2"><a class="btn-proritet" href="#"><img src="/images/btn-add-prioritet.png" alt="image description"/></a></td></tr>-->
+            <tr>
+              <td><%= image_tag tur.image.url(:thumbnail) %></td>
+              <td><p class="sale"><%= tur.price %></p>
+
+                <p class="price"><%= tur.price %></p></td>
+            </tr>
+          </table>
+        </td>
+        <td >
+          <table>
+            <tr>
+              <td colspan="3"><%= link_to tur.title, tur, :class => "name" %></td>
+            </tr>
+            <tr >
+              <td><%= link_to image_tag(tur.country.flag.url(:thumb)), tur %></td>
+              <td style="font-size: 24px; color: #000000; "><%= tur.country.title %></td>
+              <td style="font-size: 24px; color: #000000; "><%= t(:hotel) %>
+                <span style="margin-left: 5px;">
+                <% 1.upto(tur.stars.to_i) do %>
+                    <img src="/images/ico-star.png" style="margin: 0;float: right;"/>
+                <% end %>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td style="border-left:1px solid #447fa2;">
+          <table>
+            <tr>
+              <td class ="tur_title">
+                <img src="/images/ico-pro.png"> Турагенство<br/>
+                <%= link_to tur.user.name, company_profile_url(tur.user) %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul class="stat">
+
+                  <li><img src="/images/ico-small-list.png" alt="image description"/>Рейтинг:
+                    <span><%= tur.user.raiting %></span></li>
+                  <li><img src="/images/ico-small-arrow.png" alt="image description"/>Просмотров:
+                    <span><%= tur.user.review %></span></li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </td>
+
+      </tr>
+      <tr class="bottom" >
+        <td >
+          <a class="pancel" style="float: left;" href="#"><span>&nbsp;</span></a>
+          <em style="float: left;left: 15px; position: relative;top: 5px;">Добавить тур в блокнот</em>
+        </td>
+        <td align="center"><em>Добавленно: <%= Russian::strftime(tur.created_at, "%d %B %Y") %></em> <em style="margin-left: 10px;"><%= Russian::strftime(tur.created_at, "%H:%M") %></em></td>
+        <td></td>
+      </tr>
+      <tr><td class="clr" colspan="3"></td></tr>
+  <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'New Tur', new_tur_path %>
+
+<!--<td><%#= tur.user.name %></td>-->
+<!--<td><%#= tur.country.title %></td>-->
+<!--<td><%#= tur.is_recomended %></td>-->
+<!--<td><%#= tur.description %></td>-->
+<!--<td><%#= link_to 'Show', tur %></td>-->
+<!--<td><%#= link_to 'Edit', edit_tur_path(tur) %></td>-->
+<!--<td><%#= link_to 'Destroy', tur, :confirm => 'Are you sure?', :method => :delete %></td>-->

@@ -1,0 +1,25 @@
+=# nav_link t(:main), "admin/main/index", "admin/index/*"
+=# nav_link t(:users), "admin/users/index", "admin/users/*"
+=# nav_link t(:countries), "/admin/countries/index", "index"
+=# nav_link t(:category), "admin/categories/index", "admin/categories/*"
+=# nav_link t(:settings), "admin/settings/edit", "admin/settings/*"
+%ul
+  %li
+    %span
+      = link_to t(:main), admin_root_url
+  %li
+    %span
+      = link_to t(:users), admin_users_url
+  %li
+    %span
+      = link_to t(:category), admin_categories_url
+  %li
+    %span
+      = link_to "Журнал", admin_journals_url
+
+  %li
+    %span
+      = link_to t(:settings), edit_admin_settings_url
+  %li
+    %span
+      = link_to t(:countries), admin_countries_url

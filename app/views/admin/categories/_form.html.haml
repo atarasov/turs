@@ -1,0 +1,7 @@
+- semantic_form_for [:admin, @category], :html => {:multipart => true} do |f|
+  - f.inputs do
+    = f.input :name, :label => t(:name)
+  - f.buttons do
+    = f.commit_button :label => t(:save)
+
+

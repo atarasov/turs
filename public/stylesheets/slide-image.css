@@ -1,0 +1,149 @@
+/*popup**/
+
+#overlay {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 12000;
+    text-align: center;
+    background: #000000;
+    opacity: 0.65;
+    filter: alpha(opacity = 65);
+}
+
+* html #overlay {
+    position: absolute;
+    top: expression(ignoreMe = document.documentElement.scrollTop + "px");
+}
+
+#popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    margin: 0 0 0 -325px;
+    z-index: 12001;
+    background: #171717;
+    display: none;
+    opacity: 0.8;
+
+    border-radius: 9px;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -khtml-border-radius: 9px;
+    behavior: url(PIE.htc);
+    width: 800px;
+}
+
+#popup h2 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 40px 40px -6px 40px;
+}
+
+.pics {
+    padding: 0;
+    margin: 0;
+}
+
+.pics img {
+/*    width: 719px;
+    height: 486px;*/
+    width: 550px;
+    height: 370px;
+    top: 0;
+    left: 0
+}
+
+#nav-popup {
+    height: 85px;
+    margin: 15px 15px 15px 0;
+    overflow: hidden;
+}
+
+#nav-popup li {
+    width: 100px;
+    height: 70px;
+    float: left;
+    margin: 8px 8px 8px 0;
+    list-style: none
+}
+
+#nav-popup a {
+    width: 100px;
+    height: 70px;
+    padding: 3px;
+    display: block;
+}
+
+#nav-popup a.activeSlide {
+
+}
+
+#nav-popup a   img {
+    opacity: 0.4 !important;
+}
+
+#nav-popup a.activeSlide   img {
+    opacity: 1 !important;
+}
+
+#nav-popup a:focus {
+    outline: none;
+}
+
+#nav-popup img {
+    border: none;
+    display: block
+}
+
+.slider {
+    padding: 40px;
+    position: relative;
+}
+
+.slide-img {
+    /*display: none;*/
+}
+
+.slide-img:first-child {
+    /*display: block;*/
+}
+
+.pics-wrapper {
+    position: relative;
+}
+
+#prev_slide,
+#next_slide {
+    width: 39px;
+    height: 58px;
+    position: absolute;
+    top: 44%;
+    cursor: pointer;
+}
+
+#prev_slide {
+    background: url('../images/prev-slide-btn.png');
+    left: -119px;
+}
+
+#next_slide {
+    background: url('../images/next-slide-btn.png');
+    right: -119px;
+}
+
+#close-slide {
+    position: absolute;
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+    z-index: 30000;
+}
+
+.slider-wrapper span.maxPrice {top: -10px;}
+.slider-wrapper span.minPrice {top: -10px;}
+.hide {	display:none;}

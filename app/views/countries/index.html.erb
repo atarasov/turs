@@ -1,0 +1,76 @@
+<% content_for :breadcramb do %>
+
+    <div class="breadcrambs-holder">
+      <ul class="breadcrambs">
+        <li  class="no-line"><%= t(:listingCountries) %></li>
+
+
+
+      </ul>
+
+    </div>
+
+<% end %>
+<%#= session[:query].inspect %>
+<div class="box-blue-c">
+  <div class="box-blue-c-holder">
+    <div class="box-blue-c-frame">
+      <div class="sort">
+        <ul>
+          <li><%= image_tag("by_abc.png")%><%= link_to "по алфавиту", countries_path(:sort=>'title') %></li>
+          <li><%= image_tag("by_rating.png")%><%= link_to "по рейтингу", countries_path(:sort=>'rating') %></li>
+          <li><%= image_tag("by_review.png")%><%= link_to "по популярноси", countries_path(:sort=>'review') %></li>
+        </ul>
+      </div>
+      <div class="countries">
+        <strong><%= t(:listingCountries) %></strong>
+
+        <ul class="countries-list">
+
+          <% @countries.each do |country| %>
+              <li>
+                <div class="countries-holder">
+                  <% if !country.flag.blank? %><%= image_tag country.flag.url(:small) %>
+                  <% end %>
+                  <div class="counties-stat" style="width: 150px;">
+                      <!--<span><img src="images/ico-list.png" alt=""/>Рейтинг: <em>47,3</em></span>-->
+                      <span><img style="border:none;" src="/images/ico-arrow.png" alt=""/>Просмотров: <em><%= country.review %></em></span>
+                      <span class="phone_code">
+                        <a href="<%= phones_countries_url %>" ><em><%= country.country_code %></em></a>
+                      </span>
+                  </div>
+                  <div class="countries-post">
+
+
+                    <%= link_to country.title, country %>
+
+                    <p><%= raw simple_format(truncate(country.description, @settings.post_symbol_count, '...')) %></p>
+                  </div>
+                </div>
+                <div class="countries-foto-holder">
+                  <ul class="countries-foto">
+                    <% if !country.image1.blank? %>
+                        <li><%= image_tag country.image1.url(:small) %></li>
+                    <% end %>
+                    <% if !country.image2.blank? %>
+                        <li><%= image_tag country.image2.url(:small) %></li>
+                    <% end %>
+                    <% if !country.image3.blank? %>
+                        <li><%= image_tag country.image3.url(:small) %></li>
+                    <% end %>
+                  </ul>
+                  <div class="countries-foto-line">
+                    <span>Раздел: <%= link_to "Страны", countries_path %></span>
+                    <span class="foto-line-right"><!--Отзывы: <a href="#">12</a>  |--> Статьи: <a href="<%= journals_path(:country=>country.id) %>"><%= Journal.where(:country_id => country.id ).count %></a></span>
+                  </div>
+                </div>
+              </li>
+          <% end %>
+        </ul>
+        <div class="digg_pagination">
+        <%= will_paginate @countries, :container => false, :previous_label => "<",:next_label  => ">"%>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

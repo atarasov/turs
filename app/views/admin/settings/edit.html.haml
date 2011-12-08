@@ -1,0 +1,22 @@
+.emptynav
+
+%h1= t(:settings)
+- semantic_form_for @settings, :html => {:multipart => true}, :url => "/admin/settings" do |f|
+  - f.inputs t(:settings) do
+    = f.input :phone, :label => t(:phone)
+    = f.input :email, :label => t(:email)
+    = f.input :addr, :label => t(:addr)
+
+  - f.inputs t(:seo) do
+    = f.input :"meta_title", :label => t(:meta_title)
+    = f.input :"meta_description", :input_html => {:class => "mini"}, :label => t(:meta_description)
+    = f.input :"meta_keywords", :label => t(:meta_keywords)
+
+  - f.inputs t(:text) do
+    = f.input :about_text, :input_html => {:class => "-ck"}, :label => t(:about_text)
+
+  - f.inputs t(:post_lenght) do
+    = f.input :post_symbol_count, :label => t(:post_lenght)
+
+  - f.buttons do
+    = f.commit_button :label => t(:update)

@@ -1,0 +1,30 @@
+<div class="journal-favorites">
+  <strong> Обявления <em><%#= @category.name if @category && @category.name %></em></strong>
+
+<table width="100%" class="advertisiment" style="text-align: left;">
+  <tr>
+    <th width="10%">Цена(рубли)</th>
+    <th width="5%"></th>
+    <th width="60%">Объявление</th>
+    <th width="4%"></th>
+    <th width="20%">Дата</th>
+
+  </tr>
+
+<% @advertisements.each do |advertisement| %>
+  <tr>
+    <td><%= advertisement.price %></td>
+    <td><%= image_tag advertisement.user.avatar.url(:thumbnail) if advertisement.user %></td>
+    <td><%= link_to advertisement.title,  advertisement %></td>
+    <td><%=  %></td>
+    <td>Прикрепленно до: <br/><%=  Russian::strftime(advertisement.expire_date, "%d %B %Y") %></td>
+    <!--td><%= link_to 'Show', advertisement %></td>
+    <td><%= link_to 'Edit', edit_advertisement_path(advertisement) %></td>
+    <td><%= link_to 'Destroy', advertisement, :confirm => 'Are you sure?', :method => :delete %></td-->
+  </tr>
+<% end %>
+</table>
+
+<br />
+</div>
+<%#=# link_to 'New Advertisement', new_advertisement_path %>

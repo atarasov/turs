@@ -1,0 +1,66 @@
+<h1><%= t(:edit_profile) %></h1>
+
+<% form_for @profile, :url => {:action => "update"} do |f| %>
+    <%= f.error_messages %>
+
+    <p>
+      <%= f.label t(:company_info) %><br/>
+      <%= f.text_area :info %>
+    </p>
+    <p>
+      <%= f.label t(:addr) %><br/>
+      <%= f.text_field :address %>
+    </p>
+    <p>
+      <%= f.label t(:phone) %><br/>
+      <%= f.text_field :phone %>
+    </p>
+    <p>
+      <%= f.label t(:company_slogan) %><br/>
+      <%= f.text_field :slogan %>
+    </p>
+    <p>
+      <%= f.label t(:company_about) %><br/>
+      <%= f.text_area :about %>
+    </p>
+
+
+    <p>
+      <%= f.label t(:vkontakte) %><br/>
+      <%= f.text_field :vkontakte_url %>
+    </p>
+    <p>
+      <%= f.label t(:odnoklassniki) %><br/>
+      <%= f.text_field :odnoklassniki_url %>
+    </p>
+    <p>
+      <%= f.label t(:twitter) %><br/>
+      <%= f.text_field :twitter_url %>
+    </p>
+    <p>
+      <%= f.label t(:yaru) %><br/>
+      <%= f.text_field :yaru_url %>
+    </p>
+    <p>
+      <%= f.label t(:buzz) %><br/>
+      <%= f.text_field :buzz_url %>
+    </p>
+    <p>
+      <%= f.label t(:moimir) %><br/>
+      <%= f.text_field :mymir_url %>
+    </p>
+    <p>
+      <%= f.label t(:jj) %><br/>
+      <%= f.text_field :jj_url %>
+    </p>
+    <p>
+      <%= f.label t(:facebook) %><br/>
+      <%= f.text_field :facebook_url %>
+    </p>
+    <p>
+      <%= f.submit t(:update) %>
+    </p>
+<% end %>
+
+<%= link_to t(:show), @profile %> |
+<%= link_to t(:back), profiles_path %>

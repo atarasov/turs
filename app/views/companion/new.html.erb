@@ -1,0 +1,54 @@
+<% form_for @adv, :url => (@adv.new_record? ? {:controller => :companion, :action => :create} : {:controller => :companion, :action => :update}) do |form| %>
+	<table>
+	  <tr>
+		<td>
+		  Заголовок
+		</td>
+		<td>
+		  <%= form.text_field :title %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Количество дней
+		</td>
+		<td>
+		  <%= form.text_field :days %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Куда собираетесь
+		</td>
+		<td>
+		  <%= form.text_field :where %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Комментарии
+		</td>
+		<td>
+		  <%= form.text_area :description %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Кто едет
+		</td>
+		<td>
+		  <%= form.select :author_type, [["М", 1], ["Ж", 2], ["Группа М", 3], ["Группа Ж", 4], ["Смешанная группа", 5]] %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Кого ищите
+		</td>
+		<td>
+		  <%= form.select :request_type, [["М", 1], ["Ж", 2], ["Группа М", 3], ["Группа Ж", 4], ["Смешанная группа", 5]] %>
+		</td>
+	  </tr>
+	</table>
+
+	<%= form.submit "Сохранить" %>
+<% end %>

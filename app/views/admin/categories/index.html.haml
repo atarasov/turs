@@ -1,0 +1,28 @@
+%h1= t(:listingCategory)
+
+.show=link_to t(:newCategory), new_admin_category_path
+%br
+
+
+- form_tag batch_action_admin_categories_path, :method => :post do
+
+  %table.list
+    %thead
+      %th= t(:name)
+      %th= t(:action)
+      %th.icon
+    %tbody
+      - @categories.each do |a|
+        %tr
+          %td= a.name
+          %td
+            .show=link_to t(:show), a
+            .show=link_to t(:edit), edit_admin_category_path(a)
+          %td= ids(a)
+      - if @categories.size > 0
+        %tfoot
+          %tr.with_form.batch_actions
+            %td{:colspan => 3}= delete_batch_button
+
+%br
+.show=link_to t(:newCategory), new_admin_category_path

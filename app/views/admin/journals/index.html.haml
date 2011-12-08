@@ -1,0 +1,32 @@
+%h1= "Listing journals"
+
+.show=link_to "Новый пост", new_admin_journal_path
+%br
+
+%table.list
+  %thead
+    %th= 'User'
+    %th= 'Tag'
+    %th= 'Title'
+    %th= 'Text'
+    %th= t(:action)
+    %th= t(:action)
+    %th= t(:action)
+    %th.icon
+
+  %tbody
+    - @journals.each do |a|
+      %tr
+        %td= a.user_id
+        %td= a.tag_id
+        %td= a.title
+        %td= truncate(a.text, @settings.post_symbol_count, '...')
+        %td=""
+        %td
+          .show=""
+          .show=link_to t(:edit), edit_admin_journal_path(a)
+        %td= ids(a)
+    - if @journals.size > 0
+      %tfoot
+        %tr.with_form.batch_actions
+          %td{:colspan => 3}= delete_batch_button

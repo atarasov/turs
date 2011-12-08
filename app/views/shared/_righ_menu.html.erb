@@ -1,0 +1,213 @@
+<div class="aside">
+<div class="box-news">
+  <strong>Новости</strong>
+  <a href="#">Новая активная форма туризма<br/>вело туры по странам Европы</a>
+  <img src="/images/img35.jpg" alt="image description"/>
+</div>
+
+<div class="box-kurs">
+  <strong>Курс валюты</strong>
+  <span>Сегодня: <em>14.12.2010</em></span>
+
+  <ul>
+    <li>USD | <span><b id='insert_rate_USD_1322416485'>//-//</b></span></li>
+    <li>EUR | <span><b id='insert_rate_EUR_1322416485'>//-//</b></span></li>
+  </ul>
+  <!--<div class="box-kurs">-->
+  <!--<ul>-->
+  <!--<li>USD | <span><script type="text/javascript">$("#insert_rate_USD_1322416485").val;</script></span></li>-->
+  <!--<li>EUR | <span><script type="text/javascript">$("#insert_rate_EUR_1322416485").val;</script></span></li>-->
+  <!--</ul>-->
+</div>
+<div class="box-r">
+  <div class="box-r-holder">
+    <div class="box-r-frame">
+      <strong>Страны</strong>
+
+      <div class="flag-list-holder">
+        <% @ids = Country.select(:id).in_list.all %>
+        <ul class="flag-list">
+          <li>
+            <% @country1 = Country.in_list.where(:id => @ids[rand(@ids.size)]) %>
+            <% if @country1 && @country1.first && @country1.size > 0 %>
+                <%= link_to image_tag(@country1.first.flag.url(:thumb)), @country1.first %><%= link_to @country1.first.title, @country1.first %>
+            <% end %>
+          </li>
+          <li>
+            <% @country2 = Country.in_list.where(:id => @ids[rand(@ids.size)]) %>
+            <% if @country2 && @country2.first && @country2.size > 0 %>
+                <%= link_to image_tag(@country2.first.flag.url(:thumb)), @country2.first %><%= link_to @country2.first.title, @country2.first %>
+            <% end %>
+          </li>
+          <li>
+            <% @country3 = Country.in_list.where(:id => @ids[rand(@ids.size)]) %>
+            <% if @country3 && @country3.first && @country3.size > 0 %>
+                <%= link_to image_tag(@country3.first.flag.url(:thumb)), @country3.first %><%= link_to @country3.first.title, @country3.first %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<% if @turs_informer.size > 0 %>
+    <div class="box-r">
+      <div class="box-r-holder">
+        <div class="box-r-frame">
+          <strong>Лучшие туры</strong>
+          <span><%= link_to t(:all_turs), turs_url %></span>
+          <ul class="profiles">
+            <% @turs_informer.each do |tur| %>
+                <li class="bg-blue" style="margin: 0px;">
+                  <strong style="background: none;"><%= link_to tur.title, tur %></strong>
+                  <%= image_tag tur.image.url(:thumbnail) %>
+                  <ul>
+                    <li><%= link_to image_tag(tur.country.flag.url(:thumb)), tur %><%= link_to tur.country.title, tur %></li>
+                    <li><%= t(:hotel) %>
+                      <% 1.upto(tur.stars.to_i) do %>
+                          <img src="/images/ico-star.png" height="15" width="16" style="margin: 0;float: right;"/>
+                      <% end %>
+                    </li>
+                    <li style="text-align: center; color: red;font-size: 18px;font-weight: bolder;"><%= tur.price %></li>
+                  </ul>
+
+                  <ul class="ul_footer">
+                    <li><img src="/images/ico-pro.png"></li>
+                    <li><%= link_to tur.user.name, company_profile_url(tur.user) %></li>
+                    <li style="float: right;"><a class="pancel" href="#"><span>&nbsp;</span></a></li>
+                  </ul>
+                </li>
+
+            <% end %>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+<% end %>
+<div class="box-orange-bg">
+  <div class="box-orange-bg-holder">
+    <div class="box-orange-bg-frame">
+      <strong>Отели</strong>
+      <ul>
+        <li>
+          <img src="/images/img36.jpg" alt="image description"/>
+
+          <div class="hotel-post">
+            <a href="#">«Missoni Hotel»</a>
+
+            <p>«Lux» для Эдинбурга, преимущественным образом необходимость, чем выгодные</p>
+											<span>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+											</span>
+          </div>
+        </li>
+        <li>
+          <img src="/images/img36.jpg" alt="image description"/>
+
+          <div class="hotel-post">
+            <a href="#">«Missoni Hotel»</a>
+
+            <p>«Lux» для Эдинбурга, преимущественным образом необходимость, чем выгодные</p>
+											<span>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+											</span>
+          </div>
+        </li>
+        <li>
+          <img src="/images/img36.jpg" alt="image description"/>
+
+          <div class="hotel-post">
+            <a href="#">«Missoni Hotel»</a>
+
+            <p>«Lux» для Эдинбурга, преимущественным образом необходимость, чем выгодные</p>
+											<span>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+												<img src="/images/ico-star.png" alt="image description"/>
+											</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="box-blue-bg">
+  <strong>Попутчики</strong>
+  <%= link_to "Найди себе попутчика", companion_index_url %>
+  <div class="persons-pitstop">
+	<% @companion_ids = CompanionAdvertisement.select(:id).all %>
+    <ul>
+	  <% @companion1 = CompanionAdvertisement.where(:id => @companion_ids[rand(@companion_ids.size)]).first %>
+      <% if @companion1 %><li><a href="<%= companion_url(@companion1) %>"><img src="<%= @companion1.user.avatar.url(:small) %>" alt="<%= @companion1.user.display_name %>"/></a></li><% end %>
+	  <% @companion2 = CompanionAdvertisement.where(:id => @companion_ids[rand(@companion_ids.size)]).first %>
+      <% if @companion2 %><li><a href="<%= companion_url(@companion2) %>"><img src="<%= @companion2.user.avatar.url(:small) %>" alt="<%= @companion2.user.display_name %>"/></a></li><% end %>
+	  <% @companion3 = CompanionAdvertisement.where(:id => @companion_ids[rand(@companion_ids.size)]).first %>
+      <% if @companion3 %><li><a href="<%= companion_url(@companion3) %>"><img src="<%= @companion3.user.avatar.url(:small) %>" alt="<%= @companion3.user.display_name %>"/></a></li><% end %>
+    </ul>
+  </div>
+  <a class="btn-submit-pitstop" href="<%= new_companion_url %>">Подать заявку</a>
+  <em>(Для туристов)</em>
+</div>
+<div class="box-r">
+  <div class="box-r-holder">
+    <div class="box-r-frame">
+      <strong>Лучшие<br/>консультанты</strong>
+      <span>» <a href="#">Все консультанты</a></span>
+      <ul class="profiles">
+        <li class="bg-blue">
+          <strong>Алексеева Екатерина</strong>
+          <img src="/images/img4.jpg" alt="image description"/>
+          <ul>
+            <li><img src="/images/ico-mail.png" alt="image description"/>Сообщение</li>
+            <li><img src="/images/ico-icq.png" alt="image description"/>30981574</li>
+            <li><img src="/images/ico-skype.png" alt="image description"/>AlekseevaKatya</li>
+            <li><img src="/images/ico-doc.png" alt="image description"/>АльянсТуры.ру</li>
+            <li><img src="/images/ico-phone.png" alt="image description"/><span class="over">(495) 778-66-53<br/>(495) 778-66-53</span>
+            </li>
+          </ul>
+        </li>
+        <li class="bg-line">
+          <strong>Виктория</strong>
+          <img src="/images/img5.jpg" alt="image description"/>
+          <ul>
+            <li><img src="/images/ico-mail.png" alt="image description"/>Сообщение</li>
+            <li><img src="/images/ico-icq.png" alt="image description"/>30981574</li>
+            <li><img src="/images/ico-skype.png" alt="image description"/>AlekseevaKatya</li>
+            <li><img src="/images/ico-doc.png" alt="image description"/>АльянсТуры.ру</li>
+            <li><img src="/images/ico-phone.png" alt="image description"/><span class="over">(495) 778-66-53<br/>(495) 778-66-53</span>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>Алина Пономарева</strong>
+          <img src="/images/img6.jpg" alt="image description"/>
+          <ul>
+            <li><img src="/images/ico-mail.png" alt="image description"/>Сообщение</li>
+            <li><img src="/images/ico-icq.png" alt="image description"/>30981574</li>
+            <li><img src="/images/ico-skype.png" alt="image description"/>AlekseevaKatya</li>
+            <li><img src="/images/ico-doc.png" alt="image description"/>АльянсТуры.ру</li>
+            <li><img src="/images/ico-phone.png" alt="image description"/><span class="over">(495) 778-66-53<br/>(495) 778-66-53</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="search-tour">
+  <img src="/images/img41.jpg" alt="image description"/>
+  <a href="#">Найти турагентство</a>
+</div>
+</div>
+

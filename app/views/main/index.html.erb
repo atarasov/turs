@@ -1,0 +1,159 @@
+<% title "Главная" %>
+<div class="box-orange-bg-c">
+  <span><img src="images/ico-qn.png" alt="image description"/><a href="#">Помощь пользователю</a></span>
+  <ul>
+    <li>
+      <img src="images/dig1.jpg" alt="image description"/>
+
+      <div class="orange-holder">
+        <strong>Найти исполнителя</strong>
+        <em>Подобрать лучшее предложение по цене и качеству</em>
+      </div>
+    </li>
+    <li>
+      <img src="images/dig2.jpg" alt="image description"/>
+
+      <div class="orange-holder">
+        <strong>Задать вопрос на форуме</strong>
+        <em>На вопросы отвечают профессионалы туристического бизнеса</em>
+      </div>
+    </li>
+    <li>
+      <img src="images/dig3.jpg" alt="image description"/>
+
+      <div class="orange-holder">
+        <strong>Узнать новейшие тенденции отдыха</strong>
+        <em>Новости, статьи, интервью, фотоотчеты</em>
+      </div>
+    </li>
+
+
+    <form class="select" id="frm_navigation" action="">
+
+      <fieldset class="redir">
+        <div class="redir-col-l">
+          <label for="id4">Быстрый переход:</label>
+          <label for="id4">Найти:</label>
+        </div>
+        <div class="redir-holder">
+          <!--<select id="id3">
+            <option>Выбирите свой город</option>
+            <option>Выбирите свой город</option>
+            <option>Выбирите свой город</option>
+          </select> -->
+		  <%= select_tag "id3", "<option value=0>Выберите свой город</option>".html_safe + options_from_collection_for_select(City.all, "id", "name") %>
+          <select id="id4">
+            <option value="tour_operators">Туроператоры</option>
+            <option value="tour_agencies">Турагенства</option>
+            <option value="recreation_centers">Базы отдыха</option>
+			<option value="sanatorium">Санатории</option>
+			<option value="hostel">Гостиницы</option>
+			<option value="taxi">Такси</option>
+			<option value="guide">Гиды</option>
+			<option value="hotels">Отели</option>
+			<option value="mini_hotels">Мини-отели</option>
+          </select>
+        </div>
+        <input type="submit" value=""/>
+      </fieldset>
+
+    </form>
+<script type="text/javascript">
+  $("document").ready(function(){
+	  $("#frm_navigation").submit(function(){
+			if (parseInt($("#id3").val())){
+				window.location.href = "/catalog/" + $("#id4").val() + "?city_id=" + $("#id3").val()
+			}
+			else{
+				window.location.href = "/catalog/" + $("#id4").val();
+			};
+
+		  return false;
+	  });
+  });
+
+
+
+</script>
+</div>
+
+<div class="box-dark-orange-c">
+  <div class="box-dark-orange-c-holder">
+    <div class="box-dark-orange-c-frame">
+      <div class="journal-favorites">
+        <strong>Туристический журнал <em>Избранное</em></strong>
+        <span>Статьи отобранные редакцией сайта <a href="/">turs.pro</a></span>
+        <!--<span class="line-p-right"><img src="images/ico-qn.png" alt="image description"/><a class="add-post" href="#">Добавить свою статью</a></span>-->
+        <ul>
+          <% for post in @journals -%>
+              <li>
+                <em><%= Russian::strftime(post.created_at, "%d %B %Y") %></em>
+                <a href="#"><strong></strong></a>
+
+                <p class="title"><%= link_to post.title, post %></p>
+
+                <div class="img-holder">
+                  <% @photos = post.journal_photos.limit(3) %>
+                  <% for photo in @photos do %>
+                      <%= image_tag photo.image.url(:small) %>
+                      <!--<img src="/images/img42.jpg" alt="image description"/>-->
+                  <% end %>
+                </div>
+                <p><%= truncate(post.text, 400, '...')  %></p>
+          <span>Раздел:
+            <% if post.category %> <%= link_to post.category.name, post.category %> <% end %>
+            <% if post.user %> |  Разместил: <%= link_to post.user.email, company_profile_url(post.user) %><% end %></span>
+                <span class="line-p-right">Комментарии <em>(<%= post.comments.recent.all.count %>)</em></span>
+              </li>
+          <% end -%>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!--div class="box-dark-orange-c">
+                        <div class="box-dark-orange-c-holder">
+                            <div class="box-dark-orange-c-frame">
+                                <div class="forum-now">
+                                    <strong>Обсуждают сейчас на форуме</strong>
+                                    <ul>
+                                        <li>
+                                            <em>18 января 2011</em>
+                                            <p>ФОТОСЕССИЯ для влюбленных БЕСПЛАТНО! (фотостудия "КБР")</p>
+                                            <span>Раздел: <a href="#">Фотосессии</a> |  Разместил: <a href="#">Турагентство “Колумб”</a></span>
+                                            <span class="line-p-right">Комментарии <em>(1)</em></span>
+                                        </li>
+                                        <li>
+                                            <em>18 января 2011</em>
+                                            <p>ФОТОСЕССИЯ для влюбленных БЕСПЛАТНО! (фотостудия "КБР")</p>
+                                            <span>Раздел: <a href="#">Фотосессии</a> |  Разместил: <a href="#">Турагентство “Колумб”</a></span>
+                                            <span class="line-p-right">Комментарии <em>(1)</em></span>
+                                        </li>
+                                        <li>
+                                            <em>18 января 2011</em>
+                                            <p>ФОТОСЕССИЯ для влюбленных БЕСПЛАТНО! (фотостудия "КБР")</p>
+                                            <span>Раздел: <a href="#">Фотосессии</a> |  Разместил: <a href="#">Турагентство “Колумб”</a></span>
+                                            <span class="line-p-right">Комментарии <em>(1)</em></span>
+                                        </li>
+                                        <li>
+                                            <em>18 января 2011</em>
+                                            <p>ФОТОСЕССИЯ для влюбленных БЕСПЛАТНО! (фотостудия "КБР")</p>
+                                            <span>Раздел: <a href="#">Фотосессии</a> |  Разместил: <a href="#">Турагентство “Колумб”</a></span>
+                                            <span class="line-p-right">Комментарии <em>(1)</em></span>
+                                        </li>
+                                        <li>
+                                            <em>18 января 2011</em>
+                                            <p>ФОТОСЕССИЯ для влюбленных БЕСПЛАТНО! (фотостудия "КБР")</p>
+                                            <span>Раздел: <a href="#">Фотосессии</a> |  Разместил: <a href="#">Турагентство “Колумб”</a></span>
+                                            <span class="line-p-right">Комментарии <em>(1)</em></span>
+                                        </li>
+                                    </ul>
+                                    <a class="forum-all" href="#">» Все темы форума</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div-->
+</div>
+</div>
+</div>

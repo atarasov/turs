@@ -1,0 +1,53 @@
+form.formtastic { padding: 1em; border: 4px solid #ddd; background-color: #f8f8f8; }
+form.formtastic legend { margin: 0 0 0 -4px; padding: 0 0px 0 4px; }
+form.formtastic ol, form.formtastic fieldset ol { font-size: 100%; }
+form.formtastic ol li, form.formtastic fieldset ol li { display: block; width: 100%; margin: 0 0 12px 0; }
+form.formtastic fieldset legend label { font-size: 100%; font-weight: normal; }
+form.formtastic fieldset ol li fieldset legend.label label { display: block; }
+form.formtastic fieldset input, form.formtastic fieldset select, form.formtastic fieldset textarea { font-size: 75%; font-family: Tahoma, Geneva, sans-serif;}
+form.formtastic fieldset select {font-size: 75%;}
+form.formtastic fieldset ol li p.inline-errors { margin-top: 0; color: #ff0000; font-size: 70%; font-weight: bold; }
+
+form.formtastic fieldset {display: block;}
+form.formtastic fieldset.inputs {display: block; margin: 0 0 11px 0; padding: 12px 12px 0 16px; border: 1px solid #bbb;}
+form.formtastic fieldset.inputs input {padding: 1px 0 1px 0;}
+form.formtastic fieldset.inputs img {display: block; margin: 3px 0 0 25%; padding: 0;}
+form.formtastic fieldset.inputs legend span {margin: 0 0 0 -4px; padding: 0 4px 0 4px; color: #222; font-weight: bold;}
+
+form.formtastic fieldset.inputs ol li.boolean input {margin: 0 0.5em 0 0; vertical-align: text-bottom;}
+form.formtastic fieldset.inputs ol li.check_boxes fieldset ol {margin: 0.65em 0 0 25%; padding: 0;}
+form.formtastic fieldset.inputs ol li.check_boxes fieldset ol li {float: left; width: 260px; margin: 0 0 0.5em 0; padding: 0; font-size: 75%;}
+form.formtastic fieldset.inputs ol li.check_boxes input {display: block; float: left; margin: 0 0.5em 0.5em 0; vertical-align: text-bottom;}
+
+form.formtastic fieldset.buttons {margin: 0; padding: 0;}
+form.formtastic fieldset.buttons ol li {margin: 0;}
+form.formtastic fieldset.buttons input {padding: 0 6px 0 6px;}
+form.formtastic fieldset.buttons ol li.commit {display: block; float: left !important; width: auto;}
+
+form.formtastic fieldset ol li label {font-size: 75%;}
+form.formtastic fieldset ol li fieldset label {font-size: 100%;}
+form.formtastic li.hidden {display: none;}
+
+.ui-dialog-content form.formtastic {border: 0; background-color: transparent; padding: 0;}
+.ui-dialog-content form.formtastic fieldset.inputs {padding-left: 12px;}
+.ui-dialog-content form.formtastic fieldset.inputs label {width: 24%;}.ui-dialog-content form.formtastic fieldset.inputs input {padding: 0;}
+
+.inline-hints {margin-top: 0 !important; font-size: 70%;}
+
+form.formtastic fieldset.inputs ol li .flashbanner {width: 74%; margin: 4px 0 0 25%;}
+
+form.formtastic fieldset.inputs ol li a.del {display: block; width: 100px; margin: 4px 0 0 25%; font-size: 75%; line-height: 100%; font-family: Tahoma, Geneva, sans-serif;}form.formtastic fieldset ul.gallery li input {width: 50% !important;}form.formtastic fieldset ul.gallery li a img {margin-top: 5px;}
+
+#attachments li, form.formtastic fieldset ul.gallery li {overflow: hidden;}
+#attachments li span, form.formtastic fieldset ul.gallery li span {display: block; float: left; width: 24%; margin: 0;}
+#attachments li span img, form.formtastic fieldset ul.gallery li span img {margin: 0; padding; 0;}
+#attachments li input, form.formtastic fieldset ul.gallery li input {display: block; float: left; width: 250px; margin: 0 1em 0 1%; padding: 0; font-size: 100%;}
+#attachments li a, form.formtastic fieldset ul.gallery li a {display: block; float: left; width: 16px; height: 16px; margin: -2px 0 0 0;}
+
+.swfupload {height: 22px;}
+
+form.imgs {background-color: transparent; border: 0; padding: 0;}
+
+/* Agaric Addon */
+/*.cke_skin_kama {display: block; width: 100%; overflow: hidden;}*/
+.cke_openbutton {position: absolute; right: -1px; top: 0;}

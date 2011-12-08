@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<table class="tur_table" style="width:100%;">
+  <tr>
+    <td >
+      <h2>Тур предлагает турфирма <%= @tur.user.name %></h2>
+      <h2><%= @tur.title %></h2>
+    </td>
+    <td rowspan="2" align="center" style="width:30%;">
+      <%= image_tag @tur.country.flag.url(:small)%><br/>
+      <%= image_tag @tur.image.url(:small)%><br/>
+      <% if !@tur.country.image1.blank? %><%= image_tag @tur.country.image1.url(:small) %><br/>
+<% end %>
+<% if !@tur.country.image2.blank? %><%= image_tag @tur.country.image2.url(:small) %><br/>
+<% end %>
+<% if !@tur.country.image3.blank? %><%= image_tag @tur.country.image3.url(:small) %><br/>
+<% end %>
+    </td>
+  </tr>
+  <tr>
+    <td style="width:68%;" align="left">
+       <p>Вид тура <%= %></p>
+       <p>Страна <%= @tur.country.title %></p>
+       <p>Район или город <%= %></p>
+       <p>Отель <% 1.upto(@tur.stars.to_i) do %>
+                          <img src="/images/ico-star.png" height="15" width="16" style="margin: 0;"/>
+                      <% end %></p>
+       <p>Виза <%= %></p>
+       <p>Длительность <%= %></p>
+       <p>Питание <%= %></p>
+       <p>Отправка <%=  %></p>
+       <p>Транспорт <%=  %></p>
+       <p>Цена <%= @tur.price %></p>
+
+      <h2>Описание тура</h2>
+      <p><%= @tur.description %></p>
+      <h2>В стоимость входит</h2>
+
+    </td>
+
+  </tr>
+  <tr>
+    <td colspan="2"></td>
+  </tr>
+
+</table>
+<%#= link_to 'Edit', edit_tur_path(@tur) %>
+<%= link_to 'Back', turs_path %>

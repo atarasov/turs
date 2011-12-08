@@ -1,0 +1,28 @@
+<h1>Listing profiles</h1>
+
+<table>
+  <tr>
+    <th><%= t(:company_info) %></th>
+    <th><%= t(:addr) %></th>
+    <th><%= t(:phone) %></th>
+    <th><%= t(:company_slogan) %></th>
+    <th><%= t(:company_about) %></th>
+  </tr>
+
+<% @profiles.each do |profile| %>
+  <tr>
+    <td><%=h profile.info %></td>
+    <td><%=h profile.address %></td>
+    <td><%=h profile.phone %></td>
+    <td><%=h profile.slogan %></td>
+    <td><%=h profile.about %></td>
+    <td><%= link_to t(:show), profile %></td>
+    <td><%= link_to t(:edit), edit_profile_path(profile) %></td>
+    <td><%= link_to t(:destroy), profile, :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New profile', new_profile_path %>

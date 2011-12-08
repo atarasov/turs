@@ -1,0 +1,43 @@
+<% form_tag edit_company_stend_url(current_user) do %>
+  <%# form_for :stend,  :url => {:controller => "company/stend", :action => "update"}, :method => :post do |f| %>
+<table>
+  <tr>
+    <th>Куда</th>
+    <th>На сколько</th>
+    <th>Стоимость(от)</th>
+  </tr>
+  <tr>
+    <%= hidden_field_tag "stends[stend1][stend]", stend_val(@stend[0])  %>
+    <td><%= select_tag "stends[stend1][country_id]", options_from_collection_for_select(@countries, "id", "title",  country_val(@stend[0]) ) %></td>
+    <td><%= text_field_tag "stends[stend1][days]", days_val(@stend[0])  %></td>
+    <td><%= text_field_tag "stends[stend1][price]", price_val(@stend[0])  %></td>
+  </tr>
+  <tr>
+    <%= hidden_field_tag "stends[stend2][stend]", stend_val(@stend[1])  %>
+    <td><%= select_tag "stends[stend2][country_id]", options_from_collection_for_select(@countries, "id", "title", country_val(@stend[1]) ) %></td>
+    <td><%= text_field_tag "stends[stend2][days]", days_val(@stend[1])  %></td>
+    <td><%= text_field_tag "stends[stend2][price]", price_val(@stend[1]) %></td>
+  </tr>
+  <tr>
+    <%= hidden_field_tag "stends[stend3][stend]", stend_val(@stend[2])  %>
+    <td><%= select_tag "stends[stend3][country_id]", options_from_collection_for_select(@countries, "id", "title", country_val(@stend[2]) ) %></td>
+    <td><%= text_field_tag "stends[stend3][days]", days_val(@stend[2]) %></td>
+    <td><%= text_field_tag "stends[stend3][price]", price_val(@stend[2])  %></td>
+  </tr>
+  <tr>
+    <%= hidden_field_tag "stends[stend4][stend]", stend_val(@stend[3])  %>
+    <td><%= select_tag "stends[stend4][country_id]", options_from_collection_for_select(@countries, "id", "title", country_val(@stend[3]) ) %></td>
+    <td><%= text_field_tag "stends[stend4][days]", days_val(@stend[3])  %></td>
+    <td><%= text_field_tag "stends[stend4][price]", price_val(@stend[3]) %></td>
+  </tr>
+  <tr>
+    <%= hidden_field_tag "stends[stend5][stend]", stend_val(@stend[4])  %>
+    <td><%= select_tag "stends[stend5][country_id]", options_from_collection_for_select(@countries, "id", "title", country_val(@stend[4]) )  %></td>
+    <td><%= text_field_tag "stends[stend5][days]", days_val(@stend[4])  %></td>
+    <td><%= text_field_tag "stends[stend5][price]", price_val(@stend[4])  %></td>
+  </tr>
+</table>
+
+    <%= f.submit t(:save)  %>
+
+<% end %>

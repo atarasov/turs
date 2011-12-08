@@ -1,0 +1,76 @@
+<% content_for :breadcramb do %>
+
+    <div class="breadcrambs-holder">
+				<!--<a href="#" class="left">Предыдущая<br />страна</a>-->
+				<!--<a href="#" class="right">Следующая<br />страна</a>-->
+      <%#= render_navigation :renderer => :breadcrumbs, :join_with => " &gt; " %>
+				<!--<ul class="breadcrambs">-->
+					<!--<li><%#= link_to t(:countries), countries_path %></li>-->
+					<!--<li class="no-line"><%#= @country.title %></li>-->
+				<!--</ul>-->
+			</div>
+
+<% end %>
+
+
+
+<div class="journal-favorites">
+  <strong> Каталог <em><%#= @category.name if @category && @category.name %></em></strong>
+
+  <!--<span class="line-p-right"><img src="/images/ico-qn.png" alt="image description"/><%#= link_to 'Добавить свою статью', new_category_journal_url(@category), :class=>'add-post' %></span>-->
+  <ul>
+    <% @users.each do |user| %>
+        <li>
+          <!--<em><%=  Russian::strftime(user.created_at, "%d %B %Y") %></em>-->
+
+          <p class="title"><%= link_to user.email, company_profile_url(user) %></p>
+
+          <p><%=  user.slogan %></p>
+ <span class="stat">
+          <span style="margin-bottom: 5px"><img src="/images/ico-small-list.png" alt="image description"/>Рейтинг: <span><%= user.raiting %></span></span><br/>
+          <span style="margin-bottom: 5px"><img src="/images/ico-small-arrow.png" alt="image description"/>Просмотров: <span><%= user.review %></span></span><br/>
+          <span style="margin-bottom: 5px"><img src="/images/ico-small-dollar.png" alt="image description"/>Цена: <span><%= user.price %></span></span><br/>
+          <span style="margin-bottom: 5px"><img src="/images/ico-small-book.png" alt="image description"/>Статьи: <span><%= Journal.where(:user_id => user.id ).count %></span></span><br/>
+        </span>
+          <div class="img-holder">
+            <%# @photos = post.journal_photos.limit(3) %>
+            <%# for photos in @photos do %>
+                <%#= image_tag photos.image.url(:small) %>
+            <img src="/images/img42.jpg" alt="image description"/>
+            <img src="/images/img42.jpg" alt="image description"/>
+            <img src="/images/img42.jpg" alt="image description"/>
+            <%# end %>
+          </div>
+          <p><%#= h post.text %></p>
+          <span>Раздел: <%# if post.category%> <%#= link_to role(user), role_link(user) %> <%# end %>
+            <%# if post.user %></span>
+          <span class="line-p-right"><%= link_to 'Отзывы (0) ', company_comments_url(user) %><em>&nbsp;</em></span>
+          <span class="line-p-right"> <%= link_to 'Видео (0) ', company_videos_url(user)  %><em>&nbsp;</em> </span>
+          <span class="line-p-right"> <%= link_to 'Фото (0) ', company_photos_url(user)  %><em>&nbsp;</em></span>
+
+
+        </li>
+    <% end %>
+  </ul>
+
+
+
+
+  <%#= will_paginate @users %>
+
+</div>
+
+<!--table>
+  <tr>
+    <td>Имя</td>
+    <td>Описание</td>
+    <td>телефон</td>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.email, company_profile_url(user) %></td>
+    <td><%= user.about if user %></td>
+    <td><%= user.phone if user %></td>
+  </tr>
+      <% end %>
+</table-->

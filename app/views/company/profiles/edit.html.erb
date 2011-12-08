@@ -1,0 +1,106 @@
+<h1><%= t(:edit_profile) %></h1>
+
+<% form_for(@user, :url =>{:controller => "company/profiles", :action => :update}, :html => {:multipart => true}) do |f| %>
+  <%= f.error_messages %>
+<%= f.hidden_field :is_sanatorium %>
+
+        <%= f.hidden_field :is_tour_operator %>
+        <%= f.hidden_field :is_recreation_center %>
+        <%= f.hidden_field :is_hostel %>
+        <%= f.hidden_field :is_guide %>
+        <%= f.hidden_field :is_taxi %>
+        <%= f.hidden_field :is_mini_hotel %>
+        <%= f.hidden_field :is_tour_agency %>
+        <%= f.hidden_field :is_hotel %>
+    <p>
+    <%= f.label t(:avatar) %><br />
+    <%= f.file_field :avatar %>
+  </p>
+
+    <p>
+    <%= f.label t(:user_name) %><br />
+    <%= f.text_field :name %>
+  </p>
+
+    <p>
+
+      <%= f.label t(:profile_type) %><br />
+    <%= select 'us' ,'type' , {"Отель" => 1,
+                       "Туроператор" => 2,
+                       "База отдыха" => 3,
+                       "Санаторий" => 4,
+                       "Гостинница" => 5,
+                       "Гид" => 6,
+                       "Такси" => 7,
+                       "Мини отель" => 8,
+                       "Турагенство" => 9} %>
+
+    </p>
+
+  <p>
+    <%= f.label t(:addr) %><br />
+    <%= f.text_field :address %>
+  </p>
+
+    <p>
+      <ul class="countru_list">
+        <% @countries.each do |country|  %>
+        <li><%= ids(country) %><%= image_tag country.flag.url(:thumb) %> <%= country.title %></li>
+        <% end %>
+
+      </ul>
+    </p>
+  <p>
+    <%= f.label t(:phone) %><br />
+    <%= f.text_field :phone %>
+  </p>
+  <p>
+    <%= f.label t(:company_slogan) %><br />
+    <%= f.text_field :slogan %>
+  </p>
+  <p>
+    <%= f.label t(:company_about) %><br />
+    <%= f.text_area :about %>
+  </p>
+
+    <p>
+    <%= f.label t(:company_info) %><br />
+    <%= f.text_area :info %>
+  </p>
+    <p>
+    <%= f.label t(:price) %><br />
+    <%= f.text_field :price %>
+  </p>
+    <p>
+    <%= f.label t(:exclus) %><br />
+    <%= f.text_field :exclus %>
+  </p>
+   <p>
+    <%= f.label t(:vkontakte_url) %><br />
+    <%= f.text_field :vkontakte_url %>
+  </p>
+    <p>
+    <%= f.label t(:jj_url) %><br />
+    <%= f.text_field :jj_url %>
+  </p>
+    <p>
+    <%= f.label t(:facebook_url) %><br />
+    <%= f.text_field :facebook_url %>
+  </p>
+    <p>
+    <%= f.label t(:twitter_url) %><br />
+    <%= f.text_field :twitter_url %>
+  </p>
+
+    <p>
+    <%= f.label t(:reestr_number) %><br />
+    <%= f.text_field :reestr_number %>
+  </p>
+
+  <p>
+    <%= f.submit t(:update) %>
+  </p>
+<% end %>
+
+<%= link_to t(:show), company_profile_url(@profile) %> |
+<%= link_to t(:back), company_profiles_path %>

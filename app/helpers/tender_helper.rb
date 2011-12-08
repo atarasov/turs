@@ -1,0 +1,2 @@
+module TenderHelper
+end

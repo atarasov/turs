@@ -1,0 +1,39 @@
+%h1= t(:listingUsers)
+
+- form_tag batch_action_admin_users_path, :method => :post do
+  .confirm-message= t(:confirmOnDeleteUser)
+
+  %table.list
+    %thead
+      %th= t(:login)
+      %th= t(:email)
+      %th= t(:login_count)
+      %th= t(:failed_login_count)
+      %th= t(:current_login_at)
+      %th= t(:last_login_at)
+      %th= t(:current_login_ip)
+      %th= t(:last_login_ip)
+      %th= t(:roles)
+      %th= t(:action)
+      %th.icon
+    %tbody
+      - @users.each do |a|
+        %tr
+          %td= a.email
+          %td= a.email
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+            .show=link_to t(:show), admin_user_path(a)
+            .show=link_to t(:edit), edit_admin_user_path(a)
+          %td= ids(a)
+      - if @users.size > 0
+        %tfoot
+          %tr.with_form.batch_actions
+            %td{:colspan => 11}= delete_batch_button
+

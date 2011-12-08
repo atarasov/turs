@@ -1,0 +1,5 @@
+= nav_link t(:main), "admin/main/index", "admin/index/*"
+=# nav_link t(:users), "admin/users/index", "admin/users/*"
+= nav_link t(:countries), "admin/countries/index", "admin/countries/*"
+=# nav_link t(:category), "admin/categories/index", "admin/categories/*"
+= nav_link t(:settings), "admin/settings/edit", "admin/settings/*"

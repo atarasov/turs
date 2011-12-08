@@ -1,0 +1,15 @@
+<li>
+  <span>
+  <%#= raise comment.user.inspect %>
+    <%= if comment.user
+            image_tag comment.user.avatar.url(:thumbnail)
+        else
+            image_tag("avatar.jpg")
+        end
+
+    %>
+    <%= link_to comment.user.email, company_profile_url(comment.user) if comment.user %>
+    <%= Russian::strftime(comment.created_at, "%d %B %Y") %>
+    <%= simple_format comment.comment %>
+      </span>
+</li>

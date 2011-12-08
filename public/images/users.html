@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+  <title>Gsnbase</title>
+  <link href="users_files/admin.css" media="screen" rel="stylesheet" type="text/css">
+<link href="users_files/formtastic.css" media="screen" rel="stylesheet" type="text/css">
+<link href="users_files/formtastic_changes.css" media="screen" rel="stylesheet" type="text/css">
+  <link href="users_files/jquery-ui.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="users_files/jquery.js" type="text/javascript"></script>
+  <script src="users_files/rails_jquery.js" type="text/javascript"></script>
+  <script src="users_files/jquery-ui.js" type="text/javascript"></script>
+  <script src="users_files/jquery-ui-timepicker-addon.js" type="text/javascript"></script>
+  <script src="users_files/application.js" type="text/javascript"></script>
+  <script src="users_files/active_scaffold.js" type="text/javascript"></script>
+<script src="users_files/jquery_002.js" type="text/javascript"></script>
+<link href="users_files/stylesheet.css" media="screen" rel="stylesheet" type="text/css">
+<!--[if IE]><link href="/stylesheets/active_scaffold/default/stylesheet-ie.css?1296834862" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="/LK2ctWFT4O09k1AEm4MF7M5mmN8tB4NULMzvBgqubs=">
+
+</head><body>
+  <div class="navigation1">
+  <span class="logo"> <img alt="Logo" src="users_files/logo.png"></span>
+  <span class="user_info">
+      <p class="avatar"><img alt="Avatar" src="users_files/avatar.jpg"></p>
+      <p class="info">
+        Admin<br>
+        lexa.tarasov@gmail.com<br>
+        Последний визит<br>
+        2011-02-02 14:06:44 UTC
+      </p>
+  </span>
+  <span class="main_menu">
+  <ul>
+    <li></li><li><a href="http://localhost:3000/admin">Главная</a></li> 
+    <li></li><li class="chosen"><span>Пользователи</span></li>
+    <li></li><li><a href="http://localhost:3000/admin/admin_users">Администраторы</a></li>
+    <li></li><li><a href="http://localhost:3000/admin/settings/edit">Настройки</a></li>
+
+  </ul>
+<ul class="right">
+  <li class="events"></li><li><a href="http://localhost:3000/admin">Уведомления</a></li>
+    <li class="exit"></li><li><a href="http://localhost:3000/admin">Выход</a></li>
+</ul>
+</span>
+</div>
+
+
+  <div class="left_side">
+  <ul>
+    <li><a id="new_operator" rel="#operator_block">Регистрация оператора</a></li>
+    <li><a href="">Регистрация Агентства</a></li>
+    <li>Регистрация Агента</li>
+    <li>Новый объект</li>
+    <li>Новый тариф</li>
+    <li>&nbsp;</li>
+    <li>&nbsp;</li>
+    <li>---Справочники---</li>
+    <li>&nbsp;</li>
+    <li><a href="http://localhost:3000/admin/sub_condition">Дополнительные условия</a></li>
+    <li><a href="http://localhost:3000/admin/home_type">Типы домов</a></li>
+    <li><a href="http://localhost:3000/admin/rent_term">Типы сроков аренды</a></li>
+    <li><a href="http://localhost:3000/admin/object_status">Типы статусов объекта</a></li>
+    <li><a href="http://localhost:3000/admin/employer">Типы нанимателя</a></li>
+    <li><a href="http://localhost:3000/admin/wc">Типы санузлов</a></li>
+    <li><a href="http://localhost:3000/admin/registration">Типы прописки</a></li>
+    <li><a href="http://localhost:3000/admin/bay_sell">Типы покупки продажи</a></li>
+    <li><a href="http://localhost:3000/admin/object">Типы объектов</a></li>
+  </ul>
+
+  <div id="operator_block">
+    <ul>
+      <li>qwerty</li>
+      <li>qwerty</li>
+      <li>qwerty</li>
+    </ul>
+  </div>
+
+</div>
+<div class="content">
+  <p class="notice"></p>
+  <p class="alert"></p>
+  <div id="as_admin__users-active-scaffold" class="active-scaffold active-scaffold-as_admin__users admin/users-view default-theme">
+  <div class="active-scaffold-header">
+      <div class="actions">
+          <a href="http://localhost:3000/admin/users/new" class="new as_action" data-position="top" data-remote="true" id="as_admin__users-new--link">Create New</a>
+      <a href="http://localhost:3000/admin/users/show_search" class="show_search as_action" data-position="top" data-remote="true" id="as_admin__users-show_search--link">Search</a>
+
+    <img alt="loading indicator" class="loading-indicator" id="as_admin__users-table--loading-indicator" src="users_files/indicator.gif" style="visibility: hidden;">
+  </div>
+<h2>Users</h2>
+
+  </div>
+  <table cellpadding="0" cellspacing="0">
+    <tbody class="before-header" id="as_admin__users-search-container">
+      <tr><td></td></tr>
+    </tbody>
+  </table>
+  <div id="as_admin__users-content" class="as_content">
+    <table cellpadding="0" cellspacing="0">
+  <thead>
+    <tr>
+        <th class="name-column_heading " id="as_admin__users-name-column" title=""><a href="http://localhost:3000/admin/users?page=1&amp;sort=name&amp;sort_direction=ASC" class="as_sort" data-method="get" data-page-history="as_admin__users" data-remote="true">Name</a></th>
+  <th class="email-column_heading " id="as_admin__users-email-column" title=""><a href="http://localhost:3000/admin/users?page=1&amp;sort=email&amp;sort_direction=ASC" class="as_sort" data-method="get" data-page-history="as_admin__users" data-remote="true">Email</a></th>
+  <th class="avatar-column_heading " id="as_admin__users-avatar-column" title=""><p>Avatar</p></th>
+  <th class="sign_in_count-column_heading " id="as_admin__users-sign_in_count-column" title=""><a href="http://localhost:3000/admin/users?page=1&amp;sort=sign_in_count&amp;sort_direction=ASC" class="as_sort" data-method="get" data-page-history="as_admin__users" data-remote="true">Sign in count</a></th>
+  <th class="current_sign_in_at-column_heading " id="as_admin__users-current_sign_in_at-column" title=""><a href="http://localhost:3000/admin/users?page=1&amp;sort=current_sign_in_at&amp;sort_direction=ASC" class="as_sort" data-method="get" data-page-history="as_admin__users" data-remote="true">Current sign in at</a></th>
+  <th class="last_sign_in_at-column_heading " id="as_admin__users-last_sign_in_at-column" title=""><a href="http://localhost:3000/admin/users?page=1&amp;sort=last_sign_in_at&amp;sort_direction=ASC" class="as_sort" data-method="get" data-page-history="as_admin__users" data-remote="true">Last sign in at</a></th>
+  <th class="current_sign_in_ip-column_heading " id="as_admin__users-current_sign_in_ip-column" title=""><a href="http://localhost:3000/admin/users?page=1&amp;sort=current_sign_in_ip&amp;sort_direction=ASC" class="as_sort" data-method="get" data-page-history="as_admin__users" data-remote="true">Current sign in ip</a></th>
+  <th class="last_sign_in_ip-column_heading " id="as_admin__users-last_sign_in_ip-column" title=""><a href="http://localhost:3000/admin/users?page=1&amp;sort=last_sign_in_ip&amp;sort_direction=ASC" class="as_sort" data-method="get" data-page-history="as_admin__users" data-remote="true">Last sign in ip</a></th>
+<th class="actions">
+</th>
+
+    </tr>
+  </thead>
+  <tbody class="messages">
+  <tr class="record even-record">
+    <td colspan="8" class="messages-container">
+      <p class="error-message message server-error" style="display: none;">
+        Request Failed (code 500, Internal Error)
+        <a href="#" onclick="ActiveScaffold.hide(this.parentNode); return false;" title="Close">Close</a>
+      </p>
+      <div id="as_admin__users-messages">
+        
+      </div>
+      <p class="filtered-message" style="display: none;">
+        (Filtered)
+      </p>
+      <p id="as_admin__users-empty-message" class="empty-message">
+        No Entries
+      </p>
+    </td>
+      <td class="actions"><p class="empty-message">&nbsp;</p></td>
+
+  </tr>
+</tbody>    
+
+
+
+  <tbody class="records" id="as_admin__users-tbody">
+  </tbody>
+</table>
+<div class="active-scaffold-footer">
+  <div class="active-scaffold-found"><span class="active-scaffold-records">0</span> Found</div>
+  <div class="active-scaffold-pagination">
+    
+  </div>
+  <br clear="both">
+</div>
+
+
+  </div>
+</div>
+
+</div>
+
+
+</body></html>

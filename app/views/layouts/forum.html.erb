@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%= current_site && current_site.name || I18n.t('txt.beast_title', :default => 'Altered Beast') %><%= " - " + @page_title if @page_title %></title>
+    <%= stylesheet_link_tag %w(display captcha) %>
+
+      <%= stylesheet_link_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/ui-lightness/jquery-ui.css' %>
+  <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js' %>
+  <%= javascript_include_tag 'rails_jquery.js' %>
+  <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js' %>
+  <%= javascript_include_tag 'application.js', 'ajaxupload.3.5.js' %>
+  <%= javascript_include_tag 'jquery.tools.min' %>
+  <%= csrf_meta_tag %>
+  <%= javascript_include_tag  'jquery', 'jquery-ui.min', 'application','rails', 'jquery.tools.min', 'form' %>
+  <%= javascript_include_tiny_mce_if_used %>
+  <%= tiny_mce if using_tiny_mce? %>
+    <%#= javascript_include_tag %w(rails application), :cache => "beast" %>
+    <% @feed_icons.each do |feed| %>
+    <%= auto_discovery_link_tag :atom, feed[:url], :title => "Subscribe to '#{feed[:title]}'" %>
+    <% end if @feed_icons.present? %>
+    <link rel="search" type="application/opensearchdescription+xml" href="http://<%= request.host_with_port %>/open_search.xml" />
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div id="header">
+      <%= render "layouts/head" %>
+    </div>
+
+    <div id="container">
+      <div id="content">
+        <%= flash_messages %>
+        <%= yield %>
+      </div>
+
+      <div id="right">
+        <%= yield(:right) %>
+      </div>
+
+      <br style="clear:both;" />
+    </div>
+
+    <div id="footer">
+      <%= render "layouts/footer" %>
+      <br style="clear:both;" />
+    </div>
+  </body>
+</html>

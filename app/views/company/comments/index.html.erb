@@ -1,0 +1,19 @@
+<div class="box-orange">
+  <div class="box-orange-frame">
+<div>
+  <strong>Отзывы: (<%= @user.comments.recent.all.count %>)</strong>
+  <ul class='comments'>
+<%= render :partial => 'comments/comment', :collection => @comments %>
+ </ul>
+  <% form_for :comment, :url=> add_comment_company_comments_path(@user.id) do |f| %>
+
+      <div class="field">
+    <%= f.text_area :text, :cols=>"80", :rows => "15" , :class => 'mceEditor' %>
+  </div>
+
+  <%= f.submit "Добавить коментарий"%>
+  <% end %>
+
+</div>
+</div>
+</div>

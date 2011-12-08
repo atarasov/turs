@@ -1,0 +1,60 @@
+<% form_for :companion_advertisement, :url => {:controller => :companion, :action => :index}, :html => {:method => :get} do |form| %>
+	<table>
+	  <tr>
+		<td>
+		  Количество дней
+		</td>
+		<td>
+		  <%= form.text_field :days, :value => (params[:companion_advertisement][:days] if params[:companion_advertisement].present?) %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Вы
+		</td>
+		<td>
+		  <%= form.select :request_type, [["М", 1], ["Ж", 2], ["Группа М", 3], ["Группа Ж", 4], ["Смешанная группа", 5]], :selected => (params[:companion_advertisement][:request_type] if params[:companion_advertisement].present?) %>
+		</td>
+	  </tr>
+
+	  <tr>
+		<td>
+		  Кого ищите
+		</td>
+		<td>
+		  <%= form.select :author_type, [["М", 1], ["Ж", 2], ["Группа М", 3], ["Группа Ж", 4], ["Смешанная группа", 5]], :selected => (params[:companion_advertisement][:author_type] if params[:companion_advertisement].present?) %>
+		</td>
+	  </tr>>
+	  <tr>
+		<td>
+		  Откуда
+		</td>
+		<td>
+		  <%= form.select :from_city, City.all.map{|city| [city.name, city.id]}, :selected => (params[:companion_advertisement][:from_city] if params[:companion_advertisement].present?) %>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
+		  Куда
+		</td>
+		<td>
+		  <%= form.text_field :where, :value => (params[:companion_advertisement][:where] if params[:companion_advertisement].present?) %>
+		</td>
+	  </tr>
+	  <tr>
+	</table>
+	<%= form.submit "Поиск" %>
+<% end %>
+
+<table>
+  <thead>
+  <tr>
+	<td>Заголовок</td><td>Количество дней</td><td>Откуда</td><td>Куда</td><td>Комментарии</td><td>Кто</td><td>Кого ищет</td><td>Пользователь</td>
+  </tr>
+  <% for advertisement in @advertisements %>
+  <tr>
+  		<td><%= advertisement.title %></td><td><%= advertisement.days %></td><td><%= City.where(:id => advertisement.from_city).first.name if advertisement.from_city > 0 %></td><td><%= advertisement.where %></td><td><%= advertisement.description %></td><td><%= ["М", "Ж", "Группа М", "Группа Ж", "Смешанная группа"][advertisement.author_type - 1] %></td><td><%= ["М", "Ж", "Группа М", "Группа Ж", "Смешанная группа"][advertisement.request_type - 1] %></td><td><%= link_to advertisement.user.display_name, user_url(advertisement.user_id) %></td>
+  </tr>
+  <% end %>
+  </thead>
+</table>

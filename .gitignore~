@@ -1,0 +1,13 @@
+.idea/*
+.idea/workspace.xml
+Gemfile.lock
+.bundle
+public/system/*
+test/*
+db/*.sqlite3
+log/*.log
+tmp/**/*
+vendor/bundle
+vendor/cache
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3fQkWavW7KkWMAkmnufZVErz+nPcXG27CZ8zoIjc4NINkriB/wwehAZUdTxSlRE3W4WtSVPnmm/kGglvKdEr6hSieDN6pYWUSCNq01+FC4JbzMXLpoGryunVcSBvzeXu0mY9mrRID8fyB0Or3l416yEh8illJQjGpwFmxr69ZDadI7iKN0QGQ1vvqcgLFemEK8DmeAcrAmwFGWlyW3gkbNgUJBCKwuwHZG1FA88qxO0KvYSqZx/yjzs27HdIOjVvr70GNbz1zuZijKNlgDwiZiFp+udUySC+B47tK4j+72Lp1+tfnqit02KdixFq/PyvFR5bB+vdWi53mVwKTetmr korsar@tortuga
+

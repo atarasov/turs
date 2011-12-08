@@ -1,0 +1,29 @@
+ActionController::Routing::Routes.draw do |map|
+  map.resources :profiles
+  map.resources :countries
+  map.resources :user_sessions
+  map.resources :users
+
+  map.root :controller => "main", :action => "index"
+  map.about "about", :controller => "main", :action => "about"
+  map.login "login", :controller => "user_sessions", :action => "new"
+  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+
+  map.namespace :admin do |admin|
+    admin.resources :countries, :collection => {:batch_action => :post}
+    admin.resource :settings, :only => [:edit, :update]
+    admin.resources :users, :collection => {:batch_action => :post}
+    admin.root :controller => "main", :action => "index"
+  end
+
+  map.namespace :company do |company|
+    company.resources :profiles
+    company.root :controller => "main", :action => "index"
+  end
+
+  map.company_profile_root '', :controller => 'user', :action => 'show', :conditions => { :subdomain => true }
+
+
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
+end

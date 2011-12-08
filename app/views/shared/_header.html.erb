@@ -1,0 +1,291 @@
+
+<div id="header">
+<form class="select" action="">
+  <fieldset>
+    <div class="row">
+      <div class="sub-row">
+        <%#= button_to "", login_url(:subdomain => false), :class=>"btn-login" %>
+        <%#= button_to "", new_user_url(:subdomain => false), :class=>"btn-register" %>
+        <%# raise @current_user.inspect %>
+        <!--<a href="" class="btn-slide">Нажми на меня!</a>-->
+        <input onclick="window.location = '<%= signup_url %>';" class="btn-register" value=""/>
+        <% if current_user.present? %> <%= link_to 'Мои действия', company_profile_url(current_user), :class=>"btn-slide" %>
+            <div id="panel">
+              <a href="" style="float: right;text-decoration:none; background-color: #ffffff;" class="btn-slide active">X</a>
+
+              <ul>
+
+                <li><b>Фото:</b> <span> (<%= current_user.photos.all.count %>)</span><em>&nbsp;</em> <%= link_to_unless_current 'добавить', company_photos_url(current_user) %> / <%= link_to_unless_current 'Редактировать', company_photos_url(current_user) %>
+                 </li>
+                <li><b>Видео:</b> <span> (<%= current_user.videos.all.count %>)</span><em>&nbsp;</em><%= link_to_unless_current 'добавить', company_videos_url(current_user) %> / <%= link_to_unless_current 'Редактировать', company_videos_url(current_user) %>
+                  </li>
+                <li><b>Статьи:</b> добавить / мои рекомендовано (0)</li>
+                <li><b>Заявки на услуги:</b> участвую</li>
+                <li><b>Форум:</b> Создать новую тему на форуме / мои темы на форуме</li>
+                <li><%= link_to_unless_current 'Отзывы', company_comments_url(current_user) %>
+                  </li>
+
+                <li>Сделать запись в журнале</li>
+
+              </ul>
+              <ul>
+                <li><b>PRO аккаунт:</b> (попробовать)</li>
+                <li><b>TURS.PRO рекомендует:</b> (попробовать)</li>
+                <li><b>VIP размещение:</b> (попробовать)</li>
+                <li><b>Предложения или туры:</b> Бspan> (<%= current_user.comments.recent.all.count %>)</span><em>&nbsp;</em> <%= link_to_unless_current 'добавить', new_tur_url() %> / мои объявления</li>
+                <li><b>Выделение в каталоге:</b> (попробовать)</li>
+                <li><b>Объявления:</b> добавить / мои объявления</li>
+                <li><b>Реклама в Туристическом журнале:</b> (попробовать)</li>
+                <li><b>Выделение в блоке "Обратите внимание":</b> (попробовать)</li>
+                <li><b>Ссылка на сайт:</b> добавить / (попробовать)</li>
+              </ul>
+              <ul>
+                <li><%= link_to 'В профиль', company_profile_url(current_user) %></li>
+                <li>Статистика</li>
+                <li><b>Профиль:</b> изменить данные / сменить пароль / <%= link_to 'Выйти', logout_url %></li>
+              </ul>
+            </div>
+
+        <% else %>
+            <input class="btn-login" value=""/>
+
+            <div id="panel2">
+              <a href="" style="float: right;text-decoration:none; background-color: #ffffff;" class="btn-login active">X</a>
+
+              <h2><%= I18n.t('txt.login', :default => 'Login') %></h2>
+<form action="#" method="post">  </form>
+              <%= form_tag session_path, :method => :post do %>
+                  <div id="openid_fields" style="display:none">
+                    <p>
+                      <label for="openid_url"><%= I18n.t "txt.views_users.login_with_openid", :default => "Login with OpenID" %></label>
+                      <br/>
+                      <%= text_field_tag 'openid_url', params[:openid_url], :class => "openid_url" %>
+                    </p>
+
+                    <p>or login with <a href="#" onclick="LoginForm.setToPassword()">username/password</a></p>
+                  </div>
+
+                  <div id="password_fields">
+                    <p><%= label_tag I18n.t('txt.login_name', :default => 'Login') %><br/>
+                      <%= text_field_tag 'login', @login %></p>
+
+                    <p><%= label_tag I18n.t('txt.password', :default => 'Password') %><br/>
+                      <%= password_field_tag 'password', nil %></p>
+
+                    <p><%= label_tag 'remember_me', I18n.t('txt.remember_me', :default => 'Remember me') %>
+                      <%= check_box_tag 'remember_me', '1', @remember_me %></p>
+
+                    <p><%= submit_tag I18n.t('txt.log_in', :default => 'Log in') %>
+                      <%= link_to_function(I18n.t('txt.views_users.reset_password', :default => "reset password"), "$('reset-password').toggle();") %>
+                      <!--<a href="#" onclick="LoginForm.setToOpenID()"><%#= I18n.t('txt.or_login_with_openid', :default => 'or login with OpenID') %></a>-->
+                    </p>
+                  </div>
+
+              <% end %>
+
+              <%= form_tag users_path, :id => 'reset-password', :style => 'display:none' do %>
+
+                  <hr/>
+                  <h5><%= I18n.t 'txt.views_users.reset_password', :default => "Reset Password" %></h5>
+
+                  <p><%= I18n.t 'txt.views_users.email_directions' %></p>
+
+                  <p><%= text_field_tag :email, "", :size => 30 %></p>
+
+                  <p><%= submit_tag I18n.t("txt.views_users.send_email", :default => "E-mail me the link") %>
+                    or <%= link_to_function(I18n.t("txt.cancel", :default => "cancel"), "$('reset-password').hide()") %></p>
+
+              <% end %>
+
+              <%#= javascript_tag "$('openid_input').focus();" %>
+            </div>
+
+        <% end %>
+
+      </div>
+
+      <label for="id1">Все города:</label>
+      <select id="id1">
+        <option>Выбрать город</option>
+        <option>Выбрать город</option>
+        <option>Выбрать город</option>
+      </select>
+      <% form_tag '' do %>
+          <label for="id2"><%= t(:selectLang) %>:</label>
+          <%= select_tag("id2", options_for_select([['...', '0']] + LOCALES_AVAILABLE, I18n.locale), {:index => nil}) %>
+          <!--, :onchange => 'this.form.submit()'-->
+      <% end %>
+    </div>
+  </fieldset>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".btn-slide").click(function() {
+            $("#panel").slideToggle("fast");
+            $(this).toggleClass("active");
+            return false;
+        });
+
+        $(".btn-login").click(function() {
+            $("#panel2").slideToggle("fast");
+            $(this).toggleClass("active");
+            return false;
+        });
+    });
+</script>
+
+
+<div class="area">
+  <strong class="logo"><a href="#">TURS.PRO</a></strong>
+  <img src="/images/img1.jpg" alt="image description"/>
+
+  <div class="holder">
+    <strong class="slogan">Ваш персональный<br/>туристический сервис</strong>
+
+    <div class="box-header">
+      <div class="col">
+        <span>Компаний: <em><%= User.count %></em></span>
+        <span>Консультантов: <em>0</em></span>
+      </div>
+      <div>
+        <span>Статей: <em><%= Journal.count %></em></span>
+        <span>Заявок на услуги: <em><%= Tender.count %></em></span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="nav-holder">
+  <%= stylesheet_link_tag 'jquery.ui.potato.menu.css' %>
+  <%= javascript_include_tag 'jquery.ui.potato.menu.js' %>
+  <script type="text/javascript">
+      (function($) {
+          $(document).ready(function() {
+              $('.nav').ptMenu();
+          });
+      })(jQuery);
+  </script>
+
+
+  <ul class="nav">
+    <li><%= link_to t(:mainPage), root_url(:subdomain => false) %>
+      <ul>
+        <li class="sub"><%= link_to t(:mainPage), root_url(:subdomain => false) %></li>
+        <li class="sub"><%= link_to 'Отзывы', root_url(:subdomain => false) %></li>
+      </ul>
+    </li>
+    <li><%= link_to "Заказ", "" %>
+      <ul>
+        <li class="sub"><%= link_to "Ж/Д билетов", "" %></li>
+        <li class="sub"><%= link_to "Авиа - билетов", "" %></li>
+        <li class="sub"><%= link_to "Автомобилей", "" %></li>
+        <li class="sub"><%= link_to "Гостинниц", "" %></li>
+      </ul>
+    </li>
+    <li><%= link_to t(:catalogPage), catalog_index_url(:subdomain => false) %>
+      <ul>
+        <li class="sub"><%= link_to "Туроператоры", tour_operators_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%= link_to "Турагенства", tour_agencies_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%= link_to "Базы отдыха", recreation_centers_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%= link_to "Санатории", sanatorium_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%= link_to "Гостинницы", hostel_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%= link_to "Такси", taxi_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%= link_to "Гиды", guide_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%= link_to "Отели", hotels_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%= link_to "Мини-отели", mini_hotels_catalog_index_url(:subdomain => false) %>
+      </ul>
+    </li>
+    <li><%= link_to t(:countries), countries_url(:subdomain => false) %></li>
+    <li><%= link_to "Поиск тура", countries_url(:subdomain => false) %></li>
+
+    <li><%= link_to "Требуются услуги", tender_index_url(:subdomain => false) %>
+      <ul>
+        <li class="sub"><%= link_to "Добавить заявку", new_tender_url(:subdomain => false) %>
+        <!--<li class="sub"><%#= link_to "Туроператоры", tour_operators_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%#= link_to "Базы отдыха", recreation_centers_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%#= link_to "Санатории", sanatorium_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%#= link_to "Гостинницы", hostel_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%#= link_to "Такси", taxi_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%#= link_to "Гиды", lfguide_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%#= link_to "Отели", hotels_catalog_index_url(:subdomain => false) %>
+        <li class="sub"><%#= link_to "Мини-отели", mini_hotels_catalog_index_url(:subdomain => false) %>-->
+		<li class="sub"><%= link_to "Туроператоры", tender_index_url(:subdomain => false, "conditions[is_tour_operator]" => 1 ) %>
+        <li class="sub"><%= link_to "Базы отдыха", tender_index_url(:subdomain => false, "conditions[is_recreation_center]" => 1  ) %>
+        <li class="sub"><%= link_to "Санатории", tender_index_url(:subdomain => false, "conditions[is_sanatorium]" => 1 ) %>
+        <li class="sub"><%= link_to "Гостинницы", tender_index_url(:subdomain => false, "conditions[is_guesthouse]" => 1 ) %>
+        <li class="sub"><%= link_to "Такси", tender_index_url(:subdomain => false, "conditions[is_taxi]" => 1 ) %>
+        <li class="sub"><%= link_to "Гиды", tender_index_url(:subdomain => false, "conditions[is_guide]" => 1 ) %>
+        <li class="sub"><%= link_to "Отели", tender_index_url(:subdomain => false, "conditions[is_hotel]" => 1 ) %>
+        <li class="sub"><%= link_to "Мини-отели", tender_index_url(:subdomain => false, "conditions[is_mini_hotel]" => 1 ) %>
+		<li class="sub"><%= link_to "Турагенства", tender_index_url(:subdomain => false, "conditions[is_agent]" => 1 ) %>
+      </ul>
+    </li>
+
+    <li><%= link_to "Объявления", advertisements_url(:subdomain => false) %>
+      <ul>
+        <li class="sub"><%= link_to "Добавить Объявление", new_advertisement_url(:subdomain => false) %></li>
+        <li class="sub"><%= link_to 'Объявления', advertisements_url(:subdomain => false) %></li>
+      </ul>
+    </li>
+    <li><%= link_to "Туристы", gallery_index_url(:subdomain => false) %></li>
+    <li><%= link_to t(:journalPage), categories_url(:subdomain => false) %></li>
+    <li><%= link_to "Поиск попутчика", companion_index_url(:subdomain => false) %></li>
+    <li><%= link_to "Форум", forums_url(:subdomain => false) %></li>
+  </ul>
+  <%#= render_navigation :level => 1 %>
+
+  <!-- Google CSE Search Box Begins  -->
+  <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+  <!-- The terms of service are available at http://www.google.com/cse/docs/tos.html -->
+  <form action="#" method="post">
+
+  </form>
+  <form class="search" id="cref_iframe" action="/search_rezult" method="post">
+    <fieldset>
+  <span>
+  <!--<input type="hidden" name="cref" value="http://www.guha.com/cref_cse.xml" />-->
+  <input type="hidden" name="cof" value="FORID:9"/>
+  <input class="search-input" type="text" name="q" size="40"/>
+  <input class="search-btn" type="submit" name="sa" value=""/>
+      </span>
+    </fieldset>
+  </form>
+  <script type="text/javascript" src="http://www.google.ru/cse/brand?form=cref_iframe"></script>
+  <!-- Google CSE Search Box Ends -->
+  <%= stylesheet_link_tag "search" %>
+
+
+</div>
+<%= yield :breadcramb %>
+
+<%# content_for :breadcramb do %>
+      <div class="vk_like_company">
+        <script charset="utf-8" src="//yandex.st/share/share.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            new Ya.share({
+                'element': 'ya_share1',
+                'elementStyle': {
+                    'type': 'button',
+                    'linkIcon': true,
+                    'border': false,
+                    'quickServices': ['yaru', 'vkontakte', 'twitter', 'odnoklassniki', 'moimir']
+                },
+                'popupStyle': {
+                    'copyPasteField': true
+                }
+            });
+        </script>
+<span id="ya_share1">
+  <span class="b-share">
+    <a data-vdirection="" data-hdirection="" id="ya-share-0.8343438109049174-1322680012720" class="b-share__handle">
+      <span class="b-share-form-button b-share-form-button_share">
+        <i class="b-share-form-button__before"></i>
+        <i class="b-share-form-button__icon"></i>Поделиться…
+        <i class="b-share-form-button__after"></i>
+      </span></a>
+  </span>
+</span>
+      </div>
+  <%# end %>
+
+</div>

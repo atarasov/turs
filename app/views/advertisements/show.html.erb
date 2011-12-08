@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+<div class="journal-favorites">
+  <strong> <%= @advertisement.title %> <em><%#= @category.name if @category && @category.name %></em></strong>
+
+
+
+</div>
+<p>Опубликованно с <%=  Russian::strftime( @advertisement.created_at, "%d %B %Y") %> до <%=  Russian::strftime(@advertisement.expire_date, "%d %B %Y") %>
+
+</p>
+
+
+<p>
+  <%= simple_format(@advertisement.description) %>
+</p>
+
+
+
+<%#= link_to 'Edit', edit_advertisement_path(@advertisement) %> 
+<%#= link_to 'Back', advertisements_path %>

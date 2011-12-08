@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @journal.user_id %>
+</p>
+
+<p>
+  <b>Tag:</b>
+  <%= @journal.tag_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @journal.title %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @journal.text %>
+</p>
+
+
+<%#= link_to 'Edit', edit_journal_path(@journal) %> |
+<%#= link_to 'Back', journals_path %>
+<%= link_to 'newPost', new_post_path %>

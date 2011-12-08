@@ -1,0 +1,14 @@
+<table border="0px" width="37%">
+  <% @countries.each do |country| %>
+  <tr>
+    <td align="center" style="border: none;"><h2><%= country.title %></h2></td>
+    <td align="center" style="border: none; width: 150px;">
+      <span class="phone_code">
+        <a href="<%= country_url(country) %>" >
+          <em style="left: 0;"><%= country.country_code %></em>
+        </a>
+      </span>
+    </td>
+  </tr>
+  <% end %>
+</table>

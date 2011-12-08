@@ -1,0 +1,49 @@
+<%= form_for(@tur, :html => {:multipart => true}) do |f| %>
+  <% if @tur.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tur.errors.count, "error") %> prohibited this tur from being saved:</h2>
+
+      <ul>
+      <% @tur.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :stars %><br />
+    <%= f.text_field :stars %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+
+    <%= hidden_field_tag "tur[user_id]", current_user.id %>
+  </div>
+  <div class="field">
+    <%= f.label :country_id %><br />
+    <%= f.select :country_id, options_from_collection_for_select(@countries, "id", "title") %>
+  </div>
+  <div class="field">
+    <%= f.label :is_recomended %><br />
+    <%= f.check_box :is_recomended %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

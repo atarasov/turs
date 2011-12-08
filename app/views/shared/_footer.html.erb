@@ -1,0 +1,35 @@
+<div id="footer">
+  <div>
+			<ul class="separator-none">
+				<li><a href="#">Главная</a></li>
+				<li><a href="#">Каталог</a></li>
+				<li><a href="#">Заявки на услуги</a></li>
+				<li><a href="#">Магазин</a></li>
+				<li><a href="#">Галерея</a></li>
+				<li><a href="#">Журнал</a></li>
+				<li><a href="#">Форум</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">О проекте</a></li>
+				<li><a href="#">Контакты</a></li>
+				<li><a href="#">Помощь</a></li>
+				<li><a href="#">Кнопки Travelpro.ru.ru</a></li>
+			</ul>
+			<ul>
+				<li><a href="#">Партнерам</a></li>
+				<li><a href="#">Реклама</a></li>
+				<li class="counters">
+					<a href="#"><img src="../images/img20.jpg" alt="image description"/></a>
+					<a href="#"><img src="../images/img21.jpg" alt="image description"/></a>
+				</li>
+			</ul>
+    </div>
+			<div class="footer-right-col">
+				<p><%= link_to "turs.pro", root_path %> – ваш персональный туристический сервис.<br />Все что нужно для подготовки к путешествию.<br /> Простой и удобный способ оценить и выбрать профессионалов.<br />Представители туристического бизнеса могут разместить собственные туры,<br />  фотографии, статьи, новости, рекомендации.<br />Присоединяйтесь :)</p>
+
+			</div>
+
+  <div class="fut_cop"> © Туристический Интернет-портал <%= link_to "turs.pro", root_path %>, 2010-<%= Russian::strftime(Time.now, "%Y") %>. Все права защищены.<br /> Любое использование материалов сайта возможно только с согласия Администрации портала и наличии активной ссылки на <%= link_to "turs.pro", root_path %>.
+  <%= image_tag "/images/psystem.png" %>
+  </div>
+</div>

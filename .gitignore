@@ -1,0 +1,14 @@
+.idea/*
+.idea/workspace.xml
+Gemfile.lock
+.bundle
+public/system/*
+test/*
+db/*.sqlite3
+log/*.log
+log/
+tmp/**/*
+vendor/bundle
+vendor/cache
+
+

@@ -1,0 +1,40 @@
+.emptynav
+%h1= t(:editCountry)
+
+- semantic_form_for [:admin, @country], :html => {:multipart => true} do |f|
+  - f.inputs t(:settings) do
+    = f.input :in_list, :label => "Показывать в списке"
+    = f.input :flag, :label => t(:flag)
+    = f.input :image1, :label => t(:image1)
+    = f.input :image2, :label => t(:image2)
+    = f.input :image3, :label => t(:image3)
+    = f.input :title, :label => t(:title)
+    = f.input :country_code, :label => t(:country_code)
+    = f.input :description, :label => t(:description), :input_html => { :class => 'mceEditor' }
+    = f.input :meta, :label => t(:meta)
+    = f.input :keywords, :label => t(:keywords)
+
+  = f.inputs :name => t(:embassies), :for => :embassy do |embassies_form|
+    %li
+      = embassies_form.label t(:description)
+      = embassies_form.text_area :description, :label => t(:description), :class => 'mceEditor'
+
+  = f.inputs :name => t(:visas), :for => :visa do |visas_form|
+    %li
+      = visas_form.label t(:description)
+      = visas_form.text_area :description, :label => t(:description), :class => 'mceEditor'
+
+  = f.inputs :name => t(:phrasebooks), :for => :phrasebook do |phrasebooks_form|
+    %li
+      = phrasebooks_form.label t(:description)
+      = phrasebooks_form.text_area :description, :label => t(:description), :class => 'mceEditor'
+
+  = f.inputs :name => t(:memos), :for => :memo do |memos_form|
+    %li
+      = memos_form.label t(:description)
+      = memos_form.text_area :description, :label => t(:description), :class => 'mceEditor'
+
+  - f.buttons do
+    = f.commit_button :label => t(:update)
+%br
+.show=link_to t(:back), admin_countries_path

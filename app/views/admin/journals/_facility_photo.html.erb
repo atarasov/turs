@@ -1,0 +1,46 @@
+<div id="photos_list">
+  <% if @journal.new_record? %>
+    <% photos = JournalPhoto.where(:id => params[:journal_photos]) %>
+    <% if photos.size > 0  %>
+        <% for @photo in photos do  %>
+            <%= render :partial => "add_photo" %>
+        <% end %>
+    <% end %>
+  <% else %>
+    <% if @journal.journal_photos.size > 0  %>
+        <% for @photo in @journal.journal_photos do  %>
+            <%= render :partial => "add_photo" %>
+        <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="upload_button_wrapper"><div id="upload_button">Выбрать файл...</div></div>
+
+<script type="text/javascript">
+
+new AjaxUpload('upload_button', {
+  action: '<%= url_for :controller => "journals", :action => "add_photo" %>',
+  name: 'journal_photos[]',
+  data: {
+    "journal_id": '<%= @journal.id %>',
+    "authenticity_token": '<%= form_authenticity_token %>'
+  },
+  autoSubmit: true,
+  responseType: false,
+  onChange: function(file, extension){},
+  onSubmit: function(file, extension) {
+      img = $('<%= image_tag "/images/indicator.gif", :id => "indicator" %>');
+      $('#upload_button').after(img);
+  },
+  // что выполнить при завершении отправки  файла
+  onComplete: function(file, response) {
+      $('#indicator').remove();
+      if (status == "error") {
+          alert('Произошла ошибка при загрузке фотографии');
+      } else {
+          $('#photos_list').append(response);
+      }
+  }
+});
+</script>

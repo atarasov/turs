@@ -1,0 +1,122 @@
+<!--table>
+  <tr>
+    <td>
+      <% if !@country.flag.blank? %> <%= image_tag @country.flag.url(:medium) %>
+<% end %>
+      <h1> <%= @country.title %></h1>
+
+      <%= raw simple_format(@country.description) %>
+<% if !@country.image1.blank? %><p><%= image_tag @country.image1.url(:medium) %></p>
+<% end %>
+<% if !@country.image2.blank? %><p><%= image_tag @country.image2.url(:medium) %></p>
+<% end %>
+<% if !@country.image3.blank? %><p><%= image_tag @country.image3.url(:medium) %></p>
+<% end %>
+    </td>
+  </tr>
+</table-->
+
+<!--<div class="countries">-->
+<strong><%= @country.title %></strong>
+<!--<strong><%#= @prev_country.inspect %></strong>-->
+
+
+<% content_for :breadcramb do %>
+
+    <div class="breadcrambs-holder">
+
+      <% if @prev_country %>
+          <a href="<%= country_path(@prev_country.id) %>" class="left">Предыдущая<br/>страна</a>
+      <% end %>
+      <% if @next_country %>
+          <a href="<%= country_path(@next_country.id) %>" class="right hov">Следующая<br/>страна</a>
+      <% end %>
+      <ul class="breadcrambs">
+        <li><%= link_to t(:countries), countries_path %></li>
+        <li class="no-line"><%= @country.title %></li>
+      </ul>
+    </div>
+
+<% end %>
+
+<div class="countries-holder">
+  <% if !@country.flag.blank? %><%= image_tag @country.flag.url(:small) %>
+  <% end %>
+  <div class="counties-stat" style="width: 150px;">
+      <!--<span><img src="/images/ico-list.png" alt=""/>Рейтинг: <em>47,3</em></span>-->
+      <span><img src="/images/ico-arrow.png" alt=""/>Просмотров: <em><%= @country.review %></em></span>
+      <span class="phone_code">
+        <a href="<%= phones_countries_url %>" ><em><%= @country.country_code %></em></a>
+      </span>
+    </div>
+  <div class="countries-post">
+
+
+    <p><%= @country.description.html_safe %></p>
+  </div>
+</div>
+<div class="countries-foto-holder">
+  <ul class="countries-foto">
+    <% if !@country.image1.blank? %>
+        <li><%= image_tag @country.image1.url(:small) %></li>
+    <% end %>
+    <% if !@country.image2.blank? %>
+        <li><%= image_tag @country.image2.url(:small) %></li>
+    <% end %>
+    <% if !@country.image3.blank? %>
+        <li><%= image_tag @country.image3.url(:small) %></li>
+    <% end %>
+  </ul>
+  <p>
+
+  <div class="countries-foto-line">
+    <span class="spr">Раздел: <%= link_to "Раздел", countries_path %></span>
+    <span style="width: 100px;" class="spr"> <%= link_to "Виза", visa_country_url(@country.id), :class=>'button' %></span>
+    <span style="width: 100px;" class="spr"><%= link_to "Разговорник", phrasebook_country_url(@country.id), :class=>'button' %></span>
+    <span style="width: 100px;" class="spr"> <%= link_to "Памятка", memo_country_url(@country.id), :class=>'button' %></span>
+    <span style="width: 100px;" class="spr"> <%= link_to "Посольство", embassy_country_url(@country.id), :class=>'button' %></span>
+    <span class="foto-line-right"><!--Отзывы: <a href="#">12</a>  | -->Статьи: <a href="<%= journals_path(:country=>@country.id) %>"><%= Journal.where(:country_id => @country.id).count %></a></span>
+  </div>
+  </p>
+</div>
+<% @journals = Journal.where(:country_id => @country.id).order("created_at DESC").limit(3) %>
+<% if @journals.size > 0 %>
+<% content_for :country_journal do %>
+    <div class="box-blue-c">
+      <div class="box-blue-c-holder">
+        <div class="box-blue-c-frame">
+          <div class="journal-favorites">
+            <strong>Туристический журнал <em>Последнии статьи</em></strong>
+
+            <!--<span class="line-p-right"><img src="/images/ico-qn.png" alt="image description"/><%#= link_to 'Добавить свою статью', new_category_journal_url(@category), :class=>'add-post' %></span>-->
+            <ul>
+              <% for post in @journals -%>
+                  <li>
+                    <em><%= Russian::strftime(post.created_at, "%d %B %Y") %></em>
+
+                    <p class="title"><%= link_to post.title, post %></p>
+
+                    <div class="img-holder">
+                      <% @photos = post.journal_photos.limit(3) %>
+                      <% for photo in @photos do %>
+                          <%= image_tag photo.image.url(:small) %>
+                          <!--<img src="/images/img42.jpg" alt="image description"/>-->
+                      <% end %>
+                    </div>
+                    <p><%= h post.text %></p>
+          <span>Раздел:
+            <% if post.category %> <%= link_to post.category.name, post.category %> <% end %>
+            <% if post.user %> |  Разместил: <%= link_to post.user.email, company_profile_url(post.user) %><% end %></span>
+                    <span class="line-p-right">Комментарии <em>(<%= post.comments.recent.all.count %>)</em></span>
+                  </li>
+              <% end -%>
+            </ul>
+            <p><%= link_to "Остальные статьи", journals_path(:country=>@country.id) %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+<% end %>
+<%#= link_to t(:back), countries_path %>
+

@@ -1,0 +1,2 @@
+module CompanionHelper
+end

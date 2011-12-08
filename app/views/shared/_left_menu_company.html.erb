@@ -1,0 +1,43 @@
+<div id="sidebar">
+  <div class="box-card">
+    <strong>Визитная карточка</strong>
+    <%= image_tag @profile.avatar.url(:medium) %>
+  </div>
+  <div class="box-blue">
+    <div class="box-blue-holder">
+      <div class="box-blue-frame">
+        <strong><%= @profile.name %></strong>
+        <ul class="naving">
+          <li><a href="#">Санатории</a> /</li>
+          <li><a href="#">РФ</a></li>
+        </ul>
+        <ul class="info">
+          <li><img src="/images/ico-person.png" alt="image description"/>Колумб</li>
+          <% if @profile.address %><li><img src="/images/ico-home.png" alt="image description"/><%= @profile.address %></li><% end %>
+          <% if @profile.phone %><li><img src="/images/ico-phone.png" alt="image description"/><%= @profile.phone %></li><% end %>
+          <% if @profile.address %><li><img src="/images/ico-icq.png" alt="image description"/><%= @profile.address %></li><% end %>
+          <% if @profile.address %><li><img src="/images/ico-skype.png" alt="image description"/><%= @profile.address %></li><% end %>
+          <% if @profile.address %><li><img src="/images/ico-mail.png" alt="image description"/><%= @profile.address %></li><% end %>
+          <% if @profile.address %><li><img src="/images/ico-link.png" alt="image description"/><%= @profile.address %></li><% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="box-grey">
+    <div class="box-grey-holder">
+      <div class="box-grey-frame">
+        <a href="#" class="gift">Сделать подарок</a>
+        <a href="#" class="share">Поделиться</a>
+
+        <div class="social-holder">
+          <ul class="social">
+            <% if @profile.twitter_url %><li><a href="<%= @profile.twitter_url %>"><img src="/images/ico-twitter.png" alt="image description"/></a></li><% end %>
+            <% if @profile.facebook_url %><li><a href="<%= @profile.facebook_url %>"><img src="/images/ico-facebook.png" alt="image description"/></a></li><% end %>
+            <% if @profile.jj_url %><li><a href="<%= @profile.jj_url %>"><img src="/images/ico-livejournal.png" alt="image description"/></a></li><% end %>
+            <% if @profile.vkontakte_url %><li><a href="<%= @profile.vkontakte_url %>"><img src="/images/ico-vkontakte.png" alt="image description"/></a></li><% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

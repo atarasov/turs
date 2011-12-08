@@ -1,0 +1,482 @@
+body {
+    font: 12px georgia;
+    background: #fff;
+    color: #28496C;
+}
+
+.clearfloat:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both !important;
+    visibility: hidden;
+}
+
+.clearfloat {
+    display: inline-block;
+}
+
+* html .clearfloat {
+    height: 1%;
+}
+
+.clearfloat {
+    display: block;
+}
+
+.clear {
+    clear: both;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+a {
+    color: #007eff;
+}
+
+a.logo {
+    position: absolute;
+    display: block;
+    width: 332px;
+    height: 184px;
+    left: 268px;
+    top: 16px;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+
+:focus {
+    outline: 0;
+}
+
+body {
+    line-height: 1;
+    color: black;
+    background: white;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+.content {
+    background: none repeat scroll 0 0 white;
+    float: left;
+    margin-bottom: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+    position: relative;
+    width: 68%;
+
+}
+
+.footer {
+    border-top: 1px solid black;
+    margin-top: 15px;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.subfuter{
+    border: 1px solid black;
+    border-radius:10px;
+}
+.wrap {
+    margin: 0 auto;
+    position: relative;
+}
+
+#user_nav {
+    float: right;
+    font-size: 12px;
+    color: black;
+    margin: 10px 20px 0 0;
+}
+
+#user_nav a {
+    color: black
+}
+
+.search {
+    margin-bottom: 40px;
+}
+
+.inline li {
+    display: inline;
+}
+
+body {
+    font-size: 62.5%;
+}
+
+label, input {
+    display: block;
+}
+
+input.text {
+    margin-bottom: 12px;
+    width: 95%;
+    padding: .4em;
+}
+
+fieldset {
+    padding: 0;
+    border: 0;
+    margin-top: 25px;
+}
+
+h1 {
+    font-size: 1.2em;
+    margin: .6em 0;
+}
+
+div#users-contain {
+    width: 350px;
+    margin: 20px 0;
+}
+
+.ui-dialog .ui-state-error {
+    padding: .3em;
+}
+
+.validateTips {
+    border: 1px solid transparent;
+    padding: 0.3em;
+}
+
+#header {
+    width: 100%;
+    position: relative;
+}
+.top_menu{background-color:#fee8b9;height: 35px;}
+
+#yuoCountry {
+    float: left;
+}
+
+#lang {
+    float: left;
+    margin-left: 60px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+#country {
+    float: left;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+#info {
+    height: 200px;
+    border: 1px solid;
+    clear: both;
+    margin: 10px 0;
+}
+
+.leftMenu {
+    float: left;
+    width: 240px;
+    position: relative;
+}
+
+#travel_journal {
+    height: 300px;
+    border: 1px solid;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+#news_travel_journal {
+    height: 300px;
+    border: 1px solid;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+#banner1 {
+    width: 236px;
+    height: 302px;
+    margin-bottom: 15px;
+}
+
+#rightMenu {
+    float: right;
+    width: 240px;
+}
+
+#companions {
+    height: 300px;
+    border: 1px solid;
+    margin-bottom: 15px;
+    padding: 10px
+}
+
+#consalt {
+    height: 600px;
+    border: 1px solid;
+    margin-bottom: 15px;
+    padding: 10px
+}
+
+#banner2 {
+    width: 236px;
+    height: 302px;
+    margin-bottom: 15px;
+}
+
+#avatar {
+    width: 236px;
+    height: 302px;
+    margin-bottom: 15px;
+}
+
+.countryTable {
+}
+
+.countryTable td {
+}
+
+#mainMenu {
+    height: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+#mainMenu li {
+    display: inline;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#overlay {
+    display: none;
+    background-color: dodgerblue;
+    width: 204px;
+    padding: 35px;
+    font-size: 11px;;
+}
+
+#overlay .close {
+    background-image: url(/images/close.png);
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    cursor: pointer;
+    height: 35px;
+    width: 35px;
+}
+
+#overlay a:hover {
+    background-image: url(/images/close.png);
+}
+
+#country_overlay {
+    display: none;
+    background-color: dodgerblue;
+    width: 204px;
+    padding: 35px;
+    font-size: 11px;
+}
+
+#country_overlay .close {
+    background-image: url(/images/close.png);
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    cursor: pointer;
+    height: 35px;
+    width: 35px;
+}
+
+#country_overlay a:hover {
+    background-image: url(/images/close.png);
+}
+
+.company_menu li {
+    display: inline;
+}
+
+.company_menu .visit {
+    font-size: 22px;
+    width: 250px;
+    font-weight: bold;
+}
+
+#company_info {
+    height: 300px;
+    border: 1px solid;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.nav {
+    height: 20px
+}
+
+.nav .next {
+    float: right;
+    margin-right: 20px
+}
+
+.nav .prev {
+    float: left;
+    margin-left: 20px
+}
+.profile_block {width:100%}
+.smallAvatar {
+    display: block;
+    float: left;
+    padding-bottom: 15px;
+    padding-right: 20px;
+}
+
+#profile_info {
+    float: left;
+    border: 1px solid;
+    width: 80%;
+    clear:both;
+}
+
+.right_info {
+    float: right;
+    border: 1px solid;
+    width: 19%;
+}
+
+.raiting {
+    /*border: 1px solid;*/
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.regards {
+    /*border: 1px solid;*/
+    height: 100px;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* navigation */
+#nav {
+    /*background: #ddd url(/images/h300_reverse.png);*/
+    border-bottom: 1px solid #CCCCCC;
+    height: 55px;
+    margin-top: 20px;
+
+}
+
+#nav ul {
+    width: 95%;
+    margin: 0 auto;
+}
+
+#nav li {
+    border-right: 1px solid #ddd;
+    float: left;
+    padding-left: 1px;
+    width: 145px;
+    list-style-type: none;
+    text-align: center;
+    margin-top: 0px;
+}
+
+#nav a {
+    color: #333333;
+    display: block;
+    padding: 17px;
+    position: relative;
+    word-spacing: -2px;
+    font-size: 18px;
+    /*height: 122px;*/
+    text-decoration: none;
+}
+
+#nav a.current {
+    color:blue;
+    /*background: url(/images/down_large.jpg);*/
+}
+
+#nav img {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin: 3px 0 5px 27px;
+    padding: 4px;
+    display: block;
+}
+
+#nav strong {
+    display: block;
+    font-size: 13px;
+}
+
+/* panes */
+#panes {
+    /*background: #fff url(/images/h300_reverse.png) repeat scroll 0 0;*/
+    border-color: #ccc;
+    border-style: solid;
+    border-width: 1px 1px 0;
+    margin-bottom: -20px;
+    padding-bottom: 20px; /* must be relative so the individual panes can be absolutely positioned */
+    position: relative;
+}
+
+/* crossfading effect needs absolute positioning from the elements */
+#panes div {
+    display: none;
+    padding: 10px;
+    font-size: 13px;
+    color: #444;
+}
+
+#panes img {
+    float: left;
+    margin-right: 20px;
+}
+
+#panes p.more {
+    color: #000;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+#panes h3 {
+    margin: 0 0 -5px 0;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.overlay {
+    display: none;
+    width: 500px;
+    padding: 20px;
+    background-color: #ddd;
+}

@@ -1,0 +1,12 @@
+<li id="photo<%= @photo.id %>" class="photo_prev">
+<%= hidden_field_tag "photos[]", @photo.id %>
+<a class="lightbox" href="<%= @photo.image.url(:large) %>"><%= image_tag @photo.image.url(:small) %></a>
+<%= link_to "Удалить",
+    {:controller => "admin/journals", :action => "drop_photo", :id => @photo.id},
+    :class => "drop_photo",
+    :confirm => 'Вы действительно хотите удалить фотографию?',
+    :method => "get",
+    :remote => true,
+    :disable_with => 'loading...'
+  %>
+</li>

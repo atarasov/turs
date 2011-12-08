@@ -1,0 +1,51 @@
+<span class='profile_block'>
+<span id="profile_info">
+  <span class="smallAvatar"><%= image_tag 'getImage.jpeg' %></span>
+
+  <h1>Турагенство Колумб</h1>
+
+  <p>Наш девиз:</p>
+
+  <p>Эксклюзивно:Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно:
+    Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно:
+    Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно:
+    Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно:
+    Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно:
+    Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно:
+    Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно:
+    Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно: Эксклюзивно:
+  </p>
+</span>
+<span class="right_info">
+  <div class="raiting" style="display: block;">
+    <p><%= t(:raiting) %>: <%= @profile.user.raitings if @profile.user %></p>
+    <p><%= t(:price) %>: <%=  %></p>
+    <p><%= t(:views) %>: <%= @profile.user.views if @profile.user %></p>
+    <p><%= t(:posts) %>: <%= @profile.user.journals.count  if @profile.user %></p>
+  </div>
+  <div class="regards" style="display: table-cell;">
+    <img src="/images/getImage.jpeg?1296549434" alt="Getimage" height="100" width="81" style="margin-right:12px;">
+    <img src="/images/getImage.jpeg?1296549434" alt="Getimage" height="100" width="81" style="margin-right:12px;">
+    <img src="/images/getImage.jpeg?1296549434" alt="Getimage" height="100" width="81" style="margin-right:12px;">
+    <img src="/images/getImage.jpeg?1296549434" alt="Getimage" height="100" width="81" style="margin-right:12px;">
+  </div>
+</span>
+<p>
+  <b><%= t(:my_social) %>:</b>
+<ul>
+  <li><%= link_to t(:vkontakte), "http://#{@profile.vkontakte_url}" %></li>
+  <li><%= link_to t(:odnoklassniki), "http://#{@profile.odnoklassniki_url}" %></li>
+  <li><%= link_to t(:twitter), "http://#{@profile.twitter_url}" %></li>
+  <li><%= link_to t(:yaru), "http://#{@profile.yaru_url}" %></li>
+  <li><%= link_to t(:buzz), "http://#{@profile.buzz_url}" %></li>
+  <li><%= link_to t(:moimir), "http://#{@profile.mymir_url}" %></li>
+  <li><%= link_to t(:jj), "http://#{@profile.jj_url}" %></li>
+  <li><%= link_to t(:facebook), "http://#{@profile.facebook_url}" %></li>
+</ul>
+</p>
+
+
+<%= link_to t(:edit), edit_profile_path(@profile) %> |
+<%= link_to t(:back), profiles_path %>
+<%= link_to "профайл", company_profile_url(@profile, :subdomain => false) %>
+</span>

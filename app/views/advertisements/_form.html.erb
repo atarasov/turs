@@ -1,0 +1,36 @@
+<%= form_for(@advertisement) do |f| %>
+  <% if @advertisement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@advertisement.errors.count, "error") %> prohibited this advertisement from being saved:</h2>
+
+      <ul>
+      <% @advertisement.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+    <%= f.label "Заголовок" %><br />
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Стоимость" %><br />
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Описание:" %><br />
+    <p><%= f.text_area :description, :cols=>"80", :rows => "15", :class =>'mceEditor' %></p>
+  </div>
+    <div class="field">
+    <p><%= f.label "Опубликовать до" %><br />
+    <%= f.date_select :expire_date %></p>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

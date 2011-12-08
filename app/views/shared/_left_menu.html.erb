@@ -1,0 +1,83 @@
+<div id="sidebar">
+  <% #raise params[:controller].inspect %>
+  <% if params[:controller].eql?('main') %>
+  <div class="nav-bar">
+    <ul>
+      <li><a href="#" class="nav-bar-train">Заказ Ж/Д билетов</a></li>
+      <li><a href="#" class="nav-bar-car">Заказ Авиа-билетов</a></li>
+      <li><a href="#" class="nav-bar-plane">Заказ Автомобилей</a></li>
+      <li><a href="#" class="nav-bar-building">Заказ Гостиниц</a></li>
+    </ul>
+  </div>
+      <% elsif !params[:controller].eql?('main') && !params[:controller].eql?('categories')%>
+  <div class="box-pink">
+    <div class="box-pink-holder">
+      <div class="box-pink-frame">
+        <strong><%= t(:catalogPage) %></strong>
+        <ul>
+          <li><%= link_to_unless_current "Все разделы", catalog_index_url(:subdomain => false) %>
+            <em>(<%= User.all.count %>)</em></li>
+
+              <li><%= link_to_unless_current "Туроператоры", tour_operators_catalog_index_url(:subdomain => false) %> <em>(<%= User.where(:is_tour_operator => true).count %>)</em></li>
+              <li><%= link_to_unless_current "Турагенства", tour_agencies_catalog_index_url(:subdomain => false) %> <em>(<%= User.where(:is_tour_agency => true).count %>)</em></li>
+              <li><%= link_to_unless_current "Базы отдыха", recreation_centers_catalog_index_url(:subdomain => false) %> <em>(<%= User.where(:is_recreation_center => true).count %>)</em></li>
+              <li><%= link_to_unless_current "Санатории", sanatorium_catalog_index_url(:subdomain => false) %> <em>(<%= User.where(:is_sanatorium => true).count %>)</em></li>
+              <li><%= link_to_unless_current "Гостинницы", hostel_catalog_index_url(:subdomain => false) %> <em>(<%= User.where(:is_hostel => true).count %>)</em></li>
+              <li><%= link_to_unless_current "Такси", taxi_catalog_index_url(:subdomain => false) %> <em>(<%= User.where(:is_taxi => true).count %>)</em></li>
+              <li><%= link_to_unless_current "Гиды", guide_catalog_index_url(:subdomain => false) %> <em>(<%= User.where(:is_guide => true).count %>)</em></li>
+              <li><%= link_to_unless_current "Отели", hotels_catalog_index_url(:subdomain => false) %> <em>(<%= User.where(:is_hotel => true).count %>)</em></li>
+              <li><%= link_to_unless_current "Мини-отели", mini_hotels_catalog_index_url(:subdomain => false) %> <em>(<%= User.where(:is_mini_hotel => true).count %>)</em></li>
+          <%# end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+      <% end %>
+  <div class="box-podpis-journal">
+    <strong>Подписка на журнал</strong>
+
+    <form action="#">
+      <fieldset>
+        <input type="text" value=""/>
+        <input type="text" value=""/>
+        <input type="submit" class="btn-podpis" value=""/>
+        <fieldset>
+  </div>
+  <div class="box-pink">
+    <div class="box-pink-holder">
+      <div class="box-pink-frame">
+        <strong><%= t(:travelJournal) %></strong>
+        <ul>
+          <li><%= link_to "Все разделы", categories_url(:subdomain => false) %>
+            <em>(193)</em></li>
+          <% @journal_categories.each do |category| %>
+
+              <li><%= link_to category.name, category_url(category, :subdomain => false) %>
+                <em>(<%= category.journals.count %>)</em></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="box-new-journal">
+    <div class="box-new-journal-holder">
+      <div class="box-new-journal-frame">
+        <strong>Новое в журнале</strong>
+        <% @last_journals = Journal.order("created_at DESC").limit(3).all %>
+        <ul class="journal-post">
+          <% @last_journals.each do |journal| %>
+          <li>
+            <span><em><%= Russian::strftime(journal.created_at, "%d %B %Y")  %></em><%= journal.user.email if journal.user %></span>
+            <%= link_to journal.title, journal %>
+
+            <p><%= truncate(journal.text, @settings.post_symbol_count, '...') %></p>
+
+            <%= link_to 'Подробнее', journal, :class=> "journal-more" %>
+          </li>
+          <% end %>
+        </ul>
+        <%= link_to "» Все записи в журнале", categories_url(:subdomain => false), :class => 'journal-all' %>
+      </div>
+    </div>
+  </div>
+</div>
