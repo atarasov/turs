@@ -2426,7 +2426,7 @@ text-align: right;}
 
 .stend{min-width: 60%;border: none;border-collapse:collapse;}
 .stend tbody{width: 99%; }
-.stend tbody span{padding: 5px;text-align: center !important;}
+.stend tbody span{padding: 5px;text-align: center !important;float: left;}
 .stend tbody tr{background-color: #cadeed;border-bottom:3px solid #ffffff; }
 .stend tbody tr:nth-child(even) {background-color: #ebebeb;}
 .stend thead span {
