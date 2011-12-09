@@ -1,0 +1,21 @@
+<div class="box-comand">
+  <strong>Нас рекомендуют</strong>
+  <div class="box-comand-holder">
+    <ul>
+	  <% for referee in @profile.referees.limit(4) %>
+      <li>
+        <img src="<%= referee.avatar.url(:small) %>" alt="<%= referee.display_name %>"/>
+
+        <div class="comand-holder">
+          <img src="/images/ico-pro.png" alt="image description"/>
+          <strong><a href="<%= company_profile_url(referee.id) %>"><%= referee.display_name %></a></strong>
+          <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em><%= referee.raiting %></em></span>
+          <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em><%= referee.review %></em></span>
+        </div>
+      </li>
+		<% end %>
+      <li>
+
+    </ul>
+	</div>
+</div>

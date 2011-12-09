@@ -40,4 +40,26 @@
       </div>
     </div>
   </div>
+	<% if current_user.present? && current_user.id == @profile.id && @profile.teams.where(:is_confirmed => false).any? %>
+		<div class="box-blue">
+			<div class="box-blue-frame">
+				<strong>Вас добавили в команду:</strong>
+
+			  <ul class="info">
+				<% for team in @profile.teams.where(:is_confirmed => false) %>
+					<li>
+					<img src="<%= team.leader.avatar.url(:small) %>" alt="<%= team.leader.display_name %>"/>
+					<div class="comand-holder">
+						<img src="/images/ico-pro.png" alt="image description"/>
+						<strong><a href="<%= company_profile_url(team.leader_id) %>"><%= team.leader.display_name %></a></strong>
+						<span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em><%= team.leader.raiting %></em></span>
+						<span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em><%= team.leader.review %></em></span>
+					</div>
+					  <%= link_to "Принять", accept_command_call_url(:command_id => team.id) %><%= link_to "Отклонить", decline_command_call_url(:command_id => team.id) %>
+					</li>
+				<% end %>
+			  </ul>
+			</div>
+		</div>
+	<% end %>
 </div>

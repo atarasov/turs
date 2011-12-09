@@ -204,5 +204,14 @@ module ApplicationHelper
 
   end
 
+  def user_val obj
+    if obj && obj.user
+     obj.user.id
+   else
+     nil
+   end
+
+  end
+
 
 end

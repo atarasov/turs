@@ -19,30 +19,30 @@
                  </li>
                 <li><b>Видео:</b> <span> (<%= current_user.videos.all.count %>)</span><em>&nbsp;</em><%= link_to_unless_current 'добавить', company_videos_url(current_user) %> / <%= link_to_unless_current 'Редактировать', company_videos_url(current_user) %>
                   </li>
-                <li><b>Статьи:</b> добавить / мои рекомендовано (0)</li>
+                <li><b>Статьи:</b> <%= link_to t(:add), new_journal_url %> / мои рекомендовано (0)</li>
                 <li><b>Заявки на услуги:</b> участвую</li>
                 <li><b>Форум:</b> Создать новую тему на форуме / мои темы на форуме</li>
                 <li><%= link_to_unless_current 'Отзывы', company_comments_url(current_user) %>
                   </li>
 
-                <li>Сделать запись в журнале</li>
+                <li><%= link_to t(:add_journal), new_journal_url %></li>
 
               </ul>
               <ul>
-                <li><b>PRO аккаунт:</b> (попробовать)</li>
-                <li><b>TURS.PRO рекомендует:</b> (попробовать)</li>
-                <li><b>VIP размещение:</b> (попробовать)</li>
-                <li><b>Предложения или туры:</b> Бspan> (<%= current_user.comments.recent.all.count %>)</span><em>&nbsp;</em> <%= link_to_unless_current 'добавить', new_tur_url() %> / мои объявления</li>
-                <li><b>Выделение в каталоге:</b> (попробовать)</li>
-                <li><b>Объявления:</b> добавить / мои объявления</li>
-                <li><b>Реклама в Туристическом журнале:</b> (попробовать)</li>
-                <li><b>Выделение в блоке "Обратите внимание":</b> (попробовать)</li>
-                <li><b>Ссылка на сайт:</b> добавить / (попробовать)</li>
+                <li><b><%= t(:vip_service)%>:</b> (<%= link_to t(:popr), paid_service_pro_url %>)</li>
+                <li><b><%= t(:recommended_service) %>:</b> (<%= link_to t(:popr), paid_service_recommended_url %>)</li>
+                <li><b><%= t(:vip_service)%>:</b> (<%= link_to t(:popr), paid_service_vip_url %>)</li>
+                <li><b><%= t(:adv_turs)%>:</b> <span> (<%= current_user.comments.recent.all.count %>)</span><em>&nbsp;</em> <%= link_to_unless_current t(:add), new_tur_url() %> / <%= link_to_unless_current t(:my_turs), turs_url(:user_id => current_user.id) %></li>
+                <li><b><%= t(:selection_service) %>:</b> (<%= link_to t(:popr), paid_service_selection_url %>)</li>
+                <li><b><%= t(:advertisements)%>:</b> <%= link_to t(:add), new_advertisement_url %> / <%= link_to t(:my_adv), advertisements_url(:user_id => current_user.id) %></li>
+                <li><b><%= t(:journsl_service) %>:</b> (<%= link_to t(:popr), paid_service_advertising_in_journal_url %>)</li>
+                <li><b><%= t(:in_site_service) %>:</b> (<%= link_to t(:popr), paid_service_advertising_in_site_url %>)</li>
+                <li><b><%= t(:link_service) %>:</b> t(:add) / (<%= link_to t(:popr), paid_service_site_link_url %>)</li>
               </ul>
               <ul>
                 <li><%= link_to 'В профиль', company_profile_url(current_user) %></li>
                 <li>Статистика</li>
-                <li><b>Профиль:</b> изменить данные / сменить пароль / <%= link_to 'Выйти', logout_url %></li>
+                <li><b>Профиль:</b> <%= link_to t(:change_data), edit_company_profile_url(current_user) %>  / <%= link_to t(:change_password), edit_user_url(current_user) %> / <%= link_to 'Выйти', logout_url %></li>
               </ul>
             </div>
 

@@ -6,6 +6,7 @@ class Country < ActiveRecord::Base
     end
   has_one :embassy
   has_many :turs
+  has_many :stends
   has_many :directions
   has_one :visa
   has_one :phrasebook

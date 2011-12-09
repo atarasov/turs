@@ -1,0 +1,2 @@
+module PaidServiceHelper
+end

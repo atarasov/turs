@@ -2445,7 +2445,7 @@ text-align: right;}
 
 .stend{min-width: 60%;border: none;border-collapse:collapse;}
 .stend tbody{width: 99%; }
-.stend tbody span{padding: 5px;text-align: center !important;}
+.stend tbody span{padding: 5px;text-align: center !important;float: left;}
 .stend tbody tr{background-color: #cadeed;border-bottom:3px solid #ffffff; }
 .stend tbody tr:nth-child(even) {background-color: #ebebeb;}
 .stend thead span {
@@ -2563,3 +2563,11 @@ text-align: right;}
     height: 1%; }
   *:first-child + html .digg_pagination {
     overflow: hidden; }
+
+.stend tbody td .peak {
+    background: url("/images/right_peak.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: right;
+    height: 18px;
+    width: 25px;
+}}

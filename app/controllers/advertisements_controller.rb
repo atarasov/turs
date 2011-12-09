@@ -5,6 +5,11 @@ class AdvertisementsController < ApplicationController
   def index
     @advertisements = Advertisement.all
 
+    if params[:user_id]
+      @advertisements = Advertisement.where(:user_id => params[:user_id])
+    else
+      @advertisements = Advertisement.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @advertisements }

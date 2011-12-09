@@ -1,0 +1,16 @@
+<div class="box-comand-holder">
+  <ul>
+	<% for headed_team in @profile.headed_teams.where(:is_confirmed => true) %>
+		<li>
+			<img src="<%= headed_team.member.avatar.url(:small) %>" alt="<%= headed_team.member.display_name %>"/>
+
+			<div class="comand-holder">
+				<img src="/images/ico-pro.png" alt="image description"/>
+				<strong><a href="<%= company_profile_url(headed_team.member_id) %>"><%= headed_team.member.display_name %></a></strong>
+				<span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em><%= headed_team.member.raiting %></em></span>
+				<span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em><%= headed_team.member.review %></em></span>
+			</div>
+		</li>
+	<% end %>
+  </ul>
+</div>
