@@ -8,14 +8,12 @@
 
 #content
 {
-	margin:1em 0;
-	width:80%;
+	margin:0em 270px 1em 0;
 	background:white;
 	1padding:25px;
 	1border:5px solid #bbb;
 	border-width:0 5px 5px 0;
-	float:left;
-	min-width:425px;
+	1float:left;
 	min-height:165px;
 }
 
@@ -484,6 +482,11 @@ label
 	color:#666;
 	font-size:0.75em;
 	font-weight:normal;
+
+}
+#header label {
+    float:left;
+    padding:5px 5px;
 }
 
 /* random */

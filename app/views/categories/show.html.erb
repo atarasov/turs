@@ -1,7 +1,7 @@
 <div class="journal-favorites">
-  <strong>Туристический журнал <em><%= @category.name %></em></strong>
+  <strong>Туристический журнал <%= "<em>#{@category.name}</em>" if @category.name.length > 0 %></strong>
 
-  <span class="line-p-right"><img src="/images/ico-qn.png" alt="image description"/><%= link_to 'Добавить свою статью', new_category_journal_url(@category), :class=>'add-post' %></span>
+  <span class="line-p-right"><img src="/images/ico-qn.png" alt="image description"/><%= link_to 'Добавить свою статью', new_category_journal_url(@category), :class => 'add-post' %></span>
   <ul>
     <% for post in @journals -%>
         <li>

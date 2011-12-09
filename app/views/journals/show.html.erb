@@ -1,11 +1,18 @@
-<p id="notice"><%= notice %></p>
+<% if notice and notice.length > 0 %><p class="notice"><%= notice %></p><% end %>
+<% if alert and alert.length > 0 %><p class="alert"><%= alert %></p><% end %>
+
+<div class="journal-favorites">
+  <strong>
+    Туристический журнал
+  </strong>
 
 <p>
-  <%= link_to @journal.user.email, company_profile_url(@journal.user) if @journal.user %>
+   <%= link_to @journal.user.email, company_profile_url(@journal.user) if @journal.user %> &rarr;
+   <em><%=  Russian::strftime(@journal.created_at, "%d %B %Y") %></em>
 </p>
 
-<p>
-  <strong><%= @journal.title %></strong>
+<p class="title">
+  <%= @journal.title %>
 </p>
 
 <p>
@@ -18,18 +25,34 @@
             <!--<img src="/images/img42.jpg" alt="image description"/>-->
             <% end %>
 
-<div>
+</div>
+
+<div class="comment_form">
   <strong><%= t(:comments) %> (<%= @journal.comments.recent.all.count %>)</strong>
   <ul class='comments'>
-<%= render @comments %>
- </ul>
+    <%= render @comments %>
+  </ul>
+
+  <strong>Новый комментарий</strong>
+
   <% form_for :comment, :url=> journal_add_comment_path(@journal.id) do |f| %>
 
-      <div class="field">
-    <%= f.text_area :text, :cols=>"80", :rows => "15" , :class => 'mceEditor' %>
-  </div>
+  <% unless current_user %>
+  <p class="field">
+    <%= f.text_field :title, :class => 'text-input' %> Укажите имя
+  </p>
+  <% else %>
+  <p class="field">
+    Вы вошли как <strong><%= current_user.email %></strong>.
+  </p>
+  <% end %>
+
+  <p class="field">
+    <%= f.text_area :text, :class => 'mceEditor' %>
+  </p>
 
   <%= f.submit "Добавить коментарий"%>
+
   <% end %>
 
 </div>

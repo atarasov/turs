@@ -86,7 +86,9 @@ class JournalsController < ApplicationController
 
   def add_comment
     commentable = Journal.find(params[:journal_id])
-    commentable.comments.create(:comment => params[:comment][:text])
+    commentable.comments.create(:comment => params[:comment][:text],
+                                :user_id => (current_user.nil? ? nil: current_user.id),
+                                :title => params[:comment][:title] || 'Alter Ego' )
     redirect_to :action => :show, :id => params[:journal_id]
   end
 

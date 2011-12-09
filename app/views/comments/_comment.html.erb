@@ -6,10 +6,17 @@
         else
             image_tag("avatar.jpg")
         end
-
     %>
-    <%= link_to comment.user.email, company_profile_url(comment.user) if comment.user %>
+  </span>
+  <p>
+    <strong>
+    <% if comment.user %>
+       <%= link_to comment.user.email, company_profile_url(comment.user) %>
+    <% elsif comment.title %>
+       <%= comment.title %>
+    <% end %>
+    </strong> &rarr;
     <%= Russian::strftime(comment.created_at, "%d %B %Y") %>
-    <%= simple_format comment.comment %>
-      </span>
+  </p>
+  <%= simple_format comment.comment %>
 </li>

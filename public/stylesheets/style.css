@@ -197,8 +197,9 @@ textarea{
 	background:none !important;
 }
 .search-input{
-	padding:8px 10px;
-	width:127px;
+	padding:8px 10px !important;
+	width:127px !important;
+    border:none !important;
 }
 .search-btn{
 	cursor:pointer;
@@ -275,6 +276,7 @@ textarea{
 #main{
 	padding:24px 0 0;
 	width:100%;
+    min-width:1000px;
 	overflow:hidden;
 }
 #sidebar{
@@ -1356,7 +1358,7 @@ input.btn-podpis{
 	background:url(../images/bg-box-blue-holder.jpg) no-repeat;
 }
 .box-new-journal-frame{
-	padding:12px 9px 14px 8px;
+	padding:12px 10px 14px 10px;
 	background:url(../images/bg-box-blue-frame.jpg) no-repeat 0 100%;
 }
 .box-new-journal strong{
@@ -1437,8 +1439,7 @@ a.journal-more{
 	1background:url(../images/box-blue-c-holder.jpg) no-repeat;
 }
 .box-blue-c-frame{
-	padding: 6px 11px 0 9px;
-	1background:url(../images/box-blue-c-frame.jpg) no-repeat 0 100%;
+	padding: 10px 15px 0 15px;
 	border:1px solid #8cadbd;
 	border-radius:15px;
 	-moz-border-radius:15px;
@@ -1951,7 +1952,7 @@ span.line-p-right em{
 }
 .journal-favorites strong{
 	display:block;
-	margin:0 0 5px;
+	margin:0 0 18px;
 	padding:0 0 0 30px;
 	background:url(../images/arrow-orange-long.png) no-repeat 2px 10px;
 	font-size:21px;
@@ -2016,17 +2017,35 @@ div.journal-favorites ul li span{
 }
 .journal-favorites p{
 	display:block;
-	margin:0 0 24px;
+	margin:0 0 10px;
 }
 .journal-favorites span{
 	display:inline-block;
-	margin:0 0 33px;}
+	margin:0 0 33px;
+}
+
+.comment_form {
+    margin:20px 0;
+    padding-top:20px;
+    border-top:1px solid #ababab;
+}
+
 .comments {
     list-style: none;
+    padding-left:0;
+}
+.comments p {
+    margin:0 0 10px 75px;
+}
+.comments li {
+    clear:both;
 }
 .jimage{margin: 15px;}
-.comments img{float: left;margin-right: 15px;}
-.comments span{display: block; padding: 10px;}
+.comments span {display: block; float:left; margin-bottom:10px;}
+.comment_form .mceEditor {
+    width:400px;
+    height:200px;
+}
 
 .stat{float: right; display: block; margin: 5px; top: 5px;position: relative;}
 .stat img{margin-right: 5px; }

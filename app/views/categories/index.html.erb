@@ -1,5 +1,5 @@
 <div class="journal-favorites">
-  <strong>Туристический журнал <em><%= @category.name if @category && @category.name %></em></strong>
+  <strong>Туристический журнал <%= "<em>#{@category.name}</em>" if @category && @category.name %></strong>
 
   <!--<span class="line-p-right"><img src="/images/ico-qn.png" alt="image description"/><%#= link_to 'Добавить свою статью', new_category_journal_url(@category), :class=>'add-post' %></span>-->
   <ul>
@@ -9,13 +9,17 @@
 
           <p class="title"><%= link_to post.title, post %></p>
 
+          <%
+            @photos = post.journal_photos.limit(3)
+            if @photos.count > 0
+          %>
           <div class="img-holder">
-            <% @photos = post.journal_photos.limit(3) %>
             <% for photo in @photos do %>
                 <%= image_tag photo.image.url(:small) %>
             <!--<img src="/images/img42.jpg" alt="image description"/>-->
             <% end %>
           </div>
+          <% end %>
           <p><%= h post.text %></p>
           <span>Раздел: <% if post.category%> <%= link_to post.category.name, post.category %> <% end %>
             <% if post.user %> |  Разместил: <%= link_to post.user.email, company_profile_url(post.user) %><% end %></span>
