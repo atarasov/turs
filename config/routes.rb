@@ -134,8 +134,19 @@ TursPro::Application.routes.draw do
   #devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"} do
   #devise_for :users  do
   get "/sign_up" => "registrations#new"
+
+  match "/accept_command_call", :controller => "company/profiles", :action => "accept_command_call"
+  match "/decline_command_call", :controller => "company/profiles", :action => "decline_command_call"
+
   namespace :company do
     resources :profiles do
+	  member do
+	  get "command_index"
+	  get "add_to_command"
+	  get "recommendation_index"
+	  get "add_recommendation"
+	  end
+
       resources :turs
       member do
         resources :journals

@@ -147,4 +147,42 @@ class Company::ProfilesController < Company::BaseController
     end
   end
 
+  def command_index
+	@profile = User.where(:id => params[:id]).first
+
+  end
+
+  def add_to_command
+	current_user.headed_teams.create(:member_id => params[:id])
+
+	redirect_to :action => :command_index, :id => current_user.id
+  end
+
+  def accept_command_call
+	command = Command.find(params[:command_id])
+	if command.member_id == current_user.id
+	  command.is_confirmed = true
+	  command.save
+	end
+
+	redirect_to :action => :command_index, :id => command.leader_id
+  end
+
+  def decline_command_call
+	command = Command.find(params[:command_id])
+	if command.member_id == current_user.id
+	  command.destroy
+	end
+
+	redirect_to company_profile_url(current_user.id)
+  end
+
+  def recommendation_index
+	@profile = User.find(params[:id])
+  end
+
+  def add_recommendation
+	current_user.given_recommendations.create(:recommended_user_id => params[:id])
+	redirect_to :action => :recommendation_index
+  end
 end

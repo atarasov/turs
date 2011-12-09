@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206191651) do
+ActiveRecord::Schema.define(:version => 20111208174352) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(:version => 20111206191651) do
   create_table "cities", :force => true do |t|
     t.string   "name",       :default => ""
     t.string   "district",   :default => ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "commands", :force => true do |t|
+    t.integer  "leader_id",    :default => 0
+    t.integer  "member_id",    :default => 0
+    t.boolean  "is_confirmed", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -272,6 +280,13 @@ ActiveRecord::Schema.define(:version => 20111206191651) do
     t.integer  "user_id"
     t.integer  "country_id"
     t.integer  "journal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recommendations", :force => true do |t|
+    t.integer  "referee_id",          :default => 0
+    t.integer  "recommended_user_id", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

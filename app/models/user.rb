@@ -18,6 +18,19 @@ class User < ActiveRecord::Base
     end
   end
 
+  has_many :given_recommendations, :class_name => "Recommendation", :foreign_key => :referee_id
+  has_many :recommended_users, :class_name => "User", :through => :given_recommendations
+
+  has_many :recommendations, :foreign_key => :recommended_user_id
+  has_many :referees, :class_name => "User", :through => :recommendations
+
+
+  has_many :headed_teams, :class_name => "Command", :foreign_key => :leader_id
+  has_many :members, :class_name => "User", :through => :headed_teams
+
+  has_many :teams, :class_name => "Command", :foreign_key => :member_id
+  has_many :leaders, :class_name => "User", :through => :teams
+
   has_many :monitorships, :dependent => :delete_all
   has_many :monitored_topics, :through => :monitorships, :source => :topic, :conditions => {"#{Monitorship.table_name}.active" => true}
 

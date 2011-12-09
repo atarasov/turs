@@ -168,6 +168,13 @@
 
       <p><%= @profile.about %></p>
     </div>
+	<% if current_user.present? && current_user.id != @profile.id && !(current_user.recommended_users.include? @profile) %>
+		<a class="btn-proritet" href="<%= add_recommendation_company_profile_url %>">Рекомендовать</a>
+	<% end %>
+
+	<% if current_user.present? && current_user.id != @profile.id && !(current_user.members.include? @profile) %>
+		<a class="btn-proritet" href="<%= add_to_command_company_profile_url %>">Добавить в команду</a>
+	<% end %>
     <a class="btn-proritet" href="#"><img src="/images/btn-add-prioritet.png" alt="image description"/></a>
 
     <div class="box-gids">
@@ -234,57 +241,43 @@
 
   <div class="box-comand-holder">
     <ul>
+	  <% for headed_team in @profile.headed_teams.where(:is_confirmed => true).limit(4) %>
       <li>
-        <img src="/images/img15.jpg" alt="image description"/>
+        <img src="<%= headed_team.member.avatar.url(:small) %>" alt="<%= headed_team.member.display_name %>"/>
 
         <div class="comand-holder">
           <img src="/images/ico-pro.png" alt="image description"/>
-          <strong><a href="#">TEZ-TOUR</a></strong>
-          <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em>47,3</em></span>
-          <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em>75</em></span>
+          <strong><a href="<%= company_profile_url(headed_team.member_id) %>"><%= headed_team.member.display_name %></a></strong>
+          <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em><%= headed_team.member.raiting %></em></span>
+          <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em><%= headed_team.member.review %></em></span>
         </div>
       </li>
-      <li>
-        <img src="/images/img16.jpg" alt="image description"/>
-
-        <div class="comand-holder">
-          <img src="/images/ico-pro.png" alt="image description"/>
-          <strong><a href="#">TEZ-TOUR</a></strong>
-          <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em>47,3</em></span>
-          <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em>75</em></span>
-        </div>
-      </li>
-      <li>
-        <img src="/images/img16.jpg" alt="image description"/>
-
-        <div class="comand-holder">
-          <img src="/images/ico-pro.png" alt="image description"/>
-          <strong><a href="#">TEZ-TOUR</a></strong>
-          <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em>47,3</em></span>
-          <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em>75</em></span>
-        </div>
-      </li>
-      <li>
-        <img src="/images/img15.jpg" alt="image description"/>
-
-        <div class="comand-holder">
-          <img src="/images/ico-pro.png" alt="image description"/>
-          <strong><a href="#">TEZ-TOUR</a></strong>
-          <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em>47,3</em></span>
-          <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em>75</em></span>
-        </div>
-      </li>
+	  <% end %>
     </ul>
   </div>
 </div>
-<div class="box-portfolio">
+<div class="box-comand">
   <strong>Нас рекомендуют</strong>
+  <div class="box-comand-holder">
+    <ul>
+	  <% for referee in @profile.referees.limit(4) %>
+      <li>
+        <img src="<%= referee.avatar.url(:small) %>" alt="<%= referee.display_name %>"/>
 
-  <p>Во всех странах, куда мы предлагаем туры, мы были лично, все видели своими глазами и имеем свое представление, куда
-    можно отправлять клиента, а куда нельзя ни за какие деньги.</p>
-  <a href="#">Портфолио</a>
+        <div class="comand-holder">
+          <img src="/images/ico-pro.png" alt="image description"/>
+          <strong><a href="<%= company_profile_url(referee.id) %>"><%= referee.display_name %></a></strong>
+          <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em><%= referee.raiting %></em></span>
+          <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em><%= referee.review %></em></span>
+        </div>
+      </li>
+		<% end %>
+      <li>
+
+    </ul>
+	</div>
 </div>
-<div class="bottom-paging-holder">
+<!-- <div class="bottom-paging-holder">
   <ul class="paging">
     <li><a class="p-home" href="#">home</a></li>
     <li><a class="p-prev" href="#">prev</a></li>
@@ -296,4 +289,4 @@
     <li><a class="p-next" href="#">next</a></li>
     <li><a class="p-end" href="#">end</a></li>
   </ul>
-</div>
+</div>-->
