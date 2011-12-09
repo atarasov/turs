@@ -185,4 +185,18 @@ class Company::ProfilesController < Company::BaseController
 	current_user.given_recommendations.create(:recommended_user_id => params[:id])
 	redirect_to :action => :recommendation_index
   end
+
+  def favorite_index
+	@profile = User.find(params[:id])
+  end
+
+  def add_favorite
+	current_user.favorite_users.create(:favorite_id => params[:id])
+	redirect_to :action => :favorite_index, :id => current_user.id
+  end
+
+  def remove_favorite
+	current_user.favorite_users.where(:id => params[:favorite_id].to_i).delete_all()
+	redirect_to :action => :favorite_index, :id => current_user.id
+  end
 end

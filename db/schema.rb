@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111208174352) do
+ActiveRecord::Schema.define(:version => 20111209210515) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -81,16 +81,15 @@ ActiveRecord::Schema.define(:version => 20111208174352) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "companion_advertisements", :force => true do |t|
-    t.string   "title",        :default => ""
-    t.integer  "days",         :default => 1
+    t.string   "title",       :default => ""
+    t.integer  "days",        :default => 1
     t.integer  "from_city"
-    t.string   "where",        :default => ""
-    t.string   "description",  :default => ""
-    t.integer  "author_type",  :default => 1
+    t.string   "where",       :default => ""
+    t.string   "description", :default => ""
+    t.integer  "author_type", :default => 1
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "request_type"
   end
 
   create_table "countries", :force => true do |t|
@@ -133,6 +132,13 @@ ActiveRecord::Schema.define(:version => 20111208174352) do
     t.text     "description"
     t.text     "about"
     t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id",     :default => 0
+    t.integer  "favorite_id", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -318,11 +324,11 @@ ActiveRecord::Schema.define(:version => 20111208174352) do
 
   create_table "stends", :force => true do |t|
     t.integer  "country_id"
+    t.integer  "user_id"
     t.integer  "days"
     t.string   "price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "tenders", :force => true do |t|

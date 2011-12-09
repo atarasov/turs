@@ -137,6 +137,7 @@ TursPro::Application.routes.draw do
 
   match "/accept_command_call", :controller => "company/profiles", :action => "accept_command_call"
   match "/decline_command_call", :controller => "company/profiles", :action => "decline_command_call"
+  match "/remove_favorite", :controller => "company/profiles", :action => "remove_favorite"
 
   namespace :company do
     resources :profiles do
@@ -145,6 +146,8 @@ TursPro::Application.routes.draw do
 	  get "add_to_command"
 	  get "recommendation_index"
 	  get "add_recommendation"
+	  get "add_favorite"
+	  get "favorite_index"
 	  end
 
       resources :turs

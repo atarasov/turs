@@ -31,6 +31,9 @@ class User < ActiveRecord::Base
   has_many :teams, :class_name => "Command", :foreign_key => :member_id
   has_many :leaders, :class_name => "User", :through => :teams
 
+  has_many :favorite_users, :class_name => "Favorite", :dependent => :delete_all
+  has_many :favorites, :class_name => "User", :through => :favorite_users
+
   has_many :monitorships, :dependent => :delete_all
   has_many :monitored_topics, :through => :monitorships, :source => :topic, :conditions => {"#{Monitorship.table_name}.active" => true}
 

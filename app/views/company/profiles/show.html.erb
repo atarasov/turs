@@ -171,12 +171,12 @@
 	<% if current_user.present? && current_user.id != @profile.id && !(current_user.recommended_users.include? @profile) %>
 		<a class="btn-proritet" href="<%= add_recommendation_company_profile_url %>">Рекомендовать</a>
 	<% end %>
-
 	<% if current_user.present? && current_user.id != @profile.id && !(current_user.members.include? @profile) %>
 		<a class="btn-proritet" href="<%= add_to_command_company_profile_url %>">Добавить в команду</a>
 	<% end %>
-    <a class="btn-proritet" href="#"><img src="/images/btn-add-prioritet.png" alt="image description"/></a>
-
+	<% if current_user.present? && current_user.id != @profile.id && !(current_user.favorites.include? @profile) %>
+    	<a class="btn-proritet" href="<%= add_favorite_company_profile_url %>"><img src="/images/btn-add-prioritet.png" alt="image description"/></a>
+	<% end %>
     <div class="box-gids">
       <strong>Наши гиды</strong>
 
