@@ -41,7 +41,7 @@ class RecommendedService < Service
   end
 
   def self.activated(user)
-      self.where("status = ? AND expire_date < ? AND user_id = ?" ,Service::STATUS[:active], Date.now, user.id).size > 0 ? true : false
+      self.where("status = ? AND expire_date < ? AND user_id = ?" ,Service::STATUS[:active], Time.now, user.id).size > 0 ? true : false
     end
 
   default_scope where :service_type => @type_service
