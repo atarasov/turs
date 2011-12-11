@@ -1,7 +1,7 @@
 TursPro::Application.routes.draw do
 
 
-  namespace :paid_service  do
+  namespace :paid_service do
     get "pro"
     get "vip"
     get "site_link"
@@ -140,15 +140,17 @@ TursPro::Application.routes.draw do
   match "/remove_favorite", :controller => "company/profiles", :action => "remove_favorite"
 
   namespace :company do
+
     resources :profiles do
-	  member do
-	  get "command_index"
-	  get "add_to_command"
-	  get "recommendation_index"
-	  get "add_recommendation"
-	  get "add_favorite"
-	  get "favorite_index"
-	  end
+      resources :rewards
+      member do
+        get "command_index"
+        get "add_to_command"
+        get "recommendation_index"
+        get "add_recommendation"
+        get "add_favorite"
+        get "favorite_index"
+      end
 
       resources :turs
       member do
@@ -169,7 +171,7 @@ TursPro::Application.routes.draw do
         end
 
       end
-      
+
     end
     root :controller => "main", :action => "index"
   end

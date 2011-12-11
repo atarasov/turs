@@ -42,8 +42,7 @@
             <%# end %>
           </div>
           <p><%#= h post.text %></p>
-          <span>Раздел: <%# if post.category%> <%#= link_to role(user), role_link(user) %> <%# end %>
-            <%# if post.user %></span>
+          <span>Раздел: <%= type_profiles(user) %></span>
           <span class="line-p-right"><%= link_to 'Отзывы (0)', company_comments_url(user) %><em>&nbsp;</em></span>
           <span class="line-p-right"><%= link_to 'Видео (0)', company_videos_url(user)  %><em>&nbsp;</em> </span>
           <span class="line-p-right"><%= link_to 'Фото (0)', company_photos_url(user)  %><em>&nbsp;</em></span>

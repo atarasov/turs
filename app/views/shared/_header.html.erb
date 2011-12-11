@@ -42,6 +42,7 @@
               <ul>
                 <li><%= link_to 'В профиль', company_profile_url(current_user) %></li>
                 <li>Статистика</li>
+                <li><%= link_to t(:add), new_company_profile_reward_url(current_user)%> / <%= link_to t(:all), company_profile_rewards_url(current_user)%></li>
                 <li><b>Профиль:</b> <%= link_to t(:change_data), edit_company_profile_url(current_user) %>  / <%= link_to t(:change_password), edit_user_url(current_user) %> / <%= link_to 'Выйти', logout_url %></li>
               </ul>
             </div>

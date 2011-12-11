@@ -1,0 +1,25 @@
+<h1>Listing rewards</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rewards.each do |reward| %>
+  <tr>
+    <td><%= reward.title %></td>
+    <td><%= image_tag reward.image.url(:thumbnail) %></td>
+    <td><%= link_to 'Show', company_profile_reward_path(current_user.id, reward) %></td>
+    <td><%= link_to 'Edit', edit_company_profile_reward_path(reward.user_id, reward) %></td>
+    <td><%= link_to 'Destroy', company_profile_reward_path(current_user.id, reward), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reward', new_company_profile_reward_url(current_user) %>
