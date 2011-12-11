@@ -21,10 +21,10 @@ gem 'rack-openid'
 gem 'will_paginate', '~> 3.0'
 gem 'bluecloth'
 gem 'RedCloth', :require => "redcloth"
-
 gem 'acts_as_list'
 gem 'acts_as_state_machine'
 gem 'permalink_fu'
+gem 'later_dude', '>= 0.3.1'
 
 #group :development, :test do
 #  gem 'rspec-rails'
