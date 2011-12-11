@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111209210515) do
+ActiveRecord::Schema.define(:version => 20111211181112) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(:version => 20111209210515) do
     t.text     "description"
     t.string   "title"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "balances", :force => true do |t|
+    t.float    "sum",          :default => 0.0
+    t.integer  "user_id"
+    t.boolean  "is_ingoing"
+    t.boolean  "is_confirmed", :default => false
+    t.string   "comment",      :default => ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end

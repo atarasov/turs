@@ -140,6 +140,8 @@ TursPro::Application.routes.draw do
   match "/remove_favorite", :controller => "company/profiles", :action => "remove_favorite"
 
   namespace :company do
+	resources :finance
+
     resources :profiles do
 	  member do
 	  get "command_index"
