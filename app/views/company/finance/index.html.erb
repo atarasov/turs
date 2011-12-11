@@ -1,0 +1,38 @@
+<table>
+  <thead>
+  <tr>
+	<td>
+	  Дата
+	</td>
+	<td>
+	  Операция
+	</td>
+	<td>
+	  Сумма
+	</td>
+	<td>
+	  Описание
+	</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% for billing in @billings %>
+  	<tr>
+		<%= billing.created_at %>
+  	</tr>
+  	<tr>
+		<% if billing.is_confirmed %>
+			<%= billing.is_ingoing? ? "Зачисление денежных средств" : "Списание денежных средств" %>
+		<% else %>
+			<%= billing.is_ingoing? ? "Неоплаченный счет на пополнение баланса" : "Неоплаченная заявка на услуги" %>
+		<% end %>
+  	</tr>
+  	<tr>
+		<%= billing.sum %>
+  	</tr>
+  	<tr>
+		<%= billing.comment %>
+  	</tr>
+  <% end %>
+  </tbody>
+</table>

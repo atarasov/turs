@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(:version => 20111211181744) do
     t.datetime "updated_at"
   end
 
+  create_table "balances", :force => true do |t|
+    t.float    "sum",          :default => 0.0
+    t.integer  "user_id"
+    t.boolean  "is_ingoing"
+    t.boolean  "is_confirmed", :default => false
+    t.string   "comment",      :default => ""
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "brain_busters", :force => true do |t|
     t.string "question"
     t.string "answer"
