@@ -1,1 +1,7 @@
 <h1><%= t(:vip_service) %></h1>
+
+<% unless VipPlacement.activated(current_user) %>
+  <%= link_to "Активировать", paid_service_activate_vip_url %>
+<% else %>
+  Активированно! <%= link_to "Продлить?", paid_service_activate_vip_url %>
+<% end %>

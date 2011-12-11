@@ -1,1 +1,7 @@
 <h1><%= t(:journsl_service) %></h1>
+
+<% unless JournalService.activated(current_user) %>
+  <%= link_to "Активировать", paid_service_activate_journal_url %>
+<% else %>
+  Активированно! <%= link_to "Продлить?", paid_service_activate_journal_url %>
+<% end %>

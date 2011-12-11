@@ -141,6 +141,10 @@ class User < ActiveRecord::Base
     self.openid_url.blank? ? false : true
   end
 
+  def get_balance
+    1500
+  end
+
   def to_xml(options = {})
     options[:except] ||= []
     options[:except] += [:email, :login_key, :login_key_expires_at, :password_hash, :openid_url, :activated, :admin]

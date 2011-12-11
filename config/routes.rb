@@ -1,6 +1,5 @@
 TursPro::Application.routes.draw do
 
-
   namespace :paid_service do
     get "pro"
     get "vip"
@@ -9,6 +8,14 @@ TursPro::Application.routes.draw do
     get "selection"
     get "advertising_in_journal"
     get "advertising_in_site"
+
+    get "activate_pro"
+    get "activate_vip"
+    get "activate_site_link"
+    get "activate_recommended"
+    get "activate_selection"
+    get "activate_journal"
+    get "activate_advertising_in_site"
   end
 
   #get "stend/edit"

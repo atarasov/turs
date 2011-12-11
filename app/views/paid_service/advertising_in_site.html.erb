@@ -1,1 +1,7 @@
 <h1><%= t(:in_site_service) %></h1>
+
+<% unless InSiteService.activated(current_user) %>
+  <%= link_to "Активировать", paid_service_activate_advertising_in_site_url %>
+<% else %>
+  Активированно! <%= link_to "Продлить?", paid_service_activate_advertising_in_site_url %>
+<% end %>
