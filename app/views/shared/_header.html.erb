@@ -29,7 +29,7 @@
 
               </ul>
               <ul>
-                <li><b><%= t(:vip_service)%>:</b> (<%= link_to t(:popr), paid_service_pro_url %>)</li>
+                <li><b><%= t(:pro_service)%>:</b> (<%= link_to t(:popr), paid_service_pro_url %>)</li>
                 <li><b><%= t(:recommended_service) %>:</b> (<%= link_to t(:popr), paid_service_recommended_url %>)</li>
                 <li><b><%= t(:vip_service)%>:</b> (<%= link_to t(:popr), paid_service_vip_url %>)</li>
                 <li><b><%= t(:adv_turs)%>:</b> <span> (<%= current_user.comments.recent.all.count %>)</span><em>&nbsp;</em> <%= link_to_unless_current t(:add), new_tur_url() %> / <%= link_to_unless_current t(:my_turs), turs_url(:user_id => current_user.id) %></li>
@@ -42,6 +42,7 @@
               <ul>
                 <li><%= link_to 'В профиль', company_profile_url(current_user) %></li>
                 <li>Статистика</li>
+                <li><%= link_to t(:add), new_company_profile_reward_url(current_user)%> / <%= link_to t(:all), company_profile_rewards_url(current_user)%></li>
                 <li><b>Профиль:</b> <%= link_to t(:change_data), edit_company_profile_url(current_user) %>  / <%= link_to t(:change_password), edit_user_url(current_user) %> / <%= link_to 'Выйти', logout_url %></li>
               </ul>
             </div>
