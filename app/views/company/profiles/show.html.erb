@@ -1,6 +1,6 @@
 <div class="box-orange">
   <div class="box-orange-frame">
-    <% if params[:id].to_i.eql?(current_user.id.to_i)%>
+    <% if current_user and params[:id].to_i.eql?(current_user.id.to_i) %>
     <ul class="edit">
       <li><%= link_to t(:edit_stend), edit_company_stend_url %></li>
       <li>|</li>
