@@ -14,43 +14,49 @@
 
 
 
-<div class="journal-favorites">
-  <strong> Каталог <%#= "<em>#{@category.name}</em>" if @category && @category.name %></strong>
+<div >
+ <p class="journal-favorites"> <strong> Каталог <%#= "<em>#{@category.name}</em>" if @category && @category.name %></strong></p>
 
   <!--<span class="line-p-right"><img src="/images/ico-qn.png" alt="image description"/><%#= link_to 'Добавить свою статью', new_category_journal_url(@category), :class=>'add-post' %></span>-->
-  <ul>
+  <div class="main_catalog">
     <% @users.each do |user| %>
-        <li>
+        <div class="element_catalog" <% if SelectionService.activated(user)%> style="background-color: #DFF3FF;" <% end %>>
           <!--<em><%=  Russian::strftime(user.created_at, "%d %B %Y") %></em>-->
-
-          <p class="title"><%= link_to user.email, company_profile_url(user) %></p>
-
-          <p><%=  user.slogan %></p>
- <span class="stat">
-          <span style="margin-bottom: 5px"><img src="/images/ico-small-list.png" alt="image description"/>Рейтинг: <span><%= user.raiting %></span></span><br/>
-          <span style="margin-bottom: 5px"><img src="/images/ico-small-arrow.png" alt="image description"/>Просмотров: <span><%= user.review %></span></span><br/>
-          <span style="margin-bottom: 5px"><img src="/images/ico-small-dollar.png" alt="image description"/>Цена: <span><%= user.price %></span></span><br/>
-          <span style="margin-bottom: 5px"><img src="/images/ico-small-book.png" alt="image description"/>Статьи: <span><%= Journal.where(:user_id => user.id ).count %></span></span><br/>
-        </span>
-          <div class="img-holder">
-            <%# @photos = post.journal_photos.limit(3) %>
-            <%# for photos in @photos do %>
-                <%#= image_tag photos.image.url(:small) %>
-            <img src="/images/img42.jpg" alt="image description"/>
-            <img src="/images/img42.jpg" alt="image description"/>
-            <img src="/images/img42.jpg" alt="image description"/>
-            <%# end %>
+          <div class="catalog_info">
+            <%= image_tag user.avatar.url(:small), :style => "float:left; padding:15px;" %>
+            <%= link_to user.name, company_profile_url(user) %>
+            <div>Город: <%= user.city.name if user.city %></div>
+            <div>Раздел: <%= type_profiles(user) %></div>
+            <div><%=  user.slogan %></div>
           </div>
-          <p><%#= h post.text %></p>
-          <span>Раздел: <%= type_profiles(user) %></span>
-          <span class="line-p-right"><%= link_to 'Отзывы (0)', company_comments_url(user) %><em>&nbsp;</em></span>
-          <span class="line-p-right"><%= link_to 'Видео (0)', company_videos_url(user)  %><em>&nbsp;</em> </span>
-          <span class="line-p-right"><%= link_to 'Фото (0)', company_photos_url(user)  %><em>&nbsp;</em></span>
 
 
-        </li>
+ <div class="stat" <% if SelectionService.activated(user)%> style="background-color: #E8E0CE;" <% end %>>
+          <span style="margin: 0 0 5px 0;"><img src="/images/ico-small-list.png" alt="image description"/>Рейтинг: <span><%= user.raiting %></span></span><br/>
+          <span style="margin: 0 0 5px 0;"><img src="/images/ico-small-arrow.png" alt="image description"/>Просмотров: <span><%= user.review %></span></span><br/>
+          <span style="margin: 0 0 5px 0;"><img src="/images/ico-small-dollar.png" alt="image description"/>Цена: <span><%= user.price %></span></span><br/>
+          <span style="margin: 0 0 5px 0;"><img src="/images/ico-small-book.png" alt="image description"/>Статьи: <span><%= Journal.where(:user_id => user.id ).count %></span></span><br/>
+        </div>
+          <% if ProAccount.activated(user)%>
+          <ul class="pro_content_catalog">
+            <% @photos = user.photos.limit(3) %>
+            <% for photos in @photos do %>
+                <li><%= image_tag photos.image.url(:small) %></li>
+            <% end %>
+          </ul>
+          <% end %>
+          <div class="links">
+          <ul class="catalog_bottom">
+
+          <li><%= link_to 'Отзывы (0)', company_comments_url(user) %><em>&nbsp;</em></li>
+          <li><%= link_to 'Видео (0)', company_videos_url(user)  %><em>&nbsp;</em> </li>
+          <li><%= link_to 'Фото (0)', company_photos_url(user)  %><em>&nbsp;</em></li>
+
+          </ul>
+            </div>
+        </div>
     <% end %>
-  </ul>
+  </div>
 
 
 

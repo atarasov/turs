@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :site_id
 
   has_many :turs
+  belongs_to :city
   has_many :rewards
   has_many :services
   has_many :stends
@@ -56,7 +57,7 @@ class User < ActiveRecord::Base
                   :twitter_url, :exclus, :jj_url, :avatar, :avatar_file_name,
                   :avatar_content_type, :avatar_file_size, :avatar_updated_at,:is_hotel,
                   :is_tour_operator, :is_recreation_center,:is_sanatorium,:is_hostel,
-                  :is_guide ,:is_taxi, :is_mini_hotel, :is_tur_agency, :is_user
+                  :is_guide ,:is_taxi, :is_mini_hotel, :is_tur_agency, :is_user, :link_to_site
   #acts_as_authentic
   #easy_roles :roles
   has_one :profile

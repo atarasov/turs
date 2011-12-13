@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111211181744) do
+ActiveRecord::Schema.define(:version => 20111213201604) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -531,6 +531,7 @@ ActiveRecord::Schema.define(:version => 20111211181744) do
     t.datetime "avatar_updated_at"
     t.boolean  "is_tour_agency",                          :default => false
     t.integer  "city_id",                                 :default => 0
+    t.string   "link_to_site",                            :default => " "
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
