@@ -2629,3 +2629,38 @@ a.prev span, a.next span {
 	float: none;
 	clear: both;
 }
+
+.catalog_info{
+    float: left;
+    margin: 0 0 18px;
+    width: 470px;
+}
+
+.element_catalog{
+    padding: 10px 8px;
+    position: relative;
+    overflow: hidden;
+}
+.main_catalog{
+    border: 1px solid #CCCCCC;
+    margin: 0 0 10px;
+    padding: 5px 10px 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat span{margin: 0 0 5px 0 !important; display: inline-block !important;}
+.catalog_bottom{float: right;width: 195px;list-style-type: none;}
+.catalog_bottom li, .pro_content_catalog li{display: inline;}
+.links{clear: both;}
+.pro_content_catalog{
+    clear: both;
+    list-style-type: none;
+    margin: 0 0 18px 40px;
+    padding: 0;
+}
+.pro_content_catalog li {
+     display: block;
+  float: left;
+  width: 30%;
+}

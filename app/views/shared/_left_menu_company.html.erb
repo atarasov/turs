@@ -24,21 +24,23 @@
     </div>
   </div>
   <div class="box-grey">
-    <div class="box-grey-holder">
-      <div class="box-grey-frame">
-        <a href="#" class="gift">Сделать подарок</a>
-        <a href="#" class="share">Поделиться</a>
+    <!--<div class="box-grey-holder">-->
+      <!--<div class="box-grey-frame">-->
+        <!--<a href="#" class="gift">Сделать подарок</a>-->
+        <!--<a href="#" class="share">Поделиться</a>-->
 
-        <div class="social-holder">
-          <ul class="social">
-            <% if @profile.twitter_url %><li><a href="<%= @profile.twitter_url %>"><img src="/images/ico-twitter.png" alt="image description"/></a></li><% end %>
-            <% if @profile.facebook_url %><li><a href="<%= @profile.facebook_url %>"><img src="/images/ico-facebook.png" alt="image description"/></a></li><% end %>
-            <% if @profile.jj_url %><li><a href="<%= @profile.jj_url %>"><img src="/images/ico-livejournal.png" alt="image description"/></a></li><% end %>
-            <% if @profile.vkontakte_url %><li><a href="<%= @profile.vkontakte_url %>"><img src="/images/ico-vkontakte.png" alt="image description"/></a></li><% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
+        <!--<div class="social-holder">-->
+          <!--<ul class="social">-->
+            <!--<%# if @profile.twitter_url %><li><a href="<%#= @profile.twitter_url %>"><img src="/images/ico-twitter.png" alt="image description"/></a></li><%# end %>-->
+            <!--<%# if @profile.facebook_url %><li><a href="<%#= @profile.facebook_url %>"><img src="/images/ico-facebook.png" alt="image description"/></a></li><%# end %>-->
+            <!--<%# if @profile.jj_url %><li><a href="<%#= @profile.jj_url %>"><img src="/images/ico-livejournal.png" alt="image description"/></a></li><%# end %>-->
+            <!--<%# if @profile.vkontakte_url %><li><a href="<%#= @profile.vkontakte_url %>"><img src="/images/ico-vkontakte.png" alt="image description"/></a></li><%# end %>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <% if LinkToSite.activated(@profile) %>Ссылкана сайт <a href="<%= @profile.link_to_site %>"><%= @profile.link_to_site %></a> <% end %>
   </div>
 	<% if current_user.present? && current_user.id == @profile.id && @profile.teams.where(:is_confirmed => false).any? %>
 		<div class="box-blue">

@@ -42,7 +42,7 @@ class InSiteService < Service
 
   def self.activated(user)
       self.where("status = ? AND user_id = ?" ,Service::STATUS[:active], user.id).size > 0 ? true : false
-    end
+  end
 
   default_scope where :service_type => @type_service
   

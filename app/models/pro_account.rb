@@ -9,13 +9,13 @@ class ProAccount < Service
     if user.get_balance > @price && !@is_test
       Service.create(:user_id => user,
                      :expire_date => Time.now + @expire_periud,
-                     :amount => self.price,
+                     :amount => @price,
                      :service_type => @type_service,
                      :is_test => @is_test,
                      :status => Service::STATUS[:active]
 
       )
-    elsif user.get_balance < self.price && !@is_test
+    elsif user.get_balance < @price && !@is_test
       Service.create(:user_id => user,
                      :expire_date => Time.now + @expire_periud,
                      :amount => @price,
