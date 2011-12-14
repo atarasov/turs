@@ -165,7 +165,7 @@ class Company::ProfilesController < Company::BaseController
 	  command.save
 	end
 
-	redirect_to :action => :command_index, :id => command.leader_id
+	redirect_to command_index_company_profile_url(command.leader_id)
   end
 
   def decline_command_call
