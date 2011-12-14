@@ -12,11 +12,13 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
-  adapter: mysql2
+  adapter: mysql
   host: localhost
   database: turs_pro
   username: root
-  password: root
+  password: 
+  encoding: utf8
+
 
 # Warning: The database defined as 'test' will be erased and
 # re-generated from your development database when you run 'rake'.

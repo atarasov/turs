@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates_presence_of :site_id
 
   has_many :turs
+  has_many :rewards
+  has_many :services
   has_many :stends
   has_many :directions
   has_many :posts, :order => "#{Post.table_name}.created_at desc"
@@ -31,9 +33,14 @@ class User < ActiveRecord::Base
   has_many :teams, :class_name => "Command", :foreign_key => :member_id
   has_many :leaders, :class_name => "User", :through => :teams
 
+  has_many :favorite_users, :class_name => "Favorite", :dependent => :delete_all
+  has_many :favorites, :class_name => "User", :through => :favorite_users
+
   has_many :monitorships, :dependent => :delete_all
   has_many :monitored_topics, :through => :monitorships, :source => :topic, :conditions => {"#{Monitorship.table_name}.active" => true}
 
+
+  has_many :balances
   has_permalink :login, :scope => :site_id
 
   attr_readonly :posts_count, :last_seen_at
@@ -134,6 +141,10 @@ class User < ActiveRecord::Base
 
   def using_openid
     self.openid_url.blank? ? false : true
+  end
+
+  def get_balance
+    1500
   end
 
   def to_xml(options = {})

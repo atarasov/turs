@@ -1,7 +1,6 @@
 TursPro::Application.routes.draw do
 
-
-  namespace :paid_service  do
+  namespace :paid_service do
     get "pro"
     get "vip"
     get "site_link"
@@ -9,6 +8,14 @@ TursPro::Application.routes.draw do
     get "selection"
     get "advertising_in_journal"
     get "advertising_in_site"
+
+    get "activate_pro"
+    get "activate_vip"
+    get "activate_site_link"
+    get "activate_recommended"
+    get "activate_selection"
+    get "activate_journal"
+    get "activate_advertising_in_site"
   end
 
   #get "stend/edit"
@@ -137,15 +144,21 @@ TursPro::Application.routes.draw do
 
   match "/accept_command_call", :controller => "company/profiles", :action => "accept_command_call"
   match "/decline_command_call", :controller => "company/profiles", :action => "decline_command_call"
+  match "/remove_favorite", :controller => "company/profiles", :action => "remove_favorite"
 
   namespace :company do
+	resources :finance
+
     resources :profiles do
-	  member do
-	  get "command_index"
-	  get "add_to_command"
-	  get "recommendation_index"
-	  get "add_recommendation"
-	  end
+      resources :rewards
+      member do
+        get "command_index"
+        get "add_to_command"
+        get "recommendation_index"
+        get "add_recommendation"
+        get "add_favorite"
+        get "favorite_index"
+      end
 
       resources :turs
       member do
@@ -166,7 +179,7 @@ TursPro::Application.routes.draw do
         end
 
       end
-      
+
     end
     root :controller => "main", :action => "index"
   end

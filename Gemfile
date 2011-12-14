@@ -4,8 +4,9 @@ gem 'rails', "3.0.9"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'mysql2', '~> 0.2.7'
-gem "rake", "0.8.7"
+#gem 'mysql2', '~> 0.2.7'
+gem 'mysql'
+gem "rake"
 
 #gem 'devise'
 gem "haml"
@@ -19,12 +20,13 @@ gem 'acts_as_commentable'
 gem 'ruby-openid', '>= 2.0.4', :require => "openid"
 gem 'rack-openid'
 gem 'will_paginate', :git => "http://github.com/mislav/will_paginate.git", :branch => "rails3"
-gem 'bluecloth'
+#gem 'bluecloth'
 gem 'RedCloth', :require => "redcloth"
 
 gem 'acts_as_list'
 gem 'acts_as_state_machine'
 gem 'permalink_fu'
+gem 'later_dude', '>= 0.3.1'
 
 #group :development, :test do
 #  gem 'rspec-rails'

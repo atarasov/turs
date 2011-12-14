@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111208174352) do
+ActiveRecord::Schema.define(:version => 20111211181744) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(:version => 20111208174352) do
     t.text     "description"
     t.string   "title"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "balances", :force => true do |t|
+    t.float    "sum",          :default => 0.0
+    t.integer  "user_id"
+    t.boolean  "is_ingoing"
+    t.boolean  "is_confirmed", :default => false
+    t.string   "comment",      :default => ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -133,6 +143,13 @@ ActiveRecord::Schema.define(:version => 20111208174352) do
     t.text     "description"
     t.text     "about"
     t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "user_id",     :default => 0
+    t.integer  "favorite_id", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -287,6 +304,28 @@ ActiveRecord::Schema.define(:version => 20111208174352) do
   create_table "recommendations", :force => true do |t|
     t.integer  "referee_id",          :default => 0
     t.integer  "recommended_user_id", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rewards", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.string   "image_file_size"
+    t.string   "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "services", :force => true do |t|
+    t.integer  "user_id"
+    t.date     "expire_date"
+    t.integer  "amount"
+    t.boolean  "is_test"
+    t.integer  "status"
+    t.string   "service_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,7 +4,14 @@ class Company::BaseController < ApplicationController
   
   #before_filter :authenticate_user!
    def profile_find
-     @profile = User.find(params[:id]) if params[:id]
+     if params[:profile_id]
+       @profile = User.find(params[:profile_id])
+     else
+       @profile = User.find(params[:id])
+     end
+     if params[:user_id]
+       @profile = User.find(params[:user_id])
+     end
    end
 
 end

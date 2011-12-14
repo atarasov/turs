@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @reward.title %>
+</p>
+
+<p>
+  <%= image_tag @reward.image.url(:middle) %>
+</p>
+
+
+<%= link_to 'Edit', edit_company_profile_reward_path(@reward.user_id, @reward) %> |
+<%= link_to 'Back', company_profile_rewards_path %>

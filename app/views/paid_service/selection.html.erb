@@ -1,1 +1,7 @@
 <h1><%= t(:selection_service) %></h1>
+
+<% unless SelectionService.activated(current_user) %>
+  <%= link_to "Активировать", paid_service_activate_selection_url %>
+<% else %>
+  Активированно! <%= link_to "Продлить?", paid_service_activate_selection_url %>
+<% end %>

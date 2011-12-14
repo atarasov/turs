@@ -1,0 +1,23 @@
+<div class="box-comand">
+  <strong>Приоритеты</strong>
+
+  <div class="box-comand-holder">
+    <ul>
+	  <% for favorite_user in @profile.favorite_users %>
+      <li>
+        <img src="<%= favorite_user.favorite.avatar.url(:small) %>" alt="<%= favorite_user.favorite.display_name %>"/>
+
+        <div class="comand-holder">
+          <img src="/images/ico-pro.png" alt="image description"/>
+          <strong><a href="<%= company_profile_url(favorite_user.favorite_id) %>"><%= favorite_user.favorite.display_name %></a></strong>
+          <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em><%= favorite_user.favorite.raiting %></em></span>
+          <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em><%= favorite_user.favorite.review %></em></span>
+		  <% if @profile.id == current_user.id %>
+		  	<span><em><%= link_to "Удалить из приоритетов", remove_favorite_url(:favorite_id => favorite_user.id) %></em></span>
+		  <% end %>
+        </div>
+      </li>
+	  <% end %>
+    </ul>
+  </div>
+</div>

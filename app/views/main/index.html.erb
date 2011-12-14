@@ -81,24 +81,28 @@
   <div class="box-dark-orange-c-holder">
     <div class="box-dark-orange-c-frame">
       <div class="journal-favorites">
-        <strong>Туристический журнал <em>Избранное</em></strong>
+        <strong class="strong">Туристический журнал <em>Избранное</em></strong>
         <span>Статьи отобранные редакцией сайта <a href="/">turs.pro</a></span>
         <!--<span class="line-p-right"><img src="images/ico-qn.png" alt="image description"/><a class="add-post" href="#">Добавить свою статью</a></span>-->
         <ul>
           <% for post in @journals -%>
               <li>
                 <em><%= Russian::strftime(post.created_at, "%d %B %Y") %></em>
-                <a href="#"><strong></strong></a>
+                <!--a href="#"><strong></strong></a-->
 
                 <p class="title"><%= link_to post.title, post %></p>
 
+                <% @photos = post.journal_photos.limit(3)
+                   if @photos.count > 0
+                %>
                 <div class="img-holder">
-                  <% @photos = post.journal_photos.limit(3) %>
+
                   <% for photo in @photos do %>
                       <%= image_tag photo.image.url(:small) %>
                       <!--<img src="/images/img42.jpg" alt="image description"/>-->
                   <% end %>
                 </div>
+                <% end %>
                 <p><%= truncate(post.text, 400, '...')  %></p>
           <span>Раздел:
             <% if post.category %> <%= link_to post.category.name, post.category %> <% end %>

@@ -6,7 +6,7 @@
 require 'bundler/deployment'
 
 set :application, "turspro"
-set :repository,  "git@turspro.unfuddle.com:turspro/turspro.git"
+set :repository,  "git://github.com/atarasov/turs.git"
 
 dpath = "/opt/www/#{application}"
 

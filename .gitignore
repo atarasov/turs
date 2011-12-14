@@ -1,6 +1,7 @@
 .idea/*
 .idea/workspace.xml
 Gemfile.lock
+Gemfile
 .bundle
 public/system/*
 test/*
@@ -10,5 +11,5 @@ log/
 tmp/**/*
 vendor/bundle
 vendor/cache
-
+config/database.yml
 
