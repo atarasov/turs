@@ -17,7 +17,7 @@
   <%= javascript_include_tag 'application.js', 'ajaxupload.3.5.js' %>
   <%= javascript_include_tag 'jquery.tools.min' %>
   <%= csrf_meta_tag %>
-  <%= javascript_include_tag 'jquery', 'jquery-ui.min', 'application', 'rails', 'jquery.tools.min', 'form' %>
+  <%= javascript_include_tag 'jquery', 'jquery-ui.min', 'application', 'rails', 'jquery.tools.min' %>
   <%= javascript_include_tiny_mce_if_used %>
   <%= tiny_mce if using_tiny_mce? %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
@@ -38,9 +38,9 @@
       <%= render :partial => "shared/righ_menu" %>
 
       <div id="content" style="height:1%;overflow:hidden;">
-        <div class="box-blue-c">
+        <!--div class="box-blue-c">
           <div class="box-blue-c-holder">
-            <div class="box-blue-c-frame">
+            <div class="box-blue-c-frame"-->
               <% if notice and notice.length > 0 %><p class="notice"><%= notice %></p><% end %>
               <% if alert and alert.length > 0 %><p class="alert"><%= alert %></p><% end %>
 
@@ -52,9 +52,9 @@
               <%#= current_user.inspect %>
               <%= yield %>
 
-            </div>
+            <!--/div>
           </div>
-        </div>
+        </div-->
 
 
         <%= yield :country_journal %>
