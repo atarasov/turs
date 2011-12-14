@@ -3,14 +3,14 @@
 
 <div class="tabs-2">
   <div class="tabs-area">
-  <script type="text/javascript">
-    function tabSelect(obj){
-        jQuery('.tab-content').hide();
-        jQuery('#'+obj).toggle();
-        jQuery('.tabset li').removeClass('active');
-        jQuery('#'+obj+'-head').addClass('active');
-    }
-  </script>
+    <script type="text/javascript">
+        function tabSelect(obj) {
+            jQuery('.tab-content').hide();
+            jQuery('#' + obj).toggle();
+            jQuery('.tabset li').removeClass('active');
+            jQuery('#' + obj + '-head').addClass('active');
+        }
+    </script>
     <div class="decor">
       <div class="decor-holder">
         <div class="decor-frame">
@@ -38,6 +38,7 @@
         <ul>
           <li>
             <img src="images/dig1.jpg" alt="image description">
+
             <div class="orange-holder">
               <strong>Найти исполнителя</strong>
               <em>Подобрать лучшее предложение по цене и качеству</em>
@@ -45,6 +46,7 @@
           </li>
           <li>
             <img src="images/dig2.jpg" alt="image description">
+
             <div class="orange-holder">
               <strong>Задать вопрос на форуме</strong>
               <em>На вопросы отвечают профессионалы туристического бизнеса</em>
@@ -52,6 +54,7 @@
           </li>
           <li>
             <img src="images/dig3.jpg" alt="image description">
+
             <div class="orange-holder">
               <strong>Узнать новейшие тенденции отдыха</strong>
               <em>Новости, статьи, интервью, фотоотчеты</em>
@@ -81,20 +84,21 @@
             </div>
           </fieldset>
         </form>
-<script type="text/javascript">
-  $("document").ready(function(){
-	  $("#frm_navigation").submit(function(){
-			if (parseInt($("#id3").val())){
-				window.location.href = "/catalog/" + $("#id4").val() + "?city_id=" + $("#id3").val()
-			}
-			else{
-				window.location.href = "/catalog/" + $("#id4").val();
-			};
+        <script type="text/javascript">
+            $("document").ready(function() {
+                $("#frm_navigation").submit(function() {
+                    if (parseInt($("#id3").val())) {
+                        window.location.href = "/catalog/" + $("#id4").val() + "?city_id=" + $("#id3").val()
+                    }
+                    else {
+                        window.location.href = "/catalog/" + $("#id4").val();
+                    }
+                    ;
 
-		  return false;
-	  });
-  });
-</script>
+                    return false;
+                });
+            });
+        </script>
       </div>
     </div>
     <div class="tab-content" id="tab-2" style="display: none">
@@ -107,6 +111,7 @@
         <ul>
           <li>
             <img src="images/dig1.jpg" alt="image description">
+
             <div class="orange-holder">
               <strong>Найти клиентов</strong>
               <em>Подобрать лучшее предложение по цене и качеству</em>
@@ -114,6 +119,7 @@
           </li>
           <li>
             <img src="images/dig2.jpg" alt="image description">
+
             <div class="orange-holder">
               <strong>Пообщаться с коллегами</strong>
               <em>На вопросы отвечают профессионалы туристического бизнеса</em>
@@ -121,6 +127,7 @@
           </li>
           <li>
             <img src="images/dig3.jpg" alt="image description">
+
             <div class="orange-holder">
               <strong>Узнать что-то новенькое</strong>
               <em>Новости, статьи, интервью, фотоотчеты</em>
@@ -129,7 +136,7 @@
         </ul>
       </div>
 
-	</div>
+    </div>
   </div>
 </div>
 
@@ -205,10 +212,21 @@
 
 </script>
 </div-->
+<div class="new_turs">
 
+  <% @new_turs.each do |tur| %>
+      <div>
+        <%= link_to image_tag(tur.image.url(:thumbnail)), tur %>
+        <br/>
+        <%= link_to tur.title, tur, :class => "name" %>
+      </div>
+  <% end %>
+
+</div>
 <div class="box-dark-orange-c">
   <div class="box-dark-orange-c-holder">
     <div class="box-dark-orange-c-frame">
+
       <div class="journal-favorites">
         <strong class="strong">Туристический журнал <em>Избранное</em></strong>
         <span>Статьи отобранные редакцией сайта <a href="/">turs.pro</a></span>
@@ -224,15 +242,15 @@
                 <% @photos = post.journal_photos.limit(3)
                    if @photos.count > 0
                 %>
-                <div class="img-holder">
+                    <div class="img-holder">
 
-                  <% for photo in @photos do %>
-                      <%= image_tag photo.image.url(:small) %>
-                      <!--<img src="/images/img42.jpg" alt="image description"/>-->
-                  <% end %>
-                </div>
+                      <% for photo in @photos do %>
+                          <%= image_tag photo.image.url(:small) %>
+                          <!--<img src="/images/img42.jpg" alt="image description"/>-->
+                      <% end %>
+                    </div>
                 <% end %>
-                <p><%= truncate(post.text, 400, '...')  %></p>
+                <p><%= truncate(post.text, 400, '...') %></p>
           <span>Раздел:
             <% if post.category %> <%= link_to post.category.name, post.category %> <% end %>
             <% if post.user %> |  Разместил: <%= link_to post.user.email, company_profile_url(post.user) %><% end %></span>

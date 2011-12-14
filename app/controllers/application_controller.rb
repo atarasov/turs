@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper :all, :action_link
-  before_filter :get_settings, :get_journal_categories, :set_locale
+  before_filter :get_settings, :get_journal_categories, :set_locale, :get_new_turs
   #skip_before_filter :verify_authenticity_token
   uses_tiny_mce(:options => AppConfig.default_mce_options, :only => [:new, :edit])
 
@@ -34,6 +34,11 @@ class ApplicationController < ActionController::Base
   def get_journal_categories
     @journal_categories = Category.find(:all)
   end
+
+  def get_new_turs
+    @new_turs = Tur.limit(5)
+  end
+
 
   def set_locale
     # update session if passed

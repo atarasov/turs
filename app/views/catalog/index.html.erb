@@ -15,10 +15,24 @@
 
 
 <div >
+
  <p class="journal-favorites"> <strong> Каталог <%#= "<em>#{@category.name}</em>" if @category && @category.name %></strong></p>
 
   <!--<span class="line-p-right"><img src="/images/ico-qn.png" alt="image description"/><%#= link_to 'Добавить свою статью', new_category_journal_url(@category), :class=>'add-post' %></span>-->
   <div class="main_catalog">
+    <div class="vip">
+    <ul>
+      <% @vips.each do |vip|%>
+        <li>
+          <div>
+            <%= link_to image_tag(vip.user.avatar.url(:small)), company_profile_url(vip.user) , :style => "float:left; padding-right:10px"%>
+            <%= link_to vip.user.name, company_profile_url(vip.user)  %><br/>
+            <%= vip.user.info  %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
     <% @users.each do |user| %>
         <div class="element_catalog" <% if SelectionService.activated(user)%> style="background-color: #DFF3FF;" <% end %>>
           <!--<em><%=  Russian::strftime(user.created_at, "%d %B %Y") %></em>-->

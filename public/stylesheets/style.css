@@ -2821,3 +2821,12 @@ a.prev span, a.next span {
   float: left;
   width: 30%;
 }
+
+.vip li {
+  display: block;
+  float: left;
+  width: 30%;
+}
+
+.vip{overflow: hidden; margin: 10px;border: 1px solid #e1e1e1; padding-bottom: 15px;}
+.new_turs div{float: left; margin: 10px 20px 20px 40px;border: 1px solid #e1e1e1;}

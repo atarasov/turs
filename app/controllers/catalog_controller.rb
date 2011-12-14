@@ -1,9 +1,14 @@
 class CatalogController < ApplicationController
+  before_filter :find_vip
   def index
     @users = User.all
 	if params[:city_id].present?
 	   @users = @users.where(:city_id => params[:city_id])
 	 end
+  end
+
+  def find_vip
+    @vips = VipPlacement.where("status = ? " ,Service::STATUS[:active]).group(:user_id)
   end
 
   def hotels
