@@ -1,5 +1,139 @@
 <% title "Главная" %>
-<div class="box-orange-bg-c">
+
+
+<div class="tabs-2">
+  <div class="tabs-area">
+  <script type="text/javascript">
+    function tabSelect(obj){
+        jQuery('.tab-content').hide();
+        jQuery('#'+obj).toggle();
+        jQuery('.tabset li').removeClass('active');
+        jQuery('#'+obj+'-head').addClass('active');
+    }
+  </script>
+    <div class="decor">
+      <div class="decor-holder">
+        <div class="decor-frame">
+          <ul class="tabset">
+            <li id="tab-1-head" class="active">
+              <a href="javascript:;" class="tab active" onclick="tabSelect('tab-1')">Туристам</a>
+              <em> </em>
+            </li>
+            <li id="tab-2-head">
+              <a href="javascript:;" class="tab" onclick="tabSelect('tab-2')">Туристическим  компаниям</a>
+              <em> </em>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-1" style="display: block">
+
+      <div class="box-orange-bg-c">
+        <span>
+          <img src="images/ico-qn.png" alt="image description">
+          <a href="#">Помощь пользователю</a>
+        </span>
+        <ul>
+          <li>
+            <img src="images/dig1.jpg" alt="image description">
+            <div class="orange-holder">
+              <strong>Найти исполнителя</strong>
+              <em>Подобрать лучшее предложение по цене и качеству</em>
+            </div>
+          </li>
+          <li>
+            <img src="images/dig2.jpg" alt="image description">
+            <div class="orange-holder">
+              <strong>Задать вопрос на форуме</strong>
+              <em>На вопросы отвечают профессионалы туристического бизнеса</em>
+            </div>
+          </li>
+          <li>
+            <img src="images/dig3.jpg" alt="image description">
+            <div class="orange-holder">
+              <strong>Узнать новейшие тенденции отдыха</strong>
+              <em>Новости, статьи, интервью, фотоотчеты</em>
+            </div>
+          </li>
+        </ul>
+        <form class="redir select" action="#">
+          <fieldset>
+            <div class="redir-row">
+              <label for="id4">Быстрый переход:</label>
+              <%= select_tag "id3", "<option value=0>Выберите свой город</option>".html_safe + options_from_collection_for_select(City.all, "id", "name") %>
+            </div>
+            <div class="redir-row">
+              <label for="id4">Найти:</label>
+              <select id="id4">
+                <option value="tour_operators">Туроператоры</option>
+                <option value="tour_agencies">Турагенства</option>
+                <option value="recreation_centers">Базы отдыха</option>
+                <option value="sanatorium">Санатории</option>
+                <option value="hostel">Гостиницы</option>
+                <option value="taxi">Такси</option>
+                <option value="guide">Гиды</option>
+                <option value="hotels">Отели</option>
+                <option value="mini_hotels">Мини-отели</option>
+              </select>
+              <input type="submit" value="">
+            </div>
+          </fieldset>
+        </form>
+<script type="text/javascript">
+  $("document").ready(function(){
+	  $("#frm_navigation").submit(function(){
+			if (parseInt($("#id3").val())){
+				window.location.href = "/catalog/" + $("#id4").val() + "?city_id=" + $("#id3").val()
+			}
+			else{
+				window.location.href = "/catalog/" + $("#id4").val();
+			};
+
+		  return false;
+	  });
+  });
+</script>
+      </div>
+    </div>
+    <div class="tab-content" id="tab-2" style="display: none">
+
+      <div class="box-orange-bg-c">
+        <span>
+          <img src="images/ico-qn.png" alt="image description">
+          <a href="#">Помощь турагентства</a>
+        </span>
+        <ul>
+          <li>
+            <img src="images/dig1.jpg" alt="image description">
+            <div class="orange-holder">
+              <strong>Найти клиентов</strong>
+              <em>Подобрать лучшее предложение по цене и качеству</em>
+            </div>
+          </li>
+          <li>
+            <img src="images/dig2.jpg" alt="image description">
+            <div class="orange-holder">
+              <strong>Пообщаться с коллегами</strong>
+              <em>На вопросы отвечают профессионалы туристического бизнеса</em>
+            </div>
+          </li>
+          <li>
+            <img src="images/dig3.jpg" alt="image description">
+            <div class="orange-holder">
+              <strong>Узнать что-то новенькое</strong>
+              <em>Новости, статьи, интервью, фотоотчеты</em>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+	</div>
+  </div>
+</div>
+
+<!--div class="box-orange-bg-c">
   <span><img src="images/ico-qn.png" alt="image description"/><a href="#">Помощь пользователю</a></span>
   <ul>
     <li>
@@ -36,11 +170,6 @@
           <label for="id4">Найти:</label>
         </div>
         <div class="redir-holder">
-          <!--<select id="id3">
-            <option>Выбирите свой город</option>
-            <option>Выбирите свой город</option>
-            <option>Выбирите свой город</option>
-          </select> -->
 		  <%= select_tag "id3", "<option value=0>Выберите свой город</option>".html_safe + options_from_collection_for_select(City.all, "id", "name") %>
           <select id="id4">
             <option value="tour_operators">Туроператоры</option>
@@ -75,7 +204,7 @@
 
 
 </script>
-</div>
+</div-->
 
 <div class="box-dark-orange-c">
   <div class="box-dark-orange-c-holder">

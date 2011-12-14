@@ -106,11 +106,7 @@
       </div>
 
       <label for="id1">Все города:</label>
-      <select id="id1">
-        <option>город</option>
-        <option>город</option>
-        <option>город</option>
-      </select>
+      <%= select_tag "id1", "<option value=0>Выберите город</option>".html_safe + options_from_collection_for_select(City.all, "id", "name") %>
       <% form_tag '' do %>
           <label for="id2"><%= t(:selectLang) %>:</label>
           <%= select_tag("id2", options_for_select([['...', '0']] + LOCALES_AVAILABLE, I18n.locale), {:index => nil}) %>
@@ -138,7 +134,7 @@
 
 
 <div class="area">
-  <strong class="logo"><a href="#">TURS.PRO</a></strong>
+  <strong class="logo"><a href="/">TURS.PRO</a></strong>
   <img src="/images/img1.jpg" alt="image description"/>
 
   <div class="holder">
@@ -157,7 +153,7 @@
   </div>
 </div>
 <div class="nav-holder">
-  <%= stylesheet_link_tag 'jquery.ui.potato.menu.css' %>
+  <!--%= stylesheet_link_tag 'jquery.ui.potato.menu.css' %>
   <%= javascript_include_tag 'jquery.ui.potato.menu.js' %>
   <script type="text/javascript">
       (function($) {
@@ -209,7 +205,7 @@
         <li class="sub"><%#= link_to "Такси", taxi_catalog_index_url(:subdomain => false) %>
         <li class="sub"><%#= link_to "Гиды", lfguide_catalog_index_url(:subdomain => false) %>
         <li class="sub"><%#= link_to "Отели", hotels_catalog_index_url(:subdomain => false) %>
-        <li class="sub"><%#= link_to "Мини-отели", mini_hotels_catalog_index_url(:subdomain => false) %>-->
+        <li class="sub"><%#= link_to "Мини-отели", mini_hotels_catalog_index_url(:subdomain => false) %>>
 		<li class="sub"><%= link_to "Туроператоры", tender_index_url(:subdomain => false, "conditions[is_tour_operator]" => 1 ) %>
         <li class="sub"><%= link_to "Базы отдыха", tender_index_url(:subdomain => false, "conditions[is_recreation_center]" => 1  ) %>
         <li class="sub"><%= link_to "Санатории", tender_index_url(:subdomain => false, "conditions[is_sanatorium]" => 1 ) %>
@@ -232,7 +228,68 @@
     <li><%= link_to t(:journalPage), categories_url(:subdomain => false) %></li>
     <li><%= link_to "Поиск попутчика", companion_index_url(:subdomain => false) %></li>
     <li><%= link_to "Форум", forums_url(:subdomain => false) %></li>
-  </ul>
+  </ul-->
+
+  <table class="nav">
+    <tr>
+        <td><%= link_to t(:mainPage), root_url(:subdomain => false) %>
+          <ul>
+            <li class="sub"><%= link_to t(:mainPage), root_url(:subdomain => false) %></li>
+            <li class="sub"><%= link_to 'Отзывы', root_url(:subdomain => false) %></li>
+          </ul>
+        </td>
+        <td><%= link_to "Заказ", "" %>
+          <ul>
+            <li class="sub"><%= link_to "Ж/Д билетов", "" %></li>
+            <li class="sub"><%= link_to "Авиа - билетов", "" %></li>
+            <li class="sub"><%= link_to "Автомобилей", "" %></li>
+            <li class="sub"><%= link_to "Гостинниц", "" %></li>
+          </ul>
+        </td>
+        <td><%= link_to t(:catalogPage), catalog_index_url(:subdomain => false) %>
+          <ul>
+            <li class="sub"><%= link_to "Туроператоры", tour_operators_catalog_index_url(:subdomain => false) %>
+            <li class="sub"><%= link_to "Турагенства", tour_agencies_catalog_index_url(:subdomain => false) %>
+            <li class="sub"><%= link_to "Базы отдыха", recreation_centers_catalog_index_url(:subdomain => false) %>
+            <li class="sub"><%= link_to "Санатории", sanatorium_catalog_index_url(:subdomain => false) %>
+            <li class="sub"><%= link_to "Гостинницы", hostel_catalog_index_url(:subdomain => false) %>
+            <li class="sub"><%= link_to "Такси", taxi_catalog_index_url(:subdomain => false) %>
+            <li class="sub"><%= link_to "Гиды", guide_catalog_index_url(:subdomain => false) %>
+            <li class="sub"><%= link_to "Отели", hotels_catalog_index_url(:subdomain => false) %>
+            <li class="sub"><%= link_to "Мини-отели", mini_hotels_catalog_index_url(:subdomain => false) %>
+          </ul>
+        </td>
+        <td><%= link_to t(:countries), countries_url(:subdomain => false) %></td>
+        <td><%= link_to "Поиск тура", countries_url(:subdomain => false) %></td>
+
+        <td><%= link_to "Требуются услуги", tender_index_url(:subdomain => false) %>
+          <ul>
+            <li class="sub"><%= link_to "Добавить заявку", new_tender_url(:subdomain => false) %>
+            <li class="sub"><%= link_to "Туроператоры", tender_index_url(:subdomain => false, "conditions[is_tour_operator]" => 1 ) %>
+            <li class="sub"><%= link_to "Базы отдыха", tender_index_url(:subdomain => false, "conditions[is_recreation_center]" => 1  ) %>
+            <li class="sub"><%= link_to "Санатории", tender_index_url(:subdomain => false, "conditions[is_sanatorium]" => 1 ) %>
+            <li class="sub"><%= link_to "Гостинницы", tender_index_url(:subdomain => false, "conditions[is_guesthouse]" => 1 ) %>
+            <li class="sub"><%= link_to "Такси", tender_index_url(:subdomain => false, "conditions[is_taxi]" => 1 ) %>
+            <li class="sub"><%= link_to "Гиды", tender_index_url(:subdomain => false, "conditions[is_guide]" => 1 ) %>
+            <li class="sub"><%= link_to "Отели", tender_index_url(:subdomain => false, "conditions[is_hotel]" => 1 ) %>
+            <li class="sub"><%= link_to "Мини-отели", tender_index_url(:subdomain => false, "conditions[is_mini_hotel]" => 1 ) %>
+            <li class="sub"><%= link_to "Турагенства", tender_index_url(:subdomain => false, "conditions[is_agent]" => 1 ) %>
+          </ul>
+        </td>
+
+        <td><%= link_to "Объявления", advertisements_url(:subdomain => false) %>
+          <ul>
+            <li class="sub"><%= link_to "Добавить Объявление", new_advertisement_url(:subdomain => false) %></li>
+            <li class="sub"><%= link_to 'Объявления', advertisements_url(:subdomain => false) %></li>
+          </ul>
+        </td>
+        <td><%= link_to "Туристы", gallery_index_url(:subdomain => false) %></td>
+        <td><%= link_to t(:journalPage), categories_url(:subdomain => false) %></td>
+        <td><%= link_to "Поиск попутчика", companion_index_url(:subdomain => false) %></td>
+        <td class="last"><%= link_to "Форум", forums_url(:subdomain => false) %></td>
+    </tr>
+  </table>
+
   <%#= render_navigation :level => 1 %>
 
   <!-- Google CSE Search Box Begins  -->
@@ -258,33 +315,6 @@
 <%= yield :breadcramb %>
 
 <%# content_for :breadcramb do %>
-      <div class="vk_like_company">
-        <script charset="utf-8" src="//yandex.st/share/share.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            new Ya.share({
-                'element': 'ya_share1',
-                'elementStyle': {
-                    'type': 'button',
-                    'linkIcon': true,
-                    'border': false,
-                    'quickServices': ['yaru', 'vkontakte', 'twitter', 'odnoklassniki', 'moimir']
-                },
-                'popupStyle': {
-                    'copyPasteField': true
-                }
-            });
-        </script>
-<span id="ya_share1">
-  <span class="b-share">
-    <a data-vdirection="" data-hdirection="" id="ya-share-0.8343438109049174-1322680012720" class="b-share__handle">
-      <span class="b-share-form-button b-share-form-button_share">
-        <i class="b-share-form-button__before"></i>
-        <i class="b-share-form-button__icon"></i>Поделиться…
-        <i class="b-share-form-button__after"></i>
-      </span></a>
-  </span>
-</span>
-      </div>
-  <%# end %>
+<%# end %>
 
 </div>
