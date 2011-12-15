@@ -107,11 +107,30 @@
 
       <label for="id1">Все города:</label>
       <%= select_tag "id1", "<option value=0>Выберите город</option>".html_safe + options_from_collection_for_select(City.all, "id", "name") %>
-      <% form_tag '' do %>
-          <label for="id2"><%= t(:selectLang) %>:</label>
+      <%# form_tag '' do %>
+          <!--label for="id2"><%= t(:selectLang) %>:</label>
           <%= select_tag("id2", options_for_select([['...', '0']] + LOCALES_AVAILABLE, I18n.locale), {:index => nil}) %>
           <!--, :onchange => 'this.form.submit()'-->
-      <% end %>
+      <%# end %>
+
+        <%#= render_navigation :level => 1 %>
+
+          <!-- Google CSE Search Box Begins  -->
+          <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
+          <!-- The terms of service are available at http://www.google.com/cse/docs/tos.html -->
+
+          <form id="cref_iframe" action="/search_rezult" method="post">
+            <fieldset>
+              <label for="q"><%= t(:search) %>:</label>
+              <input type="hidden" name="cof" value="FORID:9"/>
+              <input class="search-input" type="text" name="q" size="40"/>
+              <input class="search-btn" type="submit" name="sa" value="&rarr;"/>
+            </fieldset>
+          </form>
+          <script type="text/javascript" src="http://www.google.ru/cse/brand?form=cref_iframe"></script>
+          <!-- Google CSE Search Box Ends -->
+          <%= stylesheet_link_tag "search" %>
+
     </div>
   </fieldset>
 </form>
@@ -289,27 +308,6 @@
         <td class="last"><%= link_to "Форум", forums_url(:subdomain => false) %></td>
     </tr>
   </table>
-
-  <%#= render_navigation :level => 1 %>
-
-  <!-- Google CSE Search Box Begins  -->
-  <!-- Use of this code assumes agreement with the Google Custom Search Terms of Service. -->
-  <!-- The terms of service are available at http://www.google.com/cse/docs/tos.html -->
-
-  <form class="search" id="cref_iframe" action="/search_rezult" method="post">
-    <fieldset>
-      <span>
-      <!--<input type="hidden" name="cref" value="http://www.guha.com/cref_cse.xml" />-->
-      <input type="hidden" name="cof" value="FORID:9"/>
-      <input class="search-input" type="text" name="q" size="40"/>
-      <input class="search-btn" type="submit" name="sa" value=""/>
-      </span>
-    </fieldset>
-  </form>
-  <script type="text/javascript" src="http://www.google.ru/cse/brand?form=cref_iframe"></script>
-  <!-- Google CSE Search Box Ends -->
-  <%= stylesheet_link_tag "search" %>
-
 
 </div>
 <%= yield :breadcramb %>

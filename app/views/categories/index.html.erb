@@ -22,7 +22,7 @@
           <% end %>
           <p><%= h post.text %></p>
           <span>Раздел: <% if post.category%> <%= link_to post.category.name, post.category %> <% end %>
-            <% if post.user %> |  Разместил: <%= link_to post.user.email, company_profile_url(post.user) %><% end %></span>
+          <% if post.user %> | <span class="person <%= "pro" if ProAccount.activated( post.user) %>"><%= link_to post.user.name, company_profile_url(post.user) %></span><% end %>
           <span class="line-p-right">Комментарии <em>(<%= post.comments.recent.all.count %>)</em></span>
         </li>
     <% end -%>

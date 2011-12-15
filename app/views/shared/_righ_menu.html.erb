@@ -90,33 +90,30 @@
     <div class="box-r">
       <div class="box-r-holder">
         <div class="box-r-frame">
-          <strong>Лучшие туры</strong>
-          <span><%= link_to t(:all_turs), turs_url %></span>
-          <ul class="profiles">
+          <strong><%= t(:showcaseTurs) %></strong>
+          <ul class="best_tours">
             <% @turs_informer.each do |tur| %>
-                <li class="bg-blue" style="margin: 0px;">
-                  <strong style="background: none;"><%= link_to tur.title, tur %></strong>
-                  <%= image_tag tur.image.url(:thumbnail) %>
+                <li>
+                  <div class="title"><%= link_to tur.title, tur %></div>
+                  <span class="thumb"><%= image_tag tur.image.url(:thumbnail) %></span>
                   <ul>
-                    <li><%= link_to image_tag(tur.country.flag.url(:thumb)), tur %><%= link_to tur.country.title, tur %></li>
-                    <li><%= t(:hotel) %>
-                      <% 1.upto(tur.stars.to_i) do %>
-                          <img src="/images/ico-star.png" height="15" width="16" style="margin: 0;float: right;"/>
-                      <% end %>
+                    <li class="country"><%= image_tag(tur.country.flag.url(:mini)) %> <%= tur.country.title %></li>
+                    <li class="hotel"><%= t(:hotel) %>
+                      <% 1.upto(tur.stars.to_i) do %><img src="/images/ico-star.png" height="15" width="16" /><% end %>
                     </li>
-                    <li style="text-align: center; color: red;font-size: 18px;font-weight: bolder;"><%= tur.price %></li>
+                    <li class="price"><%= tur.price %> руб.</li>
                   </ul>
 
-                  <ul class="ul_footer">
-                    <li><img src="/images/ico-pro.png"></li>
-                    <li><%= link_to tur.user.name, company_profile_url(tur.user) %></li>
-                    <li style="float: right;"><a class="pancel" href="#"><span>&nbsp;</span></a></li>
-                  </ul>
+                  <div class="ul_footer">
+                    <span><a class="pancel" href="#"><span>&nbsp;</span></a></span>
+                    <!--img src="/images/ico-pro.png"-->
+                    <%= link_to tur.user.name, company_profile_url(tur.user), :class => "pro" %>
+                  </div>
                 </li>
 
             <% end %>
-
           </ul>
+          <div class="all_turs"><%= link_to t(:all_turs), turs_url %></div>
         </div>
       </div>
     </div>

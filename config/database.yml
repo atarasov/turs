@@ -16,7 +16,7 @@ development:
   host: localhost
   database: turs_pro
   username: root
-  password: root
+  password:
   encoding: utf8
 
 

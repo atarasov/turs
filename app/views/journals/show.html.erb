@@ -10,8 +10,13 @@
   </strong>
 
 <p>
-   <%= link_to @journal.user.email, company_profile_url(@journal.user) if @journal.user %> &rarr;
-   <em><%=  Russian::strftime(@journal.created_at, "%d %B %Y") %></em>
+  <%#= link_to @journal.user.email, company_profile_url(@journal.user) if @journal.user %>
+  <% if @journal.user %>
+  <span class="person <%= "pro" if ProAccount.activated( @journal.user) %>">
+    <%= link_to @journal.user.name || @journal.user.email, company_profile_url(@journal.user) %>
+  </span> &rarr;
+  <% end %>
+  <em><%=  Russian::strftime(@journal.created_at, "%d %B %Y") %></em>
 </p>
 
 <p class="title">
@@ -31,14 +36,15 @@
 </div>
 
 <div class="comment_form">
-  <strong><%= t(:comments) %> (<%= @journal.comments.recent.all.count %>)</strong>
+  <strong class="strong"><%= t(:comments) %> (<%= @journal.comments.recent.all.count %>)</strong>
+
   <ul class='comments'>
     <%= render @comments %>
   </ul>
 
-  <strong>Новый комментарий</strong>
-
   <% form_for :comment, :url=> journal_add_comment_path(@journal.id) do |f| %>
+
+  <strong class="strong">Новый комментарий</strong>
 
   <% unless current_user %>
   <p class="field">

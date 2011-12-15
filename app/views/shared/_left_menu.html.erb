@@ -62,12 +62,17 @@
   <div class="box-new-journal">
     <div class="box-new-journal-holder">
       <div class="box-new-journal-frame">
-        <strong>Новое в журнале</strong>
+        <strong><%= t(:travelJournalNews) %></strong>
         <% @last_journals = Journal.order("created_at DESC").limit(3).all %>
         <ul class="journal-post">
           <% @last_journals.each do |journal| %>
           <li>
-            <span><em><%= Russian::strftime(journal.created_at, "%d %B %Y")  %></em><%= journal.user.email if journal.user %></span>
+
+            <span class="heading"><em><%= Russian::strftime(journal.created_at, "%d %B %Y")  %></em>
+              <% if journal.user %>
+                <span class="person <%= "pro" if ProAccount.activated( journal.user) %>"><%= journal.user.name %></span>
+              <% end %>
+            </span>
             <%= link_to journal.title, journal %>
 
             <p><%= truncate(journal.text, @settings.post_symbol_count, '...') %></p>

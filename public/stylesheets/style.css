@@ -1,3 +1,7 @@
+* {
+    padding:0;
+    margin:0;
+}
 body{
 	margin:0;
 	font:12px/15px Tahoma, Arial, Helvetica, sans-serif;
@@ -25,6 +29,7 @@ textarea{
 #wrapper{
 	margin:0 30px;
 	max-width:2000px;
+    min-width:1100px;
 }
 #header{
 	height:1%;
@@ -44,6 +49,7 @@ textarea{
 .sub-row{
 	float:right;
 	overflow:hidden;
+    margin-right:20px;
 }
 .select select{
 	float:left;
@@ -195,7 +201,7 @@ textarea{
     border:3px solid #1b7ecc;
     border-top:none;
     padding:0;
-    1top:33px; /* TODO webkit fix */
+    margin-top:13px;
 }
 
 .nav ul li{
@@ -212,7 +218,9 @@ textarea{
 .nav td:first-child a{
 	margin:0 0 0 7px;
 }
-
+.right {
+    float:right;
+}
 /*
 .nav{
 	float:left;
@@ -242,33 +250,24 @@ textarea{
 	padding:12px 18px 20px 13px;
 }
 */
-.search{
-	float:right;
-	padding:7px 0 12px 0;
-}
-.search span{
-	display:block;
-	background:url(../images/bg-search.jpg) no-repeat;
-	width:178px;
-	height:31px;
-    z-index: 20;
-}
 .search input{
 	float:left;
 	border:none;
 	background:none !important;
 }
 .search-input{
-	padding:8px 10px !important;
+	padding:5px !important;
 	width:127px !important;
-    border:none !important;
+    border:1px solid #d6be87 !important;
+    margin-top:2px;
 }
 .search-btn{
 	cursor:pointer;
 	width:31px;
-	height:31px;
-	text-indent:-9999px;
+	height:28px;
 	overflow:hidden;
+    margin-top:2px;
+    font-size:16px;
 }
 .breadcrambs-holder{
 	margin:0 9px 0 9px;
@@ -343,8 +342,8 @@ textarea{
 }
 #sidebar{
 	float:left;
-	padding: 0 7px 0 9px;
-	width:268px;
+	padding: 0 10px 0 9px;
+	width:270px;
 }
 .box-card{
 	margin:0 0 26px;
@@ -567,6 +566,63 @@ textarea{
 .profiles li.bg-line{
 	background:url(../images/bg-profiles-li.jpg) no-repeat 50% 100%;
 }
+.best_tours {
+    list-style:none;
+    margin:10px -5px 0 -5px;
+}
+.best_tours li {
+    background:#dff3ff;
+    margin-top:5px;
+    padding:5px 10px;
+    overflow:hidden;
+}
+.best_tours .title {
+    font-size:14px;
+    font-weight:bold;
+    font-family:Tahoma, Arial, Helvetica, sans-serif;
+    font-style:normal;
+    margin-bottom:5px;
+}
+.best_tours .thumb {
+    float:left;
+    margin:0 10px 0 0;
+    padding:3px;
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    background:#fff;
+}
+.best_tours ul {
+    float:left;
+    list-style:none;
+}
+.best_tours ul li {
+    padding:0;
+    margin-bottom:5px;
+}
+.best_tours .hotel img {
+    vertical-align:middle;
+}
+.best_tours .price {
+    font-size:16px;
+    font-weight:bold;
+    color:#ff0000;
+}
+.best_tours .ul_footer {
+    clear:both;
+}
+.best_tours .pancel {
+    display: block;
+    background:url(/images/big_pancel.png) 0px 0px no-repeat;
+    text-decoration: none;
+    float:right;
+    width:20px;
+    height:20px;
+}
+.all_turs {
+    padding:5px;
+}
+
 h1{
 	display:block;
 	margin:0 0 12px;
@@ -1229,9 +1285,12 @@ font-style: italic;}
 	font-style:normal;
 }
 .pro{
-	display:inline-block;
-	padding:0 0 3px 41px;
-	background:url(../images/ico-pro.png) no-repeat;
+	padding:1px 0 1px 41px;
+	background:url(../images/ico-pro.png) no-repeat left 50%;
+}
+.person {
+    padding:1px 0 1px 16px;
+	background:url(../images/ico-person-gs.png) no-repeat left 50%;
 }
 .box-comand{
 	margin:0 0 25px;
@@ -1320,14 +1379,13 @@ div.comand-holder strong{
 	overflow:hidden;
 }
 #footer{
-	margin:0 auto 10px auto;
+	margin:0 30px 10px 30px;
 	padding:10px 0 0;
 	background:url(../images/bg-footer.png) repeat-x left bottom;
 	border:1px solid #bbbbbb;
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
-	1width:1008px;
 	height:244px;
 }
 #footer ul{
@@ -1510,16 +1568,21 @@ input.btn-podpis{
 }
 .box-new-journal{
 	margin:0 0 5px;
-	background:url(../images/bg-box-blue.jpg) repeat-y;
+	1background:url(../images/bg-box-blue.jpg) repeat-y;
 	width:100%;
 	overflow:hidden;
 }
 .box-new-journal-holder{
-	background:url(../images/bg-box-blue-holder.jpg) no-repeat;
+	1background:url(../images/bg-box-blue-holder.jpg) no-repeat;
 }
 .box-new-journal-frame{
 	padding:12px 10px 14px 10px;
-	background:url(../images/bg-box-blue-frame.jpg) no-repeat 0 100%;
+	1background:url(../images/bg-box-blue-frame.jpg) no-repeat 0 100%;
+    border:1px solid #8cadbe;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    overflow:hidden;
 }
 .box-new-journal strong{
 	display:block;
@@ -1546,17 +1609,18 @@ input.btn-podpis{
 .journal-post span{
 	display:block;
 	margin:0 0 6px;
-	line-height:13px;
 	color:#2c7cb6;
 }
 .journal-post span em{
 	margin:0 8px 0 0;
 	padding:0 5px;
-	line-height:13px;
 	font-style:normal;
 	font-size:11px;
 	color:#fff;
 	background:#2c7cb6;
+}
+.journal-post .heading {
+    line-height:1.3em;
 }
 .journal-post a{
 	display:inline-block;
@@ -1574,6 +1638,30 @@ a.journal-more{
 	padding:0 0 0 10px;
 	font-size:11px;
 	background:url(../images/arrow-more.png) no-repeat 0 6px;
+}
+.new_turs {
+    height:1%;
+    overflow:auto;
+    margin:0 10px;
+}
+.new_turs li {
+    width:150px;
+    list-style:none;
+    float:left;
+    margin-right:10px;
+    margin-bottom:10px;
+}
+.new_turs li .name {
+    display:block;
+    clear:both;
+    line-height:1em;
+}
+.new_turs li .thumb {
+    display:block;
+    float:left;
+    padding:5px;
+    background:#dff3ff;
+    margin-bottom:5px;
 }
 .box-new-journal .journal-all{
 	display:block;
@@ -1789,7 +1877,7 @@ div.box-kurs ul span{
 	font-weight:normal;
 }
 .flag-list-holder{
-	margin:0 0 2px;
+	margin:10px 0 5px;
 	width:100%;
 	overflow:hidden;
 }
@@ -1797,12 +1885,12 @@ div.box-kurs ul span{
 	margin:0;
 	padding:0;
 	list-style:none;
-	width:250px;
 	overflow:hidden;
 }
 .flag-list li{
 	float:left;
-	margin:0 7px 0 0;
+    width:33%;
+    text-align:center;
 }
 .flag-list li img{
 	display:block;
@@ -2145,7 +2233,7 @@ a.add-post{
 	overflow:hidden;
 }
 .journal-favorites ul li{
-	margin:0 0 26px;
+	margin:13px 0 13px;
 	padding:0 0 8px;
 	border-bottom:1px solid #ababab;
 }
@@ -2154,7 +2242,7 @@ div.journal-favorites ul li span{
 }
 .journal-favorites ul em{
 	display:inline-block;
-	margin:0 0 9px;
+	margin:0 0;
 	padding:0 5px;
 	line-height:13px;
 	color:#fff;
@@ -2177,20 +2265,33 @@ div.journal-favorites ul li span{
 	display:block;
 	margin:0 0 10px;
 }
+/*
 .journal-favorites span{
 	display:inline-block;
 	margin:0 0 33px;
 }
-
+*/
 .comment_form {
     margin:20px 0;
     padding-top:20px;
     border-top:1px solid #ababab;
 }
-
+.comment_form form {
+    clear:both;
+}
+.comment_form .strong {
+    display:block;
+    font-size:14px;
+    margin-bottom:10px;
+}
+.comment_form p {
+    margin-bottom:10px;
+}
 .comments {
     list-style: none;
     padding-left:0;
+    overflow:hidden;
+    margin-bottom:20px;
 }
 .comments p {
     margin:0 0 10px 75px;
@@ -2513,8 +2614,16 @@ padding: 3px 0px 10px 43px;
 background:url(/images/icon_zd.gif) 0px 0px no-repeat;
 }
 
-.fut_cop{float: left; width: 98%;margin-left: 20px;margin-top: 10px;}
-.fut_cop img{float: right; margin-top: -30px;}
+.fut_cop{
+    margin-left: 20px;
+    margin-top: 10px;
+    background:url(../images/psystem.png) no-repeat 103% -10px;
+    padding-right:670px;
+    min-height:72px;
+    clear:both;
+}
+
+/*.fut_cop img{float: right; margin-top: -30px;}*/
 
 .edit{margin: 0 0 7px;
 padding: 5px 10px 7px;
@@ -2561,14 +2670,6 @@ text-align: right;}
 }
 .active {
 }
-
-.ul_footer{width: 238px;display: inline !important;}
-.ul_footer li{display: inline !important; }
-.pancel{display: block;background:url(/images/small_pancel.png) 0px 0px no-repeat;text-decoration: none;}
-.pancel:hover{background:url(/images/big_pancel.png) 0px 0px no-repeat;}
-.pancel span{ width: 40px; height: 40px; margin: 0px; padding: 0px}
-
-
 
 
 .turs .pancel {margin: 0px !important; height: 100%;position: relative;top: 3px; width: 21px;left: 5px;}
@@ -2829,4 +2930,3 @@ a.prev span, a.next span {
 }
 
 .vip{overflow: hidden; margin: 10px;border: 1px solid #e1e1e1; padding-bottom: 15px;}
-.new_turs div{float: left; margin: 10px 20px 20px 40px;border: 1px solid #e1e1e1;}
