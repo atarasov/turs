@@ -70,8 +70,9 @@
           <% end %>
 
         </div>
-        <%# if @profile.is_recomended? %>
-        <img class="recomend" src="/images/ico-recomend.png" alt="image description"/><%# end %>
+        <% if RecommendedService.activated(@profile)%>
+          <img class="recomend" src="/images/ico-recomend.png" alt="image description"/>
+        <% end %>
       </div>
     </div>
     <div class="box-foto">
@@ -265,7 +266,12 @@
             <img src="<%= headed_team.member.avatar.url(:small) %>" alt="<%= headed_team.member.display_name %>"/>
 
             <div class="comand-holder">
-              <img src="/images/ico-pro.png" alt="image description"/>
+              <% if ProAccount.activated(headed_team.member)%>
+                    <%= image_tag "ico-pro.png"%>
+                <% else %>
+                    <%= image_tag "ico-person-gs.png"%>
+                <% end %>
+
               <strong><a href="<%= company_profile_url(headed_team.member_id) %>"><%= headed_team.member.display_name %></a></strong>
               <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em><%= headed_team.member.raiting %></em></span>
               <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em><%= headed_team.member.review %></em></span>
@@ -285,7 +291,11 @@
             <img src="<%= referee.avatar.url(:small) %>" alt="<%= referee.display_name %>"/>
 
             <div class="comand-holder">
-              <img src="/images/ico-pro.png" alt="image description"/>
+              <% if ProAccount.activated(referee)%>
+                    <%= image_tag "ico-pro.png"%>
+                <% else %>
+                    <%= image_tag "ico-person-gs.png"%>
+                <% end %>
               <strong><a href="<%= company_profile_url(referee.id) %>"><%= referee.display_name %></a></strong>
               <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em><%= referee.raiting %></em></span>
               <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em><%= referee.review %></em></span>

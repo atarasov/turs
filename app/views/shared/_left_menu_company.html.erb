@@ -6,7 +6,11 @@
   <div class="box-blue">
     <div class="box-blue-holder">
       <div class="box-blue-frame">
-        <strong><%= @profile.name %></strong>
+        <strong><% if ProAccount.activated(@profile)%>
+                    <%= image_tag "ico-pro.png"%>
+                <% else %>
+                    <%= image_tag "ico-person-gs.png"%>
+                <% end %><%= @profile.name %></strong>
         <ul class="naving">
           <li><a href="#">Санатории</a> /</li>
           <li><a href="#">РФ</a></li>
