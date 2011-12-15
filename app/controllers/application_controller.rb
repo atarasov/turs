@@ -32,11 +32,12 @@ class ApplicationController < ActionController::Base
   end
 
   def get_journal_categories
-    @journal_categories = Category.find(:all)
+    @journal_categories = Category.all
   end
 
   def get_new_turs
     @new_turs = Tur.limit(5)
+    @highlighted_companies = InSiteService.where("status = ? " ,Service::STATUS[:active]).group(:user_id)
   end
 
 

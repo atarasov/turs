@@ -26,6 +26,11 @@
         <li>
           <div>
             <%= link_to image_tag(vip.user.avatar.url(:small)), company_profile_url(vip.user) , :style => "float:left; padding-right:10px"%>
+            <% if ProAccount.activated(vip.user)%>
+                    <%= image_tag "ico-pro.png"%>
+                <% else %>
+                    <%= image_tag "ico-person-gs.png"%>
+                <% end %>
             <%= link_to vip.user.name, company_profile_url(vip.user)  %><br/>
             <%= vip.user.info  %>
           </div>
@@ -38,6 +43,12 @@
           <!--<em><%=  Russian::strftime(user.created_at, "%d %B %Y") %></em>-->
           <div class="catalog_info">
             <%= image_tag user.avatar.url(:small), :style => "float:left; padding:15px;" %>
+
+            <% if ProAccount.activated(user)%>
+                    <%= image_tag "ico-pro.png"%>
+                <% else %>
+                    <%= image_tag "ico-person-gs.png"%>
+                <% end %>
             <%= link_to user.name, company_profile_url(user) %>
             <div>Город: <%= user.city.name if user.city %></div>
             <div>Раздел: <%= type_profiles(user) %></div>

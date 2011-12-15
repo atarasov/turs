@@ -107,7 +107,12 @@
                   <div class="ul_footer">
                     <span><a class="pancel" href="#"><span>&nbsp;</span></a></span>
                     <!--img src="/images/ico-pro.png"-->
-                    <%= link_to tur.user.name, company_profile_url(tur.user), :class => "pro" %>
+                    <% if ProAccount.activated(tur.user)%>
+                      <%= link_to tur.user.name, company_profile_url(tur.user), :class => "pro" %>
+                    <% else %>
+                      <%= link_to tur.user.name, company_profile_url(tur.user), :class => "person" %>
+                    <% end %>
+
                   </div>
                 </li>
 

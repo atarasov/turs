@@ -38,12 +38,20 @@
           <table>
             <tr>
               <td class ="tur_title">
-                <img src="/images/ico-pro.png"> Турагенство<br/>
+                <% if ProAccount.activated(tur.user)%>
+                    <%= image_tag "ico-pro.png"%>
+                <% else %>
+                    <%= image_tag "ico-person-gs.png"%>
+                <% end %>
+                    Турагенство<br/>
                 <%= link_to tur.user.name, company_profile_url(tur.user) %>
               </td>
             </tr>
             <tr>
               <td>
+                <% if RecommendedService.activated(tur.user)%>
+                  <%= image_tag "blue_rec.png"%>
+                <% else %>
                 <ul class="stat">
 
                   <li><img src="/images/ico-small-list.png" alt="image description"/>Рейтинг:
@@ -51,6 +59,7 @@
                   <li><img src="/images/ico-small-arrow.png" alt="image description"/>Просмотров:
                     <span><%= tur.user.review %></span></li>
                 </ul>
+                <% end %>
               </td>
             </tr>
           </table>

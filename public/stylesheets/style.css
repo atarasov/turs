@@ -384,8 +384,8 @@ textarea{
 .box-blue strong{
 	display:block;
 	margin:0 0 8px;
-	padding:0 0 1px 43px;
-	background:url(../images/ico-pro.png) no-repeat 0 3px;
+	padding:0 0 1px 3px;
+	/*background:url(../images/ico-pro.png) no-repeat 0 3px;*/
 	font:18px/20px Georgia, Arial, Helvetica, sans-serif;
 	font-style:italic;
 	font-weight:normal;
@@ -1288,6 +1288,7 @@ font-style: italic;}
 	padding:1px 0 1px 41px;
 	background:url(../images/ico-pro.png) no-repeat left 50%;
 }
+
 .person {
     padding:1px 0 1px 16px;
 	background:url(../images/ico-person-gs.png) no-repeat left 50%;
@@ -2917,16 +2918,34 @@ a.prev span, a.next span {
     margin: 0 0 18px 40px;
     padding: 0;
 }
-.pro_content_catalog li {
+.pro_content_catalog li, .highlighted_companies li, .vip li {
      display: block;
   float: left;
   width: 30%;
 }
 
-.vip li {
-  display: block;
-  float: left;
-  width: 30%;
-}
 
 .vip{overflow: hidden; margin: 10px;border: 1px solid #e1e1e1; padding-bottom: 15px;}
+
+.highlighted_companies:after {
+    clear: both;
+    content: ".";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+}
+.highlighted_companies {
+    background-color:  #f7ecdd;
+    border: 1px solid #D49167;
+    clear: left;
+    margin: 0 30px 10px;
+    padding: 20px;
+    position: relative;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+     border-radius: 10px;
+}
+
+.highlighted_companies li{margin:40px;}
