@@ -1,12 +1,19 @@
-<%= form_for @balance, :url => url_for({:controller => :finance, :action => create}) do |form| %>
+<%= form_for @balance, :url => url_for({:controller => :finance, :action => :create}) do |form| %>
 	<table>
 	  <tr>
 	  	<td>
 			Сумма платежа
 	  	</td>
 		<td>
-		  <%= form.text_field :sum %>
+		  <% if @balance.sum > 0 %>
+		  	<%= form.hidden_field :sum %>
+			<%= @balance.sum %>
+		  <% else %>
+		    <%= form.text_field :sum %>
+		  <% end %>
+		  руб
 		</td>
 	  </tr>
 	</table>
+	<%= form.submit "Оплатить" %>
 <% end %>

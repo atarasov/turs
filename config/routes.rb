@@ -145,9 +145,17 @@ TursPro::Application.routes.draw do
   match "/accept_command_call", :controller => "company/profiles", :action => "accept_command_call"
   match "/decline_command_call", :controller => "company/profiles", :action => "decline_command_call"
   match "/remove_favorite", :controller => "company/profiles", :action => "remove_favorite"
+  match "/update_invoice", :controller => "company/finance", :action => "update_invoice"
+  match "/pay_declined", :controller => "company/finance", :action => "pay_declined"
+  match "/pay_successful", :controller => "company/finance", :action => "pay_successful"
+
 
   namespace :company do
-	resources :finance
+	resources :finance do
+	  member do
+		get "pay_successful"
+	  end
+	end
 
     resources :profiles do
       resources :rewards
