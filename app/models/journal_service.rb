@@ -7,7 +7,7 @@ class JournalService < Service
   def self.activate(user)
     @is_test = self.where(:user_id => user.id).size > 0 ? false : true
     if user.get_balance > @price && !@is_test
-      Service.create(:user_id => user,
+      Service.create(:user_id => user.id,
                      :expire_date => Time.now + @expire_periud,
                      :amount => @price,
                      :service_type => @type_service,
@@ -16,7 +16,7 @@ class JournalService < Service
 
       )
     elsif user.get_balance < @price && !@is_test
-      Service.create(:user_id => user,
+      Service.create(:user_id => user.id,
                      :expire_date => Time.now + @expire_periud,
                      :amount => @price,
                      :service_type => @type_service,
@@ -25,7 +25,7 @@ class JournalService < Service
 
       )
     else
-      Service.create(:user_id => user,
+      Service.create(:user_id => user.id,
                      :expire_date => Time.now + @expire_periud,
                      :amount => @price,
                      :service_type => @type_service,

@@ -28,6 +28,7 @@ class PaidServiceController < ApplicationController
 
 
   def activate_pro
+    #raise current_user.inspect
     ProAccount.activate(current_user)
     redirect_to :action => :pro
   end
