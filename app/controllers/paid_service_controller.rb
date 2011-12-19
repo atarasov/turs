@@ -28,6 +28,7 @@ class PaidServiceController < ApplicationController
 
 
   def activate_pro
+    #raise current_user.inspect
     ProAccount.activate(current_user)
     redirect_to :action => :pro
   end
@@ -52,7 +53,7 @@ class PaidServiceController < ApplicationController
     redirect_to :action => :selection
   end
 
-  def activate_in_journal
+  def activate_journal
     JournalService.activate(current_user)
     redirect_to :action => :advertising_in_journal
   end
