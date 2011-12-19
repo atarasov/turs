@@ -16,7 +16,9 @@
 	1float:left;
 	min-height:165px;
 }
-
+body:nth-of-type(1) #content {
+   margin-right:0px;
+}
 #right
 {
 	margin-top:1em;

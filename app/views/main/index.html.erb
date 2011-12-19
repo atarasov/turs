@@ -1,7 +1,43 @@
 <% title "Главная" %>
 
+<% content_for :main_layout do %>
+<div id="main_layout">
 
-<div class="tabs-2">
+  <div class="nav-bar">
+    <ul>
+      <li><a href="#" class="nav-bar-train">Заказ Ж/Д билетов</a></li>
+      <li><a href="#" class="nav-bar-plane">Заказ Авиа-билетов</a></li>
+      <li><a href="#" class="nav-bar-car">Заказ Автомобилей</a></li>
+      <li><a href="#" class="nav-bar-building">Заказ Гостиниц</a></li>
+    </ul>
+  </div>
+
+  <div class="box-news main_news">
+    <strong>Новости</strong>
+    <div class="preview">
+        <img src="/images/img35.jpg" alt="image description"/>
+        <a href="#">Новая активная форма туризма<br/>вело туры по странам Европы</a>
+    </div>
+    <ul class="news_list">
+      <% @new_turs.each do |tur| %>
+          <li>
+            <%= link_to image_tag(tur.image.url(:small), :width => "80"), tur, :class => "thumb", :title => tur.title %>
+          </li>
+      <% end %>
+      <% @new_turs.each do |tur| %>
+          <li>
+            <%= link_to image_tag(tur.image.url(:small), :width => "80"), tur, :class => "thumb", :title => tur.title %>
+          </li>
+      <% end %>
+      <% @new_turs.each do |tur| %>
+          <li>
+            <%= link_to image_tag(tur.image.url(:small), :width => "80"), tur, :class => "thumb", :title => tur.title %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="tabs-2">
   <div class="tabs-area">
     <script type="text/javascript">
         function tabSelect(obj) {
@@ -20,7 +56,7 @@
               <em> </em>
             </li>
             <li id="tab-2-head">
-              <a href="javascript:;" class="tab" onclick="tabSelect('tab-2')">Туристическим  компаниям</a>
+              <a href="javascript:;" class="tab" onclick="tabSelect('tab-2')">Туркомпаниям</a>
               <em> </em>
             </li>
           </ul>
@@ -56,7 +92,7 @@
             <img src="images/dig3.jpg" alt="image description">
 
             <div class="orange-holder">
-              <strong>Узнать новейшие тенденции отдыха</strong>
+              <strong>Узнать тенденции отдыха</strong>
               <em>Новости, статьи, интервью, фотоотчеты</em>
             </div>
           </li>
@@ -138,9 +174,13 @@
 
     </div>
   </div>
-</div>
+</div> <!-- tabs-2 -->
 
-<div class="box-new-journal">
+</div> <!-- main_layout -->
+<% end %>
+
+<% content_for :two_columns do %>
+<div class="box-new-journal clearboth">
     <div class="box-new-journal-holder">
       <div class="box-new-journal-frame">
         <%= link_to t(:addNewTur), "#", :class => 'right' %>
@@ -159,6 +199,7 @@
     </div>
 </div>
 
+<% end %>
 
 <div class="box-dark-orange-c">
   <div class="box-dark-orange-c-holder">

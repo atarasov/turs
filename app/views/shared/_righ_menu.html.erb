@@ -1,9 +1,12 @@
 <div class="aside">
+
+<% if !params[:controller].eql?('main') %>
 <div class="box-news">
   <strong>Новости</strong>
   <a href="#">Новая активная форма туризма<br/>вело туры по странам Европы</a>
   <img src="/images/img35.jpg" alt="image description"/>
 </div>
+<% end %>
 
 <div class="box-kurs">
   <strong>Курс валюты</strong>

@@ -1,15 +1,6 @@
 <div id="sidebar">
   <% #raise params[:controller].inspect %>
-  <% if params[:controller].eql?('main') %>
-  <div class="nav-bar">
-    <ul>
-      <li><a href="#" class="nav-bar-train">Заказ Ж/Д билетов</a></li>
-      <li><a href="#" class="nav-bar-plane">Заказ Авиа-билетов</a></li>
-      <li><a href="#" class="nav-bar-car">Заказ Автомобилей</a></li>
-      <li><a href="#" class="nav-bar-building">Заказ Гостиниц</a></li>
-    </ul>
-  </div>
-      <% elsif !params[:controller].eql?('main') && !params[:controller].eql?('categories')%>
+  <% if !params[:controller].eql?('main') and !params[:controller].eql?('categories')%>
   <div class="box-pink">
     <div class="box-pink-holder">
       <div class="box-pink-frame">
@@ -32,7 +23,8 @@
       </div>
     </div>
   </div>
-      <% end %>
+  <% end %>
+
   <!--div class="box-podpis-journal">
     <strong>Подписка на журнал</strong>
 
@@ -43,6 +35,7 @@
         <input type="submit" class="btn-podpis" value=""/>
         <fieldset>
   </div-->
+
   <div class="box-pink">
     <div class="box-pink-holder">
       <div class="box-pink-frame">

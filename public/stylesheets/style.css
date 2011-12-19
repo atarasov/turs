@@ -342,7 +342,7 @@ textarea{
 }
 #sidebar{
 	float:left;
-	padding: 0 10px 0 9px;
+	padding: 0 10px 0 0;
 	width:270px;
 }
 .box-card{
@@ -476,10 +476,11 @@ textarea{
 #twocolumns{
 	height:1%;
 	overflow:hidden;
+    padding-left:9px;
 }
 .aside{
 	float:right;
-	padding:11px 10px 0 7px;
+	padding:0px 10px 0 7px;
 	width:241px;
 }
 .box-r{
@@ -727,12 +728,19 @@ h1{
 	margin:0 0 8px;
 	1background:url(../images/box-orange.jpg) repeat-y;
 }
+.clearboth {
+    clear:both;
+}
+
 #content{
 	height:1%;
 	overflow:hidden;
 }
+.main_news {
+    float:right;
+    margin-left:10px;
+}
 .tabs-2{
-	width:100%;
 	overflow:hidden;
 }
 .tabs-area{
@@ -1434,10 +1442,14 @@ li.counters img{
 	float:left;
 	width:152px;
 }
+#main_layout {
+    overflow:hidden;
+    padding:0 10px;
+}
 .nav-bar{
-	margin:0 0 6px;
-	width:100%;
+	margin:0 10px 6px 0;
 	overflow:hidden;
+    float:left;
 }
 .nav-bar ul{
 	margin:0;
@@ -1803,8 +1815,8 @@ ul.countries-foto img{
 .box-news strong{
 	display:block;
 	margin:0 0 5px;
-	padding:0 0 0 30px;
-	background:url(../images/arrow-orange-long.png) no-repeat 2px 10px;
+	padding:5px 0 7px 30px;
+	background:url(../images/arrow-orange-long.png) no-repeat 2px 50%;
 	font-size:24px;
 	line-height:26px;
 	color:#ca7847;
@@ -2038,7 +2050,7 @@ a.btn-submit-pitstop{
 }
 .box-orange-bg-c{
 	padding:5px 11px 0 12px;
-	background:url(../images/box-orange-bg-c-slice.png) repeat-x left top;
+	background:#fff5e1 url(../images/box-orange-bg-c-slice.png) repeat-x left bottom;
 	border:1px solid #d6be87;
 	border-radius:10px;
 	-moz-border-radius:10px;
@@ -2047,7 +2059,7 @@ a.btn-submit-pitstop{
 	-moz-border-top-left-radius:0;
 	-webkit-border-top-left-radius:0;
 	1width:459px;
-	1height:292px;
+	min-height:292px;
     overflow:hidden;
     height:1%;
 	margin-bottom:10px;
@@ -2113,8 +2125,8 @@ div.box-orange-bg-c ul li img{
 }
 .redir input{
 	border:none;
-	background:url(../images/btn-redirect.png) no-repeat;
-	width:102px;
+	background:url(../images/btn-redirect-small.png) no-repeat;
+	width:44px;
 	height:33px;
 	cursor:pointer;
 }

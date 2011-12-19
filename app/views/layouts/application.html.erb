@@ -33,32 +33,25 @@
 
   <div id="main">
 
-    <%= render :partial => "shared/left_menu" %>
+    <%= yield :main_layout %>
+
+    <%= render :partial => "shared/righ_menu" %>
+
     <div id="twocolumns">
-      <%= render :partial => "shared/righ_menu" %>
+      <% if notice and notice.length > 0 %><p class="notice"><%= notice %></p><% end %>
+      <% if alert and alert.length > 0 %><p class="alert"><%= alert %></p><% end %>
+
+      <%= yield :two_columns %>
+
+      <%= render :partial => "shared/left_menu" %>
 
       <div id="content" style="height:1%;overflow:hidden;">
-        <!--div class="box-blue-c">
-          <div class="box-blue-c-holder">
-            <div class="box-blue-c-frame"-->
-              <% if notice and notice.length > 0 %><p class="notice"><%= notice %></p><% end %>
-              <% if alert and alert.length > 0 %><p class="alert"><%= alert %></p><% end %>
 
-              <%#= user_signed_in? %>
-              <div class="tabs"></div>
-              <form action="#" method="post">
+      <%= yield %>
 
-              </form>
-              <%#= current_user.inspect %>
+      </div>
 
-              <%= yield %>
-
-            <!--/div>
-          </div>
-        </div-->
-
-
-        <%= yield :country_journal %>
+      <%= yield :country_journal %>
 
       </div>
 
