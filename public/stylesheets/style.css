@@ -335,7 +335,7 @@ textarea{
 	text-decoration:underline !important;
 }
 #main{
-	padding:24px 0 0;
+	padding:20px 0 0;
 	width:100%;
     min-width:1000px;
 	overflow:hidden;
@@ -507,7 +507,7 @@ textarea{
 .box-r span{
 	display:block;
 	margin:0 0 15px;
-	padding:0 0 0 9px;
+	1padding:0 0 0 9px;
 	color:#636363;
 }
 .box-r span a{
@@ -731,14 +731,41 @@ h1{
 .clearboth {
     clear:both;
 }
-
+.vk_like_company span {
+    1padding-left:2px !important;
+}
 #content{
 	height:1%;
 	overflow:hidden;
 }
 .main_news {
     float:right;
-    margin-left:10px;
+    margin-left:10px !important;
+}
+.vk_like {
+    clear:both;
+    padding:8px 10px;
+    background:#f2f2f2;
+    margin-bottom:10px;
+    border-radius:10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+}
+.main_news .preview {
+    float:left;
+    width:300px;
+}
+.main_news .news_list {
+    width:90px;
+    margin-left:300px;
+}
+.news_list li {
+    list-style:none;
+    float:left;
+    margin:0 0 10px 10px;
+}
+.news_list a {
+    margin:0 !important;
 }
 .tabs-2{
 	overflow:hidden;
@@ -1737,24 +1764,30 @@ a.journal-more{
 	border:6px solid #e6e6e6;
 	margin:0 12px 0 3px;
 }
-.countries-post{
-	height:1%;
-	overflow:hidden;
+.countries-flag{
+    float:left;
+    margin-bottom:10px;
 }
-.countries-post a{
+.countries-title {
+    overflow:hidden;
+    height:1%;
+}
+.countries-title a{
 	font-size:21px;
 	line-height:25px;
 	color:#155f8b;
+}
+.countries-post{
 }
 .countries-post img{
 	border:none;
 	margin:3px 6px 0 0;
 }
-.countries-post{padding-top: 30px;width: 98%;}
+
 .countries-post p strong{font-weight: bold;font-style: normal;font-size: 16px;color:#000000;}
 
 .countries-post p{
-    line-height: 20px;
+    line-height: 1.3em;
     margin: 0;
     padding: 0;
 
@@ -1763,7 +1796,9 @@ a.journal-more{
 	float:right;
 	height:1%;
 	overflow:hidden;
+    padding:0 0 10px 10px;
 }
+
 .counties-stat span{
 	display:block;
 	line-height:18px;
@@ -1809,7 +1844,6 @@ ul.countries-foto img{
 .box-news{
 	height:1%;
 	margin:0 0 9px;
-	padding:0 9px 0 8px;
 	overflow:hidden;
 }
 .box-news strong{
@@ -2319,7 +2353,7 @@ div.journal-favorites ul li span{
     height:200px;
 }
 
-.stat{float: right; display: block; margin: 5px; top: 5px;position: relative;}
+.stat {float: right; display: block; margin: 5px; top: 5px;position: relative;}
 .stat img{margin-right: 5px; }
 .advertisiment td{border-top: 1px solid #e1e1e1; margin: 20px 0 20px 0; height: 40px;}
 
@@ -2758,6 +2792,10 @@ text-align: right;}
   ist-style-type: none;
 }
 
+.sort {
+    text-align:center;
+    margin-bottom:20px;
+}
 .sort ul, .sort li{list-style: none; display: inline;}
 .sort li a, .sort li a:hover{position: relative; color: #ff0000; text-decoration: none; font-size: 14px; margin: 0 15px; bottom: 15px;}
 
@@ -2961,3 +2999,12 @@ a.prev span, a.next span {
 }
 
 .highlighted_companies li{margin:40px;}
+
+.rating {
+    background:url(../images/ico-list.png) no-repeat left 50%;
+    padding-left:15px;
+}
+.views {
+    background:url(../images/ico-arrow.png) no-repeat left 50%;
+    padding-left:15px;
+}

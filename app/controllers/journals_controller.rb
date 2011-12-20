@@ -9,19 +9,12 @@ class JournalsController < ApplicationController
   end
   # GET /journals.xml
   def index
-    if params[:country]
-      @journals = Journal.where(:country_id => params[:country]).order("created_at DESC")
-    elsif params[:user_id]
-      @journals = Journal.where(:user_id => params[:user_id]).order("created_at DESC")
-    else
-      @journals = Journal.order("created_at DESC").all
-    end
+    redirect_to :controller => "categories"
 
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @journals }
-    end
+    #respond_to do |format|
+    #  format.html # index.html.erb
+    #  format.xml  { render :xml => @journals }
+    #end
   end
 
   # GET /journals/1

@@ -22,6 +22,13 @@
   <%= tiny_mce if using_tiny_mce? %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 
+  <!-- Put this script tag to the <head> of your page -->
+  <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?45"></script>
+
+  <script type="text/javascript">
+    VK.init({apiId: 2726049, onlyWidgets: true});
+  </script>
+
 
 </head>
 <body>

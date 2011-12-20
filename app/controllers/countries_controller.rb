@@ -5,9 +5,10 @@ class CountriesController < ApplicationController
   # GET /countries.xml
   def index
     sort = case params['sort']
-           when "title"  then "title"
-           when "rating"   then "rating"
-           when "review" then "review"
+             when "title"  then "title"
+             when "rating"  then "rating DESC"
+             when "review" then "review DESC"
+             else "title"
           # when "name_reverse"  then "name DESC"
            #when "qty_reverse"   then "quantity DESC"
            #when "price_reverse" then "price DESC"

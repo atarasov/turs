@@ -6,9 +6,9 @@ ru:
       long: "%B %e, %Y"
       only_day: "%e"
 
-    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    day_names: [Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота]
     abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
-    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    month_names: [~, января, февраля, марта, апреля, мая, июня, июля, августа, сентября, октября, ноября, декабря]
     abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
     order: [ year, month, day ]
 
@@ -204,6 +204,7 @@ ru:
   travelJournal: Туристический журнал
   travelJournalNews: Новое в журнале
   travelCompanions: Попутчики
+  travelJournalFavorites: Статьи отобранные редакцией сайта
   bestConsalt: Лучшие консультанты
   showcaseTurs: Витрина туров
   lentaTurs: Лента туров
@@ -260,3 +261,15 @@ ru:
   advertisements: Объявления
   add_adv: Разместить рекламу ?
   obr_vn: Обратите внимание
+  comments: Комментарии
+  rating: Рейтинг
+  views: Просмотров
+  category: Раздел
+  published_by: Разместил
+  articles: Статьи
+  new_comment: Новый комментарий
+  form_name: Укажите имя
+  form_comment_submit: Добавить коментарий
+  logged_as: Вы вошли как
+  noname: Аноним
+  other_articles: Остальные статьи

@@ -1,36 +1,59 @@
-<div class="journal-favorites">
-  <strong>Туристический журнал <%= "<em>#{@category.name}</em>" if @category && @category.name %></strong>
+<% content_for :breadcramb do %>
 
-  <!--<span class="line-p-right"><img src="/images/ico-qn.png" alt="image description"/><%#= link_to 'Добавить свою статью', new_category_journal_url(@category), :class=>'add-post' %></span>-->
-  <ul>
-    <% for post in @journals -%>
-        <li>
-          <em><%=  Russian::strftime(post.created_at, "%d %B %Y") %></em>
+    <div class="breadcrambs-holder">
+      <ul class="breadcrambs">
+        <li class="no-line"><%= t(:travelJournal) %></li>
+        <% if @category && @category.name %>
+        <li class="no-line"><%= @category.name %></li>
+        <% end %>
+        <% if @country && @country.title %>
+        <li class="no-line"><%= @country.title %></li>
+        <% end %>
+        <% if @author  %>
+        <li class="no-line"><%= @author.name || @author.email %></li>
+        <% end %>
+      </ul>
 
-          <p class="title"><%= link_to post.title, post %></p>
+    </div>
+<% end %>
 
-          <%
-            @photos = post.journal_photos.limit(3)
-            if @photos.count > 0
-          %>
-          <div class="img-holder">
-            <% for photo in @photos do %>
-                <%= image_tag photo.image.url(:small) %>
-            <!--<img src="/images/img42.jpg" alt="image description"/>-->
-            <% end %>
-          </div>
-          <% end %>
-          <p><%= h post.text %></p>
-          <span>Раздел: <% if post.category%> <%= link_to post.category.name, post.category %> <% end %>
-          <% if post.user %> | <span class="person <%= "pro" if ProAccount.activated( post.user) %>"><%= link_to post.user.name, company_profile_url(post.user) %></span><% end %>
-          <span class="line-p-right">Комментарии <em>(<%= post.comments.recent.all.count %>)</em></span>
-        </li>
-    <% end -%>
-  </ul>
+<div class="box-dark-orange-c-frame">
+
+    <div class="journal-favorites">
+      <!--strong class="strong"><%= t(:travelJournal) %><%= "<em>#{@category.name}</em>" if @category && @category.name %></strong-->
+
+      <!--<span class="line-p-right"><img src="/images/ico-qn.png" alt="image description"/><%#= link_to 'Добавить свою статью', new_category_journal_url(@category), :class=>'add-post' %></span>-->
+      <ul>
+        <% for post in @journals -%>
+            <li>
+              <em><%=  Russian::strftime(post.created_at, "%d %B %Y") %></em>
+
+              <p class="title"><%= link_to post.title, post %></p>
+
+              <%
+                @photos = post.journal_photos.limit(3)
+                if @photos.count > 0
+              %>
+              <div class="img-holder">
+                <% for photo in @photos do %>
+                    <%= image_tag photo.image.url(:small) %>
+                <!--<img src="/images/img42.jpg" alt="image description"/>-->
+                <% end %>
+              </div>
+              <% end %>
+              <p><%= h post.text %></p>
+              <span><%= t(:category) %>: <% if post.category%> <%= link_to post.category.name, post.category %> <% end %>
+              <% if post.user %> | <span class="person <%= "pro" if ProAccount.activated( post.user) %>"><%= link_to post.user.name || post.user.email, company_profile_url(post.user) %></span><% end %>
+              <span class="line-p-right"><%= t(:comments) %> <em>(<%= post.comments.recent.all.count %>)</em></span>
+            </li>
+        <% end -%>
+      </ul>
 
 
 
 
-  <%= will_paginate @journals %>
+      <%= will_paginate @journals %>
+
+    </div>
 
 </div>

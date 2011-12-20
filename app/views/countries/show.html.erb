@@ -17,7 +17,7 @@
 </table-->
 
 <!--<div class="countries">-->
-<strong><%= @country.title %></strong>
+<!--strong><%= @country.title %></strong-->
 <!--<strong><%#= @prev_country.inspect %></strong>-->
 
 
@@ -39,22 +39,23 @@
 
 <% end %>
 
+<div class="box-blue-c-frame">
+
 <div class="countries-holder">
   <% if !@country.flag.blank? %><%= image_tag @country.flag.url(:small) %>
   <% end %>
   <div class="counties-stat" style="width: 150px;">
-      <!--<span><img src="/images/ico-list.png" alt=""/>Рейтинг: <em>47,3</em></span>-->
-      <span><img src="/images/ico-arrow.png" alt=""/>Просмотров: <em><%= @country.review %></em></span>
+      <span class="rating"><%= t(:rating) %>: <em>47,3</em></span>
+      <span class="views"><%= t(:views) %>: <em><%= @country.review %></em></span>
       <span class="phone_code">
         <a href="<%= phones_countries_url %>" ><em><%= @country.country_code %></em></a>
       </span>
-    </div>
+  </div>
   <div class="countries-post">
-
-
     <p><%= @country.description.html_safe %></p>
   </div>
 </div>
+
 <div class="countries-foto-holder">
   <ul class="countries-foto">
     <% if !@country.image1.blank? %>
@@ -70,7 +71,8 @@
   <p>
 
   <div class="countries-foto-line">
-    <span class="spr">Раздел: <%= link_to "Раздел", countries_path %></span>
+    <span class="spr"><%= t(:category) %>: <%= link_to "Раздел", countries_path %></span>
+
     <span style="width: 100px;" class="spr"> <%= link_to "Виза", visa_country_url(@country.id), :class=>'button' %></span>
     <span style="width: 100px;" class="spr"><%= link_to "Разговорник", phrasebook_country_url(@country.id), :class=>'button' %></span>
     <span style="width: 100px;" class="spr"> <%= link_to "Памятка", memo_country_url(@country.id), :class=>'button' %></span>
@@ -104,14 +106,13 @@
                       <% end %>
                     </div>
                     <p><%= h post.text %></p>
-          <span>Раздел:
-            <% if post.category %> <%= link_to post.category.name, post.category %> <% end %>
-            <% if post.user %> |  Разместил: <%= link_to post.user.email, company_profile_url(post.user) %><% end %></span>
-                    <span class="line-p-right">Комментарии <em>(<%= post.comments.recent.all.count %>)</em></span>
+                    <% if post.category %><span><%= t(:category) %>: <%= link_to post.category.name, post.category %></span><% end %>
+                    <% if post.user %> | <span class="person <%= "pro" if ProAccount.activated( post.user) %>"><%= link_to post.user.name || post.user.email, company_profile_url(post.user) %></span><% end %>
+                    <span class="line-p-right"><%= t(:comments) %>: <em>(<%= post.comments.recent.all.count %>)</em></span>
                   </li>
               <% end -%>
             </ul>
-            <p><%= link_to "Остальные статьи", journals_path(:country=>@country.id) %></p>
+            <p><%= link_to t(:other_articles), journals_path(:country => @country.id) %></p>
           </div>
         </div>
       </div>
@@ -120,3 +121,4 @@
 <% end %>
 <%#= link_to t(:back), countries_path %>
 
+</div>

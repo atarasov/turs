@@ -1,5 +1,5 @@
 <div class="journal-favorites">
-  <strong>Туристический журнал <%= "<em>#{@category.name}</em>" if @category.name.length > 0 %></strong>
+  <strong class="strong"><%= t(:travelJournal) %> <%= "<em>#{@category.name}</em>" if @category.name.length > 0 %></strong>
 
   <span class="line-p-right"><img src="/images/ico-qn.png" alt="image description"/><%= link_to 'Добавить свою статью', new_category_journal_url(@category), :class => 'add-post' %></span>
   <ul>
@@ -17,9 +17,9 @@
             <% end %>
           </div>
           <p><%= h post.text %></p>
-          <span>Раздел: <%= link_to @category.name, @category %>
-            <% if post.user %> |  Разместил: <%= link_to post.user.email, post.user %><% end %></span>
-          <span class="line-p-right">Комментарии <em>(<%= post.comments.recent.all.count %>)</em></span>
+          <span><%= t(:category) %>: <%= link_to @category.name, @category %>
+            <% if post.user %> |  <%= t(:published_by) %>: <%= link_to post.user.email, post.user %><% end %></span>
+          <span class="line-p-right"><%= t(:comments) %>: <em>(<%= post.comments.recent.all.count %>)</em></span>
         </li>
     <% end -%>
   </ul>

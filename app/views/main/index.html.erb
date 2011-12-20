@@ -13,27 +13,40 @@
   </div>
 
   <div class="box-news main_news">
-    <strong>Новости</strong>
+    <!--strong>Новости</strong-->
+
+    <!-- Put this div tag to the place, where the Like block will be -->
+    <div class="vk_like">
+        <div id="vk_like"></div>
+        <script type="text/javascript">
+        VK.Widgets.Like("vk_like", {type: "full"});
+        </script>
+    </div>
+
     <div class="preview">
-        <img src="/images/img35.jpg" alt="image description"/>
-        <a href="#">Новая активная форма туризма<br/>вело туры по странам Европы</a>
+      <% post = @journals[0] -%>
+      <% @photos = post.journal_photos.limit(3)
+         if @photos.count > 0
+      %>
+         <% photo = @photos[0] %>
+         <%= link_to image_tag(photo.image.url(:original), :width => 300), post %>
+      <% end %>
+
+      <%= link_to post.title, post %>
+
     </div>
     <ul class="news_list">
       <% @new_turs.each do |tur| %>
           <li>
-            <%= link_to image_tag(tur.image.url(:small), :width => "80"), tur, :class => "thumb", :title => tur.title %>
+            <%= link_to image_tag(tur.image.url(:small), :width => 80), tur, :class => "thumb", :title => tur.title %>
           </li>
       <% end %>
       <% @new_turs.each do |tur| %>
           <li>
-            <%= link_to image_tag(tur.image.url(:small), :width => "80"), tur, :class => "thumb", :title => tur.title %>
+            <%= link_to image_tag(tur.image.url(:small), :width => 80), tur, :class => "thumb", :title => tur.title %>
           </li>
-      <% end %>
-      <% @new_turs.each do |tur| %>
-          <li>
-            <%= link_to image_tag(tur.image.url(:small), :width => "80"), tur, :class => "thumb", :title => tur.title %>
-          </li>
-      <% end %>
+      <% break
+         end %>
     </ul>
   </div>
 
@@ -201,46 +214,43 @@
 
 <% end %>
 
-<div class="box-dark-orange-c">
-  <div class="box-dark-orange-c-holder">
-    <div class="box-dark-orange-c-frame">
+<div class="box-dark-orange-c-frame">
 
-      <div class="journal-favorites">
-        <strong class="strong">Туристический журнал <em>Избранное</em></strong>
-        <%= link_to t(:addNewJournal), "#", :class => 'right' %>
-        <span>Статьи отобранные редакцией сайта <a href="/">turs.pro</a></span>
-        <!--<span class="line-p-right"><img src="images/ico-qn.png" alt="image description"/><a class="add-post" href="#">Добавить свою статью</a></span>-->
-        <ul>
-          <% for post in @journals -%>
-              <li>
-                <em><%= Russian::strftime(post.created_at, "%d %B %Y") %></em>
-                <!--a href="#"><strong></strong></a-->
+  <div class="journal-favorites">
+    <strong class="strong"><%= t(:travelJournal) %> <em>Избранное</em></strong>
+    <%= link_to t(:addNewJournal), "#", :class => 'right' %>
+    <span><%= t(:travelJournalFavorites) %> <a href="/">turs.pro</a></span>
+    <!--<span class="line-p-right"><img src="images/ico-qn.png" alt="image description"/><a class="add-post" href="#">Добавить свою статью</a></span>-->
+    <ul>
+      <% for post in @journals -%>
+          <li>
+            <em><%= Russian::strftime(post.created_at, "%d %B %Y") %></em>
+            <!--a href="#"><strong></strong></a-->
 
-                <p class="title"><%= link_to post.title, post %></p>
+            <p class="title"><%= link_to post.title, post %></p>
 
-                <% @photos = post.journal_photos.limit(3)
-                   if @photos.count > 0
-                %>
-                    <div class="img-holder">
+            <% @photos = post.journal_photos.limit(3)
+               if @photos.count > 0
+            %>
+                <div class="img-holder">
 
-                      <% for photo in @photos do %>
-                          <%= image_tag photo.image.url(:small) %>
-                          <!--<img src="/images/img42.jpg" alt="image description"/>-->
-                      <% end %>
-                    </div>
-                <% end %>
-                <p><%= truncate(post.text, 400, '...') %></p>
-                <span>Раздел: <% if post.category %> <%= link_to post.category.name, post.category %> <% end %></span>
-                <% if post.user %> | <span class="person <%= "pro" if ProAccount.activated( post.user) %>"><%= link_to post.user.name, company_profile_url(post.user) %></span><% end %>
-                <span class="line-p-right">Комментарии <em>(<%= post.comments.recent.all.count %>)</em></span>
-              </li>
-          <% end -%>
+                  <% for photo in @photos do %>
+                      <%= image_tag photo.image.url(:small) %>
+                      <!--<img src="/images/img42.jpg" alt="image description"/>-->
+                  <% end %>
+                </div>
+            <% end %>
+            <p><%= truncate(post.text, 400, '...') %></p>
+            <span>Раздел: <% if post.category %> <%= link_to post.category.name, post.category %> <% end %></span>
+            <% if post.user %> | <span class="person <%= "pro" if ProAccount.activated( post.user) %>"><%= link_to post.user.name, company_profile_url(post.user) %></span><% end %>
+            <span class="line-p-right">Комментарии <em>(<%= post.comments.recent.all.count %>)</em></span>
+          </li>
+      <% end -%>
 
-        </ul>
-      </div>
-    </div>
+    </ul>
   </div>
 </div>
+
 <!--div class="box-dark-orange-c">
                         <div class="box-dark-orange-c-holder">
                             <div class="box-dark-orange-c-frame">

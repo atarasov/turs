@@ -1,13 +1,10 @@
-<div class="box-blue-c">
-  <div class="box-blue-c-holder">
-    <div class="box-blue-c-frame">
+<div class="box-blue-c-frame">
+
           <% if notice and notice.length > 0 %><p class="notice"><%= notice %></p><% end %>
           <% if alert and alert.length > 0 %><p class="alert"><%= alert %></p><% end %>
 
 <div class="journal-favorites">
-  <strong class="strong">
-    Туристический журнал
-  </strong>
+  <strong class="strong"><%= t(:travelJournal) %></strong>
 
 <p>
   <%#= link_to @journal.user.email, company_profile_url(@journal.user) if @journal.user %>
@@ -44,15 +41,15 @@
 
   <% form_for :comment, :url=> journal_add_comment_path(@journal.id) do |f| %>
 
-  <strong class="strong">Новый комментарий</strong>
+  <strong class="strong"><%= t(:new_comment) %></strong>
 
   <% unless current_user %>
   <p class="field">
-    <%= f.text_field :title, :class => 'text-input' %> Укажите имя
+    <%= f.text_field :title, :class => 'text-input' %> <%= t(:form_name) %>
   </p>
   <% else %>
   <p class="field">
-    Вы вошли как <strong><%= current_user.email %></strong>.
+    <%= t(:logged_as) %> <strong><%= current_user.email %></strong>.
   </p>
   <% end %>
 
@@ -60,14 +57,12 @@
     <%= f.text_area :text, :class => 'mceEditor' %>
   </p>
 
-  <%= f.submit "Добавить коментарий"%>
+  <%= f.submit t(:form_comment_submit) %>
 
   <% end %>
 
 </div>
 
-    </div>
-  </div>
 </div>
 
 

@@ -11,9 +11,11 @@
   <p>
     <strong>
     <% if comment.user %>
-       <%= link_to comment.user.email, company_profile_url(comment.user) %>
-    <% elsif comment.title %>
+       <%= link_to comment.user.email, company_profile_url(comment.user), :class => "person" %>
+    <% elsif comment.title and comment.title.length > 0 %>
        <%= comment.title %>
+    <% else%>
+       <%= t(:noname) %>
     <% end %>
     </strong> &rarr;
     <%= Russian::strftime(comment.created_at, "%d %B %Y") %>
