@@ -1,6 +1,6 @@
 class Country < ActiveRecord::Base
   if Rails.env.production?
-      self.per_page = 50
+      self.per_page = 20
     else
       self.per_page = 2
     end
