@@ -12,6 +12,13 @@
     </ul>
   </div>
 
+
+
+
+
+
+
+
   <div class="box-news main_news">
     <!--strong>Новости</strong-->
 
@@ -23,30 +30,49 @@
         </script>
     </div>
 
-    <div class="preview">
-      <% post = @journals[0] -%>
-      <% @photos = post.journal_photos.limit(3)
-         if @photos.count > 0
-      %>
-         <% photo = @photos[0] %>
-         <%= link_to image_tag(photo.image.url(:original), :width => 300), post %>
+<script>
+
+$('#preview').cycle({
+    speed:       1300,
+    timeout:     5000,
+    pager:      '.news_list',
+    pagerEvent: 'mouseover',
+    pauseOnPagerHover: true,
+    pagerAnchorBuilder: function(idx, slide) {
+        // return selector string for existing anchor
+        return '.news_list li:eq(' + idx + ') a';
+    }
+});
+
+//  $('#direct').click(function() {
+//    $('.news_list li:eq(2) a').trigger('click');
+//    return false;
+//});
+
+</script>
+
+    
+
+    <div class="preview" id="preview">
+
+      <% @newses.each do |news| %>
+          <li>
+            <%= link_to image_tag(news.image.url(:original), :width => 300), news %>
+            <%= link_to news.title, @news %>
+          </li>
       <% end %>
 
-      <%= link_to post.title, post %>
+
+      <%#= truncate(@news.description, 100, '...') %>
 
     </div>
     <ul class="news_list">
-      <% @new_turs.each do |tur| %>
+      <% @newses.each do |news| %>
           <li>
-            <%= link_to image_tag(tur.image.url(:small), :width => 80), tur, :class => "thumb", :title => tur.title %>
+            <a href="#"><%= image_tag news.image.url(:small), :width => 80, :class => "thumb" %></a>
           </li>
       <% end %>
-      <% @new_turs.each do |tur| %>
-          <li>
-            <%= link_to image_tag(tur.image.url(:small), :width => 80), tur, :class => "thumb", :title => tur.title %>
-          </li>
-      <% break
-         end %>
+
     </ul>
   </div>
 
@@ -194,6 +220,24 @@
 
 <% content_for :two_columns do %>
 <div class="box-new-journal clearboth">
+    <div class="box-new-journal-holder">
+      <div class="box-new-journal-frame">
+        <%= link_to t(:addNewTur), "#", :class => 'right' %>
+        <strong><%= t(:lentaTurs) %></strong>
+
+        <ul class="new_turs">
+          <% @new_turs.each do |tur| %>
+              <li>
+                <%= link_to image_tag(tur.image.url(:small), :width => "80"), tur, :class => "thumb" %>
+                <%= link_to tur.title, tur, :class => "name" %>
+              </li>
+          <% end %>
+        </ul>
+
+      </div>
+    </div>
+</div>
+    <div class="box-new-journal clearboth">
     <div class="box-new-journal-holder">
       <div class="box-new-journal-frame">
         <%= link_to t(:addNewTur), "#", :class => 'right' %>

@@ -52,12 +52,13 @@ class User < ActiveRecord::Base
 
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :address, :price, :reestr_number, :slogan,
+  attr_accessible :name, :address, :price, :reestr_number, :slogan, :picture,
                   :vkontakte_url, :facebook_url, :info, :about, :phone,
                   :twitter_url, :exclus, :jj_url, :avatar, :avatar_file_name,
                   :avatar_content_type, :avatar_file_size, :avatar_updated_at,:is_hotel,
                   :is_tour_operator, :is_recreation_center,:is_sanatorium,:is_hostel,
-                  :is_guide ,:is_taxi, :is_mini_hotel, :is_tur_agency, :is_user, :link_to_site
+                  :is_guide ,:is_taxi, :is_mini_hotel, :is_tur_agency, :is_user, :link_to_site,
+                  :crop_h, :crop_w, :crop_x, :crop_y
   #acts_as_authentic
   #easy_roles :roles
   has_one :profile
@@ -175,4 +176,18 @@ class User < ActiveRecord::Base
                        [8 => "Мини отель"],
                        [9 => "Турагенство"]
   ]
+
+
+
+
+
+ has_attached_file :picture, :styles => {:small => "64x64", :medium => "150x150", :thumbnail => "30x30"},
+                    :url  => "/system/assets/user/picture/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/system/assets/user/picture/:id/:style/:basename.:extension",
+                    :default_url => "/images/avatar.jpg"
+
+  #validates_attachment_presence :avatar
+  validates_attachment_size :picture, :less_than => 5.megabytes
+  validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/pjpeg']
+
 end

@@ -1,5 +1,6 @@
 TursPro::Application.routes.draw do
 
+  resources :news, :only => [:index, :show]
   namespace :paid_service do
     get "pro"
     get "vip"
@@ -108,6 +109,7 @@ TursPro::Application.routes.draw do
   # devise_for :admins do
   namespace :admin do
     get "logout" => "devise/sessions#destroy"
+    resources :news
     resources :categories do
       collection do
         post 'batch_action'
@@ -150,6 +152,12 @@ TursPro::Application.routes.draw do
   match "/pay_successful", :controller => "company/finance", :action => "pay_successful"
 
 
+  scope "/remote" do
+    match "/show_pic" => "company/profiles#show_pic"
+    match "/show_crop" => "company/profiles#show_crop"
+  end
+
+
   namespace :company do
 	resources :finance do
 	  member do
@@ -158,6 +166,9 @@ TursPro::Application.routes.draw do
 	end
 
     resources :profiles do
+      put "create_pic"
+      put "update_pic"
+      get "show_pic"
       resources :rewards
       member do
         get "command_index"

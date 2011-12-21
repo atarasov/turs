@@ -5,6 +5,7 @@ class Company::ProfilesController < Company::BaseController
   def edit
     @countries = Country.all
     @user = User.find(params[:id])
+    @upload = @user
   end
 
   def show
@@ -199,4 +200,47 @@ class Company::ProfilesController < Company::BaseController
 	current_user.favorite_users.where(:id => params[:favorite_id].to_i).delete_all()
 	redirect_to :action => :favorite_index, :id => current_user.id
   end
+
+
+  def create_pic
+    @upload = current_user
+    if @upload.update_attributes(params[:user])
+      render :json => { :pic_path => @upload.picture.url.to_s , :name => @upload.picture.instance.attributes["picture_file_name"] }, :content_type => 'text/html'
+    else
+      #todo handle error
+      render :json => { :result => 'error'}, :content_type => 'text/html'
+    end
+  end
+
+  def update_pic
+    @upload = current_user
+    #@pik = params[:user]
+    #params[:user] = Hash.new
+    #params[:user] << [:picture]
+    #params[:user][:picture] = @pik
+    if @upload.update_attributes(params[:user])
+      flash[:notice] = "Successfully updated picture."
+      redirect_to root_path
+    end
+  end
+
+  def show_pic
+    @profile = current_user
+    @upload = current_user
+    #raise @upload.picture.to_file(:original).inspect
+    geo = Paperclip::Geometry.from_file(@upload.picture.to_file(:original))
+    @adapter = geo.width > User::MAX_CROP_WIDTH.to_f ? geo.width/User::MAX_CROP_WIDTH.to_f : 1
+    @width = geo.width
+    @height = geo.height
+  end
+
+  def show_crop
+    @profile = current_user
+    @upload = current_user
+  end
+
+  def current_picture
+    current_user.picture #to change according to what you expect, example: current_user.avatar
+  end
+
 end

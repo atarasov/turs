@@ -4,7 +4,7 @@ gem 'rails', "3.0.9"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-gem 'mysql'
+gem 'mysql2'
 gem "rake", "0.8.7"
 
 #gem 'devise'
@@ -19,7 +19,7 @@ gem 'acts_as_commentable'
 gem 'ruby-openid', '>= 2.0.4', :require => "openid"
 gem 'rack-openid'
 gem 'will_paginate', '~> 3.0'
-#gem 'bluecloth'
+gem 'bluecloth'
 gem 'RedCloth', :require => "redcloth"
 gem 'acts_as_list'
 gem 'acts_as_state_machine'
