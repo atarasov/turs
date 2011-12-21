@@ -89,6 +89,9 @@ class User < ActiveRecord::Base
     self.build_profile
   end
 
+  def get_balance
+	(self.balances.confirmed.ingoing.sum(:sum) - self.balances.confirmed.outgoing.sum(:sum))
+  end
 
   class << self
 
@@ -144,9 +147,9 @@ class User < ActiveRecord::Base
     self.openid_url.blank? ? false : true
   end
 
-  def get_balance
-    1500
-  end
+#  def get_balance
+#    1500
+#  end
 
   def to_xml(options = {})
     options[:except] ||= []

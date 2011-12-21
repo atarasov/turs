@@ -49,10 +49,11 @@ class JournalsController < ApplicationController
   def create
     @journal = Journal.new(params[:journal])
     @journal.user = current_user
-    @journal.category = Category.find(params[:category_id])
+
+#    @journal.category = Category.find(params[:category_id])
     respond_to do |format|
       if @journal.save
-        format.html { redirect_to(category_url(params[:category_id]), :notice => 'Journal was successfully created.') }
+        format.html { redirect_to(category_url(params[:journal][:category_id]), :notice => 'Journal was successfully created.') }
         format.xml  { render :xml => @journal, :status => :created, :location => @journal }
       else
         format.html { render :action => "new" }

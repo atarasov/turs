@@ -63,7 +63,12 @@
 
             <span class="heading"><em><%= Russian::strftime(journal.created_at, "%d %B %Y")  %></em>
               <% if journal.user %>
-                <span class="person <%= "pro" if ProAccount.activated( journal.user) %>"><%= journal.user.name %></span>
+				  <span class="thumb">
+					<%= image_tag(journal.user.avatar.url(:thumb)) %>
+				  </span>
+                <span class="person <%= "pro" if ProAccount.activated( journal.user) %>">
+				  <%= journal.user.name %>
+				</span>
               <% end %>
             </span>
             <%= link_to journal.title, journal %>
