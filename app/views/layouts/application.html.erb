@@ -11,13 +11,13 @@
 
   <%= stylesheet_link_tag %w(display captcha) %>
   <%= stylesheet_link_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/ui-lightness/jquery-ui.css' %>
-  <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js' %>
+  <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js' %>
   <%= javascript_include_tag 'rails_jquery.js' %>
   <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js' %>
   <%= javascript_include_tag 'application.js', 'ajaxupload.3.5.js' %>
-  <%= javascript_include_tag 'jquery.tools.min' %>
+  <%= javascript_include_tag 'http://cloud.github.com/downloads/malsup/cycle/jquery.cycle.all.latest.js' %>
   <%= csrf_meta_tag %>
-  <%= javascript_include_tag 'jquery', 'jquery-ui.min', 'application', 'rails', 'jquery.tools.min' %>
+  <%= javascript_include_tag 'jquery-ui.min', 'application', 'rails', 'jquery.tools.min' %>
   <%= javascript_include_tiny_mce_if_used %>
   <%= tiny_mce if using_tiny_mce? %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>

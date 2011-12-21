@@ -14,6 +14,10 @@
   <%= javascript_include_tag 'ajaxupload.3.5.js', 'popup', 'jquery.ui-slider', 'jquery.cycle.all' %>
   <%= javascript_include_tag 'application.js' %>
   <%= javascript_include_tag 'jquery.tools.min', 'jquery.carouFredSel-5.3.0' %>
+  <%= javascript_include_tag 'jquery.fileupload', 'jquery.fileupload-ui', 'jcrop.min' ,"pic_handler"%>
+  <%= stylesheet_link_tag('jquery.fileupload-ui') %>
+  <%= stylesheet_link_tag "jcrop" %>
+
   <%= csrf_meta_tag %>
 <%= javascript_include_tiny_mce_if_used %>
   <%= tiny_mce if using_tiny_mce? %>

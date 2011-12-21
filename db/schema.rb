@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213201604) do
+ActiveRecord::Schema.define(:version => 20111220184613) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -214,6 +214,17 @@ ActiveRecord::Schema.define(:version => 20111213201604) do
     t.boolean  "active",     :default => true
   end
 
+  create_table "news", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
   create_table "open_id_authentication_associations", :force => true do |t|
     t.binary  "server_url"
     t.string  "handle"
@@ -357,11 +368,11 @@ ActiveRecord::Schema.define(:version => 20111213201604) do
 
   create_table "stends", :force => true do |t|
     t.integer  "country_id"
-    t.integer  "user_id"
     t.integer  "days"
     t.string   "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "tenders", :force => true do |t|
@@ -532,6 +543,10 @@ ActiveRecord::Schema.define(:version => 20111213201604) do
     t.boolean  "is_tour_agency",                          :default => false
     t.integer  "city_id",                                 :default => 0
     t.string   "link_to_site",                            :default => " "
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

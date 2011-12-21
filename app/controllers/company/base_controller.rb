@@ -1,6 +1,6 @@
 class Company::BaseController < ApplicationController
   layout "company"
-  before_filter :profile_find, :except => :accept_command_call
+  before_filter :profile_find, :except => [:accept_command_call, :show_pic, :show_crop]
   
   #before_filter :authenticate_user!
    def profile_find

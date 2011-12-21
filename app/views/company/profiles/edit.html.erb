@@ -1,5 +1,6 @@
 <h1><%= t(:edit_profile) %></h1>
 
+
 <% form_for(@user, :url =>{:controller => "company/profiles", :action => :update}, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
 <%= f.hidden_field :is_sanatorium %>
@@ -13,8 +14,16 @@
         <%= f.hidden_field :is_tour_agency %>
         <%= f.hidden_field :is_hotel %>
     <p>
+      <%= image_tag @user.avatar.url(:medium) if @user.avatar.present? %>
     <%= f.label t(:avatar) %><br />
     <%= f.file_field :avatar %>
+  </p>
+
+    <p>
+      <%= image_tag @user.picture.url(:small) if @user.picture.present?  %>
+      <%= image_tag @user.picture.url(:thumbnail) if @user.picture.present?  %>
+    <%= f.label t(:picture) %><br />
+    <%= f.file_field :picture %>
   </p>
 
     <p>
