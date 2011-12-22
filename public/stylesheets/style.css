@@ -331,9 +331,7 @@ textarea{
 .navigation-holder .right:hover{
 	text-decoration:underline !important;
 }
-.navigation-holder .hov:hover{
-	text-decoration:underline !important;
-}
+
 #main{
 	padding:20px 0 0;
 	width:100%;
@@ -2391,7 +2389,7 @@ iframe.advertisement_description_ifr{visibility: visible !important;}
 .button {
     background:url("../images/Stranyknopka1.png") no-repeat;
     display: block;
-    height: 44px;
+    height: 22px;
     text-decoration: none !important;
     color: white !important;
     padding: 5px 5px 0 15px;
@@ -2401,7 +2399,7 @@ iframe.advertisement_description_ifr{visibility: visible !important;}
 .button:hover {
     background:url("../images/Stranyknopka2.png") no-repeat;
     display: block;
-    height: 44px;
+    height: 22px;
     text-decoration: none !important;
     color: white !important;
     padding: 5px 5px 0 15px;

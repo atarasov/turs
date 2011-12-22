@@ -44,6 +44,9 @@
 								<li><%= link_to_unless_current 'Портфолио', company_profile_url(@profile) %><em>&nbsp;</em></li>
 								<li><%= link_to_unless_current 'Фотографии', company_photos_url(@profile) %><span>(<%= @profile.photos.all.count  %>)</span><em>&nbsp;</em></li>
 								<li><%= link_to_unless_current 'Видео', company_videos_url(@profile) %><span>(<%= @profile.videos.all.count %>)</span><em>&nbsp;</em></li>
+								<li><%= link_to_unless_current 'Направление', company_comments_url(@profile) %><span>(<%= @profile.comments.recent.all.count %>)</span><em>&nbsp;</em></li>
+								<li><%= link_to_unless_current 'Наши туры', company_comments_url(@profile) %><span>(<%= @profile.comments.recent.all.count %>)</span><em>&nbsp;</em></li>
+								<li><%= link_to_unless_current 'Карта', company_comments_url(@profile) %><span>(<%= @profile.comments.recent.all.count %>)</span><em>&nbsp;</em></li>
 								<li><%= link_to_unless_current 'Отзывы', company_comments_url(@profile) %><span>(<%= @profile.comments.recent.all.count %>)</span><em>&nbsp;</em></li>
 							</ul>
 						</div>
