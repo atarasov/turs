@@ -368,11 +368,11 @@ ActiveRecord::Schema.define(:version => 20111220184613) do
 
   create_table "stends", :force => true do |t|
     t.integer  "country_id"
+    t.integer  "user_id"
     t.integer  "days"
     t.string   "price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "tenders", :force => true do |t|
