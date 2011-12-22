@@ -11,9 +11,9 @@
 
       <div class="sort">
         <ul>
-          <li><%= image_tag("by_abc.png")%><%= link_to "по алфавиту", countries_path(:sort=>'title') %></li>
-          <li><%= image_tag("by_rating.png")%><%= link_to "по рейтингу", countries_path(:sort=>'rating') %></li>
-          <li><%= image_tag("by_review.png")%><%= link_to "по популярности", countries_path(:sort=>'review') %></li>
+          <li><%= image_tag("by_abc.png")%><%= link_to "по алфавиту", countries_path(:sort=>'title') , :class => "no-line" %></li>
+          <li><%= image_tag("by_rating.png")%><%= link_to "по рейтингу", countries_path(:sort=>'rating'), :class => "no-line" %></li>
+          <li><%= image_tag("by_review.png")%><%= link_to "по популярности", countries_path(:sort=>'review'), :class => "no-line" %></li>
         </ul>
       </div>
 

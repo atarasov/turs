@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  apply_simple_captcha
   concerned_with :states, :activation, :posting, :validation
   formats_attributes :bio
 

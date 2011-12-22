@@ -51,9 +51,9 @@
             <input class="btn-login" value=""/>
 
             <div id="panel2">
-              <a href="" style="float: right;text-decoration:none; background-color: #ffffff;" class="btn-login active">X</a>
+              <a href="" style="float: right;text-decoration:none;background:none; width: 5px; background-color: #ffffff;" class="btn-login active">X</a>
 
-              <h2><%= I18n.t('txt.login', :default => 'Login') %></h2>
+              <!--<h2><%#= I18n.t('txt.login', :default => 'Login') %></h2>-->
 <form action="#" method="post">  </form>
               <%= form_tag session_path, :method => :post do %>
                   <div id="openid_fields" style="display:none">
@@ -67,17 +67,17 @@
                   </div>
 
                   <div id="password_fields">
-                    <p><%= label_tag I18n.t('txt.login_name', :default => 'Login') %><br/>
+                    <p><%= label_tag t(:login) %><br/>
                       <%= text_field_tag 'login', @login %></p>
 
-                    <p><%= label_tag I18n.t('txt.password', :default => 'Password') %><br/>
+                    <p><%= label_tag t(:password) %><br/>
                       <%= password_field_tag 'password', nil %></p>
 
-                    <p><%= label_tag 'remember_me', I18n.t('txt.remember_me', :default => 'Remember me') %>
+                    <p><%= label_tag 'remember_me', t(:remember_me) %>
                       <%= check_box_tag 'remember_me', '1', @remember_me %></p>
 
-                    <p><%= submit_tag I18n.t('txt.log_in', :default => 'Log in') %>
-                      <%= link_to_function(I18n.t('txt.views_users.reset_password', :default => "reset password"), "$('reset-password').toggle();") %>
+                    <p><%= submit_tag t(:log_in) %>
+                      <%= link_to_function(t(:reset_password), "$('reset-password').toggle();") %>
                       <!--<a href="#" onclick="LoginForm.setToOpenID()"><%#= I18n.t('txt.or_login_with_openid', :default => 'or login with OpenID') %></a>-->
                     </p>
                   </div>
