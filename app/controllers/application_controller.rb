@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include UrlHelper
+  include SimpleCaptcha::ControllerHelpers
   helper LaterDude::CalendarHelper
   protect_from_forgery
 

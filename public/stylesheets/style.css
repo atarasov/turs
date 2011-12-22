@@ -2797,7 +2797,7 @@ text-align: right;}
     margin-bottom:20px;
 }
 .sort ul, .sort li{list-style: none; display: inline;}
-.sort li a, .sort li a:hover{position: relative; color: #ff0000; text-decoration: none; font-size: 14px; margin: 0 15px; bottom: 15px;}
+.sort li a, .sort li a:hover{position: relative; text-decoration: none; font-size: 14px; margin: 0 15px; bottom: 15px;}
 
 .digg_pagination {
   background: white;

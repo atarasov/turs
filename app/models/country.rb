@@ -16,6 +16,7 @@ class Country < ActiveRecord::Base
   has_many :tenders
 
   scope :in_list, where(:in_list => true) #where(:published => true)
+  default_scope :order => 'title'
   accepts_nested_attributes_for :embassy
   accepts_nested_attributes_for :visa
   accepts_nested_attributes_for :phrasebook
