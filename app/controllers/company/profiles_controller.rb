@@ -148,6 +148,14 @@ class Company::ProfilesController < Company::BaseController
     end
   end
 
+  def directions
+    @directions = User.find(params[:profile_id]).directions
+  end
+
+  def contact_map
+    @user = User.find(params[:profile_id])
+  end
+
   def command_index
 	@profile = User.where(:id => params[:id]).first
 

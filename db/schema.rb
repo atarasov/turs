@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111226183126) do
+ActiveRecord::Schema.define(:version => 20111226193515) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -570,6 +570,8 @@ ActiveRecord::Schema.define(:version => 20111226183126) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "coord_long"
+    t.string   "coord_lat"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

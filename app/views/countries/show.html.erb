@@ -29,7 +29,24 @@
           <a href="<%= country_path(@prev_country.id) %>" class="left">Предыдущая<br/>страна</a>
       <% end %>
       <% if @next_country %>
-          <a href="<%= country_path(@next_country.id) %>" class="right hov">Следующая<br/>страна</a>
+          <style>
+            .navigation-holder .hov:hover{
+	           text-decoration:underline !important;
+             }
+          </style>
+          <script>
+              function add_underline(){
+                $(".linkh").add(document.getElementById("hov")).css("text-decoration", "underline");
+              }
+                  function remove_underline(){
+                $(".linkh").add(document.getElementById("hov")).css("text-decoration", "none");
+              }
+
+          </script>
+
+         <em class="linkh">
+           <a onmouseover="add_underline();" onmouseout="remove_underline()" id="hov" href="<%= country_path(@next_country.id) %>" class="right hov">Следующая<br/>страна</a>
+          </em>
       <% end %>
       <ul class="breadcrambs">
         <li><%= link_to t(:countries), countries_path %></li>
@@ -50,6 +67,10 @@
       <span class="phone_code">
         <a href="<%= phones_countries_url %>" ><em><%= @country.country_code %></em></a>
       </span>
+      <span style="width: 100px;" class="spr"> <%= link_to "Виза", visa_country_url(@country.id), :class=>'button' %></span>
+      <span style="width: 100px;" class="spr"><%= link_to "Разговорник", phrasebook_country_url(@country.id), :class=>'button' %></span>
+      <span style="width: 100px;" class="spr"> <%= link_to "Памятка", memo_country_url(@country.id), :class=>'button' %></span>
+      <span style="width: 100px;" class="spr"> <%= link_to "Посольство", embassy_country_url(@country.id), :class=>'button' %></span>
   </div>
   <div class="countries-post">
     <p><%= @country.description.html_safe %></p>
@@ -73,10 +94,7 @@
   <div class="countries-foto-line">
     <span class="spr"><%= t(:category) %>: <%= link_to "Раздел", countries_path %></span>
 
-    <span style="width: 100px;" class="spr"> <%= link_to "Виза", visa_country_url(@country.id), :class=>'button' %></span>
-    <span style="width: 100px;" class="spr"><%= link_to "Разговорник", phrasebook_country_url(@country.id), :class=>'button' %></span>
-    <span style="width: 100px;" class="spr"> <%= link_to "Памятка", memo_country_url(@country.id), :class=>'button' %></span>
-    <span style="width: 100px;" class="spr"> <%= link_to "Посольство", embassy_country_url(@country.id), :class=>'button' %></span>
+
     <span class="foto-line-right"><!--Отзывы: <a href="#">12</a>  | -->Статьи: <a href="<%= journals_path(:country=>@country.id) %>"><%= Journal.where(:country_id => @country.id).count %></a></span>
   </div>
   </p>

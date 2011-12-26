@@ -331,9 +331,7 @@ textarea{
 .navigation-holder .right:hover{
 	text-decoration:underline !important;
 }
-.navigation-holder .hov:hover{
-	text-decoration:underline !important;
-}
+
 #main{
 	padding:20px 0 0;
 	width:100%;
@@ -1818,6 +1816,9 @@ ul.countries-foto li{
 	float:left;
 	border:none;
 	margin:0;
+    width: 30%;
+    text-align: center;
+    position: relative;
 }
 .countries-foto-holder{
 	width:100%;
@@ -1827,7 +1828,7 @@ ul.countries-foto li{
 	margin:0 0 16px;
 	padding:0;
 	list-style:none;
-	/*width:500px;*/
+	width:100%;
 	overflow:hidden;
 }
 ul.countries-foto img{
@@ -2391,7 +2392,7 @@ iframe.advertisement_description_ifr{visibility: visible !important;}
 .button {
     background:url("../images/Stranyknopka1.png") no-repeat;
     display: block;
-    height: 44px;
+    height: 22px;
     text-decoration: none !important;
     color: white !important;
     padding: 5px 5px 0 15px;
@@ -2401,7 +2402,7 @@ iframe.advertisement_description_ifr{visibility: visible !important;}
 .button:hover {
     background:url("../images/Stranyknopka2.png") no-repeat;
     display: block;
-    height: 44px;
+    height: 22px;
     text-decoration: none !important;
     color: white !important;
     padding: 5px 5px 0 15px;

@@ -22,7 +22,11 @@
 <%= javascript_include_tiny_mce_if_used %>
   <%= tiny_mce if using_tiny_mce? %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
-
+<% if Rails.env.production? %>
+    <script src="http://api-maps.yandex.ru/1.1/?key=ACfJ-E4BAAAA8CqJGQIAxir_i0Rea9KzFP090GM41-55Q1IAAAAAAAAAAADD1hxG4c0tTTC1LCfA3UNprPIKUQ==&modules=pmap&wizard=constructor" type="text/javascript"></script>
+<% else %>
+    <script src="http://api-maps.yandex.ru/1.1/index.xml?key=AC-0gU0BAAAAgsrxTwIAYC9mTt3wPpnp23qb7qdeOe1w25wAAAAAAAAAAAC703LgW8HXfrQ2tu9gS1X_ryVnIw==" type="text/javascript"></script>
+<% end %>
 
 </head>
 <body>
@@ -44,6 +48,9 @@
 								<li><%= link_to_unless_current 'Портфолио', company_profile_url(@profile) %><em>&nbsp;</em></li>
 								<li><%= link_to_unless_current 'Фотографии', company_photos_url(@profile) %><span>(<%= @profile.photos.all.count  %>)</span><em>&nbsp;</em></li>
 								<li><%= link_to_unless_current 'Видео', company_videos_url(@profile) %><span>(<%= @profile.videos.all.count %>)</span><em>&nbsp;</em></li>
+								<li><%= link_to_unless_current 'Направление', company_profile_directions_url(@profile) %><span>(<%= @profile.directions.all.count %>)</span><em>&nbsp;</em></li>
+								<li><%= link_to_unless_current 'Наши туры', company_profile_turs_url(@profile) %><span>(<%= @profile.turs.all.count %>)</span><em>&nbsp;</em></li>
+								<li><%= link_to_unless_current 'Карта',  company_profile_contact_map_url(@profile) %> </li>
 								<li><%= link_to_unless_current 'Отзывы', company_comments_url(@profile) %><span>(<%= @profile.comments.recent.all.count %>)</span><em>&nbsp;</em></li>
 							</ul>
 						</div>

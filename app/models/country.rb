@@ -22,7 +22,7 @@ class Country < ActiveRecord::Base
   accepts_nested_attributes_for :phrasebook
   accepts_nested_attributes_for :memo
 
-  has_attached_file :flag, :styles => {:small => "150x150>", :medium => "300x300>", :thumb=> "68x38>", :mini=> "20>"},
+  has_attached_file :flag, :styles => {:small => "100x100>", :medium => "300x300>", :thumb=> "68x38>", :mini=> "20>"},
                     :url  => "/system/assets/countries/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/assets/countries/:id/:style/:basename.:extension"
 
@@ -30,7 +30,7 @@ class Country < ActiveRecord::Base
   validates_attachment_size :flag, :less_than => 5.megabytes
   validates_attachment_content_type :flag, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
-  has_attached_file :image1, :styles => {:small => "150x150>", :medium => "300x300>"},
+  has_attached_file :image1, :styles => {:small => "250x250>", :medium => "300x300>"},
                     :url  => "/system/assets/countries/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/assets/countries/:id/:style/:basename.:extension"
 
@@ -38,7 +38,7 @@ class Country < ActiveRecord::Base
   validates_attachment_size :image1, :less_than => 5.megabytes
   validates_attachment_content_type :image1, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
-  has_attached_file :image2, :styles => {:small => "150x150>", :medium => "300x300>"},
+  has_attached_file :image2, :styles => {:small => "250x250>", :medium => "300x300>"},
                     :url  => "/system/assets/countries/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/assets/countries/:id/:style/:basename.:extension"
 
@@ -46,7 +46,7 @@ class Country < ActiveRecord::Base
   validates_attachment_size :image2, :less_than => 5.megabytes
   validates_attachment_content_type :image2, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
-  has_attached_file :image3, :styles => {:small => "150x150>", :medium => "300x300>"},
+  has_attached_file :image3, :styles => {:small => "250x250>", :medium => "300x300>"},
                     :url  => "/system/assets/countries/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/assets/countries/:id/:style/:basename.:extension"
 
