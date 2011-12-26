@@ -8,8 +8,19 @@
         <%#= button_to "", new_user_url(:subdomain => false), :class=>"btn-register" %>
         <%# raise @current_user.inspect %>
         <!--<a href="" class="btn-slide">Нажми на меня!</a>-->
-        <input onclick="window.location = '<%= signup_url %>';" class="btn-register" value=""/>
-        <% if current_user.present? %> <%= link_to 'Мои действия', company_profile_url(current_user), :class=>"btn-slide" %>
+        <!--<input onclick="window.location = '<%#= signup_url %>';" class="btn-register" value=""/>-->
+        <% if current_user.present? %>
+
+            <ul class="nav_us">
+              <li><%= link_to 'В профиль', company_profile_url(current_user) %> (<%= link_to t(:change_data), edit_company_profile_url(current_user) %>)</li>
+              <li>|</li>
+              <li>Баланс - <%= link_to current_user.get_balance, company_finance_index_url %> (<%= link_to "Пополнить", new_company_finance_url %>)</li>
+              <li>|</li>
+              <li><%= link_to 'Мои действия', company_profile_url(current_user), :class=>"btn-slide" %></li>
+              <li>|</li>
+              <li><%= link_to 'Выйти', logout_url %></li>
+            </ul>
+
             <div id="panel">
               <a href="" style="float: right;text-decoration:none; background-color: #ffffff;" class="btn-slide active">X</a>
 
@@ -40,10 +51,10 @@
                 <li><b><%= t(:link_service) %>:</b> t(:add) / (<%= link_to t(:popr), paid_service_site_link_url %>)</li>
               </ul>
               <ul>
-                <li><%= link_to 'В профиль', company_profile_url(current_user) %></li>
+
                 <li>Статистика</li>
-                <li><%= link_to t(:add), new_company_profile_reward_url(current_user)%> / <%= link_to t(:all), company_profile_rewards_url(current_user)%></li>
-                <li><b>Профиль:</b> <%= link_to t(:change_data), edit_company_profile_url(current_user) %>  / <%= link_to t(:change_password), edit_user_url(current_user) %> / <%= link_to 'Выйти', logout_url %></li>
+                <li>Награды: <%= link_to t(:add), new_company_profile_reward_url(current_user)%> / <%= link_to t(:all), company_profile_rewards_url(current_user)%></li>
+                <!--<li><b>Профиль:</b>   / <%#= link_to t(:change_password), edit_user_url(current_user) %> / </li>-->
               </ul>
             </div>
 
