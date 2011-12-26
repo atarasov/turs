@@ -187,7 +187,7 @@
     <li><%= link_to t(:mainPage), root_url(:subdomain => false) %>
       <ul>
         <li class="sub"><%= link_to t(:mainPage), root_url(:subdomain => false) %></li>
-        <li class="sub"><%= link_to 'Отзывы', root_url(:subdomain => false) %></li>
+        <li class="sub"><%= link_to 'Отзывы', mention_index_url(:subdomain => false) %></li>
       </ul>
     </li>
     <li><%= link_to "Заказ", "" %>
@@ -254,7 +254,7 @@
         <td><%= link_to t(:mainPage), root_url(:subdomain => false) %>
           <ul>
             <li class="sub"><%= link_to t(:mainPage), root_url(:subdomain => false) %></li>
-            <li class="sub"><%= link_to 'Отзывы', root_url(:subdomain => false) %></li>
+            <li class="sub"><%= link_to 'Отзывы', mention_index_url(:subdomain => false) %></li>
           </ul>
         </td>
         <td><%= link_to "Заказ", "" %>

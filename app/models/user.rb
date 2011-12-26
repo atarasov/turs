@@ -91,6 +91,14 @@ class User < ActiveRecord::Base
     self.build_profile
   end
 
+  def add_to_balance sum, comment = nil
+	self.balances.create(:sum => sum, :is_ingoing => true, :is_confirmed => true, :comment => comment.to_s)
+  end
+
+  def remove_from_balance sum, comment = nil
+	self.balances.create(:sum => sum, :is_ingoing => false, :is_confirmed => true, :comment => comment.to_s)
+  end
+
   def get_balance
 	(self.balances.confirmed.ingoing.sum(:sum) - self.balances.confirmed.outgoing.sum(:sum))
   end
