@@ -36,6 +36,8 @@ class Company::FinanceController < ApplicationController
 		crc  = Digest::MD5.hexdigest("#{mrh_login}:#{out_summ}:#{inv_id}:#{mrh_pass1}:Shp_item=#{shp_item}");
 
 		#url
+		# рабочий:
+		#https://merchant.roboxchange.com/Index.aspx
 		url = "http://test.robokassa.ru"
 
 		pay_params = URI.escape("MrchLogin=#{mrh_login}&OutSum=#{out_summ}&InvId=#{inv_id}" +
