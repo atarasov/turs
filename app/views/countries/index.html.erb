@@ -44,7 +44,7 @@
                   </div>
 
                   <div class="countries-post">
-                    <p><%= raw simple_format(truncate(country.description, @settings.post_symbol_count, '...')) %></p>
+                    <p><%= raw simple_format(truncate(country.description.html_safe.gsub(/<\/?[^>]*>/, ""), @settings.post_symbol_count, '...')) %></p>
                   </div>
 
                 </div>
