@@ -4,7 +4,9 @@ class Mention < ActiveRecord::Base
                     :path => ":rails_root/public/system/assets/mentions/:id/:style/:basename.:extension",
                     :default_url => "/images/avatar.jpg"
 
-  validates_attachment_presence :avatar
   validates_attachment_size :avatar, :less_than => 5.megabytes
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/pjpeg']
+  validates_presence_of :title
+  validates_presence_of :text
+  validates_presence_of :name
 end

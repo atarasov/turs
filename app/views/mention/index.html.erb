@@ -1,0 +1,22 @@
+<%= link_to "Добавить отзыв", {:controller => :mention, :action => :new} %>
+<table>
+	<% for mention in @mentions %>
+		<tr>
+		  <td><%= image_tag mention.avatar.url(:medium) %></td>
+		  <td>
+			<strong><%= mention.title %></strong>
+			<p>
+			  <%= mention.text %>
+			</p>
+
+			<span>
+			  <%= link_to_if mention.page_url.present?, mention.name, mention.page_url %>
+			  <% if mention.profession.present? %>
+			  	- <%= mention.profession %>
+			  <% end %>
+			</span>
+		  </td>
+		</tr>
+	<% end %>
+</table>
+<%= will_paginate @mentions %>

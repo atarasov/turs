@@ -44,6 +44,8 @@ TursPro::Application.routes.draw do
 
   resources :gallery
 
+  resources :mention
+
   resources :catalog do
     collection do
       #resources :hotels , :controller => 'catalog', :action => 'hotels'#, :only =>[:index]

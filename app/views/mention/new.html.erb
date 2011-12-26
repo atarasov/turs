@@ -1,0 +1,36 @@
+<%= form_for @mention, :url => {:controller => :mention, :action => :create}, :html => { :multipart => true } do |f| %>
+<% if @mention.errors.present? && @mention.errors.any? %>
+	<p style="color:red;"><%= @mention.errors.values.join("<br />").html_safe %></p>
+<% end %>
+<table>
+  <tr>
+	<td>Заголовок*</td>
+	<td><%= f.text_field :title %></td>
+  </tr>
+  <tr>
+	<td>Отзыв*</td>
+	<td><%= f.text_area :text %></td>
+  </tr>
+  <tr>
+	<td>Ваше имя*</td>
+	<td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+	<td>Ваша профессия/специальность</td>
+	<td><%= f.text_field :profession %></td>
+  </tr>
+  <tr>
+	<td>Ссылка на Вашу страничку на turs.pro</td>
+	<td><%= f.text_field :page_url %></td>
+  </tr>
+  <tr>
+	<td>Аватара</td>
+	<td><%= f.file_field :avatar %></td>
+  </tr>
+  <tr>
+	<td>Защитный код</td>
+	<td><%= show_simple_captcha %></td>
+  </tr>
+</table>
+	<%= f.submit "Добавить" %>
+<% end %>
