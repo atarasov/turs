@@ -159,11 +159,11 @@ TursPro::Application.routes.draw do
 
 
   namespace :company do
-	resources :finance do
-	  member do
-		get "pay_successful"
-	  end
-	end
+    resources :finance do
+      member do
+        get "pay_successful"
+      end
+    end
 
     resources :profiles do
       put "create_pic"
@@ -178,7 +178,8 @@ TursPro::Application.routes.draw do
         get "add_favorite"
         get "favorite_index"
       end
-
+      get 'directions'
+      get 'contact_map'
       resources :turs
       member do
         resources :journals

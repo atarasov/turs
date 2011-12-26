@@ -1816,6 +1816,9 @@ ul.countries-foto li{
 	float:left;
 	border:none;
 	margin:0;
+    width: 30%;
+    text-align: center;
+    position: relative;
 }
 .countries-foto-holder{
 	width:100%;
@@ -1825,7 +1828,7 @@ ul.countries-foto li{
 	margin:0 0 16px;
 	padding:0;
 	list-style:none;
-	/*width:500px;*/
+	width:100%;
 	overflow:hidden;
 }
 ul.countries-foto img{

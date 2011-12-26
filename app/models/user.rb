@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
                   :avatar_content_type, :avatar_file_size, :avatar_updated_at,:is_hotel,
                   :is_tour_operator, :is_recreation_center,:is_sanatorium,:is_hostel,
                   :is_guide ,:is_taxi, :is_mini_hotel, :is_tur_agency, :is_user, :link_to_site,
-                  :crop_h, :crop_w, :crop_x, :crop_y
+                  :crop_h, :crop_w, :crop_x, :crop_y, :coord_long, :coord_lat
   #acts_as_authentic
   #easy_roles :roles
   has_one :profile

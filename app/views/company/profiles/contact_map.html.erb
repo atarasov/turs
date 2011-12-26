@@ -1,0 +1,76 @@
+
+
+
+
+  <p>
+        <%= hidden_field :user, :coord_lat %>
+        <%= hidden_field :user, :coord_long %>
+        <div id="object_map" class="fix_map float_left" style="width:95%;height:500px;"></div>
+        <!--<div class="map_desc">Если точка на карте неправильно определилась, переместите маркер в корректное положение.</div>-->
+<script type="text/javascript">
+    var address = '';
+    var company_coord = '';
+    var drag_marker = true;
+    var old_point = 0;
+    var marker = 0;
+    var map = 0;
+
+    function initMaps(name){
+        if (company_coord) {
+            $('#coord_div').show();
+            map = new YMaps.Map(document.getElementById("object_map"));
+            map.setCenter(company_coord, 16);
+            map.addControl(new YMaps.SmallZoom());
+            marker = new YMaps.Placemark(company_coord, {});
+            marker.name = name;
+            map.addOverlay(marker);
+            //marker.openBalloon();
+        <% if current_user.id == params[:profile_id] %>
+            YMaps.Events.observe(marker, marker.Events.DragStart, function () {
+                old_point = this.getCoordPoint();
+            });
+            YMaps.Events.observe(marker, marker.Events.DragEnd, function () {
+                if (confirm('Сохранить новое положение указателя?')) {
+                    company_coord = marker.getCoordPoint();
+                    $("#user_coord_lat").val(company_coord.getY());
+                    $("#user_coord_long").val(company_coord.getX());
+                    map.panTo(company_coord);
+                } else {
+                    map.panTo(old_point);
+                    marker.setCoordPoint(old_point);
+                }
+            });
+        <% end %>
+        } else {
+            $('#coord_div').hide();
+        }
+    }
+    function reloadMaps() {
+        if ($('#user_address').val().length == 0) return;
+        var geocoder = new YMaps.Geocoder($('#user_address').val() );
+        YMaps.Events.observe(geocoder, geocoder.Events.Load, function () {
+            if (this.length) {
+                company_coord = this.get(0).getGeoPoint();
+                $("#user_coord_lat").val(company_coord.getY());
+                $("#user_coord_long").val(company_coord.getX());
+                initMaps($('#user_address').val());
+            } else {
+                $('#coord_div').hide();
+            }
+        });
+    }
+<% if @user.coord_long and @user.coord_lat %>
+    company_coord = new YMaps.GeoPoint(<%= @user.coord_long %>, <%= @user.coord_lat %>);
+    <%
+       adr = []
+       adr += [@user.address]
+       adr.delete("")
+    %>
+    initMaps('<%= adr.join(', ') %>');
+<% end %>
+
+<%# unless @current_area %>
+$('.noedit_2').hide();
+<%# end %>
+</script>
+</p>
