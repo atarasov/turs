@@ -1,0 +1,2 @@
+class MentionController < ApplicationController
+end
