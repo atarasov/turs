@@ -16,7 +16,7 @@
             <!--<img src="/images/img42.jpg" alt="image description"/>-->
             <% end %>
           </div>
-          <p><%= h post.text %></p>
+          <p><%= post.text.html_safe %></p>
           <span>Раздел: <% if post.category%> <%= link_to post.category.name, post.category %> <% end %>
             <% if post.user %> |  Разместил: <%= link_to post.user.email, company_profile_url(post.user) %><% end %></span>
           <span class="line-p-right">Комментарии <em>(<%= post.comments.recent.all.count %>)</em></span>

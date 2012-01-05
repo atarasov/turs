@@ -8,12 +8,17 @@
 
 <p>
   <%#= link_to @journal.user.email, company_profile_url(@journal.user) if @journal.user %>
+
   <% if @journal.user %>
   <span class="person <%= "pro" if ProAccount.activated( @journal.user) %>">
     <%= link_to @journal.user.name || @journal.user.email, company_profile_url(@journal.user) %>
   </span> &rarr;
   <% end %>
+
   <em><%=  Russian::strftime(@journal.created_at, "%d %B %Y") %></em>
+  <% if @journal.user.id.eql?(current_user.id) %>
+    <%= link_to "Редактировать", edit_journal_url(@journal) %>
+  <% end %>
 </p>
 
 <p class="title">

@@ -78,6 +78,10 @@ TursPro::Application.routes.draw do
 
   resources :journals do
     post "add_comment"
+    collection do
+      get 'drop_photo'
+      post 'add_photo'
+    end
   end
   resources :profiles
   resources :countries do

@@ -3,7 +3,7 @@
     = f.input :title, :label => t(:title)
     = f.input :recomended, :label => "Рекомендовать"
 
-    = f.input :text, :label => t(:text)
+    = f.input :text, :label => t(:text), :input_html => { :class => 'mceEditor' }
 
     = f.input :country_id, :as => :select, :collection => options_from_collection_for_select(@countries, "id", "title"), :label => "Страна"
     = f.input :category_id, :as => :select, :collection => options_from_collection_for_select(@categories, "id", "name"), :label => "Рубрика"

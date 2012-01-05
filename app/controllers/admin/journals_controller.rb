@@ -1,4 +1,5 @@
 class Admin::JournalsController < Admin::BaseController
+  uses_tiny_mce(:options => AppConfig.default_mce_options, :only => [:new, :edit])
   # GET /journals
   # GET /journals.xml
   def index
@@ -95,7 +96,7 @@ class Admin::JournalsController < Admin::BaseController
     end
   end
 
-def add_photo
+  def add_photo
     @journal_photos = params[:journal_photos] || []
 
     for photo in @journal_photos do

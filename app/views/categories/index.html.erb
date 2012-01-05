@@ -41,10 +41,13 @@
                 <% end %>
               </div>
               <% end %>
-              <p><%= h post.text %></p>
+              <p><%= post.text.html_safe %></p>
               <span><%= t(:category) %>: <% if post.category%> <%= link_to post.category.name, post.category %> <% end %>
               <% if post.user %> | <span class="person <%= "pro" if ProAccount.activated( post.user) %>"><%= link_to post.user.name || post.user.email, company_profile_url(post.user) %></span><% end %>
-              <span class="line-p-right"><%= t(:comments) %> <em>(<%= post.comments.recent.all.count %>)</em></span>
+              <% if post.user.id.eql?(current_user.id) %>
+                <%= link_to "Редактировать", edit_journal_url(post) %>
+                <% end %>
+                <span class="line-p-right"><%= t(:comments) %> <em>(<%= post.comments.recent.all.count %>)</em></span>
             </li>
         <% end -%>
       </ul>

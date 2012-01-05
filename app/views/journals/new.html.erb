@@ -1,5 +1,41 @@
 <h1>New journal</h1>
 
-<%= render 'form' %>
+<%= form_for @journal, :method => :post, :html => {:multipart => true} do |f| %>
+  <% if @journal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@journal.errors.count, "error") %> prohibited this journal from being saved:</h2>
+
+      <ul>
+      <% @journal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.select :category_id, [["Не выбранно" , nil]] + Category.all.map{|category| [category.name, category.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :country_id %><br />
+    <%= f.select :country_id, [["Не выбранно" , nil]] + Country.all.map{|country| [country.title, country.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_area :text , :class => 'mceEditor'%>
+  </div>
+
+    <div>
+      <%#= render :partial => "facility_photo" %>
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%#= link_to 'Back', journals_path %>
