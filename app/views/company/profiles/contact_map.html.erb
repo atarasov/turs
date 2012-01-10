@@ -15,16 +15,43 @@
     var marker = 0;
     var map = 0;
 
+    var s = new YMaps.Style();
+s.balloonContentStyle = new YMaps.BalloonContentStyle(
+    new YMaps.Template("<div style='float: left; margin-right: 5px; height: 90px; overflow: hidden;'> "
+            +" <img style='float: left;margin-right: 5px;' src=\"$[img]\"> </img>"
+            +" <div style='float: right;'>"
+            +"<a href=\" $[prof_url]\"> $[name] </a> "
+            +"<p>$[address]</p>"
+            +"<p>$[slogan]</p>"
+            +"<p>$[phone]</p>"
+            +"</div>"
+            +"<div style='clear: both;float: left; padding-top:5px;'>"
+            +"<ul style='margin-top: 5px;'>"
+            +"<li style='display:inline; margin-right: 5px;'>$[catalog]</li>"
+            +"<li style='display:inline; margin-right: 5px;'>|</li>"
+            +"<li style='display:inline; margin-right: 5px;'>$[city]</li>"
+            +"</ul>"
+            +"</div>"
+            +"</div>")
+);
+
     function initMaps(name){
         if (company_coord) {
             $('#coord_div').show();
             map = new YMaps.Map(document.getElementById("object_map"));
             map.setCenter(company_coord, 16);
             map.addControl(new YMaps.SmallZoom());
-            marker = new YMaps.Placemark(company_coord, {});
-            marker.name = name;
+            marker = new YMaps.Placemark(company_coord, {style: s});
+            marker.name = '<%= @user.name %>';
+            marker.address = '<%= @user.address %>';
+            marker.slogan = '<%= @user.slogan %>';
+            marker.img = '<%= @user.avatar.url(:small) %>';
+            marker.prof_url = '<%= company_profile_url(@user) %>';
+            marker.phone = '<%= @user.phone %>';
+            marker.catalog = '<%= type_profiles(@user) %>';
+            marker.city = '<%= @user.city.name if @user.city %>';
             map.addOverlay(marker);
-            //marker.openBalloon();
+            marker.openBalloon();
         <% if current_user.id == params[:profile_id] %>
             YMaps.Events.observe(marker, marker.Events.DragStart, function () {
                 old_point = this.getCoordPoint();
