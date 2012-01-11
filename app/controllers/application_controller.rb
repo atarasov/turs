@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
   def get_new_turs
     @new_turs = Tur.limit(5)
     @highlighted_companies = InSiteService.where("status = ? " ,Service::STATUS[:active]).group(:user_id)
+    @mentions = Mention.limit(5)
   end
 
 

@@ -3025,3 +3025,112 @@ filter: alpha(opacity=100) blue;
 background-color:#000;}
 
 .nav_us li{display: inline;}
+
+#scrollable {
+
+	/* required settings */
+	position:relative;
+	overflow:hidden;
+	width: 160px;
+	height:250px;
+    margin: 0 auto;
+}
+
+/*
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a extremely large width to accommodate scrollable items.
+	it's enough that you set width and height for the root element and
+	not for this element.
+*/
+#scrollable .items {
+	/* this cannot be too large */
+	width:20000em;
+	position:absolute;
+    margin-right: 15px;
+}
+
+/*
+	a single item. must be floated in horizontal scrolling.
+	typically, this element is the one that *you* will style
+	the most.
+*/
+.items div {
+	float:left;
+    margin-right: 15px;
+}
+
+.navi {
+    height: 20px;
+    /*margin-left: 328px;*/
+    width: 200px;
+    margin: 0 auto;
+}
+.navi a {
+    background: url("../images/navigator.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    font-size: 1px;
+    height: 8px;
+    margin: 3px;
+    width: 8px;
+}
+.navi a:hover {
+    background-position: 0 -8px;
+}
+.navi a.active {
+    background-position: 0 -16px;
+}
+
+a.browse {
+    background: url("../images/hori_large.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-size: 1px;
+    height: 30px;
+    margin: 40px 10px;
+    width: 30px;
+}
+a.right {
+    background-position: 0 -30px;
+    clear: right;
+    margin-right: 0;
+}
+a.right:hover {
+    background-position: -30px -30px;
+}
+a.right:active {
+    background-position: -60px -30px;
+}
+a.left {
+    margin-left: 0;
+}
+a.left:hover {
+    background-position: -30px 0;
+}
+a.left:active {
+    background-position: -60px 0;
+}
+a.up, a.down {
+    background: url("../images/vert_large.png") no-repeat scroll 0 0 transparent;
+    float: none;
+    margin: 10px 50px;
+}
+a.up:hover {
+    background-position: -30px 0;
+}
+a.up:active {
+    background-position: -60px 0;
+}
+a.down {
+    background-position: 0 -30px;
+}
+a.down:hover {
+    background-position: -30px -30px;
+}
+a.down:active {
+    background-position: -60px -30px;
+}
+a.disabled {
+    visibility: hidden !important;
+}

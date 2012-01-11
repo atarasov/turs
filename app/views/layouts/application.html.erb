@@ -85,6 +85,49 @@
       <% end %>
     </ul>
   </div>
+
+<script>
+// execute your scripts when the DOM is ready. this is mostly a good habit
+$(function() {
+
+	$("#scrollable").scrollable().navigator();
+
+});
+</script>
+
+<% if @mentions && @mentions.size > 0 %>
+
+  <div class="highlighted_companies">
+    <a class="prev browse left"></a>
+    <div class="navi"></div>
+    <div id="scrollable" >
+
+    <%#= link_to t(:otziv), "#", :class => 'right' %>
+        <!--<strong style="font-size: 18px; text-decoration: underline;"><%= t(:otziv) %></strong>-->
+    <div class="items">
+      <% @mentions.each do |mention|%>
+        <div>
+          <p><%= image_tag mention.avatar.url(:medium) %></p>
+			<p><strong><%= mention.title %></strong></p>
+			<p>
+			  <%= mention.text %>
+			</p>
+
+			<p>
+			  <%= link_to_if mention.page_url.present?, mention.name, mention.page_url %>
+			  <% if mention.profession.present? %>
+			  	- <%= mention.profession %>
+			  <% end %>
+			</p>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+    <a class="next browse right"></a>
+  </div>
+
+    <% end %>
   <%= render :partial => "shared/footer" %>
 
 </div>
