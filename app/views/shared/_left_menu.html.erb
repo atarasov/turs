@@ -83,17 +83,17 @@
       </div>
     </div>
   </div>
-
-
+<% @reports = Report.order("created_at DESC").limit(10) %>
+<% if @reports.size > 0 %>
   <div class="box-new-journal">
     <div class="box-new-journal-holder">
       <div class="box-new-journal-frame">
         <strong><%= t(:photo_reports) %></strong>
-        <% @reports = Report.order("created_at DESC").limit(10) %>
+
         <!--<ul class="journal-post">-->
         <div class="report_list">
           <% @reports.each do |report| %>
-              <% if report.report_photos %>
+              <% if report.report_photos && report.report_photos.size > 0 %>
 
 
 
@@ -108,4 +108,5 @@
       </div>
     </div>
   </div>
+   <% end %>
 </div>
