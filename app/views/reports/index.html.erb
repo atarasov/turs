@@ -1,0 +1,38 @@
+<h1>Listing reports</h1>
+<div class="box-blue-c-frame">
+<div class="countries">
+  <% if @reports.size > 0 %>
+      <ul class="countries-list">
+        <% @reports.each do |report| %>
+
+            <% if report.report_photos.size > 0 %>
+                <li>
+                  <ul class="report_item">
+                    <% @report_photos = report.report_photos.limit(6) %>
+                        <li class="big"><%= image_tag @report_photos[0].image.url(:middle) %></li>
+                        <li><%= image_tag @report_photos[1].image.url(:small) %></li>
+                        <li><%= image_tag @report_photos[2].image.url(:small) %></li>
+                        <li><%= image_tag @report_photos[3].image.url(:small) %></li>
+                        <li><%= image_tag @report_photos[4].image.url(:small) %></li>
+                        <li><%= image_tag @report_photos[5].image.url(:small) %></li>
+                    <% if report.report_photos.size > 6 %>
+                        <li class="more">
+                          <a href="<%= report_url(report) %>">
+                            <p>..и еще</p>
+                            <span style=""><%= report.report_photos.size - 6 %></span>
+                            <p>фото...</p>
+                          </a>
+                        </li>
+                    <% end %>
+            <% end %>
+            </ul>
+            </li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>
+</div>
+<%#= link_to 'New Report', new_report_path %>
+<!--<td><%#= link_to 'Show', report %></td>-->
+<!--<td><%#= link_to 'Edit', edit_report_path(report) %></td>-->
+<!--<td><%#= link_to 'Destroy', report, :confirm => 'Are you sure?', :method => :delete %></td>-->

@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :turs
   belongs_to :city
   has_many :rewards
+  has_many :reports
   has_many :services
   has_many :stends
   has_many :directions

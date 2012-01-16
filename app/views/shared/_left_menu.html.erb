@@ -83,4 +83,29 @@
       </div>
     </div>
   </div>
+
+
+  <div class="box-new-journal">
+    <div class="box-new-journal-holder">
+      <div class="box-new-journal-frame">
+        <strong><%= t(:photo_reports) %></strong>
+        <% @reports = Report.order("created_at DESC").limit(10) %>
+        <!--<ul class="journal-post">-->
+        <div class="report_list">
+          <% @reports.each do |report| %>
+              <% if report.report_photos %>
+
+
+
+            <div class="report_thumb"><span><%= link_to report.report_photos.size, report %></span><%= link_to image_tag(report.report_photos.first.image.url(:thumbnail)), report %></div>
+
+
+          <% end %>
+          <% end %>
+          </div>
+        <!--</ul>-->
+        <p style="margin-top: 40px;"><%= link_to "» Все отчеты", reports_url(:subdomain => false), :class => 'journal-all' %></p>
+      </div>
+    </div>
+  </div>
 </div>

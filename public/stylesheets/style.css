@@ -3134,3 +3134,62 @@ a.down:active {
 a.disabled {
     visibility: hidden !important;
 }
+
+.report_thumb{width: 65px; height: 65px; float: left;margin: 10px;}
+.report_list{clear: both; overflow: hidden;}
+.report_thumb span{
+    display: block;
+    background-color: #ffffff;
+    position: relative;
+    top: 15px;
+    left: -2px;
+    width: 17px;
+    border: 1px solid #000000;
+}
+.report_thumb span a, .report_thumb span a:hover{text-decoration: none;}
+.report_item li{
+    list-style: none;
+    float: left;
+    width: 170px;
+    height: 170px;
+    margin: 0 5px 5px 0;
+    overflow: hidden;
+    border-bottom: none;
+}
+
+.report_item li.big{
+    width: 390px;
+    height: 300px;
+}
+
+
+.report_item li.more a{
+    display: block;
+    width: 160px;
+    height: 150px;
+    padding: 3px;
+    border: 2px solid #369;
+    text-align: center;
+    text-decoration: none;
+    line-height: 1.75em;
+    font-size: 2em;
+}
+.more span{
+    font-size: 3em;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    width: 152px;
+    height: 146px;
+}
+.show_report{clear: both; overflow: hidden;}
+.show_report li{
+    list-style: none;
+    display: block;
+    float: left;
+    width: 390px;
+    height: 300px;
+    margin: 0 5px 5px 0;
+    overflow: hidden;
+    border-bottom: none;
+}

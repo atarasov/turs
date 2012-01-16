@@ -36,8 +36,7 @@
                 <li><%= link_to_unless_current 'Отзывы', company_comments_url(current_user) %>
                   </li>
 
-                <li><%= link_to t(:add_journal), new_journal_url %></li>
-
+                <li><%= link_to t(:add_photo_report), new_report_path %>
               </ul>
               <ul>
                 <li><b><%= t(:pro_service)%>:</b> (<%= link_to t(:popr), paid_service_pro_url %>)</li>

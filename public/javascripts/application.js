@@ -27,6 +27,7 @@ $(function() {
 	$("#nav ul").tabs("#panes > div", {effect: 'fade', fadeOutSpeed: 500});
 });
 
+
 //var TopicForm = {
 //  editNewTitle: function(txtField) {
 //    $('new_topic').innerHTML = (txtField.value.length > 5) ? txtField.value : 'New Topic';

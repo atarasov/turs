@@ -1,5 +1,7 @@
 TursPro::Application.routes.draw do
 
+  resources :reports
+
   resources :news, :only => [:index, :show]
   namespace :paid_service do
     get "pro"
@@ -170,7 +172,7 @@ TursPro::Application.routes.draw do
         get "pay_successful"
       end
     end
-
+    #TODO resources :reports
     resources :profiles do
       put "create_pic"
       put "update_pic"

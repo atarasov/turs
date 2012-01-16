@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111226193515) do
+ActiveRecord::Schema.define(:version => 20120116095150) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -329,6 +329,27 @@ ActiveRecord::Schema.define(:version => 20111226193515) do
   create_table "recommendations", :force => true do |t|
     t.integer  "referee_id",          :default => 0
     t.integer  "recommended_user_id", :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "report_photos", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "news"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "report_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reports", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
