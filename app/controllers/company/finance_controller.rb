@@ -38,8 +38,8 @@ class Company::FinanceController < ApplicationController
 		#url
 		# рабочий:
 		#https://merchant.roboxchange.com/Index.aspx
-		#url = "http://test.robokassa.ru"
-		url = "https://merchant.roboxchange.com/Index.aspx"
+		url = "http://test.robokassa.ru"
+		#url = "https://merchant.roboxchange.com/Index.aspx"
 
 		pay_params = URI.escape("MrchLogin=#{mrh_login}&OutSum=#{out_summ}&InvId=#{inv_id}" +
 			         "&Desc=#{inv_desc}&SignatureValue=#{crc}&Shp_item=#{shp_item}" +
