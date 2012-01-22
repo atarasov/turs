@@ -6,6 +6,7 @@ class Country < ActiveRecord::Base
     end
   has_one :embassy
   has_many :turs
+  has_many :user_countries
   has_many :stends
   has_many :directions
   has_one :visa
@@ -14,6 +15,7 @@ class Country < ActiveRecord::Base
   has_many :journals
 
   has_many :tenders
+  has_many :reports
 
   scope :in_list, where(:in_list => true) #where(:published => true)
   default_scope :order => 'title'

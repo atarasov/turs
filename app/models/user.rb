@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates_presence_of :site_id
 
   has_many :turs
+  has_many :user_countries
+  has_many :user_hotels
   belongs_to :city
   has_many :rewards
   has_many :reports

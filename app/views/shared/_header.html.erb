@@ -37,7 +37,12 @@
                   </li>
 
                 <li><%= link_to t(:add_photo_report), new_report_path %>
+                <% if current_user.is_user %>
+                <li><%= link_to t(:add_user_country), new_user_country_path %>
+                <li><%= link_to t(:add_user_hotel), new_user_hotel_path %>
+                <% end %>
               </ul>
+              <% unless current_user.is_user %>
               <ul>
                 <li><b><%= t(:pro_service)%>:</b> (<%= link_to t(:popr), paid_service_pro_url %>)</li>
                 <li><b><%= t(:recommended_service) %>:</b> (<%= link_to t(:popr), paid_service_recommended_url %>)</li>
@@ -49,6 +54,7 @@
                 <li><b><%= t(:in_site_service) %>:</b> (<%= link_to t(:popr), paid_service_advertising_in_site_url %>)</li>
                 <li><b><%= t(:link_service) %>:</b> t(:add) / (<%= link_to t(:popr), paid_service_site_link_url %>)</li>
               </ul>
+               <% end %>
               <ul>
 
                 <li>Статистика</li>

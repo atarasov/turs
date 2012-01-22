@@ -20,6 +20,17 @@
     <%= f.text_area :description %>
   </div>
 
+    <div class="field">
+    <%= f.label :journal_id %><br />
+    <%= f.select :journal_id, "<option value=0>Выберите статью</option>".html_safe + options_from_collection_for_select(Journal.all, "id", "title") %>
+  </div>
+
+    <div class="field">
+    <%= f.label :country %><br />
+    <%= f.select :country_id, "<option value=0>Выберите страну</option>".html_safe + options_from_collection_for_select(Country.all, "id", "title") %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

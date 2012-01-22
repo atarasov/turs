@@ -48,10 +48,10 @@
 								<li><%= link_to_unless_current 'Портфолио', company_profile_url(@profile) %><em>&nbsp;</em></li>
 								<li><%= link_to_unless_current 'Фотографии', company_photos_url(@profile) %><span>(<%= @profile.photos.all.count  %>)</span><em>&nbsp;</em></li>
 								<li><%= link_to_unless_current 'Видео', company_videos_url(@profile) %><span>(<%= @profile.videos.all.count %>)</span><em>&nbsp;</em></li>
-								<li><%= link_to_unless_current 'Направление', company_profile_directions_url(@profile) %><span>(<%= @profile.directions.all.count %>)</span><em>&nbsp;</em></li>
-								<li><%= link_to_unless_current 'Наши туры', company_profile_turs_url(@profile) %><span>(<%= @profile.turs.all.count %>)</span><em>&nbsp;</em></li>
-								<li><%= link_to_unless_current 'Карта',  company_profile_contact_map_url(@profile) %> </li>
-								<li><%= link_to_unless_current 'Отзывы', company_comments_url(@profile) %><span>(<%= @profile.comments.recent.all.count %>)</span><em>&nbsp;</em></li>
+								<% unless @profile.is_user  %><li><%= link_to_unless_current 'Направление', company_profile_directions_url(@profile) %><span>(<%= @profile.directions.all.count %>)</span><em>&nbsp;</em></li><% end %>
+								<% unless @profile.is_user  %><li><%= link_to_unless_current 'Наши туры', company_profile_turs_url(@profile) %><span>(<%= @profile.turs.all.count %>)</span><em>&nbsp;</em></li><% end %>
+								<% unless @profile.is_user  %><li><%= link_to_unless_current 'Карта',  company_profile_contact_map_url(@profile) %> </li><% end %>
+								<% unless @profile.is_user  %><li><%= link_to_unless_current 'Отзывы', company_comments_url(@profile) %><span>(<%= @profile.comments.recent.all.count %>)</span><em>&nbsp;</em></li><% end %>
 							</ul>
 						</div>
               </div>

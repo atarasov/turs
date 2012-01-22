@@ -1,5 +1,9 @@
 TursPro::Application.routes.draw do
 
+  resources :user_countries
+
+  resources :user_hotels
+
   resources :reports
 
   resources :news, :only => [:index, :show]

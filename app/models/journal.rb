@@ -5,6 +5,7 @@ class Journal < ActiveRecord::Base
   belongs_to :user
   belongs_to :country
   has_many :journal_photos
+  has_many :reports
   #has_many :posts
 
   cattr_reader :per_page

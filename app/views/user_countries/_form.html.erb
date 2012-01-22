@@ -1,0 +1,21 @@
+<%= form_for(@user_country) do |f| %>
+  <% if @user_country.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_country.errors.count, "error") %> prohibited this user_country from being saved:</h2>
+
+      <ul>
+      <% @user_country.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :country_id %><br />
+    <%= f.select :country_id, "<option value=0>Выберите страну</option>".html_safe + options_from_collection_for_select(Country.all, "id", "title") %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

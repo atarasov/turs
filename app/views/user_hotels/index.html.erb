@@ -1,0 +1,25 @@
+<h1>Listing user_hotels</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_hotels.each do |user_hotel| %>
+  <tr>
+    <td><%= user_hotel.name %></td>
+    <td><%= user_hotel.user_id %></td>
+    <td><%= link_to 'Show', user_hotel %></td>
+    <td><%= link_to 'Edit', edit_user_hotel_path(user_hotel) %></td>
+    <td><%= link_to 'Destroy', user_hotel, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User hotel', new_user_hotel_path %>
