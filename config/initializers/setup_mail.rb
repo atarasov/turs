@@ -1,9 +1,9 @@
 ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.gmail.com",
-  :port                 => 587,
-  :domain               => "gmail.com",
-  :user_name            => "lexa.tarasov",
-  :password             => "fktrctqnfhfcjd",
+  :address              => "smtp.locum.ru",
+  :port                 => 25,
+  :domain               => "turs.pro",
+  :user_name            => "support@turs.pro",
+  :password             => "gjhnfknehcghj",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
