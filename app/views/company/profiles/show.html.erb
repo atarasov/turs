@@ -1,3 +1,13 @@
+<% content_for :header_script do %>
+
+<script type="text/javascript" src="http://userapi.com/js/api/openapi.js?47"></script>
+
+<script type="text/javascript">
+  VK.init({apiId: 2779980, onlyWidgets: true});
+</script>
+
+<% end %>
+
 <div class="box-orange">
 <div class="box-orange-frame">
 <% if current_user and params[:id].to_i.eql?(current_user.id.to_i) %>
@@ -25,7 +35,7 @@
   <!--<h1>Скидка от фирмы для для пользователей сайта TursPro.ru</h1>-->
   <%= image_tag @profile.avatar.url(:small), :style => "float:left; padding:15px;" %>
   <strong><%= type_profile(@profile) %> “<%= @profile.name %>”</strong>
-  <% unless current_user.is_user %>
+  <% unless current_user.nil? || current_user.is_user %>
       <p><span>Наш девиз:</span> <%= @profile.slogan %> </p>
 
       <p><span>Эксклюзивно:</span> <%= @profile.exclus %></p>
@@ -315,6 +325,10 @@
     </ul>
   </div>
 </div>
+<div id="vk_comments"></div>
+<script type="text/javascript">
+VK.Widgets.Comments("vk_comments", {limit: 5, width: "668", attach: "*"});
+</script>
 <!-- <div class="bottom-paging-holder">
   <ul class="paging">
     <li><a class="p-home" href="#">home</a></li>
