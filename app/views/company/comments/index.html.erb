@@ -5,13 +5,17 @@
   <ul class='comments'>
 <%= render :partial => 'comments/comment', :collection => @comments %>
  </ul>
-  <% form_for :comment, :url=> add_comment_company_comments_path(@user.id) do |f| %>
+  <% if current_user.present? %>
+	  <% form_for :comment, :url=> add_comment_company_comments_path(@user.id) do |f| %>
 
-      <div class="field">
-    <%= f.text_area :text, :cols=>"80", :rows => "15" , :class => 'mceEditor' %>
-  </div>
+    	  <div class="field">
+	    <%= f.text_area :text, :cols=>"80", :rows => "15" , :class => 'mceEditor' %>
+  	</div>
 
-  <%= f.submit "Добавить коментарий"%>
+  	<%= f.submit "Добавить коментарий"%>
+  	<% end %>
+  <% else %>
+    Только зарегистрированные пользователи могут оставлять комментарии. Вам необходимой <%= link_to "войти", "#", :class => "btn-login" %> или <%= link_to "зарегистрироваться", signup_path %>.
   <% end %>
 
 </div>

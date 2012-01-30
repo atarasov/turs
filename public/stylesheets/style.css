@@ -67,14 +67,17 @@ textarea{
 	color:#515151;
 }
 .btn-login{
-	float:left;
 	border:none;
 	margin:0 2px 0 0;
-	background:url(../images/btn-login.png) no-repeat;
 	width:72px;
 	height:32px;
 	cursor:pointer;
 }
+input.btn-login{
+	float:left;
+	background:url(../images/btn-login.png) no-repeat;
+}
+
 .btn-register{
 	float:left;
 	border:none;
