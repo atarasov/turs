@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
                   :avatar_content_type, :avatar_file_size, :avatar_updated_at,:is_hotel,
                   :is_tour_operator, :is_recreation_center,:is_sanatorium,:is_hostel,
                   :is_guide ,:is_taxi, :is_mini_hotel, :is_tur_agency, :is_user, :link_to_site,
-                  :crop_h, :crop_w, :crop_x, :crop_y, :coord_long, :coord_lat, :captcha, :captcha_key, :state, :activation_code, :activated_at
+                  :crop_h, :crop_w, :crop_x, :crop_y, :coord_long, :coord_lat, :captcha, :captcha_key, :state, :activation_code, :activated_at, :is_tour_agency
   #acts_as_authentic
   #easy_roles :roles
   has_one :profile
@@ -74,10 +74,24 @@ class User < ActiveRecord::Base
 
   #after_create :build_user_profile
 
-  has_attached_file :avatar, :styles => {:small => "64x64", :medium => "150x150", :thumbnail => "30x30"},
+  has_attached_file :avatar, :styles => {:thumbnail => "30x30#", :small => "100x100#", :large => "500x500>" }, :processors => [:cropper],
                     :url  => "/system/assets/user/avatar/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/assets/user/avatar/:id/:style/:basename.:extension",
                     :default_url => "/images/avatar.jpg"
+
+
+  
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :reprocess_avatar, :if => :cropping?
+
+  def cropping?
+    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  end
+
+  def avatar_geometry(style = :original)
+    @geometry ||= {}
+    @geometry[style] ||= Paperclip::Geometry.from_file(avatar.path(style))
+  end
 
   #validates_attachment_presence :avatar
   validates_attachment_size :avatar, :less_than => 5.megabytes
@@ -204,5 +218,11 @@ class User < ActiveRecord::Base
   #validates_attachment_presence :avatar
   validates_attachment_size :picture, :less_than => 5.megabytes
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/pjpeg']
+
+  private
+
+  def reprocess_avatar
+    avatar.reprocess!
+  end
 
 end

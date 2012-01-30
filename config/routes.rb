@@ -194,6 +194,7 @@ TursPro::Application.routes.draw do
       get 'contact_map'
       resources :turs
       member do
+        get 'crop'
         resources :journals
         resources :comments do
           post "add_comment", :on => :collection

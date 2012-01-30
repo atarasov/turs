@@ -19,6 +19,9 @@ class Company::ProfilesController < Company::BaseController
     end
 
   end
+  def crop
+    @user = User.find(params[:id])
+  end
 
   def update
     @user = User.find(params[:id])
@@ -29,7 +32,7 @@ class Company::ProfilesController < Company::BaseController
       end
     end
     #@user.avatar = params[:user][:avatar]
-    if params[:us][:type]
+    if params[:us] && params[:us][:type]
       params[:user][:is_user] = false
       if params[:us][:type].eql?(1) || params[:us][:type].eql?("1")
         params[:user][:is_hotel] = true
@@ -137,15 +140,19 @@ class Company::ProfilesController < Company::BaseController
       end
     end
     #raise params[:user].inspect
-    respond_to do |format|
+   # respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to company_profile_url(@user) }
-        format.xml  { head :ok }
+        if params[:user][:avatar].blank?
+          #flash[:notice] = "Successfully updated user."
+          redirect_to company_profile_url(@user)
+        else
+          render :action => "crop"
+        end
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
+        render :action => "edit"
+    #    format.xml  { render :xml => @profile.errors, :status => :unprocessable_entity }
       end
-    end
+   # end
   end
 
   def directions
