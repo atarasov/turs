@@ -14,14 +14,15 @@
         <%= f.hidden_field :is_tour_agency %>
         <%= f.hidden_field :is_hotel %>
     <p>
-      <%= image_tag @user.avatar.url(:medium) if @user.avatar.present? %>
+      <%#= image_tag @user.avatar.url(:medium) if @user.avatar.present? %>
     <%= f.label t(:avatar) %><br />
     <%= f.file_field :avatar %>
+    <%= image_tag @user.avatar.url(:small) if @user.avatar.present?  %>
+      <%= image_tag @user.avatar.url(:thumbnail) if @user.avatar.present?  %>
   </p>
 
     <p>
-      <%= image_tag @user.picture.url(:small) if @user.picture.present?  %>
-      <%= image_tag @user.picture.url(:thumbnail) if @user.picture.present?  %>
+
     <%= f.label t(:picture) %><br />
     <%= f.file_field :picture %>
   </p>
