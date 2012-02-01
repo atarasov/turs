@@ -48,7 +48,8 @@ AppConfig.for_comment_mce_options = {
     :cleanup_on_startup => true,
     :convert_fonts_to_spans => true,
     :theme_advanced_resize_horizontal => false,
-    :theme_advanced_buttons1 => %w{bold removeformat undo redo link unlink code bullist},
+    #:theme_advanced_buttons1 => %w{bold removeformat undo redo link unlink code bullist},
+	:theme_advanced_buttons1 => %w{bold removeformat undo redo code bullist},
     :theme_advanced_buttons2 => [],
     :theme_advanced_buttons3 => [],
     :plugins => %w{media preview curblyadvimage inlinepopups safari paste},
@@ -56,7 +57,8 @@ AppConfig.for_comment_mce_options = {
     :plugin_preview_width => "950",
     :plugin_preview_height => "650",
     :editor_selector => "mceEditor",
-    :extended_valid_elements => "img[class|src|flashvars|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|obj|param|embed|scale|wmode|salign|style],embed[src|quality|scale|salign|wmode|bgcolor|width|height|name|align|type|pluginspage|flashvars],object[align<bottom?left?middle?right?top|archive|border|class|classid|codebase|codetype|data|declare|dir<ltr?rtl|height|hspace|id|lang|name|style|tabindex|title|type|usemap|vspace|width]"
+    :extended_valid_elements => "img[class|src|flashvars|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|obj|param|embed|scale|wmode|salign|style],embed[src|quality|scale|salign|wmode|bgcolor|width|height|name|align|type|pluginspage|flashvars],object[align<bottom?left?middle?right?top|archive|border|class|classid|codebase|codetype|data|declare|dir<ltr?rtl|height|hspace|id|lang|name|style|tabindex|title|type|usemap|vspace|width]",
+  	:invalid_elements => "a"
   }
 
 AppConfig.default_mce_options = {
@@ -81,7 +83,8 @@ AppConfig.default_mce_options = {
   :plugin_preview_width => "950",
   :plugin_preview_height => "650",
   :editor_selector => "mceEditor",
-  :extended_valid_elements => "img[class|src|flashvars|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|obj|param|embed|scale|wmode|salign|style],embed[src|quality|scale|salign|wmode|bgcolor|width|height|name|align|type|pluginspage|flashvars],object[align<bottom?left?middle?right?top|archive|border|class|classid|codebase|codetype|data|declare|dir<ltr?rtl|height|hspace|id|lang|name|style|tabindex|title|type|usemap|vspace|width]"  
+  :extended_valid_elements => "img[class|src|flashvars|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name|obj|param|embed|scale|wmode|salign|style],embed[src|quality|scale|salign|wmode|bgcolor|width|height|name|align|type|pluginspage|flashvars],object[align<bottom?left?middle?right?top|archive|border|class|classid|codebase|codetype|data|declare|dir<ltr?rtl|height|hspace|id|lang|name|style|tabindex|title|type|usemap|vspace|width]",
+  :invalid_elements => "a"
   }
   
 AppConfig.simple_mce_options = {

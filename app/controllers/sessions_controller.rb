@@ -1,7 +1,7 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
  # layout 'forum'
-  skip_before_filter :login_required
+  skip_before_filter :login_required, :store_location
 
   def new
   end
@@ -70,7 +70,9 @@ class SessionsController < ApplicationController
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
       session[:user_id] = @current_user.id
-      redirect_back_or_default('/')
+	  session[:return_to] = ((session[:return_to].eql?'/') ? nil : session[:return_to])
+	  #raise session[:return_to].inspect
+      redirect_back_or_default((current_user.is_user?) ? profile_path(current_user.id) : company_profile_path(current_user.id) )
     end
 
     def failed_login(message)
