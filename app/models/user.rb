@@ -210,7 +210,7 @@ class User < ActiveRecord::Base
 
 
 
- has_attached_file :picture, :styles => {:small => "64x64", :medium => "150x150", :thumbnail => "30x30"},
+ has_attached_file :picture, :styles => {:small => "64x64", :medium => "150x150", :thumbnail => "30x30", :card => "260x330"},
                     :url  => "/system/assets/user/picture/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/assets/user/picture/:id/:style/:basename.:extension",
                     :default_url => "/images/avatar.jpg"

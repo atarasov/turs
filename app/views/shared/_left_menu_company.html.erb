@@ -1,7 +1,7 @@
 <div id="sidebar">
   <div class="box-card">
     <strong>Визитная карточка</strong>
-    <%= image_tag @profile.picture.url(:medium) %>
+    <%= image_tag @profile.picture.url(:card), :width => 260, :height => 330 %>
   </div>
   <div class="box-blue">
     <div class="box-blue-holder">
@@ -18,9 +18,9 @@
         <ul class="info">
           <li><img src="/images/ico-person.png" alt="image description"/>Колумб</li>
           <% if @profile.address %><li><img src="/images/ico-home.png" alt="image description"/><%= @profile.address %></li><% end %>
-          <% if @profile.phone %><li><img src="/images/ico-phone.png" alt="image description"/><%= @profile.phone %></li><% end %>
-          <% if @profile.address %><li><img src="/images/ico-icq.png" alt="image description"/><%= @profile.address %></li><% end %>
-          <% if @profile.address %><li><img src="/images/ico-skype.png" alt="image description"/><%= @profile.address %></li><% end %>
+          <% if @profile.phone.present? %><li><img src="/images/ico-phone.png" alt="image description"/><%= @profile.phone %></li><% end %>
+          <% if @profile.icq.present? %><li><img src="/images/ico-icq.png" alt="image description"/><%= link_to @profile.icq, "http://wwp.icq.com/scripts/contact.dll?msgto=" + @profile.icq %></li><% end %>
+          <% if @profile.skype.present? %><li><img src="/images/ico-skype.png" alt="image description"/><%= link_to @profile.skype, "skype:" + @profile.skype + "?call" %></li><% end %>
           <% if @profile.address %><li><img src="/images/ico-mail.png" alt="image description"/><%= @profile.address %></li><% end %>
           <% if @profile.address %><li><img src="/images/ico-link.png" alt="image description"/><%= @profile.address %></li><% end %>
         </ul>
