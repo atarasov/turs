@@ -9,12 +9,12 @@
                 <li>
                   <ul class="report_item">
                     <% @report_photos = report.report_photos.limit(6) %>
-                        <li class="big"><%= image_tag @report_photos[0].image.url(:middle) %></li>
-                        <li><%= image_tag @report_photos[1].image.url(:small) %></li>
-                        <li><%= image_tag @report_photos[2].image.url(:small) %></li>
-                        <li><%= image_tag @report_photos[3].image.url(:small) %></li>
-                        <li><%= image_tag @report_photos[4].image.url(:small) %></li>
-                        <li><%= image_tag @report_photos[5].image.url(:small) %></li>
+                        <li class="big"><%= image_tag @report_photos[0].image.url(:middle) if @report_photos[0] %></li>
+                        <li><%= image_tag @report_photos[1].image.url(:small) if @report_photos[1] %></li>
+                        <li><%= image_tag @report_photos[2].image.url(:small) if @report_photos[2] %></li>
+                        <li><%= image_tag @report_photos[3].image.url(:small) if @report_photos[3] %></li>
+                        <li><%= image_tag @report_photos[4].image.url(:small) if @report_photos[4] %></li>
+                        <li><%= image_tag @report_photos[5].image.url(:small) if @report_photos[5] %></li>
                     <% if report.report_photos.size > 6 %>
                         <li class="more">
                           <a href="<%= report_url(report) %>">
