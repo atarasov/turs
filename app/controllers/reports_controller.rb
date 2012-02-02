@@ -6,7 +6,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @reports }
+      format.xml { render :xml => @reports }
     end
   end
 
@@ -17,7 +17,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @report }
+      format.xml { render :xml => @report }
     end
   end
 
@@ -25,10 +25,10 @@ class ReportsController < ApplicationController
   # GET /reports/new.xml
   def new
     @report = Report.new
-
+    session[:report_id] = nil
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @report }
+      format.xml { render :xml => @report }
     end
   end
 
@@ -40,24 +40,37 @@ class ReportsController < ApplicationController
   # POST /reports
   # POST /reports.xml
   def create
-    @report = Report.new(params[:report])
-    @report.user_id = current_user.id
-    #@report = Report.new(params[:upload])
-    #if @report.save
-    #  render :json => { :pic_path => @report.picture.url.to_s , :name => @report.picture.instance.attributes["picture_file_name"] }, :content_type => 'text/html'
-    #else
-    #  render :json => { :result => 'error'}, :content_type => 'text/html'
-    #end
+     unless session[:report_id].present?
+       @report = Report.new(params[:report])
+       @report.user_id = current_user.id
+         #raise format.inspect
+         if @report.valid?
+           @report.save!
+           session[:report_id] = @report.id
+         else
+           session[:report_id] = nil
+            redirect_to :action => "new", :notice => 'Report was error.'
+         end
+     else
+       @report = Report.find(session[:report_id])
+     end
 
-    respond_to do |format|
-      if @report.save
-        format.html { redirect_to(edit_report_url(@report), :notice => 'Report was successfully created.') }
-        format.xml  { render :xml => @report, :status => :created, :location => @report }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @report.errors, :status => :unprocessable_entity }
+      if session[:report_id] && @report
+        #raise params[:rp][:image][0].inspect
+        if params[:rp] && params[:rp][:image][0]#.blank?
+          @rp = @report.report_photos.new()
+
+          @rp.image = params[:rp][:image][0]
+          if @rp.save!
+            render :json => {:pic_path => @rp.image.url.to_s, :name => @rp.image.instance.attributes["picture_file_name"]}, :content_type => 'text/html'
+          else
+            render :json => {:result => 'error'}, :content_type => 'text/html'
+          end
+        else
+          session[:report_id] = nil
+          redirect_to(report_url(@report), :notice => 'Report was successfully created.')
+        end
       end
-    end
   end
 
   # PUT /reports/1
@@ -78,9 +91,9 @@ class ReportsController < ApplicationController
 
     @rp.image = params[:report][:image][0]
     if @rp.save!
-      render :json => { :pic_path =>  @rp.image.url.to_s , :name =>  @rp.image.instance.attributes["picture_file_name"] }, :content_type => 'text/html'
+      render :json => {:pic_path => @rp.image.url.to_s, :name => @rp.image.instance.attributes["picture_file_name"]}, :content_type => 'text/html'
     else
-      render :json => { :result => 'error'}, :content_type => 'text/html'
+      render :json => {:result => 'error'}, :content_type => 'text/html'
     end
 
   end
@@ -93,7 +106,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(reports_url) }
-      format.xml  { head :ok }
+      format.xml { head :ok }
     end
   end
 end
