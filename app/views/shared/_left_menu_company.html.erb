@@ -19,7 +19,7 @@
           <li><img src="/images/ico-person.png" alt="image description"/>Колумб</li>
           <% if @profile.address %><li><img src="/images/ico-home.png" alt="image description"/><%= @profile.address %></li><% end %>
           <% if @profile.phone.present? %><li><img src="/images/ico-phone.png" alt="image description"/><%= @profile.phone %></li><% end %>
-          <% if @profile.icq.present? %><li><img src="/images/ico-icq.png" alt="image description"/><%= link_to @profile.icq, "http://wwp.icq.com/scripts/contact.dll?msgto=" + @profile.icq %></li><% end %>
+          <% if @profile.icq.present? %><li><img src="/images/ico-icq.png" alt="image description"/><%= @profile.icq %><%#= link_to @profile.icq, "http://wwp.icq.com/scripts/contact.dll?msgto=" + @profile.icq %></li><% end %>
           <% if @profile.skype.present? %><li><img src="/images/ico-skype.png" alt="image description"/><%= link_to @profile.skype, "skype:" + @profile.skype + "?call" %></li><% end %>
           <% if @profile.address %><li><img src="/images/ico-mail.png" alt="image description"/><%= @profile.address %></li><% end %>
           <% if @profile.address %><li><img src="/images/ico-link.png" alt="image description"/><%= @profile.address %></li><% end %>

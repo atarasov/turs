@@ -10,6 +10,7 @@ class Company::ProfilesController < Company::BaseController
 
   def show
     @profile = User.find(params[:id])
+	@posts = @profile.journals.paginate(:page => params[:page], :per_page => 5)
     @stends = @profile.stends
       @profile.review += 1
       @profile.save!
