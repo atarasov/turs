@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :reports
   has_many :services
   has_many :stends
-  has_many :directions
+  has_many :directions, :dependent => :delete_all
   has_many :posts, :order => "#{Post.table_name}.created_at desc"
   has_many :topics, :order => "#{Topic.table_name}.created_at desc"
 

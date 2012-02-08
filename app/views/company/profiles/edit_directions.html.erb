@@ -1,0 +1,10 @@
+<%= form_tag company_profile_update_directions_url(@user.id), :method => :post do %>
+<p>
+	<ul class="countru_list">
+		<% @countries.each do |country|  %>
+			<li><%= ids(country, @user.directions.map{|direction| direction.country_id}.include?(country.id) ) %><%= image_tag country.flag.url(:thumb) %> <%= country.title %></li>
+		<% end %>
+	</ul>
+</p>
+	<%= submit_tag t(:update) %>
+<% end %>

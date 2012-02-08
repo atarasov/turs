@@ -60,7 +60,7 @@
         <%= f.hidden_field :coord_long %>
         <div id="object_map" class="fix_map float_left" style="width:400px;height:200px;"></div>
         <div class="map_desc">Если точка на карте неправильно определилась, переместите маркер в корректное положение.</div>
-<script type="text/javascript">
+		<script type="text/javascript">
     var address = '';
     var company_coord = '';
     var drag_marker = true;
@@ -126,18 +126,9 @@
 $('.noedit_2').hide();
 <%# end %>
 </script>
-</p>
+  </p>
 
 
-
-    <p>
-      <ul class="countru_list">
-        <% @countries.each do |country|  %>
-        <li><%= ids(country) %><%= image_tag country.flag.url(:thumb) %> <%= country.title %></li>
-        <% end %>
-
-      </ul>
-    </p>
   <p>
     <%= f.label t(:phone) %><br />
     <%= f.text_field :phone %>

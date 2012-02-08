@@ -44,6 +44,7 @@
               </ul>
               <% unless current_user.is_user %>
               <ul>
+				<li><b><%= t(:directions) %>:</b> <%= link_to t(:show), company_profile_directions_url(current_user.id) %> / (<%= link_to t(:edit), company_profile_edit_directions_url(current_user.id) %>)</li>
                 <li><b><%= t(:pro_service)%>:</b> (<%= link_to t(:popr), paid_service_pro_url %>)</li>
                 <li><b><%= t(:recommended_service) %>:</b> (<%= link_to t(:popr), paid_service_recommended_url %>)</li>
                 <li><b><%= t(:vip_service)%>:</b> (<%= link_to t(:popr), paid_service_vip_url %>)</li>
