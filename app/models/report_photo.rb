@@ -7,4 +7,12 @@ class ReportPhoto < ActiveRecord::Base
   #validates_attachment_presence :avatar
   #validates_attachment_size :image, :less_than => 10.megabytes
   validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/pjpeg']
+
+  def self.sort(ids)
+    transaction do
+      ids.each_with_index do |id, index|
+        find(id).update_attribute(:order, index+1)
+      end
+    end
+  end
 end

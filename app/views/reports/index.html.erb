@@ -8,7 +8,7 @@
             <% if report.report_photos.size > 0 %>
                 <li>
                   <ul class="report_item">
-                    <% @report_photos = report.report_photos.limit(6) %>
+                    <% @report_photos = report.report_photos.order("report_photos.order").limit(6) %>
                         <li class="big"><%= image_tag @report_photos[0].image.url(:middle) if @report_photos[0] %></li>
                         <li><%= image_tag @report_photos[1].image.url(:small) if @report_photos[1] %></li>
                         <li><%= image_tag @report_photos[2].image.url(:small) if @report_photos[2] %></li>

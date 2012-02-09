@@ -4,7 +4,12 @@ TursPro::Application.routes.draw do
 
   resources :user_hotels
 
-  resources :reports
+  resources :reports do
+    collection do
+      post 'change_order'
+      get 'ordering'
+    end
+  end
 
   resources :news, :only => [:index, :show]
   namespace :paid_service do

@@ -37,14 +37,13 @@ class Company::PhotosController < Company::BaseController
     @photo = Photo.find(params[:id])
   end
 
-  def ordering
-    @photos = Photo.where(:user_id => params[:id]).order("photos.order")
-  end
+  #def ordering
+  #  @photos = Photo.where(:user_id => params[:id]).order("photos.order")
+  #end
 
   def change_order
     @order_list = params[:order_list]
     Photo.sort(@order_list.split(','))
-
   end
 
   # POST /photos

@@ -1,68 +1,129 @@
 <%= form_for(@report, :html => {:class => "upload", :multipart => true}) do |f| %>
-  <% if @report.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+    <% if @report.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
 
-      <ul>
-      <% @report.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
+          <ul>
+            <% @report.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
     <div class="field">
-    <%= f.label :country %><br />
-    <%= f.select :country_id, "<option value=0>Выберите страну</option>".html_safe + options_from_collection_for_select(Country.all, "id", "title") %>
-  </div>
+      <%= f.label :title %>
+      <br/>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <br/>
+      <%= f.text_area :description %>
+    </div>
+
+    <div class="field">
+      <%= f.label :country %>
+      <br/>
+      <%= f.select :country_id, "<option value=0>Выберите страну</option>".html_safe + options_from_collection_for_select(Country.all, "id", "title") %>
+    </div>
 
 
     <%= javascript_include_tag 'jquery.fileupload', 'jquery.fileupload-ui' %>
-
-<script type="text/javascript" charset="utf-8">
-   $(function () {
-  $('.upload').fileUploadUI({
-        uploadTable: $('.upload_files'),
-        downloadTable: $('.download_files'),
-        buildUploadRow: function (files, index) {
-            var file = files[index];
-            return $('<tr><td>' + file.name + '<\/td>' +
-                    '<td class="file_upload_progress"><div><\/div><\/td>' +
-                    '<td class="file_upload_cancel">' +
-                    '<button class="ui-state-default ui-corner-all" title="Cancel">' +
-                    '<span class="ui-icon ui-icon-cancel">Cancel<\/span>' +
-                    '<\/button><\/td><\/tr>');
-        },
-        buildDownloadRow: function (file) {
-            return $('<tr><td><img alt="Photo" width="40" height="40" src="' + file.pic_path + '"><\/td><\/tr>');
+    <style>
+        #sortable {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 95%;
         }
-    });
-});
-</script>
 
-<div class="files">
+        #sortable li {
+            margin: 0 5px 5px 5px;
+            padding: 5px;
+            font-size: 1.2em;
+            height: 60px;
+        }
+
+        html>body #sortable li {
+            height: 60px;
+            line-height: 1.2em;
+        }
+
+        .ui-state-highlight {
+            height: 60px;
+            line-height: 1.2em;
+            background: #1D9ED6;
+            border-color: #000055;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        $(function () {
+            $('.upload').fileUploadUI({
+                uploadTable: $('.upload_files'),
+                downloadTable: $('.download_files'),
+                buildUploadRow: function (files, index) {
+                    var file = files[index];
+                    return $('<tr><td>' + file.name + '<\/td>' +
+                            '<td class="file_upload_progress"><div><\/div><\/td>' +
+                            '<td class="file_upload_cancel">' +
+                            '<button class="ui-state-default ui-corner-all" title="Cancel">' +
+                            '<span class="ui-icon ui-icon-cancel">Cancel<\/span>' +
+                            '<\/button><\/td><\/tr>');
+                },
+                buildDownloadRow: function (file) {
+                    return $('<li id="name_' + file.photo_id + '" name="' + file.photo_id + '" ><img alt="Photo" width="40" height="40" src="' + file.pic_path + '"><\/li>');
+                }
+            });
+        });
+
+        $(function() {
+            $("#sortable").sortable({
+                placeholder: "ui-state-highlight",
+                opacity: 0.6,
+                stop: function(event, ui) {
+
+                    var ids = [];
+                    $(this).children().each(function() {
+                        var id = $(this).attr('id').split('_')[1];
+                        ids.push(id);
+                    });
+
+                    $.post("<%= change_order_reports_url %>", {order_list: ids.join(',')});
+
+                }
+            });
+            $("#sortable").disableSelection();
+        });
+
+        $("input").click(
+                function() {
+                    $(this).focus()
+                }
+        );
+    </script>
+
+    <div class="files">
 <%#= form_for @report, :html => { :class => "upload", :multipart => true } do |f| %>
-  <%= hidden_field_tag :report_id, @report_id %>
-  <%= file_field :rp,:image , :multiple => true %>
-  <%#= f.file_field :image %>
-  <div>Upload files</div>
+      <%= hidden_field_tag :report_id, @report_id %>
+      <%= file_field :rp, :image, :multiple => true %>
+      <%#= f.file_field :image %>
+      <div>Upload files</div>
 <%# end %>
 
-<table class="upload_files"></table>
-<table class="download_files"></table>
-</div>
+      <table class="upload_files"></table>
+      <ul id="sortable" class="download_files">
+        <% if @report && @report.report_photos.size > 0 %>
+            <% @report.report_photos.order("report_photos.order").each do |photo| %>
+                <li id="name_" name=""><%= image_tag photo.image.url(:thumbnail) %></li>
+            <% end %>
+        <% end %>
+
+      </ul>
+    </div>
 
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

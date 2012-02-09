@@ -14,7 +14,7 @@
 
   <% if @report.report_photos.size > 0 %>
       <ul class="show_report">
-  <% @report.report_photos.each do |photo|%>
+  <% @report.report_photos.order("report_photos.order").each do |photo| %>
     <li><%= image_tag photo.image.url(:middle)%></li>
   <% end %>
       </ul>

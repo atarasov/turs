@@ -40,37 +40,37 @@ class ReportsController < ApplicationController
   # POST /reports
   # POST /reports.xml
   def create
-     unless session[:report_id].present?
-       @report = Report.new(params[:report])
-       @report.user_id = current_user.id
-         #raise format.inspect
-         if @report.valid?
-           @report.save!
-           session[:report_id] = @report.id
-         else
-           session[:report_id] = nil
-            redirect_to :action => "new", :notice => 'Report was error.'
-         end
-     else
-       @report = Report.find(session[:report_id])
-     end
-
-      if session[:report_id] && @report
-        #raise params[:rp][:image][0].inspect
-        if params[:rp] && params[:rp][:image][0]#.blank?
-          @rp = @report.report_photos.new()
-
-          @rp.image = params[:rp][:image][0]
-          if @rp.save!
-            render :json => {:pic_path => @rp.image.url.to_s, :name => @rp.image.instance.attributes["picture_file_name"]}, :content_type => 'text/html'
-          else
-            render :json => {:result => 'error'}, :content_type => 'text/html'
-          end
-        else
-          session[:report_id] = nil
-          redirect_to(report_url(@report), :notice => 'Report was successfully created.')
-        end
+    unless session[:report_id].present?
+      @report = Report.new(params[:report])
+      @report.user_id = current_user.id
+      #raise format.inspect
+      if @report.valid?
+        @report.save!
+        session[:report_id] = @report.id
+      else
+        session[:report_id] = nil
+        redirect_to :action => "new", :notice => 'Report was error.'
       end
+    else
+      @report = Report.find(session[:report_id])
+    end
+
+    if session[:report_id] && @report
+      #raise params[:rp][:image][0].inspect
+      if params[:rp] && params[:rp][:image][0] #.blank?
+        @rp = @report.report_photos.new()
+
+        @rp.image = params[:rp][:image][0]
+        if @rp.save!
+          render :json => {:pic_path => @rp.image.url.to_s, :photo_id => @rp.id, :name => @rp.image.instance.attributes["picture_file_name"]}, :content_type => 'text/html'
+        else
+          render :json => {:result => 'error'}, :content_type => 'text/html'
+        end
+      else
+        session[:report_id] = nil
+        redirect_to(report_url(@report), :notice => 'Report was successfully created.')
+      end
+    end
   end
 
   # PUT /reports/1
@@ -87,15 +87,26 @@ class ReportsController < ApplicationController
     #    format.xml  { render :xml => @report.errors, :status => :unprocessable_entity }
     #  end
     #end
-    @rp = @report.report_photos.new()
+    if params[:rp] && params[:rp][:image][0] #.blank?
+      @rp = @report.report_photos.new()
 
-    @rp.image = params[:report][:image][0]
-    if @rp.save!
-      render :json => {:pic_path => @rp.image.url.to_s, :name => @rp.image.instance.attributes["picture_file_name"]}, :content_type => 'text/html'
-    else
-      render :json => {:result => 'error'}, :content_type => 'text/html'
+      @rp.image = params[:report][:image][0]
+      if @rp.save!
+        render :json => {:pic_path => @rp.image.url.to_s, :photo_id => @rp.id, :name => @rp.image.instance.attributes["picture_file_name"]}, :content_type => 'text/html'
+      else
+        render :json => {:result => 'error'}, :content_type => 'text/html'
+      end
     end
 
+  end
+
+  def ordering
+    @photos = ReportPhoto.where(:user_id => params[:id]).order("report_photos.order")
+  end
+
+  def change_order
+    @order_list = params[:order_list]
+    ReportPhoto.sort(@order_list.split(','))
   end
 
   # DELETE /reports/1
