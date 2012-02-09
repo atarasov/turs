@@ -123,8 +123,8 @@ module ApplicationHelper
     submit_tag "Удалить", :class => "submit-form", :name => :destroy
   end
 
-  def ids(obj)
-    check_box_tag "ids[]", obj.id
+  def ids(obj, checked = nil)
+    check_box_tag "ids[]", obj.id, checked
   end
 
   def role(user)

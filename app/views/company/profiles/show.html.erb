@@ -229,7 +229,7 @@
   </div>
 </div>
 <div class="box-journal">
-  <% @posts = @profile.journals %>
+  <%= will_paginate @posts %>
   <div class="journal-holder">
     <em>Туристический журнал (<%= link_to @profile.journals.count, journals_path(:user_id => @profile.id) %>)</em>
   </div>

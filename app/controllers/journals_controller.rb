@@ -9,7 +9,7 @@ class JournalsController < ApplicationController
   end
   # GET /journals.xml
   def index
-    redirect_to :controller => "categories"
+    redirect_to :controller => "categories", :user_id => params[:user_id]
 
     #respond_to do |format|
     #  format.html # index.html.erb

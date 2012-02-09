@@ -196,6 +196,9 @@ TursPro::Application.routes.draw do
         get "favorite_index"
       end
       get 'directions'
+	  get 'edit_directions'
+	  post 'update_directions'
+
       get 'contact_map'
       resources :turs
       member do

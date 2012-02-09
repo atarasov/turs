@@ -10,6 +10,7 @@ class Company::ProfilesController < Company::BaseController
 
   def show
     @profile = User.find(params[:id])
+	@posts = @profile.journals.paginate(:page => params[:page], :per_page => 5)
     @stends = @profile.stends
       @profile.review += 1
       @profile.save!
@@ -23,14 +24,26 @@ class Company::ProfilesController < Company::BaseController
     @user = User.find(params[:id])
   end
 
-  def update
-    @user = User.find(params[:id])
+  def edit_directions
+	@countries = Country.all
+	@user = User.find(params[:profile_id])
+  end
+
+  def update_directions
+    @user = User.find(params[:profile_id])
     countries = params[:ids] || []
+	@user.directions.delete_all
     unless countries.empty?
       countries.each do |country|
         Direction.create(:user_id => @user.id, :country_id => country)
       end
-    end
+	end
+	redirect_to :action => :directions, :profile_id => params[:profile_id]
+  end
+
+  def update
+    @user = User.find(params[:id])
+
     #@user.avatar = params[:user][:avatar]
     if params[:us] && params[:us][:type]
       params[:user][:is_user] = false
