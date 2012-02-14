@@ -1,7 +1,7 @@
 <p>
       <ul class="countru_list">
         <% @directions.each do |direction|  %>
-        <li><%= image_tag direction.country.flag.url(:thumb) %> <%= direction.country.title %></li>
+        <li><%= link_to country_url(direction.country_id) do %><%= image_tag direction.country.flag.url(:thumb), :width => 40, :height => 20 %> <%= direction.country.title %><% end %></li>
         <% end %>
 
       </ul>

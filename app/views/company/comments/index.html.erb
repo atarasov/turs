@@ -9,7 +9,7 @@
 	  <% form_for :comment, :url=> add_comment_company_comments_path(@user.id) do |f| %>
 
     	  <div class="field">
-	    <%= f.text_area :text, :cols=>"80", :rows => "15" , :class => 'mceEditor' %>
+	    <%= f.text_area :text, :cols=>"80", :rows => "15" , :class => 'mceEditor', :style => "width: 790px" %>
   	</div>
 
   	<%= f.submit "Добавить коментарий"%>

@@ -229,7 +229,9 @@
   </div>
 </div>
 <div class="box-journal">
-  <%= will_paginate @posts %>
+  <div class="digg_pagination">
+  <%= will_paginate @posts, :container => false, :previous_label => "<",:next_label  => ">" %>
+	</div>
   <div class="journal-holder">
     <em>Туристический журнал (<%= link_to @profile.journals.count, journals_path(:user_id => @profile.id) %>)</em>
   </div>
