@@ -32,10 +32,12 @@ class Company::ProfilesController < Company::BaseController
   def update_directions
     @user = User.find(params[:profile_id])
     countries = params[:ids] || []
+	priority_directions = params[:priority][0..8] || params[:ids][0..8]
 	@user.directions.delete_all
     unless countries.empty?
       countries.each do |country|
-        Direction.create(:user_id => @user.id, :country_id => country)
+        Direction.create(:user_id => @user.id, :country_id => country,
+						 :is_priority => priority_directions.include?(country))
       end
 	end
 	redirect_to :action => :directions, :profile_id => params[:profile_id]

@@ -1,10 +1,58 @@
 <%= form_tag company_profile_update_directions_url(@user.id), :method => :post do %>
+	<strong>Направления</strong>
+	<span>Выберите направления из списка стран, по которым Вы специализируетесь</span>
+<div>
 <p>
-	<ul class="countru_list">
+	<ul class="countru_list" id="directions">
 		<% @countries.each do |country|  %>
-			<li><%= ids(country, @user.directions.map{|direction| direction.country_id}.include?(country.id) ) %><%= image_tag country.flag.url(:thumb) %> <%= country.title %></li>
+			<li>
+			  <%= check_box_tag "ids[]", country.id, @user.directions.map{|direction| direction.country_id}.include?(country.id), :class => "direction" %>
+			  <span id = "flag_<%= country.id %>"><%= image_tag country.flag.url(:thumb) %> <%= country.title %></span>
+			</li>
 		<% end %>
 	</ul>
-</p>
+ </p>
+  </div>
+	<span>Выберите девять основных направлений – они отобразятся в вашем портфолио в блоке «Мы работаем по направлениям». Если основные направления не выбраны автоматически отобразятся первые девять стран.
+	</span>
+  <div>
+	<p>
+	<ul class="countru_list" id="priorities">
+		<% @user.directions.each do |country|  %>
+			<li id="priority_<%= country.country.id %>">
+			  <%= check_box_tag "priority[]", country.country_id,
+								(@user.directions.where(:is_priority => true).map{|direction| direction.country_id}.include?(country.country_id))
+			  %>
+			  <%= image_tag country.country.flag.url(:thumb) %> <%= country.country.title %>
+			</li>
+		<% end %>
+	</ul>
+	</p>
+	</div>
 	<%= submit_tag t(:update) %>
+	<script type="text/javascript">
+	  function check_priority_count(){
+		  if ($("#priorities li input:checked").length > 9) {
+			  alert("Нельзя выбрать более 9 приоритетных направлений!");
+			  return false
+		  }
+		  else {
+			  return true;
+		  }
+	  }
+	  $(".direction").click(function() {
+		  if (this.checked) {
+			  $("#priorities").append("<li id=\"priority_" + $(this).val() + "\">" +
+					  "<input id=\"priority_\" name=\"priority[]\" type=\"checkbox\" value=\"" + $(this).val() + "\">" +
+					  $("#flag_" + + $(this).val()).html() +
+						"</li>"
+			  );
+			  $("li#priority_" + $(this).val() + " input").click(check_priority_count);
+		  }
+		  else{
+			  $("#priority_" + $(this).val()).remove();
+		  }
+	  });
+	  $("#priorities li input").click(check_priority_count);
+	</script>
 <% end %>

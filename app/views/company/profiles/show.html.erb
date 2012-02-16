@@ -162,7 +162,7 @@
             </tr>
             </thead>
             <tbody>
-            <% @directions = @profile.directions.limit(9) %>
+            <% @directions = @profile.directions.where(:is_priority => true).limit(9) %>
             <tr>
               <td><span style="float: left;"><% if @directions[0] %><%= image_tag @directions[0].country.flag.url(:mini) %>
                     <em class="dir"><%= @directions[0].country.title %></em><% end %></span></td>
@@ -239,22 +239,6 @@
       <!--<img src="/images/ico-recomend.jpg" alt="image description"/>-->
 
       <div class="journal-holder">
-        <!--<em>Туристический журнал</em>-->
-
-        <!--<div class="paging-holder">-->
-        <!--<span>18 января 2011</span>-->
-        <!--<ul class="paging">-->
-        <!--<li><a class="p-home" href="#">home</a></li>-->
-        <!--<li><a class="p-prev" href="#">prev</a></li>-->
-        <!--<li><a href="#">1</a></li>-->
-        <!--<li><a href="#">2</a></li>-->
-        <!--<li><a href="#">3</a></li>-->
-        <!--<li>...</li>-->
-        <!--<li><a href="#">34</a></li>-->
-        <!--<li><a class="p-next" href="#">next</a></li>-->
-        <!--<li><a class="p-end" href="#">end</a></li>-->
-        <!--</ul>-->
-        <!--</div>-->
         <strong><%= link_to post.title, post %></strong>
       </div>
       <div class="journal-img-holder">
@@ -329,9 +313,18 @@
   </div>
 </div>
 <div id="vk_comments"></div>
-<script type="text/javascript">
-VK.Widgets.Comments("vk_comments", {limit: 5, width: "815", attach: "*"});
-</script>
+
+<div class="box-journal">
+	<script type="text/javascript">
+		VK.Widgets.Comments("vk_comments", {limit: 5, width: "815", attach: "*"});
+	</script>
+</div>
+<div class="box-comand">
+  <strong>Cсылка на портфолио</strong>
+  <div class="box-comand-holder">
+	<%= link_to company_profile_url(@profile.id) %>
+  </div>
+</div>
 <!-- <div class="bottom-paging-holder">
   <ul class="paging">
     <li><a class="p-home" href="#">home</a></li>

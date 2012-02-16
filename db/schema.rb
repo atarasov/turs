@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120208210141) do
+ActiveRecord::Schema.define(:version => 20120215183811) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20120208210141) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_priority", :default => false
   end
 
   create_table "embassies", :force => true do |t|
