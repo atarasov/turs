@@ -20,7 +20,12 @@
 
 </div>
       <% end %>
+
   <% if @profile && @profile.is_user && params[:controller].eql?('company/profiles') %>
+
+
+
+
  <div class="box-r">
   <div class="box-r-holder">
     <div class="box-r-frame">
@@ -107,6 +112,35 @@
   </div>
 </div>
 
+
+
+ <% if @profile && !@profile.is_user && params[:controller].eql?('company/profiles') %>
+      <div class="box-r">
+  <div class="box-r-holder">
+    <div class="box-r-frame">
+      <strong>Услуги</strong>
+      <ul>
+        <% if @profile.uslugis && @profile.uslugis.size > 0  %>
+        <% @profile.uslugis.each do |uslugi|%>
+            <li><%= Uslugi::TO_GUIDE_NAME2[uslugi.val] %></li>
+        <% end %>
+        <% end %>
+      </ul>
+    </div>
+   </div>
+ </div>
+
+
+    <div class="box-r">
+  <div class="box-r-holder">
+    <div class="box-r-frame">
+      <strong>Спешите</strong>
+      <%= calendar_for(2009, 1, :calendar_class => "my_calendar", :first_day_of_week => 1) %>
+    </div>
+   </div>
+ </div>
+
+    <% end %>
 <div class="box-r">
   <div class="box-r-holder">
     <div class="box-r-frame">
