@@ -3196,3 +3196,17 @@ a.disabled {
     overflow: hidden;
     border-bottom: none;
 }
+
+div.registry{
+	background: url("/images/reestr.png") no-repeat scroll 0 0 transparent;
+	float: right;
+	width: 170px;
+	height: 53px;
+	display: block;
+}
+
+div.registry span{
+	position: relative;
+	top: 30px;
+	left: 54px;
+}

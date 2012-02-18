@@ -16,7 +16,7 @@
   <% end %>
 
   <em><%=  Russian::strftime(@journal.created_at, "%d %B %Y") %></em>
-  <% if @journal.user.id.eql?(current_user.id) %>
+  <% if current_user.present? && @journal.user.id.eql?(current_user.id) %>
     <%= link_to "Редактировать", edit_journal_url(@journal) %>
   <% end %>
 </p>

@@ -31,6 +31,9 @@
         <li><img src="/images/ico-small-book.png" alt="image description"/>Статьи:
           <span><%= @profile.journals.count %></span></li>
       </ul>
+	<% if @profile.reestr_number.present? %>
+		<div class="registry"><span><%= @profile.reestr_number %></span></div>
+	<% end %>
   <% end %>
   <!--<h1>Скидка от фирмы для для пользователей сайта TursPro.ru</h1>-->
   <%= image_tag @profile.avatar.url(:small), :style => "float:left; padding:15px;" %>
