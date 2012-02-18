@@ -1,7 +1,7 @@
 class CatalogController < ApplicationController
   before_filter :find_vip
   def index
-    @users = User.all
+    @users = User.where("raiting >= 15")
 	if params[:city_id].present?
 	   @users = @users.where(:city_id => params[:city_id])
 	 end

@@ -185,6 +185,45 @@ class User < ActiveRecord::Base
     super
   end
 
+
+  def update_rating
+	  #rating = 0
+	  rating = ((self.picture.present?) ? 1 : 0)
+	  rating += ((self.avatar.present?) ? 5 : 0)
+	  rating += ((self.about.present?) ? 2 : 0)
+	  rating += ((self.info.present?) ? 2 : 0)
+	  rating += ((self.name.present?) ? 2 : 0)
+	  rating += ((self.address.present?) ? 1 : 0)
+
+	  rating += ((self.address.present?) ? 1 : 0)
+
+	  self.photos.each do |photo|
+		  rating += 1
+		  rating += ((photo.description.present?) ? 0.5 : 0)
+	  end
+
+	  self.videos.each do |video|
+		  rating += 1
+		  rating += ((video.description.present?) ? 0.5 : 0)
+	  end
+
+	  self.comments.each do |comment|
+		  if comment.commentable_type.eql?"User"
+		  	rating += self.comments.count * 5
+		  else
+			rating += self.comments.count * 0.5
+		  end
+	  end
+
+	  rating += self.journals.where(:recomended => true).count * 8
+	  rating += self.services.where(:service_type => "ProAccount").count * 8
+	  rating += self.services.where(:service_type => "LinkToSite").count * 15
+
+	  unless self.raiting == rating
+		  self.update_attribute(:raiting, rating)
+	  end
+  end
+
   TYPE_PROFILE = [ :is_hotel => 1,
                    :is_tour_operator => 2,
                    :is_recreation_center => 3,

@@ -2,7 +2,6 @@ class Company::PhotosController < Company::BaseController
   #skip_before_filter :profile_find, :only => [:ordering, :change_order]
   def index
     @photos = Photo.where(:user_id => params[:id]).order("photos.order")
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @photos }
@@ -37,9 +36,9 @@ class Company::PhotosController < Company::BaseController
     @photo = Photo.find(params[:id])
   end
 
-  #def ordering
-  #  @photos = Photo.where(:user_id => params[:id]).order("photos.order")
-  #end
+  def ordering
+    @photos = Photo.where(:user_id => params[:id]).order("photos.order")
+  end
 
   def change_order
     @order_list = params[:order_list]
