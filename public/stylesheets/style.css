@@ -973,12 +973,13 @@ h1{
 	float: left;
     height: 1%;
     overflow: hidden;
-    width: 47%;
+    width: 95%;
+    padding-bottom: 20px;
 }
 .foto-holder{
 	width:70%;
 	overflow:hidden;
-    padding-left: 30px;
+    margin: 0 auto;
 
 }
 .box-foto strong{
@@ -1331,7 +1332,7 @@ font-style: italic;}
 }
 .box-comand{
 	margin:0 0 25px;
-	padding:0 0 0 12px;
+	padding:0 0 20px 12px;
 	overflow:hidden;
 	border-bottom:1px solid #ababab;
 }

@@ -88,18 +88,7 @@
         <% end %>
       </div>
       </div>
-      <div class="box-foto">
-        <strong>Спешите</strong>
-
-        <div>
-
-
-          <%= calendar_for(2009, 1, :calendar_class => "my_calendar", :first_day_of_week => 1) %>
-
-
-        </div>
-
-      </div>
+      
   <% end %>
   <div class="box-foto">
     <strong>Избранные фото<span>» <%= link_to "Все фото", company_photos_url(@profile) %></span></strong>
@@ -251,7 +240,7 @@
 
         </ul>
       </div>
-      <p><%= h post.text %></p>
+      <p><%= truncate(post.text.html_safe.gsub(/<\/?[^>]*>/, ""), @settings.post_symbol_count, '...') %></p>
 
       <div class="line">
         <em>Коментарии: <a href="#"><%= post.comments.recent.all.count %></a> </em>
@@ -290,26 +279,9 @@
   <strong>Нас рекомендуют</strong>
 
   <div class="box-comand-holder">
-    <ul>
       <% for referee in @profile.referees.limit(4) %>
-          <li>
-            <img src="<%= referee.avatar.url(:small) %>" alt="<%= referee.display_name %>"/>
-
-            <div class="comand-holder">
-              <% if ProAccount.activated(referee) %>
-                  <%= image_tag "ico-pro.png" %>
-              <% else %>
-                  <%= image_tag "ico-person-gs.png" %>
-              <% end %>
-              <strong><a href="<%= company_profile_url(referee.id) %>"><%= referee.display_name %></a></strong>
-              <span><img src="/images/ico-list.png" alt="image description"/>Рейтинг: <em><%= referee.raiting %></em></span>
-              <span><img src="/images/ico-arrow.png" alt="image description"/>Просмотров: <em><%= referee.review %></em></span>
-            </div>
-          </li>
+              <a href="<%= company_profile_url(referee.id) %>"><%= referee.display_name %></a>,
       <% end %>
-      <li>
-
-    </ul>
   </div>
 </div>
 <div id="vk_comments"></div>
@@ -322,7 +294,7 @@
 <div class="box-comand">
   <strong>Cсылка на портфолио</strong>
   <div class="box-comand-holder">
-	<%= link_to company_profile_url(@profile.id) %>
+	<strong><%= link_to company_profile_url(@profile.id) %></strong>
   </div>
 </div>
 <!-- <div class="bottom-paging-holder">

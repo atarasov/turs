@@ -72,8 +72,8 @@
               <% end %>
             </span>
             <%= link_to journal.title, journal %>
+             <p><%=truncate(journal.text.html_safe.gsub(/<\/?[^>]*>/, ""), @settings.post_symbol_count, '...')%></p>
 
-            <p><%= truncate(journal.text, @settings.post_symbol_count, '...') %></p>
 
             <%= link_to 'Подробнее', journal, :class=> "journal-more" %>
           </li>
