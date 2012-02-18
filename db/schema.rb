@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120215183811) do
+ActiveRecord::Schema.define(:version => 20120218082401) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -416,11 +416,11 @@ ActiveRecord::Schema.define(:version => 20120215183811) do
 
   create_table "stends", :force => true do |t|
     t.integer  "country_id"
-    t.integer  "user_id"
     t.integer  "days"
     t.string   "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "tenders", :force => true do |t|
@@ -619,6 +619,13 @@ ActiveRecord::Schema.define(:version => 20120215183811) do
   add_index "users", ["last_seen_at"], :name => "index_users_on_last_seen_at"
   add_index "users", ["site_id", "permalink"], :name => "index_site_users_on_permalink"
   add_index "users", ["site_id", "posts_count"], :name => "index_site_users_on_posts_count"
+
+  create_table "uslugis", :force => true do |t|
+    t.integer  "val"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "videos", :force => true do |t|
     t.string   "title"

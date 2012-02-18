@@ -1,8 +1,7 @@
 <%= form_tag company_profile_update_directions_url(@user.id), :method => :post do %>
 	<strong>Направления</strong>
 	<span>Выберите направления из списка стран, по которым Вы специализируетесь</span>
-<div>
-<p>
+<div style="display: block; width: 99%;clear: both; padding-top: 20px;">
 	<ul class="countru_list" id="directions">
 		<% @countries.each do |country|  %>
 			<li>
@@ -11,12 +10,11 @@
 			</li>
 		<% end %>
 	</ul>
- </p>
   </div>
-	<span>Выберите девять основных направлений – они отобразятся в вашем портфолио в блоке «Мы работаем по направлениям». Если основные направления не выбраны автоматически отобразятся первые девять стран.
-	</span>
-  <div>
-	<p>
+	<div style="display: block; width: 99%;;clear: both; padding-top: 20px;">Выберите девять основных направлений – они отобразятся в вашем портфолио в блоке «Мы работаем по направлениям». Если основные направления не выбраны автоматически отобразятся первые девять стран.
+	</div>
+
+  <div style="display: block; width: 99%;;clear: both; padding-top: 20px;">
 	<ul class="countru_list" id="priorities">
 		<% @user.directions.each do |country|  %>
 			<li id="priority_<%= country.country.id %>">
@@ -27,7 +25,6 @@
 			</li>
 		<% end %>
 	</ul>
-	</p>
 	</div>
 	<%= submit_tag t(:update) %>
 	<script type="text/javascript">

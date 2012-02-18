@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :rewards
   has_many :reports
   has_many :services
+  has_many :uslugis
   has_many :stends
   has_many :directions, :dependent => :delete_all
   has_many :posts, :order => "#{Post.table_name}.created_at desc"

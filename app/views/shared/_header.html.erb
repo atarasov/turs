@@ -37,6 +37,8 @@
                   </li>
 
                 <li><%= link_to t(:add_photo_report), new_report_path %>
+
+                  <li><%= link_to "Добавить услугу", new_uslugi_path %>
                 <% if current_user.is_user %>
                 <li><%= link_to t(:add_user_country), new_user_country_path %>
                 <li><%= link_to t(:add_user_hotel), new_user_hotel_path %>

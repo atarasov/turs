@@ -1,5 +1,7 @@
 TursPro::Application.routes.draw do
 
+  resources :uslugis
+
   resources :user_countries
 
   resources :user_hotels

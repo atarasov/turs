@@ -1,0 +1,41 @@
+<table>
+  <tr>
+    <th>Val</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @uslugis.each do |uslugi| %>
+  <tr>
+    <td><%= Uslugi::TO_GUIDE_NAME2[uslugi.val] %></td>
+    <td><%#= link_to 'Show', uslugi %></td>
+    <td><%#= link_to 'Edit', edit_uslugi_path(uslugi) %></td>
+    <td><%= link_to 'Удалить', uslugi, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= form_for(@uslugi) do |f| %>
+  <% if @uslugi.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@uslugi.errors.count, "error") %> prohibited this uslugi from being saved:</h2>
+
+      <ul>
+      <% @uslugi.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :val %><br />
+    <%= select :uslugi, :val, Uslugi::TO_GUIDE_NAME, {:include_blank => true}%>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%#= f.hidden_field :user_id, current_user.id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
