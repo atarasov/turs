@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218082401) do
+ActiveRecord::Schema.define(:version => 20120218090540) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -595,7 +595,7 @@ ActiveRecord::Schema.define(:version => 20120218082401) do
     t.string   "name"
     t.text     "about"
     t.text     "info"
-    t.integer  "raiting",                                 :default => 0
+    t.float    "raiting",                                 :default => 0.0
     t.integer  "review",                                  :default => 0
     t.boolean  "is_recomended",                           :default => false
     t.string   "avatar_file_name"
