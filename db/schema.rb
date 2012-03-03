@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218090540) do
+ActiveRecord::Schema.define(:version => 20120303082206) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -613,6 +613,10 @@ ActiveRecord::Schema.define(:version => 20120218090540) do
     t.string   "coord_lat"
     t.string   "icq"
     t.string   "skype"
+    t.string   "classmates_url"
+    t.string   "google_buzz_url"
+    t.string   "my_mail_url"
+    t.string   "ya_ru_url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
