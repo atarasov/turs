@@ -3,99 +3,95 @@
 <% if params[:controller].eql?('main') %>
 
 
+    <div class="box-kurs">
+      <strong>Курс валюты</strong>
+      <span>Сегодня: <em>14.12.2010</em></span>
 
-<div class="box-kurs">
-  <strong>Курс валюты</strong>
-  <span>Сегодня: <em>14.12.2010</em></span>
-
-  <ul>
-    <li>USD | <span><b id='insert_rate_USD_1322416485'>//-//</b></span></li>
-    <li>EUR | <span><b id='insert_rate_EUR_1322416485'>//-//</b></span></li>
-  </ul>
-  <!--<div class="box-kurs">-->
-  <!--<ul>-->
-  <!--<li>USD | <span><script type="text/javascript">$("#insert_rate_USD_1322416485").val;</script></span></li>-->
-  <!--<li>EUR | <span><script type="text/javascript">$("#insert_rate_EUR_1322416485").val;</script></span></li>-->
-  <!--</ul>-->
-
-</div>
-      <% end %>
-
-  <% if @profile && @profile.is_user && params[:controller].eql?('company/profiles') %>
-
-
-
-
- <div class="box-r">
-  <div class="box-r-holder">
-    <div class="box-r-frame">
-    <ul class="stat" style="float: left;">
-        <li><img src="/images/ico-small-list.png" alt="image description"/>Рейтинг:
-          <span><%= @profile.raiting %></span>
-        </li>
-        <li><img src="/images/ico-small-arrow.png" alt="image description"/>Просмотров:
-          <span><%= @profile.review %></span></li>
-        <li><img src="/images/ico-small-book.png" alt="image description"/>Статьи:
-          <span><%= @profile.journals.count %></span></li>
-      </ul>
-    </div>
-   </div>
- </div>
-
-<div class="box-r">
-  <div class="box-r-holder">
-    <div class="box-r-frame">
-      <strong>Поделюсь впечатлениями о</strong>
       <ul>
-        <% if @profile.user_countries %>
-        <% @profile.user_countries.limit(5).each do |user_country|%>
-            <%= image_tag user_country.country.flag.url(:small) %>
-            <%= user_country.country.title%>
-        <% end %>
-        <% end %>
+        <li>USD | <span><b id='insert_rate_USD_1322416485'>//-//</b></span></li>
+        <li>EUR | <span><b id='insert_rate_EUR_1322416485'>//-//</b></span></li>
       </ul>
-    </div>
-   </div>
- </div>
+      <!--<div class="box-kurs">-->
+      <!--<ul>-->
+      <!--<li>USD | <span><script type="text/javascript">$("#insert_rate_USD_1322416485").val;</script></span></li>-->
+      <!--<li>EUR | <span><script type="text/javascript">$("#insert_rate_EUR_1322416485").val;</script></span></li>-->
+      <!--</ul>-->
 
+    </div>
+<% end %>
+
+<% if @profile && @profile.is_user && params[:controller].eql?('company/profiles') %>
+
+
+    <div class="box-r">
+      <div class="box-r-holder">
+        <div class="box-r-frame">
+          <ul class="stat" style="float: left;">
+            <li><img src="/images/ico-small-list.png" alt="image description"/>Рейтинг:
+              <span><%= @profile.raiting %></span>
+            </li>
+            <li><img src="/images/ico-small-arrow.png" alt="image description"/>Просмотров:
+              <span><%= @profile.review %></span></li>
+            <li><img src="/images/ico-small-book.png" alt="image description"/>Статьи:
+              <span><%= @profile.journals.count %></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-r">
+      <div class="box-r-holder">
+        <div class="box-r-frame">
+          <strong>Поделюсь впечатлениями о</strong>
+          <ul>
+            <% if @profile.user_countries %>
+                <% @profile.user_countries.limit(5).each do |user_country| %>
+                    <%= image_tag user_country.country.flag.url(:small) %>
+                    <%= user_country.country.title %>
+                <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="box-r">
+      <div class="box-r-holder">
+        <div class="box-r-frame">
+          <strong>Расскажу об отеле</strong>
+          <ul>
+            <% if @profile.user_hotels %>
+                <% @profile.user_hotels.limit(5).each do |hotel| %>
+                    <%= hotel.name %>
+                <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<% end %>
 <div class="box-r">
   <div class="box-r-holder">
     <div class="box-r-frame">
-      <strong>Расскажу об отеле</strong>
-      <ul>
-        <% if @profile.user_hotels %>
-          <% @profile.user_hotels.limit(5).each do |hotel|%>
-            <%= hotel.name %>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-   </div>
- </div>
-
- <% end %>
-<div class="box-r">
-  <div class="box-r-holder">
-    <div class="box-r-frame">
 
 
-
-<div class="vk_like_company">
-<script charset="utf-8" src="//yandex.st/share/share.js" type="text/javascript"></script>
-<script type="text/javascript">
-    new Ya.share({
-        'element': 'ya_share1',
-        'elementStyle': {
-            'type': 'button',
-            'linkIcon': true,
-            'border': false,
-            'quickServices': ['yaru', 'vkontakte', 'twitter', 'odnoklassniki', 'moimir']
-        },
-        'popupStyle': {
-            'copyPasteField': true
-        }
-    });
-</script>
+      <div class="vk_like_company">
+        <script charset="utf-8" src="//yandex.st/share/share.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            new Ya.share({
+                'element': 'ya_share1',
+                'elementStyle': {
+                    'type': 'button',
+                    'linkIcon': true,
+                    'border': false,
+                    'quickServices': ['yaru', 'vkontakte', 'twitter', 'odnoklassniki', 'moimir']
+                },
+                'popupStyle': {
+                    'copyPasteField': true
+                }
+            });
+        </script>
 <span id="ya_share1">
   <span class="b-share">
     <a data-vdirection="" data-hdirection="" id="ya-share-0.8343438109049174-1322680012720" class="b-share__handle">
@@ -106,7 +102,7 @@
       </span></a>
   </span>
 </span>
-</div>
+      </div>
 
     </div>
   </div>
@@ -114,33 +110,33 @@
 
 
 
- <% if @profile && !@profile.is_user && params[:controller].eql?('company/profiles') %>
-      <div class="box-r">
-  <div class="box-r-holder">
-    <div class="box-r-frame">
-      <strong>Услуги</strong>
-      <ul>
-        <% if @profile.uslugis && @profile.uslugis.size > 0  %>
-        <% @profile.uslugis.each do |uslugi|%>
-            <li><%= Uslugi::TO_GUIDE_NAME2[uslugi.val] %></li>
-        <% end %>
-        <% end %>
-      </ul>
+<% if @profile && !@profile.is_user && params[:controller].eql?('company/profiles') %>
+    <div class="box-r">
+      <div class="box-r-holder">
+        <div class="box-r-frame">
+          <strong>Услуги</strong>
+          <ul>
+            <% if @profile.uslugis && @profile.uslugis.size > 0 %>
+                <% @profile.uslugis.each do |uslugi| %>
+                    <li><%= Uslugi::TO_GUIDE_NAME2[uslugi.val] %></li>
+                <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
-   </div>
- </div>
 
 
     <div class="box-r">
-  <div class="box-r-holder">
-    <div class="box-r-frame">
-      <strong>Спешите</strong>
-      <%= calendar_for(2009, 1, :calendar_class => "my_calendar", :first_day_of_week => 1) %>
+      <div class="box-r-holder">
+        <div class="box-r-frame">
+          <strong>Спешите</strong>
+          <%= calendar_for(2009, 1, :calendar_class => "my_calendar", :first_day_of_week => 1) %>
+        </div>
+      </div>
     </div>
-   </div>
- </div>
 
-    <% end %>
+<% end %>
 <div class="box-r">
   <div class="box-r-holder">
     <div class="box-r-frame">
@@ -156,13 +152,15 @@
             <% end %>
           </li>
           <li>
-            <% @country2 = Country.in_list.where(:id => @ids[rand(@ids.size)]) %>
+            <% @country2 = Country.in_list.where(["id NOT IN (?)", [@country1.first.id]]) %>
+
             <% if @country2 && @country2.first && @country2.size > 0 %>
                 <%= link_to image_tag(@country2.first.flag.url(:thumb)), @country2.first %><%= link_to @country2.first.title, @country2.first %>
             <% end %>
           </li>
           <li>
-            <% @country3 = Country.in_list.where(:id => @ids[rand(@ids.size)]) %>
+            <% @country3 = Country.in_list.where(["id NOT IN (?)", [@country1.first.id, @country2.first.id]]) %>
+
             <% if @country3 && @country3.first && @country3.size > 0 %>
                 <%= link_to image_tag(@country3.first.flag.url(:thumb)), @country3.first %><%= link_to @country3.first.title, @country3.first %>
             <% end %>
@@ -185,7 +183,9 @@
                   <ul>
                     <li class="country"><%= image_tag(tur.country.flag.url(:mini)) %> <%= tur.country.title %></li>
                     <li class="hotel"><%= t(:hotel) %>
-                      <% 1.upto(tur.stars.to_i) do %><img src="/images/ico-star.png" height="15" width="16" /><% end %>
+                      <% 1.upto(tur.stars.to_i) do %>
+                          <img src="/images/ico-star.png" height="15" width="16"/>
+                      <% end %>
                     </li>
                     <li class="price"><%= tur.price %> руб.</li>
                   </ul>
@@ -193,10 +193,10 @@
                   <div class="ul_footer">
                     <span><a class="pancel" href="#"><span>&nbsp;</span></a></span>
                     <!--img src="/images/ico-pro.png"-->
-                    <% if ProAccount.activated(tur.user)%>
-                      <%= link_to tur.user.name, company_profile_url(tur.user), :class => "pro" %>
+                    <% if ProAccount.activated(tur.user) %>
+                        <%= link_to tur.user.name, company_profile_url(tur.user), :class => "pro" %>
                     <% else %>
-                      <%= link_to tur.user.name, company_profile_url(tur.user), :class => "person" %>
+                        <%= link_to tur.user.name, company_profile_url(tur.user), :class => "person" %>
                     <% end %>
 
                   </div>
@@ -270,14 +270,26 @@
   <strong>Попутчики</strong>
   <%= link_to "Найди себе попутчика", companion_index_url %>
   <div class="persons-pitstop">
-	<% @companion_ids = CompanionAdvertisement.select(:id).all %>
+    <% @companion_ids = CompanionAdvertisement.select(:id).all %>
     <ul>
-	  <% @companion1 = CompanionAdvertisement.where(:id => @companion_ids[rand(@companion_ids.size)]).first %>
-      <% if @companion1 %><li><a href="<%= companion_url(@companion1) %>"><img src="<%= @companion1.user.avatar.url(:small) %>" alt="<%= @companion1.user.display_name %>"/></a></li><% end %>
-	  <% @companion2 = CompanionAdvertisement.where(:id => @companion_ids[rand(@companion_ids.size)]).first %>
-      <% if @companion2 %><li><a href="<%= companion_url(@companion2) %>"><img src="<%= @companion2.user.avatar.url(:small) %>" alt="<%= @companion2.user.display_name %>"/></a></li><% end %>
-	  <% @companion3 = CompanionAdvertisement.where(:id => @companion_ids[rand(@companion_ids.size)]).first %>
-      <% if @companion3 %><li><a href="<%= companion_url(@companion3) %>"><img src="<%= @companion3.user.avatar.url(:small) %>" alt="<%= @companion3.user.display_name %>"/></a></li><% end %>
+      <% @companion1 = CompanionAdvertisement.where(:id => @companion_ids[rand(@companion_ids.size)]).first %>
+      <% if @companion1 %>
+          <li>
+            <a href="<%= companion_url(@companion1) %>"><img src="<%= @companion1.user.avatar.url(:small) %>" alt="<%= @companion1.user.display_name %>"/></a>
+          </li>
+      <% end %>
+      <% @companion2 = CompanionAdvertisement.where(:id => @companion_ids[rand(@companion_ids.size)]).first %>
+      <% if @companion2 %>
+          <li>
+            <a href="<%= companion_url(@companion2) %>"><img src="<%= @companion2.user.avatar.url(:small) %>" alt="<%= @companion2.user.display_name %>"/></a>
+          </li>
+      <% end %>
+      <% @companion3 = CompanionAdvertisement.where(:id => @companion_ids[rand(@companion_ids.size)]).first %>
+      <% if @companion3 %>
+          <li>
+            <a href="<%= companion_url(@companion3) %>"><img src="<%= @companion3.user.avatar.url(:small) %>" alt="<%= @companion3.user.display_name %>"/></a>
+          </li>
+      <% end %>
     </ul>
   </div>
   <a class="btn-submit-pitstop" href="<%= new_companion_url %>">Подать заявку</a>
