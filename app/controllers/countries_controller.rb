@@ -95,19 +95,40 @@ class CountriesController < ApplicationController
   end
 
   def visa
-    @visa = Country.find(params[:id]).visa
+	  @country = Country.find(params[:id])
+    @visa = @country.visa
+
+  @country.review += 1
+   @country.save!
+   @next_country = @country.next
+   @prev_country = @country.previous
   end
 
   def phrasebook
-    @phrasebook = Country.find(params[:id]).phrasebook
+	  @country = Country.find(params[:id])
+    @phrasebook = @country.phrasebook
+	  @country.review += 1
+	   @country.save!
+	   @next_country = @country.next
+	   @prev_country = @country.previous
   end
 
   def embassy
+	  @country = Country.find(params[:id])
     @embassy = Country.find(params[:id]).embassy
+	@country.review += 1
+  @country.save!
+  @next_country = @country.next
+  @prev_country = @country.previous
   end
 
   def memo
-    @memo = Country.find(params[:id]).memo
+	  @country = Country.find(params[:id])
+    @memo = @country.memo
+	  @country.review += 1
+	   @country.save!
+	   @next_country = @country.next
+	   @prev_country = @country.previous
   end
 
   def phones

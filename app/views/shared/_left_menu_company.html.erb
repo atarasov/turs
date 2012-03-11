@@ -28,23 +28,24 @@
     </div>
   </div>
   <div class="box-grey">
-    <!--<div class="box-grey-holder">-->
-      <!--<div class="box-grey-frame">-->
-        <!--<a href="#" class="gift">Сделать подарок</a>-->
-        <!--<a href="#" class="share">Поделиться</a>-->
-
-        <!--<div class="social-holder">-->
-          <!--<ul class="social">-->
-            <!--<%# if @profile.twitter_url %><li><a href="<%#= @profile.twitter_url %>"><img src="/images/ico-twitter.png" alt="image description"/></a></li><%# end %>-->
-            <!--<%# if @profile.facebook_url %><li><a href="<%#= @profile.facebook_url %>"><img src="/images/ico-facebook.png" alt="image description"/></a></li><%# end %>-->
-            <!--<%# if @profile.jj_url %><li><a href="<%#= @profile.jj_url %>"><img src="/images/ico-livejournal.png" alt="image description"/></a></li><%# end %>-->
-            <!--<%# if @profile.vkontakte_url %><li><a href="<%#= @profile.vkontakte_url %>"><img src="/images/ico-vkontakte.png" alt="image description"/></a></li><%# end %>-->
-          <!--</ul>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <% if LinkToSite.activated(@profile) %>Ссылкана сайт <a href="<%= @profile.link_to_site %>"><%= @profile.link_to_site %></a> <% end %>
+	  <% if LinkToSite.activated(@profile) %>
+	  <strong> <%= t(:link_service) %></strong>
+		  <ul class="info">
+		      	<li><a href="<%= @profile.link_to_site %>"><%= @profile.link_to_site %></a> </li>
+		  </ul>
+	  <% end %>
+	  <strong><%= t(:my_social) %></strong>
+	  <ul class="info">
+    	<% if LinkToSite.activated(@profile) %><li>Ссылкана сайт <a href="<%= @profile.link_to_site %>"><%= @profile.link_to_site %></a> </li><% end %>
+		<% if @profile.vkontakte_url.present? %><li> <%= t(:vkontakte_url) %> <a href="<%= @profile.vkontakte_url.html_safe %>"><%= @profile.vkontakte_url %></a> </li><% end %>
+		<% if @profile.jj_url.present? %><li> <%= t(:jj_url) %> <a href="<%= @profile.jj_url.html_safe %>"><%= @profile.jj_url %></a> </li><% end %>
+		<% if @profile.facebook_url.present? %><li> <%= t(:facebook_url) %> <a href="<%= @profile.facebook_url.html_safe %>"><%= @profile.facebook_url %></a> </li><% end %>
+		<% if @profile.twitter_url.present? %><li> <%= t(:twitter_url) %> <a href="<%= @profile.twitter_url.html_safe %>"><%= @profile.twitter_url %></a> </li><% end %>
+		<% if @profile.classmates_url.present? %><li> <%= t(:classmates_url) %> <a href="<%= @profile.classmates_url.html_safe %>"><%= @profile.classmates_url %></a> </li><% end %>
+		<% if @profile.google_buzz_url.present? %><li> <%= t(:google_buzz_url) %> <a href="<%= @profile.google_buzz_url.html_safe %>"><%= @profile.google_buzz_url %></a> </li><% end %>
+		<% if @profile.my_mail_url.present? %><li> <%= t(:my_mail_url) %> <a href="<%= @profile.my_mail_url.html_safe %>"><%= @profile.my_mail_url %></a> </li><% end %>
+		<% if @profile.ya_ru_url.present? %><li> <%= t(:ya_ru_url) %> <a href="<%= @profile.ya_ru_url.html_safe %>"><%= @profile.ya_ru_url %></a> </li><% end %>
+	  </ul>
   </div>
 	<% if current_user.present? && current_user.id == @profile.id && @profile.teams.where(:is_confirmed => false).any? %>
 		<div class="box-blue">

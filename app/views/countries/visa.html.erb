@@ -1,1 +1,59 @@
+<!--table>
+  <tr>
+    <td>
+      <% if !@country.flag.blank? %> <%= image_tag @country.flag.url(:medium) %>
+<% end %>
+      <h1> <%= @country.title %></h1>
+
+      <%= raw simple_format(@country.description) %>
+<% if !@country.image1.blank? %><p><%= image_tag @country.image1.url(:medium) %></p>
+<% end %>
+<% if !@country.image2.blank? %><p><%= image_tag @country.image2.url(:medium) %></p>
+<% end %>
+<% if !@country.image3.blank? %><p><%= image_tag @country.image3.url(:medium) %></p>
+<% end %>
+    </td>
+  </tr>
+</table-->
+
+<!--<div class="countries">-->
+<!--strong><%= @country.title %></strong-->
+<!--<strong><%#= @prev_country.inspect %></strong>-->
+
+
+<% content_for :breadcramb do %>
+
+    <div class="breadcrambs-holder">
+
+      <% if @prev_country %>
+          <a href="<%= country_path(@prev_country.id) %>" class="left">Предыдущая<br/>страна</a>
+      <% end %>
+      <% if @next_country %>
+          <style>
+              .navigation-holder .hov:hover {
+                  text-decoration: underline !important;
+              }
+          </style>
+          <script>
+              function add_underline() {
+                  $(".linkh").add(document.getElementById("hov")).css("text-decoration", "underline");
+              }
+              function remove_underline() {
+                  $(".linkh").add(document.getElementById("hov")).css("text-decoration", "none");
+              }
+
+          </script>
+
+          <em class="linkh">
+            <a onmouseover="add_underline();" onmouseout="remove_underline()" id="hov" href="<%= country_path(@next_country.id) %>" class="right hov">Следующая<br/>страна</a>
+          </em>
+      <% end %>
+      <ul class="breadcrambs">
+        <li><%= link_to t(:countries), countries_path %></li>
+        <li class="no-line"><%= @country.title %></li>
+      </ul>
+    </div>
+
+<% end %>
+
 <p><%= raw simple_format(@visa.description) %></p>

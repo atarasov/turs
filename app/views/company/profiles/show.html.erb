@@ -107,18 +107,6 @@
 
             </li>
         <% end %>
-        <!--<li>-->
-        <!--<img src="/images/img33.jpg" alt="image description"/>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<img src="/images/img34.jpg" alt="image description"/>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<img src="/images/img33.jpg" alt="image description"/>-->
-        <!--</li>-->
-        <!--<li>-->
-        <!--<img src="/images/img34.jpg" alt="image description"/>-->
-        <!--</li>-->
       </ul>
     </div>
   </div>
@@ -220,10 +208,12 @@
   <% end %>
   </div>
 </div>
+<% if @posts.present? %>
 <div class="box-journal">
   <div class="digg_pagination">
   <%= will_paginate @posts, :container => false, :previous_label => "<",:next_label  => ">" %>
 	</div>
+
   <div class="journal-holder">
     <em>Туристический журнал (<%= link_to @profile.journals.count, journals_path(:user_id => @profile.id) %>)</em>
   </div>
@@ -251,7 +241,7 @@
               <% end %><% if post.user %> | <%= link_to post.user.email, company_profile_url(post.user) %><% end %></span>
       </div>
   <% end %>
-
+	<% end %>
 </div>
 <div class="box-comand">
   <strong>Команда</strong>
