@@ -170,6 +170,7 @@ class Company::ProfilesController < Company::BaseController
    # end
   end
 
+
   def directions
     @directions = User.find(params[:profile_id]).directions
   end

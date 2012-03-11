@@ -205,6 +205,7 @@ TursPro::Application.routes.draw do
       resources :turs
       member do
         get 'crop'
+        get 'cropjs'
         resources :journals
         resources :comments do
           post "add_comment", :on => :collection
