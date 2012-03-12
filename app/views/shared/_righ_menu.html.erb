@@ -111,9 +111,8 @@
 
 
 <% if @profile && !@profile.is_user && params[:controller].eql?('company/profiles') %>
-    <div class="box-r">
-      <div class="box-r-holder">
-        <div class="box-r-frame">
+    <div id="uslugi" >
+
           <strong>Услуги</strong>
           <ul>
             <% if @profile.uslugis && @profile.uslugis.size > 0 %>
@@ -122,8 +121,7 @@
                 <% end %>
             <% end %>
           </ul>
-        </div>
-      </div>
+
     </div>
 
 

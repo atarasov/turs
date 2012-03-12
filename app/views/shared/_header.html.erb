@@ -12,9 +12,9 @@
         <% if current_user.present? %>
 
             <ul class="nav_us">
-              <li><%= link_to 'В профиль', company_profile_url(current_user) %> (<%= link_to t(:change_data), edit_company_profile_url(current_user) %>)</li>
+              <li><%= link_to 'В профиль', company_profile_url(current_user) %> (<%= link_to t(:change_data), edit_company_profile_url(current_user), :class=>"edit"%>)</li>
               <li>|</li>
-              <li>Баланс - <%= link_to current_user.get_balance, company_finance_index_url %> (<%= link_to "Пополнить", new_company_finance_url %>)</li>
+              <li class="balans">Баланс - <%= link_to current_user.get_balance, company_finance_index_url %> (<%= link_to "Пополнить", new_company_finance_url, :class => "balansPlus"%>)</li>
               <li>|</li>
               <li><%= link_to 'Мои действия', company_profile_url(current_user), :class=>"btn-slide" %></li>
               <li>|</li>
@@ -24,16 +24,16 @@
             <div id="panel">
               <a href="" style="float: right;text-decoration:none; background-color: #ffffff;" class="btn-slide active">X</a>
 
-              <ul>
+              <ul class="myMenu">
 
-                <li><b>Фото:</b> <span> (<%= current_user.photos.all.count %>)</span><em>&nbsp;</em> <%= link_to_unless_current 'добавить', company_photos_url(current_user) %> / <%= link_to_unless_current 'Редактировать', company_photos_url(current_user) %>
+                <li class="photo"><b>Фото:</b> <span> (<%= current_user.photos.all.count %>)</span><em>&nbsp;</em> <%= link_to_unless_current 'добавить', company_photos_url(current_user) %> / <%= link_to_unless_current 'Редактировать', company_photos_url(current_user) %>
                  </li>
-                <li><b>Видео:</b> <span> (<%= current_user.videos.all.count %>)</span><em>&nbsp;</em><%= link_to_unless_current 'добавить', company_videos_url(current_user) %> / <%= link_to_unless_current 'Редактировать', company_videos_url(current_user) %>
+                <li class="video"><b>Видео:</b> <span> (<%= current_user.videos.all.count %>)</span><em>&nbsp;</em><%= link_to_unless_current 'добавить', company_videos_url(current_user) %> / <%= link_to_unless_current 'Редактировать', company_videos_url(current_user) %>
                   </li>
-                <li><b>Статьи:</b> <%= link_to t(:add), new_journal_url %> / мои рекомендовано (0)</li>
-                <li><b>Заявки на услуги:</b> участвую</li>
-                <li><b>Форум:</b> Создать новую тему на форуме / мои темы на форуме</li>
-                <li><%= link_to_unless_current 'Отзывы', company_comments_url(current_user) %>
+                <li class="statii"><b>Статьи:</b> <%= link_to t(:add), new_journal_url %> / мои рекомендовано (0)</li>
+                <li class="zayav"><b>Заявки на услуги:</b> участвую</li>
+                <li class="forum"><b>Форум:</b> Создать новую тему на форуме / мои темы на форуме</li>
+                <li class="otz"><%= link_to_unless_current 'Отзывы', company_comments_url(current_user) %>
                   </li>
 
                 <li><%= link_to t(:add_photo_report), new_report_path %>
@@ -45,22 +45,22 @@
                 <% end %>
               </ul>
               <% unless current_user.is_user %>
-              <ul>
+              <ul class="myMenu">
 				<li><b><%= t(:directions) %>:</b> <%= link_to t(:show), company_profile_directions_url(current_user.id) %> / (<%= link_to t(:edit), company_profile_edit_directions_url(current_user.id) %>)</li>
-                <li><b><%= t(:pro_service)%>:</b> (<%= link_to t(:popr), paid_service_pro_url %>)</li>
-                <li><b><%= t(:recommended_service) %>:</b> (<%= link_to t(:popr), paid_service_recommended_url %>)</li>
-                <li><b><%= t(:vip_service)%>:</b> (<%= link_to t(:popr), paid_service_vip_url %>)</li>
-                <li><b><%= t(:adv_turs)%>:</b> <span> (<%= current_user.comments.recent.all.count %>)</span><em>&nbsp;</em> <%= link_to_unless_current t(:add), new_tur_url() %> / <%= link_to_unless_current t(:my_turs), turs_url(:user_id => current_user.id) %></li>
-                <li><b><%= t(:selection_service) %>:</b> (<%= link_to t(:popr), paid_service_selection_url %>)</li>
+                <li class="pro"><b><%= t(:pro_service)%>:</b> (<%= link_to t(:popr), paid_service_pro_url %>)</li>
+                <li class="rec"><b><%= t(:recommended_service) %>:</b> (<%= link_to t(:popr), paid_service_recommended_url %>)</li>
+                <li class="vip"><b><%= t(:vip_service)%>:</b> (<%= link_to t(:popr), paid_service_vip_url %>)</li>
+                <li class="otz"><b><%= t(:adv_turs)%>:</b> <span> (<%= current_user.comments.recent.all.count %>)</span><em>&nbsp;</em> <%= link_to_unless_current t(:add), new_tur_url() %> / <%= link_to_unless_current t(:my_turs), turs_url(:user_id => current_user.id) %></li>
+                <li class="vkatalog"><b><%= t(:selection_service) %>:</b> (<%= link_to t(:popr), paid_service_selection_url %>)</li>
                 <li><b><%= t(:advertisements)%>:</b> <%= link_to t(:add), new_advertisement_url %> / <%= link_to t(:my_adv), advertisements_url(:user_id => current_user.id) %></li>
-                <li><b><%= t(:journsl_service) %>:</b> (<%= link_to t(:popr), paid_service_advertising_in_journal_url %>)</li>
-                <li><b><%= t(:in_site_service) %>:</b> (<%= link_to t(:popr), paid_service_advertising_in_site_url %>)</li>
-                <li><b><%= t(:link_service) %>:</b> t(:add) / (<%= link_to t(:popr), paid_service_site_link_url %>)</li>
+                <li class="recl_j"><b><%= t(:journsl_service) %>:</b> (<%= link_to t(:popr), paid_service_advertising_in_journal_url %>)</li>
+                <li class="obr_vn"><b><%= t(:in_site_service) %>:</b> (<%= link_to t(:popr), paid_service_advertising_in_site_url %>)</li>
+                <li class="nasite"><b><%= t(:link_service) %>:</b> t(:add) / (<%= link_to t(:popr), paid_service_site_link_url %>)</li>
               </ul>
                <% end %>
-              <ul>
+              <ul class="myMenu">
 
-                <li>Статистика</li>
+                <li class="stat">Статистика</li>
                 <li>Награды: <%= link_to t(:add), new_company_profile_reward_url(current_user)%> / <%= link_to t(:all), company_profile_rewards_url(current_user)%></li>
                 <!--<li><b>Профиль:</b>   / <%#= link_to t(:change_password), edit_user_url(current_user) %> / </li>-->
               </ul>
