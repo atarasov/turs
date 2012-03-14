@@ -11,7 +11,7 @@ gem "rake", "0.8.7"
 gem "haml"
 gem 'sass'
 gem 'russian'
-gem 'formtastic'
+gem 'formtastic', "2.0.2"
 gem 'jquery-rails'
 gem "paperclip"
 gem "simple-navigation"

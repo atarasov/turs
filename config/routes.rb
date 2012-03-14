@@ -47,6 +47,10 @@ TursPro::Application.routes.draw do
   get "main/users_license"
 
   resources :turs
+  match '/rss' => 'turs#rss',
+        :as => :feed,
+        :defaults => { :format => 'rss' }
+
 
   resources :photos
 
@@ -214,6 +218,7 @@ TursPro::Application.routes.draw do
       resources :turs
       member do
         get 'crop'
+        get 'cropjs'
         resources :journals
         resources :comments do
           post "add_comment", :on => :collection

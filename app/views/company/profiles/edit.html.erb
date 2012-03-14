@@ -1,7 +1,7 @@
 <h1><%= t(:edit_profile) %></h1>
 
 
-<% form_for(@user, :url =>{:controller => "company/profiles", :action => :update}, :html => {:multipart => true}) do |f| %>
+<% form_for(@user, :url =>{:controller => "company/profiles", :action => :update}, :id=> "userForm", :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
 <%= f.hidden_field :is_sanatorium %>
 
@@ -15,12 +15,24 @@
         <%= f.hidden_field :is_hotel %>
     <p>
       <%#= image_tag @user.avatar.url(:medium) if @user.avatar.present? %>
+
+      <script type="text/javascript">
+	function submit_avatar(){
+		$.ajax({
+			url: "<%= user_url(@user, :method=>:put) %>",
+			dataType: "script",
+			data: $("#userFormr").serialize() + '&' + $('#avatar').serialize()
+		});
+		return false;
+	};
+    </script>
+
     <%= f.label t(:avatar) %><br />
-    <%= f.file_field :avatar %>
+    <%= f.file_field :avatar, :id=>"avatar"%>
     <%= image_tag @user.avatar.url(:small) if @user.avatar.present?  %>
       <%= image_tag @user.avatar.url(:thumbnail) if @user.avatar.present?  %>
   </p>
-
+<div id="crop_div"></div>
     <p>
 
     <%= f.label t(:picture) %><br />

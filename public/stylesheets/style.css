@@ -50,6 +50,7 @@ textarea{
 	float:right;
 	overflow:hidden;
     margin-right:20px;
+    height: 24px;
 }
 .select select{
 	float:left;
@@ -897,49 +898,7 @@ h1{
 	-moz-border-top-left-radius:0;
 	-webkit-border-top-left-radius:0;
 }
-.calendar{
-	float:left;
-	margin:0 15px 19px 0;
-	padding:11px 1px 0 1px;
-	/*background:url(../images/bg-calendar.jpg) no-repeat;*/
-    border:1px solid #0000CC;
-	width:330px;
-	height:380px;
-    border-radius:10px;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-}
-.calendar strong{
-	display:block;
-	margin:0 0 19px;
-	text-align:center;
-	font:bold 18px/22px Georgia, Arial, Hevletica, sans-serif;
-	font-style:italic;
-	color:#dc6060;
-}
-.calendar table {
-	width:330px;
-    height: 300px;
-	margin:0 0 24px;
-	table-layout:fixed;
-	border-collapse:collapse;
-}
-.calendar table td {padding:0;}
-.calendar td, .calendar th {
-	font-size:11px;
-	text-align:center;
-	border:1px solid #edecea;
-	line-height:20px;
-}
-.calendar td.date {background:#fff;}
-.calendar td.event {
-	background:#dc6060;
-	color:#fff;
-}
-.calendar-heading td, .calendar-heading th{
-	background:url(../images/bg-calendar-heading.jpg) repeat-x;
-	color:#424242;
-}
+
 .month-slider{
 	overflow:hidden;
 	width:100%;
@@ -2696,7 +2655,7 @@ text-align: right;}
 #panel {
     background: #FFFFFF;
     color: #000033;
-    padding: 5px 20px 5px 5px;
+    padding: 5px 20px 5px 0px;
     display: none;
     position:fixed;
     z-index:9999;
@@ -3211,3 +3170,216 @@ div.registry span{
 	top: 30px;
 	left: 54px;
 }
+
+#uslugi{
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -khtml-border-radius: 7px;
+     border-radius: 7px;
+    background-color: #e4e4e4;
+    border: 1px solid #155f8b;
+    padding: 5px 5px 5px 0px;
+    margin-bottom: 10px;
+}
+#uslugi ul{padding: 10px 0 0 0px;}
+#uslugi strong {
+    background: url("../images/arrow-small-blue-long.png") no-repeat scroll 6px 8px transparent;
+    color: #155F8B;
+    display: block;
+    font: italic 24px/21px Georgia,Arial,Helvetica,sans-serif;
+    margin: 0 0 6px;
+    padding: 0 0 0 36px;
+}
+
+#uslugi li {
+    background: url("../images/gal.png") no-repeat scroll 6px 0px transparent;
+    color: #155F8B;
+    display: block;
+    font: italic 16px/15px Georgia,Arial,Helvetica,sans-serif;
+    margin: 0 0 9px 6px;
+    padding: 0 0 0 30px;
+}
+
+
+/***/
+a.edit {
+    background-image: url("../images/ico_edit.png");
+}
+.myMenu li {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-origin: padding-box;
+    background-position: 10px 4px;
+    background-repeat: no-repeat;
+    background-size: 17px auto;
+    display: block;
+    height: 17px;
+    margin: 0 0 9px 0px;
+    padding: 4px 0 0 32px;
+}
+
+a.edit{
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-origin: padding-box;
+    background-position: 10px 2px;
+    background-repeat: no-repeat;
+    background-size: 17px auto;
+    height: 24px;
+    margin: 0 0 9px 0px;
+    padding: 4px 0 0 32px;
+}
+
+li.balans{
+   background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/balans.png");
+    background-origin: padding-box;
+    background-position: 0px -2px;
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    height: 24px;
+    margin: 0 0 9px 0;
+    padding: 4px 0 0 32px;
+}
+
+a.balansPlus{
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("../images/balans_plus.png");
+    background-origin: padding-box;
+    background-position: 0px -2px;
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    height: 24px;
+    margin: 0 0 9px 0;
+    padding: 4px 0 0 32px;
+}
+
+li.photo {
+    background-image: url("../images/ico_photo.png");
+}
+
+li.video {
+    background-image: url("../images/ico_video.png");
+}
+
+li.statii {
+    background-image: url("../images/ico_statii.png");
+}
+
+li.nasite {
+    background-image: url("../images/ico_nasite.png");
+}
+
+li.stat {
+    background-image: url("../images/ico_stat.png");
+}
+
+a.edit {
+    background-image: url("../images/ico_edit.png");
+}
+
+li.vkatalog {
+    background-image: url("../images/ico_vkatalog.png");
+}
+
+li.zayav {
+    background-image: url("../images/ico_zayav.png");
+}
+
+li.obr_vn {
+    background-image: url("../images/ico_obr_vn.png");
+}
+
+li.recl_j {
+    background-image: url("../images/ico_recl_j.png");
+}
+
+li.pred_turs {
+    background-image: url("../images/ico_pred_turs.png");
+}
+
+li.forum {
+    background-image: url("../images/ico_forum.png");
+}
+
+li.rec {
+    background-image: url("../images/ico_rec.png");
+}
+
+li.cal {
+    background-image: url("../images/ico_cal.png");
+}
+
+li.otz {
+    background-image: url("../images/ico_otz.png");
+}
+
+li.pro {
+    background-image: url("../images/ico-pro.png");
+}
+
+li.vip {
+    background-image: url("../images/ico_vip.png");
+    border: none;
+}
+
+.nav_us{height: 24px;margin: 5px;}
+
+.calendar strong {
+    color: #ed3f3f;
+    display: block;
+    font: italic 32px/21px Georgia,Arial,Helvetica,sans-serif;
+    text-align: center;
+}
+
+.calendar{
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -khtml-border-radius: 7px;
+     border-radius: 7px;
+    background-color: #e4e4e4;
+    border: 1px solid #99958c;
+    padding: 5px 5px 5px 0px;
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+
+.calendar table {
+	width:240px;
+    height: 220px;
+	table-layout:fixed;
+	border-collapse:collapse;
+}
+.calendar table td {padding:0;}
+.calendar td, .calendar th {
+	font-size:11px;
+	text-align:center;
+	border:1px solid #99958c;
+	line-height:20px;
+}
+.calendar td.day {background:#fff;}
+.calendar td.otherMonth{color:#99958c !important;}
+.calendar td.weekend{color:#ed3f3f;}
+.calendar td.today{background:#dc6060;color:#ffffff;}
+
+.calendar td.event {
+	background:#dc6060;
+	color:#fff;
+}
+.calendar .month_names th{border: none;font: 22px/23px Arial,Helvetica,sans-serif;}
+
+.calendar .day_names th{background:#99958c;color: #424242;}
+
+.calendar .sale{
+    font: italic 18px/23px Arial,Helvetica,sans-serif;
+    margin: 15px 5px 15px 5px;
+    text-align: center;
+}
+/***/

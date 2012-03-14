@@ -16,6 +16,14 @@ class TursController < ApplicationController
     end
   end
 
+  def rss
+    @turs = Tur.all( :order => "created_at DESC", :limit => 20)
+
+    respond_to do |format|
+      format.rss { render :layout => false }
+    end
+  end
+
   # GET /turs/1
   # GET /turs/1.xml
   def show
