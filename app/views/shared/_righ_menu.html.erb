@@ -111,7 +111,7 @@
 
 
 <% if @profile && !@profile.is_user && params[:controller].eql?('company/profiles') %>
-    <div id="uslugi" >
+    <div id="uslugi">
 
           <strong>Услуги</strong>
           <ul>
@@ -125,13 +125,10 @@
     </div>
 
 
-    <div class="box-r">
-      <div class="box-r-holder">
-        <div class="box-r-frame">
-          <strong>Спешите</strong>
-          <%= calendar_for(2009, 1, :calendar_class => "my_calendar", :first_day_of_week => 1) %>
-        </div>
-      </div>
+    <div class="calendar">
+          <strong>Спешите !</strong>
+          <%= calendar_for(Russian::strftime(Time.now, "%Y").to_i, Russian::strftime(Time.now, "%m").to_i, :calendar_class => "my_calendar", :first_day_of_week => 1, :next_month => "&raquo;", :previous_month => "&laquo") %>
+          <p class="sale">На эти дни мы продадим тур - дешевле!</p>
     </div>
 
 <% end %>

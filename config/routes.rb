@@ -38,6 +38,10 @@ TursPro::Application.routes.draw do
   get "main/users_license"
 
   resources :turs
+  match '/rss' => 'turs#rss',
+        :as => :feed,
+        :defaults => { :format => 'rss' }
+
 
   resources :photos
 

@@ -898,49 +898,7 @@ h1{
 	-moz-border-top-left-radius:0;
 	-webkit-border-top-left-radius:0;
 }
-.calendar{
-	float:left;
-	margin:0 15px 19px 0;
-	padding:11px 1px 0 1px;
-	/*background:url(../images/bg-calendar.jpg) no-repeat;*/
-    border:1px solid #0000CC;
-	width:330px;
-	height:380px;
-    border-radius:10px;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-}
-.calendar strong{
-	display:block;
-	margin:0 0 19px;
-	text-align:center;
-	font:bold 18px/22px Georgia, Arial, Hevletica, sans-serif;
-	font-style:italic;
-	color:#dc6060;
-}
-.calendar table {
-	width:330px;
-    height: 300px;
-	margin:0 0 24px;
-	table-layout:fixed;
-	border-collapse:collapse;
-}
-.calendar table td {padding:0;}
-.calendar td, .calendar th {
-	font-size:11px;
-	text-align:center;
-	border:1px solid #edecea;
-	line-height:20px;
-}
-.calendar td.date {background:#fff;}
-.calendar td.event {
-	background:#dc6060;
-	color:#fff;
-}
-.calendar-heading td, .calendar-heading th{
-	background:url(../images/bg-calendar-heading.jpg) repeat-x;
-	color:#424242;
-}
+
 .month-slider{
 	overflow:hidden;
 	width:100%;
@@ -3368,11 +3326,60 @@ li.pro {
 
 li.vip {
     background-image: url("../images/ico_vip.png");
+    border: none;
 }
 
 .nav_us{height: 24px;margin: 5px;}
 
+.calendar strong {
+    color: #ed3f3f;
+    display: block;
+    font: italic 32px/21px Georgia,Arial,Helvetica,sans-serif;
+    text-align: center;
+}
+
+.calendar{
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -khtml-border-radius: 7px;
+     border-radius: 7px;
+    background-color: #e4e4e4;
+    border: 1px solid #99958c;
+    padding: 5px 5px 5px 0px;
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
 
 
+.calendar table {
+	width:240px;
+    height: 220px;
+	table-layout:fixed;
+	border-collapse:collapse;
+}
+.calendar table td {padding:0;}
+.calendar td, .calendar th {
+	font-size:11px;
+	text-align:center;
+	border:1px solid #99958c;
+	line-height:20px;
+}
+.calendar td.day {background:#fff;}
+.calendar td.otherMonth{color:#99958c !important;}
+.calendar td.weekend{color:#ed3f3f;}
+.calendar td.today{background:#dc6060;color:#ffffff;}
 
+.calendar td.event {
+	background:#dc6060;
+	color:#fff;
+}
+.calendar .month_names th{border: none;font: 22px/23px Arial,Helvetica,sans-serif;}
+
+.calendar .day_names th{background:#99958c;color: #424242;}
+
+.calendar .sale{
+    font: italic 18px/23px Arial,Helvetica,sans-serif;
+    margin: 15px 5px 15px 5px;
+    text-align: center;
+}
 /***/
