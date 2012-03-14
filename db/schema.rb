@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120303082206) do
+ActiveRecord::Schema.define(:version => 20120312173353) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(:version => 20120303082206) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "chat_messages", :force => true do |t|
+    t.integer  "from_user_id"
+    t.string   "from_guest_name"
+    t.integer  "to_user_id"
+    t.string   "to_guest_name"
+    t.string   "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -416,11 +426,11 @@ ActiveRecord::Schema.define(:version => 20120303082206) do
 
   create_table "stends", :force => true do |t|
     t.integer  "country_id"
+    t.integer  "user_id"
     t.integer  "days"
     t.string   "price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "tenders", :force => true do |t|

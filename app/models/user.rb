@@ -259,6 +259,18 @@ class User < ActiveRecord::Base
   validates_attachment_size :picture, :less_than => 5.megabytes
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/pjpeg']
 
+  def is_in_chat?
+	true
+  end
+
+  def login_chat
+
+  end
+
+  def logoff_chat
+
+  end
+
   private
 
   def reprocess_avatar

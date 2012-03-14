@@ -15,6 +15,8 @@
   <%= javascript_include_tag 'application.js' %>
   <%= javascript_include_tag 'jquery.tools.min', 'jquery.carouFredSel-5.3.0' %>
   <%= javascript_include_tag 'jquery.fileupload', 'jquery.fileupload-ui', 'jcrop.min' ,"pic_handler"%>
+  <%= javascript_include_tag 'jquery.timers' %>
+
   <%= stylesheet_link_tag('jquery.fileupload-ui') %>
   <%= stylesheet_link_tag "jcrop" %>
 
@@ -28,6 +30,17 @@
     <script src="http://api-maps.yandex.ru/1.1/index.xml?key=AC-0gU0BAAAAgsrxTwIAYC9mTt3wPpnp23qb7qdeOe1w25wAAAAAAAAAAAC703LgW8HXfrQ2tu9gS1X_ryVnIw==" type="text/javascript"></script>
 <% end %>
   <%= yield :header_script %>  <!--111-->
+  <script type="text/javascript">
+	  $(document).ready(function(){
+			$("#chat").everyTime(10000, function(i){
+				$.getScript('<%= url_for :controller => :chat, :action => :index %>');
+			});
+		})
+		function say(login){
+			$("input#message").val("<" + login + ">" + $("input#message").val());
+			$("input#message").focus();
+		}
+  </script>
 </head>
 <body>
 <div id='wrapper'>
@@ -71,6 +84,10 @@
 
   <%= render :partial => "shared/footer" %>
 
+</div>
+
+<div id="chat">
+     <%= render :partial => "chat/chat" %>
 </div>
 </body>
 </html>

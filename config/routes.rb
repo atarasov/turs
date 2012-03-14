@@ -1,5 +1,14 @@
 TursPro::Application.routes.draw do
 
+#  resource :chat do
+#		get "index"
+		get "chat" => "chat#index"
+
+ 		post "chat/say"  => "chat#say"
+		get "chat/logoff_chat" => "chat#logoff_chat"
+		post "chat/login_chat" => "chat#login_chat"
+  #end
+
   resources :uslugis
 
   resources :user_countries

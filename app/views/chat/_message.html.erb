@@ -1,0 +1,1 @@
+<span class="chat_time"><%= message.created_at.strftime("%H:%M:%S") %> </span><%= link_to_function message.get_from_user, "say('#{message.get_from_user}')" %><% if message.get_to_user.present? %> : <%= link_to_function message.get_to_user, "say('#{message.get_to_user}')" %> <% end %> <%= message.message %><br>

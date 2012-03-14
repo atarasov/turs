@@ -18,6 +18,7 @@
   <%= javascript_include_tag 'http://cloud.github.com/downloads/malsup/cycle/jquery.cycle.all.latest.js' %>
   <%= csrf_meta_tag %>
   <%= javascript_include_tag 'jquery-ui.min', 'application', 'rails', 'jquery.tools.min' %>
+  <%= javascript_include_tag 'jquery.timers' %>
   <%= javascript_include_tiny_mce_if_used %>
   <%= tiny_mce if using_tiny_mce? %>
   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
@@ -27,6 +28,15 @@
 
   <script type="text/javascript">
     VK.init({apiId: 2726049, onlyWidgets: true});
+	$(document).ready(function(){
+		$("#chat").everyTime(10000, function(i){
+			$.getScript('<%= url_for :controller => :chat, :action => :index %>');
+		});
+	})
+	function say(login){
+		$("input#message").val("<" + login + ">" + $("input#message").val());
+		$("input#message").focus();
+	}
   </script>
 
 
@@ -132,5 +142,10 @@ $(function() {
   <%= render :partial => "shared/footer" %>
 
 </div>
+	<% unless controller_name.eql?"chat" %>
+<div id="chat">
+  <%= render :partial => "chat/chat" %>
+</div>
+	<% end %>
 </body>
 </html>

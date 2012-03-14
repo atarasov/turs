@@ -1,0 +1,26 @@
+<% puts session[:chat_guest_login].present? %>
+<% if (current_user.present? && current_user.is_in_chat?) || (session[:chat_guest_login].present?) %>
+	<div class="chat-holder">
+	  <div class="chat-messages">
+		<%= render :partial => "chat/message", :collection => @messages %>
+	  </div>
+	  <div class="chat-online-users">
+		<%= render :partial => "chat/chat_users" %>
+	  </div>
+	  <div class="chat-panel">
+		<%= form_tag url_for(:controller => :chat, :action => :say), :method => :post, :remote => true do %>
+			<%= text_field_tag "message", "", :id => "message" %>
+			<%= submit_tag "Сказать" %>
+		<% end %>
+		<%= link_to "Покинуть чат", url_for(:controller => :chat, :action => :logoff_chat), :remote => true %>
+	  </div>
+	</div>
+<% else %>
+	<div class="chat_alerts"></div>
+	<%= form_tag url_for(:controller => :chat, :action => :login_chat), :remote => true, :method => :post do %>
+		<% unless current_user.present? %>
+			<label>Введите имя чата<%= text_field_tag "chat_guest_login", "" %></label>
+		<% end %>
+		<%= submit_tag "Войти в чат"  %>
+	<% end %>
+<% end %>

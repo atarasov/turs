@@ -1,0 +1,5 @@
+$(".chat-messages").html("<%= escape_javascript(render :partial => "chat/message", :collection => @messages) %>");
+$(".chat-online-users").html("<%= escape_javascript(render :partial => "chat/chat_users") %>");
+<% if @clear_input %>
+	$("#message").val("");
+<% end %>
