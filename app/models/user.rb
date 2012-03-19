@@ -47,6 +47,9 @@ class User < ActiveRecord::Base
 
 
   has_many :balances
+
+  has_one :chat_user
+
   has_permalink :login, :scope => :site_id
 
   attr_readonly :posts_count, :last_seen_at
@@ -260,15 +263,20 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/pjpeg']
 
   def is_in_chat?
-	true
+	self.chat_user.present? && (self.chat_user.last_chat_update > Time.now - 1.minute)
   end
 
   def login_chat
-
+	unless self.chat_user.present?
+	  self.create_chat_user
+	end
+	self.chat_user.update_attribute(:last_chat_update, Time.now)
   end
 
   def logoff_chat
-
+	if self.chat_user.present?
+	  self.chat_user.destroy
+	end
   end
 
   private

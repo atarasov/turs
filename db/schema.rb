@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312173353) do
+ActiveRecord::Schema.define(:version => 20120319180623) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(:version => 20120312173353) do
     t.integer  "to_user_id"
     t.string   "to_guest_name"
     t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "chat_users", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "guest_name"
+    t.datetime "last_chat_update"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

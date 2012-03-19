@@ -33,7 +33,7 @@
   <script type="text/javascript">
 	  $(document).ready(function(){
 			$("#chat").everyTime(10000, function(i){
-				$.getScript('<%= url_for :controller => :chat, :action => :index %>');
+				$.getScript('<%= chat_url %>');
 			});
 		})
 		function say(login){
@@ -87,6 +87,7 @@
 </div>
 
 <div id="chat">
+  <% @messages = ChatMessage.get_messages %>
      <%= render :partial => "chat/chat" %>
 </div>
 </body>

@@ -21,6 +21,7 @@ class ChatMessage < ActiveRecord::Base
 	  self.from_guest_name
 	end
   end
+
   def get_to_user
 	if self.to_user_id.present?
 	  self.to_user.login
@@ -41,10 +42,10 @@ class ChatMessage < ActiveRecord::Base
 
   def self.pars_message(message, sender)
 	result = Hash.new
-	if sender.class.name.eql?("User")
-	  result[:from_user_id] = sender.id
+	if sender.user.present?
+	  result[:from_user_id] = sender.user_id
 	else
-	  result[:from_guest_name] = sender
+	  result[:from_guest_name] = sender.guest_name
 	end
 
 	pars_arr = (/(<.*?>|)(.+|)/.match message)
