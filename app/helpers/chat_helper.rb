@@ -25,13 +25,13 @@ module ChatHelper
 			"<span class=\"favourite-user\">" +
 				link_to_function(chat_user.user.login, "say('#{chat_user.user.login}')") +
 				" <span class=\"remove-from-favourite\">".html_safe +
-				link_to("Удалить из избранного", url_for(:controller => "chat", :action => "remove_preferred_user", :id => chat_user.user_id),
+				link_to("Удалить из избранного", chat_remove_favourite_url(:id => chat_user.user_id),
 						:method => :post, :remote => true, :confirm => "Вы уверены?") +
 				"</span></span>"
 		else
 		  link_to_function(chat_user.user.login, "say('#{chat_user.user.login}')") +
 			  "<span class=\"add-to-favourite\">".html_safe +
-			  link_to("Добавить в избранное", url_for(:controller => "chat", :action => "add_preferred_user", :id => chat_user.user_id),
+			  link_to("Добавить в избранное", chat_add_favourite_url(:id => chat_user.user_id),
 			  :method => :post, :remote => true, :confirm => "Вы уверены?") +
 			  "</span>".html_safe
 		end

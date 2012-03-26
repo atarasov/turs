@@ -47,6 +47,7 @@ TursPro::Application.routes.draw do
 
   get "main/company_license"
   get "main/users_license"
+  resources :consultants, :only => [:index]
 
   resources :turs
   match '/rss' => 'turs#rss',

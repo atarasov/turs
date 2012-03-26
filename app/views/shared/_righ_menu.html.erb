@@ -290,52 +290,45 @@
   <a class="btn-submit-pitstop" href="<%= new_companion_url %>">Подать заявку</a>
   <em>(Для туристов)</em>
 </div>
+<% if User.consultant.any? %>
 <div class="box-r">
   <div class="box-r-holder">
     <div class="box-r-frame">
       <strong>Лучшие<br/>консультанты</strong>
-      <span>» <a href="#">Все консультанты</a></span>
+      <span>» <a href="<%= consultants_url %>">Все консультанты</a></span>
       <ul class="profiles">
-        <li class="bg-blue">
-          <strong>Алексеева Екатерина</strong>
-          <img src="/images/img4.jpg" alt="image description"/>
-          <ul>
-            <li><img src="/images/ico-mail.png" alt="image description"/>Сообщение</li>
-            <li><img src="/images/ico-icq.png" alt="image description"/>30981574</li>
-            <li><img src="/images/ico-skype.png" alt="image description"/>AlekseevaKatya</li>
-            <li><img src="/images/ico-doc.png" alt="image description"/>АльянсТуры.ру</li>
-            <li><img src="/images/ico-phone.png" alt="image description"/><span class="over">(495) 778-66-53<br/>(495) 778-66-53</span>
-            </li>
-          </ul>
-        </li>
-        <li class="bg-line">
-          <strong>Виктория</strong>
-          <img src="/images/img5.jpg" alt="image description"/>
-          <ul>
-            <li><img src="/images/ico-mail.png" alt="image description"/>Сообщение</li>
-            <li><img src="/images/ico-icq.png" alt="image description"/>30981574</li>
-            <li><img src="/images/ico-skype.png" alt="image description"/>AlekseevaKatya</li>
-            <li><img src="/images/ico-doc.png" alt="image description"/>АльянсТуры.ру</li>
-            <li><img src="/images/ico-phone.png" alt="image description"/><span class="over">(495) 778-66-53<br/>(495) 778-66-53</span>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <strong>Алина Пономарева</strong>
-          <img src="/images/img6.jpg" alt="image description"/>
-          <ul>
-            <li><img src="/images/ico-mail.png" alt="image description"/>Сообщение</li>
-            <li><img src="/images/ico-icq.png" alt="image description"/>30981574</li>
-            <li><img src="/images/ico-skype.png" alt="image description"/>AlekseevaKatya</li>
-            <li><img src="/images/ico-doc.png" alt="image description"/>АльянсТуры.ру</li>
-            <li><img src="/images/ico-phone.png" alt="image description"/><span class="over">(495) 778-66-53<br/>(495) 778-66-53</span>
-            </li>
-          </ul>
-        </li>
+		<% for consultant in User.consultant.random.limit(3) %>
+	        <!--li class="bg-blue"-->
+			<li class="bg-line">
+        	  <strong><%= consultant.display_name %></strong>
+	          <img src="<%= consultant.avatar.url(:small) %>" alt="<%= consultant.display_name %>"/>
+    	      <ul>
+				<% if consultant.email.present? %>
+        	    	<li><img src="/images/ico-mail.png" alt="<%= t(:email) %>"/><%= link_to consultant.email, "mailto:#{consultant.email}" %></li>
+				<% end %>
+				<% if consultant.icq.present? %>
+            		<li><img src="/images/ico-icq.png" alt="<%= t(:icq) %>"/><%= consultant.icq %></li>
+				<% end %>
+				<% if consultant.skype.present? %>
+	            	<li><img src="/images/ico-skype.png" alt="<%= t(:skype) %>"/><%= link_to consultant.skype, "skype:#{consultant.skype}?call" %></li>
+				<% end %>
+				<% if consultant.address.present? %>
+					<li><img src="/images/ico-doc.png" alt="<%= t(:address) %>"/><%= consultant.address %></li>
+				<% end %>
+
+				<% if consultant.phone.present? %>
+        	    	<li>
+				  		<img src="/images/ico-phone.png" alt="<%= t(:phone) %>"/><span class="over"><%= consultant.phone %></span>
+            		</li>
+				<% end %>
+	          </ul>
+    	    </li>
+		<% end %>
       </ul>
     </div>
   </div>
 </div>
+<% end %>
 <div class="search-tour">
   <img src="/images/img41.jpg" alt="image description"/>
   <a href="#">Найти турагентство</a>

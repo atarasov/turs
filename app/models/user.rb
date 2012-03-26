@@ -59,7 +59,8 @@ class User < ActiveRecord::Base
 
   scope :named_like, lambda { |name| where("users.display_name like ? or users.login like ?", "#{name}%", "#{name}%") }
   scope :online, lambda { where("users.last_seen_at >= ?", 10.minutes.ago.utc) }
-
+  scope :random, select("*, RAND() as random_val").order("random_val")
+  scope :consultant, where(true)
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :address, :price, :reestr_number, :slogan, :picture,
