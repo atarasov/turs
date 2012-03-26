@@ -49,8 +49,22 @@ class ChatController < ApplicationController
 	end
 
   end
+  def add_preferred_user
+	if current_user.present? && params[:user_id].present?
+	  if Users.where(:id => params[:user_id]).any? && FavoriteUser.where(:preferred_user_id =>params[:user_id].to_i, :user_id => current_user.id).empty?
+		current_user.create_favorite_user(:prefered_user_id => params[:user_id])
+	  end
+	end
+	redirect_to :action => :index
+  end
 
-	private
+  def remove_preferred_user
+	if current_user.present? && params[:user_id].present?
+	  current_user.preferred_users.where(:id => params[:user_id], :user_id => current_user.id).delete_all
+	end
+	redirect_to :action => :index
+  end
+		private
 
   def check_chat_auth
 	if current_user.present? && current_user.chat_user

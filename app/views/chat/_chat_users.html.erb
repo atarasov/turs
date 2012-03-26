@@ -1,7 +1,7 @@
 <% ChatUser.online.each do |cu| %>
 	<div class="online-user">
 	<% if cu.user_id.present? %>
-		<%= link_to_function cu.user.login, "say('#{cu.user.login}')"%>
+		<%=  online_user(cu).html_safe %>
 	<% else %>
 		<%= link_to_function cu.guest_name + "(Гость)", "say('#{cu.guest_name}')"%>
 	<% end %>

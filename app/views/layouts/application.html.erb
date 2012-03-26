@@ -143,7 +143,7 @@ $(function() {
 
 </div>
 	<% unless controller_name.eql?"chat" %>
-<div id="chat">
+<div id="chat" class="small">
   <% @messages = ChatMessage.get_messages %>
   <%= render :partial => "chat/chat" %>
 </div>

@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :directions, :dependent => :delete_all
   has_many :posts, :order => "#{Post.table_name}.created_at desc"
   has_many :topics, :order => "#{Topic.table_name}.created_at desc"
+  has_many :favorite_users
+  has_many :preferred_users, :through => :favorite_users
 
   has_many :moderatorships, :dependent => :delete_all
   has_many :forums, :through => :moderatorships, :source => :forum do

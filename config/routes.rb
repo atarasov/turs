@@ -7,6 +7,8 @@ TursPro::Application.routes.draw do
  		post "chat/say"  => "chat#say"
 		get "chat/logoff_chat" => "chat#logoff_chat"
 		post "chat/login_chat" => "chat#login_chat"
+		post "chat/add_favourite" => "chat#add_preferred_user"
+		post "chat/remove_favourite" => "chat#remove_preferred_user"
   #end
 
   resources :uslugis
