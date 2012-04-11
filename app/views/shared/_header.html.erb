@@ -127,11 +127,10 @@
 
       <label for="id1">Все города:</label>
       <%= select_tag "id1", "<option value=0>Выберите город</option>".html_safe + options_from_collection_for_select(City.all, "id", "name") %>
-      <%# form_tag '' do %>
-          <!--label for="id2"><%= t(:selectLang) %>:</label>
-          <%= select_tag("id2", options_for_select([['...', '0']] + LOCALES_AVAILABLE, I18n.locale), {:index => nil}) %>
-          <!--, :onchange => 'this.form.submit()'-->
-      <%# end %>
+      <% form_tag '' do %>
+          <label for="id2"><%= t(:selectLang) %>:</label>
+          <%= select_tag("locale", options_for_select([['...', session[:locale]]] + LOCALES_AVAILABLE, I18n.locale), :onchange => 'this.form.submit()') %>
+      <% end %>
 
         <%#= render_navigation :level => 1 %>
 
