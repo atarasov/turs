@@ -2141,12 +2141,12 @@ div.box-orange-bg-c ul li img{
 	1background:url(../images/box-dark-orange-c-holder.jpg) no-repeat;
 }
 .box-dark-orange-c-frame{
-	padding:8px 9px 14px 12px;
+	padding:8px 9px 5px 5px;
 	1background:url(../images/box-dark-orange-c-frame.jpg) no-repeat 0 100%;
-	border:1px solid #d2895c;
-	border-radius:15px;
-	-moz-border-radius:15px;
-	-webkit-border-radius:15px;
+	/*border:1px solid #d2895c;*/
+	/*border-radius:15px;*/
+	/*-moz-border-radius:15px;*/
+	/*-webkit-border-radius:15px;*/
 }
 .forum-now{
 	width:100%;
@@ -2317,7 +2317,12 @@ div.journal-favorites ul li span{
     height:200px;
 }
 
-.stat {float: right; display: block; margin: 5px; top: 5px;position: relative;}
+.stat {float: right; display: block; margin: 5px; top: 5px;position: relative;
+padding: 10px;
+    border: 1px solid #D2895C;
+    border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;}
 .stat img{margin-right: 5px; }
 .advertisiment td{border-top: 1px solid #e1e1e1; margin: 20px 0 20px 0; height: 40px;}
 
@@ -2913,9 +2918,13 @@ a.prev span, a.next span {
     padding: 10px 8px;
     position: relative;
     overflow: hidden;
+    border:1px solid #8CADBE;
+	border-radius:15px;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
 }
 .main_catalog{
-    border: 1px solid #CCCCCC;
+    /*border: 1px solid #CCCCCC;*/
     margin: 0 0 10px;
     padding: 5px 10px 15px;
     position: relative;
@@ -2939,7 +2948,14 @@ a.prev span, a.next span {
 }
 
 
-.vip{overflow: hidden; margin: 10px;border: 1px solid #e1e1e1; padding-bottom: 15px;}
+.vip{
+    overflow: hidden;
+    margin-bottom: 10px;
+    border: 1px solid #e1e1e1;
+    padding: 15px;
+    border-radius:15px;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;}
 
 .highlighted_companies:after {
     clear: both;
@@ -3381,5 +3397,17 @@ li.vip {
     font: italic 18px/23px Arial,Helvetica,sans-serif;
     margin: 15px 5px 15px 5px;
     text-align: center;
+}
+#chat{
+    background-color: #99958C;
+    bottom: 0;
+    display: block;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    position: fixed;
+    right: 20px;
+
 }
 /***/
