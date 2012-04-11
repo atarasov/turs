@@ -10,6 +10,20 @@
 	  </tr>
 	  <tr>
 		<td>
+		  Когда
+		</td>
+		<td>
+		  <table>
+			<tr>
+			  <td><%= form.text_field :start_date, :value => (params[:companion_advertisement][:start_date] if params[:companion_advertisement].present?), :readonly => :readonly %></td>
+			  <td>-</td>
+			  <td><%= form.text_field :end_date, :value => (params[:companion_advertisement][:end_date] if params[:companion_advertisement].present?), :readonly => :readonly %></td>
+			</tr>
+		  </table>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
 		  Вы
 		</td>
 		<td>
@@ -42,10 +56,22 @@
 		</td>
 	  </tr>
 	  <tr>
+		<td>Ищу спонсора</td>
+		<td>
+		  <%= form.check_box :sponsor %>
+		</td>
+	  </tr>
 	</table>
 	<%= form.submit "Поиск" %>
 <% end %>
-
+<script type="text/javascript">
+  $(document).ready(function(){
+	  $("#companion_advertisement_start_date").datepicker({
+		  dateFormat: 'yy-mm-dd'});
+	  $("#companion_advertisement_end_date").datepicker({
+	  		  dateFormat: 'yy-mm-dd'});
+  });
+</script>
 <table>
   <thead>
   <tr>

@@ -224,10 +224,13 @@ class User < ActiveRecord::Base
 	  rating += self.journals.where(:recomended => true).count * 8
 	  rating += self.services.where(:service_type => "ProAccount").count * 8
 	  rating += self.services.where(:service_type => "LinkToSite").count * 15
-
+	  if ProAccount.activated(self)
+		raiting *= 1.5
+	  end
 	  unless self.raiting == rating
 		  self.update_attribute(:raiting, rating)
 	  end
+
   end
 
   TYPE_PROFILE = [ :is_hotel => 1,

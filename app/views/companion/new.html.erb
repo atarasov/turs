@@ -18,6 +18,20 @@
 	  </tr>
 	  <tr>
 		<td>
+		  Когда
+		</td>
+		<td>
+		  <table>
+			<tr>
+			  <td><%= form.text_field :start_date, :value => (params[:companion_advertisement][:start_date] if params[:companion_advertisement].present?), :readonly => :readonly %></td>
+			  <td>-</td>
+			  <td><%= form.text_field :end_date, :value => (params[:companion_advertisement][:end_date] if params[:companion_advertisement].present?), :readonly => :readonly %></td>
+			</tr>
+		  </table>
+		</td>
+	  </tr>
+	  <tr>
+		<td>
 		  Куда собираетесь
 		</td>
 		<td>
@@ -48,7 +62,20 @@
 		  <%= form.select :request_type, [["М", 1], ["Ж", 2], ["Группа М", 3], ["Группа Ж", 4], ["Смешанная группа", 5]] %>
 		</td>
 	  </tr>
+	  <tr>
+		<td>Готов стать спонсором</td>
+		<td>
+		  <%= form.check_box :sponsor %>
+		</td>
+	  </tr>
 	</table>
-
+	<script type="text/javascript">
+	  $(document).ready(function(){
+		  $("#companion_advertisement_start_date").datepicker({
+			  dateFormat: 'yy-mm-dd'});
+		  $("#companion_advertisement_end_date").datepicker({
+		  		  dateFormat: 'yy-mm-dd'});
+	  });
+	</script>
 	<%= form.submit "Сохранить" %>
 <% end %>
