@@ -14,8 +14,7 @@ before_filter :login_required
 	params[:companion_advertisement][:user_id] = current_user.id
 	params[:companion_advertisement][:from_city] = current_user.city_id
 	@adv = CompanionAdvertisement.new(params[:companion_advertisement])
-	if @adv.valid?
-	  @adv.save
+	if @adv.valid? && @adv.save
 	  redirect_to :controller => :companion, :action => :index
 	else
 	  render :action => :new
@@ -49,8 +48,7 @@ before_filter :login_required
 			params[:companion_advertisement].delete :from_city
 
 		  	@adv.attributes = params[:companion_advertisement]
-			if @adv.valid?
-				@adv.save
+			if @adv.valid? && @adv.save
 				redirect_to :controller => :companion, :action => :index
 			else
 				render :action => :new
