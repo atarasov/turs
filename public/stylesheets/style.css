@@ -206,6 +206,7 @@ input.btn-login{
     border-top:none;
     padding:0;
     margin-top:13px;
+    z-index: 2000;
 }
 
 .nav ul li{
@@ -1417,7 +1418,7 @@ li.counters img{
 .footer-right-col{
 	float:right;
 	width:325px;
-	padding:0 10px 0 0;
+	padding:0 10px 15px 0;
 	overflow:hidden;
 }
 #footer p{
@@ -2977,8 +2978,9 @@ a.prev span, a.next span {
     -khtml-border-radius: 10px;
      border-radius: 10px;
 }
-
-.highlighted_companies li{margin:40px;}
+.highlighted_companies ul{display: block; margin: 0 auto;}
+.highlighted_companies div{overflow: hidden;}
+.highlighted_companies li{margin:40px; float: left;}
 
 .rating {
     background:url(../images/ico-list.png) no-repeat left 50%;
@@ -3410,4 +3412,16 @@ li.vip {
     right: 20px;
 
 }
+
+#popolnenie{
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -khtml-border-radius: 7px;
+     border-radius: 7px;
+    padding: 10px;
+    background-color: #efefef;
+}
+#popolnenie img{ width: 890px; margin: 0 auto; margin-bottom: 20px;display: block;}
+#popolnenie ul{list-style: none; width: 560px; margin: 0 auto;}
+#popolnenie li{display: inline; margin-right: 20px;}
 /***/
