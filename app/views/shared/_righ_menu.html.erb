@@ -5,7 +5,7 @@
 
     <div class="box-kurs">
       <strong>Курс валюты</strong>
-      <span>Сегодня: <em>14.12.2010</em></span>
+      <span>Сегодня: <em><%= Time.now.strftime('%d.%m.%Y') %></em></span>
 
       <ul>
         <li>USD | <span><b id='insert_rate_USD_1322416485'><%= @dollar %></b></span></li>
