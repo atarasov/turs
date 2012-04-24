@@ -26,6 +26,7 @@ gem 'acts_as_state_machine'
 gem 'permalink_fu'
 gem 'later_dude', '>= 0.3.1'
 gem "galetahub-simple_captcha", :require => "simple_captcha"
+gem 'nokogiri'
 #group :development, :test do
 #  gem 'rspec-rails'
 #  gem 'highline'

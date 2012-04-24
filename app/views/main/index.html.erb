@@ -156,14 +156,14 @@ $('#preview').cycle({
                 <option value="hotels">Отели</option>
                 <option value="mini_hotels">Мини-отели</option>
               </select>
-              <input type="submit" value="">
+              <input id="qsearch" type="submit" value="">
             </div>
           </fieldset>
         </form>
         <script type="text/javascript">
             $("document").ready(function() {
-                $("#frm_navigation").submit(function() {
-                    if (parseInt($("#id3").val())) {
+                $("#qsearch").click(function() {
+                    if (parseInt($("#id3").val()) > 0) {
                         window.location.href = "/catalog/" + $("#id4").val() + "?city_id=" + $("#id3").val()
                     }
                     else {

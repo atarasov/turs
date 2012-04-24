@@ -7,7 +7,6 @@ $(document).ajaxSend(function(event, request, settings) {
 
 
 
-
 $(function() {
 	$("#lang").overlay({
         effect: 'apple',

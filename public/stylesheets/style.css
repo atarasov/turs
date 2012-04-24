@@ -2124,8 +2124,8 @@ div.box-orange-bg-c ul li img{
 }
 .redir input{
 	border:none;
-	background:url(../images/btn-redirect-small.png) no-repeat;
-	width:44px;
+	background:url(../images/btn-redirect.png) no-repeat;
+	width:105px;
 	height:33px;
 	cursor:pointer;
 }

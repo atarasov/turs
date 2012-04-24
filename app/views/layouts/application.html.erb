@@ -29,9 +29,9 @@
   <script type="text/javascript">
     VK.init({apiId: 2726049, onlyWidgets: true});
 	$(document).ready(function(){
-		$("#chat").everyTime(10000, function(i){
-			$.getScript('<%= chat_url %>');
-		});
+//		$("#chat").everyTime(10000, function(i){
+//			$.getScript('<%= chat_url %>');
+//		});
 	})
 	function say(login){
 		$("input#message").val("<" + login + ">" + $("input#message").val());

@@ -1,3 +1,5 @@
+require 'nokogiri'
+require 'open-uri'
 class ApplicationController < ActionController::Base
   include UrlHelper
   include SimpleCaptcha::ControllerHelpers
@@ -5,7 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper :all, :action_link
-  before_filter :get_settings, :get_journal_categories, :set_locale, :get_new_turs, :store_location
+  before_filter :get_settings, :get_journal_categories, :set_locale, :get_new_turs, :store_location, :get_valut
 
   #skip_before_filter :verify_authenticity_token
   uses_tiny_mce(:options => AppConfig.default_mce_options, :only => [:new, :edit])
@@ -53,4 +55,11 @@ class ApplicationController < ActionController::Base
     I18n.locale = session[:locale] || I18n.default_locale
   end
 
+
+  def get_valut
+    doc = Nokogiri::XML(open("http://www.cbr.ru/scripts/XML_daily.asp?date_req=#{Time.now.strftime('%d/%m/%Y')}"))
+#raise doc.inspect
+    @dollar = doc.xpath('//ValCurs/Valute[10]/Value').inner_text
+    @euro = doc.xpath('//ValCurs/Valute[11]/Value').inner_text
+  end
 end

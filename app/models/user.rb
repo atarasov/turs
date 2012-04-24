@@ -225,7 +225,7 @@ class User < ActiveRecord::Base
 	  rating += self.services.where(:service_type => "ProAccount").count * 8
 	  rating += self.services.where(:service_type => "LinkToSite").count * 15
 	  if ProAccount.activated(self)
-		raiting *= 1.5
+		raiting *= 1.5 if raiting
 	  end
 	  unless self.raiting == rating
 		  self.update_attribute(:raiting, rating)
