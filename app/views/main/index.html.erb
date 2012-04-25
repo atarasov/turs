@@ -296,6 +296,30 @@ $('#preview').cycle({
   </div>
 </div>
 
+<div class="box-dark-orange-c-frame">
+
+  <div class="journal-favorites">
+    <strong class="strong"><%= t(:forum) %> <em><%= t(:forum_last) %></em></strong>
+    <!--<span class="line-p-right"><img src="images/ico-qn.png" alt="image description"/><a class="add-post" href="#">Добавить свою статью</a></span>-->
+    <ul>
+      <% for post in @posts -%>
+          <li>
+            <em><%= Russian::strftime(post.created_at, "%d %B %Y") %></em>
+            <!--a href="#"><strong></strong></a-->
+
+            <p class="title"><%= post.topic.title %></p>
+
+
+            <p><%= post.body %></p>
+
+
+          </li>
+      <% end -%>
+
+    </ul>
+  </div>
+</div>
+
 <!--div class="box-dark-orange-c">
                         <div class="box-dark-orange-c-holder">
                             <div class="box-dark-orange-c-frame">

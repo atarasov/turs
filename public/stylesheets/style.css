@@ -3424,4 +3424,5 @@ li.vip {
 #popolnenie img{ width: 890px; margin: 0 auto; margin-bottom: 20px;display: block;}
 #popolnenie ul{list-style: none; width: 560px; margin: 0 auto;}
 #popolnenie li{display: inline; margin-right: 20px;}
-/***/
+.highlighted_companies_dd{}
+.highlighted_companies_item{margin: 15px; display: block; width: 250px; float: left;}

@@ -77,12 +77,12 @@
   </div>
 
   <div class="highlighted_companies">
+    <div>
     <%= link_to t(:add_adv), "#", :class => 'right' %>
         <strong style="font-size: 18px; text-decoration: underline;"><%= t(:obr_vn) %></strong>
-    <ul>
+    </div>
       <% @highlighted_companies.each do |company|%>
-        <li>
-          <div>
+          <div class="highlighted_companies_item">
             <%= link_to image_tag(company.user.avatar.url(:medium)), company_profile_url(company.user) , :style => "float:left; padding-right:10px"%>
             <% if ProAccount.activated(company.user)%>
                     <%= image_tag "ico-pro.png"%>
@@ -92,9 +92,7 @@
             <%= link_to company.user.name, company_profile_url(company.user)  %><br/>
             <%= company.user.info  %>
           </div>
-        </li>
       <% end %>
-    </ul>
   </div>
 
 <script>

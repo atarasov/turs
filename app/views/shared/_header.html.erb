@@ -181,7 +181,7 @@
     <div class="box-header">
       <div class="col">
         <span>Компаний: <em><%= User.count %></em></span>
-        <span>Консультантов: <em>0</em></span>
+        <span>Консультантов: <em><%= User.consultant.count %></em></span>
       </div>
       <div>
         <span>Статей: <em><%= Journal.count %></em></span>
